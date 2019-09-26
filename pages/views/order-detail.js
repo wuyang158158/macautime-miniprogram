@@ -46,7 +46,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const mycomment = wx.getStorageSync("mycomment")
+    if(mycomment==='myexp'){
+      wx.removeStorageSync('mycomment')
+      const orderData = this.data.orderData
+      orderData.isComment = '1'
+      this.setData({
+        orderData: orderData
+      })
+    }
   },
 
   /**
@@ -108,7 +116,7 @@ Page({
   tapToExpComment() {
     const orderData = this.data.orderData
     wx.navigateTo({
-      url: '/pages/views/exp-comment',
+      url: '/pages/views/exp-comment?comment=myexp',
       success: function(result) {
         // 通过eventChannel向被打开页面传送数据
         result.eventChannel.emit('params', orderData)

@@ -62,6 +62,7 @@ Page({
   onShow: function () {
     const mycomment = wx.getStorageSync("mycomment")
     if(mycomment==='myexp'){
+      wx.removeStorageSync('mycomment')
       this.onPullDownRefresh()
     }
   },
