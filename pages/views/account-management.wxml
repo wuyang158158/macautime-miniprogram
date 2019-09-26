@@ -1,0 +1,9 @@
+<!--pages/views/account-management.wxml-->
+<view class="container">
+    <view class="bg-white">
+        <view class="flex f30 ml32 pr32" bindtap="tapToCenterDetail">
+            <view class="c-222222 flex-1">手机号</view>
+            <view class="c-999999">{{userInfo.phone}}</view>
+        </view>
+    </view>
+</view>

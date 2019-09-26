@@ -1,0 +1,20 @@
+/* pages/views/calendar-activity.wxss */
+page{
+    /* background: #fff!important; */
+}
+.recommend{
+    height: auto;
+}
+.content{
+    background: #EFEFF4;
+}
+.gather{
+    height: 180rpx;
+    border-radius:16rpx;
+}
+.gather .flex-1{
+    text-align: center;
+}
+.box-shadow{
+    box-shadow:0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.15);
+}

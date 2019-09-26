@@ -1,0 +1,124 @@
+<!--pages/tabs/index.wxml-->
+<view class="container">
+  <!-- 搜索组件 -->
+  <!-- <gh-searchbar bind:search="search"></gh-searchbar> -->
+  <view class="header">
+    <view class="common" wx:if="{{!userInfo.vip}}">
+      <image class="header-bg" src="/images/index/index-bg.jpg" mode="aspectFill"/>
+      <view class="header-ct">
+        <view class="c-title f44 white fw6 mt32 mb16">果核会员</view>
+        <view class="f42 l-h56 white fw3">便捷入会、乐享体验</view>
+        <view class="f42 l-h56 white fw3">专属优惠、玩转全球</view>
+        <button class="weui-btn w-186 c-222222 m0 mt32 mb32 fw5" type="default" bindtap="tapToVipCenter">了解更多</button>
+      </view>
+    </view>
+    <view class="vip" wx:else>
+      <image class="header-bg" src="/images/index/index-bgv.png" mode="aspectFill"/>
+      <view class="header-ct">
+        <view class="title f44 c-222222">果核体验，享受美好旅行时光</view>
+        <view class="location f24 flex" bindtap="tapToMapActivity">
+          <image class="location-icon" src="/images/index/index_icon_location.png" mode="aspectFill"/>
+          <view class="">{{rgcData.business}} · {{rgcData.distance}}</view>
+          <view class="i">|</view>
+          <view class="c-00A653">附近体验</view>
+        </view>
+        <view class="flex c-222222">
+          <view class="flex-1">
+            <!-- <view class="h-80">
+              <text class="f64">6</text>
+              <text class="f34">/6</text>
+            </view> -->
+            <view class="f24 fw5">会员专享优惠券礼包</view>
+          </view>
+          <button class="weui-btn w-186" type="primary" bindtap="tapToVipCenter">查看会员</button>
+        </view>
+      </view>
+    </view>
+  </view>
+    
+  <view class="i-page ml16 mr16 pb32">
+
+    <view class="nav flex">
+      <view class="flex-1 br1 flex flex-jc" bindtap="tapToHotActivity">
+        <image class="nav-popular mr32" src="/images/index/home_icon_menu_popular.png" mode="aspectFill"/>
+        <view class="popular">
+          <view class="popular-t f30 c-222222 fw5">人气体验</view>
+          <view class="popular-t f20 c-666666">最热榜单，最潮体验</view>
+        </view>
+      </view>
+      <view class="flex-1 flex flex-jc" bindtap="tapToActivityCalendar">
+        <view class="popular">
+          <view class="popular-t f30 c-222222 fw5">体验日历</view>
+          <view class="popular-t f20 c-666666">随时规划，自主体验</view>
+        </view>
+        <image class="nav-popular ml32" src="/images/index/home_icon_menu_calendar.png" mode="aspectFill"/>
+      </view>
+    </view>
+
+    <!-- 消息通知 -->
+    <!-- <view class="message mt40 flex pl32 pr32">
+      <image class="message-close-icon mr32" src="/images/index/home_icon_close20.png" mode="aspectFill"/>
+      <view class="flex-1 f26 c-222222">
+        您有 1 条新消息
+      </view>
+      <view class="f24 c-00A653">立即查看</view>
+    </view> -->
+
+    <!-- 会员专属 -->
+    <view class="exclusive" wx:if="{{promotions.length}}">
+      <view class="ex-title f32 l-h32 c-222222 pt32 pb32 mt32 fw6">会员专属体验</view>
+      <view wx:for="{{promotions}}" wx:key="{{index}}" class="ex-content" data-title="{{item.promotionTitle}}" data-id="{{item.expSerial}}" data-url="{{item.url}}" bindtap="{{userInfo.vip? item.isBingExp?'tapToDetail':'tapToWebView':'tapToVipCenter'}}">
+        <image class="ex-content-banner-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+        <image class="ex-content-banner" src="{{item.picUrl}}" lazy-load mode="aspectFill"/>
+      </view>
+    </view>
+
+    <!-- 会员限时礼 -->
+    <view class="v-time" wx:if="{{vImgUrls.length}}">
+      <view class="f32 l-h32 c-222222 pt32 pb32 mt32 fw6">会员限时礼</view>
+      <view class="vt-content">
+        <view class="vt-ctitle flex pl32 pr32 h-88">
+          <view class="flex-1 f32 c-222222">{{vTimeTitle}}</view>
+          <!-- <view class="f28 c-666666" bindtap="tapToVipCenter">查看全部</view> 
+          <image class="more" src="/images/index/icon_more-2.png" mode="aspectFill"/> -->
+        </view>
+        <swiper class="swiper" indicator-dots autoplay interval="5000" bindchange="vSwiperChange" previous-margin="18rpx" next-margin="18rpx">
+          <block wx:for="{{vImgUrls}}" wx:key="{{index}}">
+            <swiper-item>
+              <view class="slide ml5 mr5 flex">
+                  <view class="vt-detail pl32 pr16 flex-1">
+                    <view class="f32 c-222222 fw5 ell">{{item.vipActivityTitle}}</view>
+                    <view class="f24 c-666666 mt25 mb22 l-h24">有效期至{{item.validTimeStr}}</view>
+                    <view class="flex">
+                      <button class="weui-btn w-152" type="primary" bindtap="tapToVipCenter">兑换</button>
+                      <view class="c-00A653 flex-1 ml32" data-title="{{item.vipActivityTitle}}" data-id="{{item.experienceSerial}}" bindtap="{{userInfo.vip?'tapToDetail':'tapToVipCenter'}}">查看</view>
+                    </view>
+                  </view>
+                  <image class="slide-image" src="{{item.logoUrl}}" mode="aspectFill"/>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+
+    <!-- 推荐体验 -->
+    <view class="recommend">
+      <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
+        <view class="flex-1 f32  c-222222">推荐体验</view>
+        <!-- <view class="f30 c-00A653">查看更多</view> -->
+      </view>
+      <gh-aclist recommend="{{recommend}}"></gh-aclist>
+      <gh-empty prop-type="no-data" prop-text="暂无推荐体验" prop-mt="0" wx:if="{{noData}}"></gh-empty>
+      <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}">
+        <view wx:if="{{loadmore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+      </view>
+    </view>
+  </view>
+</view>
+ <!-- 缺省页面，暂无数据 -->
+<!-- <gh-empty prop-type="no-data" prop-text="暂无数据"></gh-empty> -->

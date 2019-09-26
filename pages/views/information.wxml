@@ -1,0 +1,19 @@
+<!--pages/views/information.wxml-->
+<view class="container">
+    <view class="items m16 pt32">
+        <view class="time f24 c-FFFFFF">今天 16:32</view>
+        <view class="content bg-white mt32 pl32 pr32">
+            <view class="c-222222 f32 fw6 pt32">服务通知</view>
+            <view class="f24 c-666666 l-h30 pt16 pb16">感谢您对果核的信任，您在平台预约的「澳门塔观光体验」已经提交成功，祝您旅途愉快！</view>
+            <!-- <view class="c-00A653 f28 fw5 pt32 pb16">查看更多</view> -->
+        </view>
+    </view>
+    <view class="items m16 pt32">
+        <view class="time f24 c-FFFFFF">今天 16:32</view>
+        <view class="content bg-white mt32 pl32 pr32">
+            <view class="c-222222 f32 fw6 pt32">服务通知</view>
+            <view class="f24 c-666666 l-h30 pt16 pb16">感谢您对果核的信任，您在平台预约的「澳门塔观光体验」已经提交成功，祝您旅途愉快！</view>
+            <!-- <view class="c-00A653 f28 fw5 pt32 pb16">查看更多</view> -->
+        </view>
+    </view>
+</view>

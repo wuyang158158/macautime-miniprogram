@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "calendar": "/components/calendar/index",
+    "gh-aclist": "/components/acList/acList"
+  },
+  "navigationBarTitleText": "体验日历",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundColor": "#FFFFFF"
+}

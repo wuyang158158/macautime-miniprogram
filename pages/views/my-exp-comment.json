@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty"
+  },
+  "navigationBarTitleText": "我的评论",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "navigationStyle": "default"
+}

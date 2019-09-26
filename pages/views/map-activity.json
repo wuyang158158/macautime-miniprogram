@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty"
+  },
+  "navigationBarTitleText": "附近体验",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+}

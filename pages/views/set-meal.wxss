@@ -1,0 +1,53 @@
+/* pages/views/set-meal.wxss */
+@import 'ac-detail.wxss';
+page{
+    background: #EFEFF4!important;
+}
+.title,.calendar,.number{
+    border-radius: 16rpx;
+    overflow: hidden;
+}
+.calendar{
+    box-shadow: none;
+}
+.w-100{
+    width: 100%;
+}
+.h-100{
+    height: 100rpx;
+}
+.h-64{
+    height: 64rpx;
+}
+.icon-36{
+    width: 36rpx;
+    height: 36rpx;
+}
+.box-shadow{
+    width: 100%;
+    height: 1rpx;
+    box-shadow:0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.15);
+}
+button::after{
+    border: 0;
+}
+button[type=hot-btn]{
+    border: 0;
+    flex: none!important;
+    border: 1px solid rgba(230, 230, 230,1)!important;
+}
+.button-hover[type=hot-btn]{
+    border: 1px solid rgba(230, 230, 230,0.6)!important;
+}
+.meal{
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+}
+.meal-btn{
+    width: 311rpx;
+    margin: 0;
+    padding: 0 8rpx;
+    justify-content: center;
+    margin-bottom: 16rpx!important;
+    box-sizing: border-box;
+}

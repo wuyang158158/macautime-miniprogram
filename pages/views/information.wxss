@@ -1,0 +1,15 @@
+/* pages/views/information.wxss */
+.items{
+    text-align: center;
+}
+.time{
+    display: inline-block;
+    background: #D9D9D9;
+    padding: 8rpx 22rpx;
+    border-radius:20rpx;
+    margin: 0 auto;
+}
+.content{
+    border-radius:16rpx;
+    text-align: left;
+}

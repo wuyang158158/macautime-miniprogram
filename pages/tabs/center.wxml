@@ -1,0 +1,44 @@
+<!--pages/tabs/center.wxml-->
+<view class="container pl16 pr16 pb32">
+    <!-- 用户会员信息 -->
+    <view class="vip-info relative" wx:if="{{userInfo&&userInfo.vip}}" bindtap="tapToVipCenter">
+        <image class="header-bg" src="/images/vip/vip_card1.png" mode="aspectFill"/>
+        <view class="slide-text c-292624">
+            <view class="fw6 f40 l-h61">享专属特权</view>
+            <view class="f26 l-h61">果核会员</view>
+            <view class="f22 fw3 vip-ctime">有效期至{{userInfo.rt}}</view>
+        </view>
+    </view>
+    <!-- 用户信息 -->
+    <view class="userinfo mt16 bg-white flex {{userInfo.vip?'userinfo-vip':''}}" bindtap="{{userInfo?'tapToCenterDetail':''}}">
+        <image class="avatar m32 mr16" src="{{userInfo?userInfo.url:'/images/center/mine_avatar.png'}}" mode="aspectFill"/>
+        <button class="weui-btn username flex-1 f44 c-222222 fw6 ell" type="contact" open-type="getUserInfo" bindtap="{{userInfo?'':'tapToLogin'}}">{{userInfo?userInfo.nickName:'登录/注册'}}</button>
+        <image class="more-icon mr32" src="/images/center/icon_more-2.png" mode="aspectFill" wx:if="{{userInfo}}"/>
+    </view>
+    <!-- 会员介绍 -->
+    <view class="join-vip flex mt16" wx:if="{{!userInfo.vip}}">
+        <image class="join-vip-icon mr16" src="/images/center/mine_logo_vip.png" mode="aspectFill"/>
+        <view class="flex-1 f30 c-292624">果核会员享专属特权</view>
+        <button class="weui-btn w-160 fw5" type="primaryv" open-type="userInfo?'':'getUserInfo'" bindtap="{{userInfo?'tapToVipCenter':'tapToLogin'}}">{{userInfo?'立即加入':'登录查看'}}</button>
+    </view>
+    <!-- 个人记录 -->
+    <view class="record mt16 bg-white flex">
+        <view wx:for="{{record}}" wx:key="{{index}}" class="flex-1 flex flex-column f26 c-222222" data-menu="{{item.text}}" bindtap="tapMenu">
+            <image class="record-icon mb16" src="{{item.iconPath}}" mode="aspectFill"/>
+            <view class="record-text">{{item.text}}</view>
+        </view>
+    </view>
+    <!-- 用户反馈等 -->
+    <view class="user-menu bg-white mt16 pl32 pr32">
+        <view wx:for="{{menu}}" wx:key="{{index}}" class="flex h-120 {{index+1!=menu.length?'bd1':''}}" data-menu="{{item.text}}" bindtap="tapMenu">
+            <image class="menu-icon mr32" src="{{item.iconPath}}" mode="aspectFill"/>
+            <view class="flex-1 f32 c-222222">
+                <button class="weui-btn w-auto" type="contact" open-type="contact" wx:if="{{item.text==='联系客服'}}">{{item.text}}</button>
+                <button class="weui-btn w-auto" type="contact" open-type="feedback" wx:elif="{{item.text==='意见反馈'}}">{{item.text}}</button>
+                <text wx:else>{{item.text}}</text>
+            </view>
+           
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+    </view>
+</view>

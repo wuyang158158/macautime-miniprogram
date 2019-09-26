@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "calendar": "/components/calendar/index",
+    "half-screen-dialog": "/components/halfScreenDialog/halfScreenDialog"
+  },
+  "navigationBarTitleText": "选择套餐",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "backgroundColor": "#EFEFF4"
+}

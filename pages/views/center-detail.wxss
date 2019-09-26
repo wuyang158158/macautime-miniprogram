@@ -1,0 +1,6 @@
+/* pages/views/center-detail.wxss */
+.header-bg{
+    width: 144rpx;
+    height: 144rpx;
+    border-radius: 50%;
+}

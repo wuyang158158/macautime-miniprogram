@@ -1,0 +1,97 @@
+<!--pages/views/submit-order.wxml-->
+<view class="container pb220">
+    <view class="user default m16 l-h30">
+        <view class="f32 c-222222 p32 fw6">联系人</view>
+        <view class="f30 c-222222 p32 bd1">{{userInfo.nickName}}</view>
+        <view class="f30 c-222222 p32">{{userInfo.phone}}</view>
+    </view>
+    <view class="gh-vip default m16 mt0 p32">
+        <radio-group bindchange="checkboxChange">
+        <label class="checkbox">
+            <view class="flex">
+                <image class="v-icon mr16" src="/images/submit-order/logo_vip.png" mode="aspectFill"/>
+                <view class="flex-1 f-222222 f-32 fw6">果核会员</view>
+                <radio value="vip" checked color="#00A653"/>
+            </view>
+            <view class="flex">
+                <image class="v-icon mr16" src="" mode="aspectFill"/>
+                <view class="flex-1 f-222222 f24 fw3 l-h30 mt16">尊敬的果核会员，该体验已加入「果核会员行动」，本次预订您可享受专属会员优惠政策。</view>
+            </view>
+        </label>
+        </radio-group>
+    </view>
+    <view class="default m16 mt0 p32">
+        <view class="flex bd1 pb32">
+            <image class="icon-100 mr16 bg-EFEFF4" src="{{options.coverUrl}}" mode="aspectFill"/>
+            <view class="flex-1">
+                <view class="f32 fw6 c-222222 l-h32 mt16">{{options.activityTitle}}</view>
+                <view class="f24 c-222222 mt16">{{options.symbol||'MOP$'}} {{options.originalPrice}}</view>
+            </view>
+        </view>
+        <view class="flex h-100 bd1 f30 fw6">
+            <view class="flex-1">日期</view>
+            <view class="fw4">{{options.useDate}}</view>
+        </view>
+        <view class="flex h-100 bd1 f30 fw6">
+            <view class="flex-1">数量</view>
+            <view class="ml16 mr16">{{orderCount}} 件</view>
+        </view>
+        <view class="flex h-100 bd1 f30 fw6">
+            <view class="flex-1">原价</view>
+            <view class="">{{options.symbol||'MOP$'}} {{sPrice}}</view>
+        </view>
+        <!-- <view class="flex h-100 bd1 f30 fw6">
+            <view class="flex-1">会员专属折扣</view>
+            <view class="c-00A653 fw4">{{options.discount}}%OFF</view>
+        </view> -->
+        <!-- <view class="flex h-100 bd1 f30 fw6">
+            <view class="flex-1">会员红包</view>
+            <view class="c-00A653 fw4">减 {{options.symbol||'MOP$'}} 20</view>
+        </view> -->
+         <view class="flex h-100 f30 fw6">
+            <view class="flex-1">会员价</view>
+            <view class="c-00A653 fw6">{{options.symbol||'MOP$'}} {{ePrice}}</view>
+        </view>
+    </view>
+
+    <view class="default m16 mt0 p32">
+        <view class="bd1 pb32">
+            <view class="flex">
+                <image class="icon-24 mr16" src="/images/submit-order/icon_book_promise.png" mode="aspectFill"/>
+                <view class="flex-1 f-222222 f-32 fw6">果核承诺</view>
+            </view>
+            <view class="f-222222 f24 fw3 l-h30 mt16">体验均为果核官方上线，保证真实可靠；果核保障用户的最高权益和个人隐私。</view>
+        </view>
+        <view class="pt32">
+            <view class="flex">
+                <image class="icon-24 mr16" src="/images/submit-order/icon_book_prompt.png" mode="aspectFill"/>
+                <view class="flex-1 f-222222 f-32 fw6">预订须知</view>
+            </view>
+            <view class="f-222222 f24 fw3 l-h30 mt16">用户通过果核预订体验，一天内取消订单超过三次则当日不接受预订，订单提交成功后超过三日不能取消。</view>
+        </view>
+    </view>
+
+    <view class="m32">
+        <checkbox-group class="radio-group" bindchange="radioChange">
+        <label class="checkbox f24 flex">
+            <checkbox value="agreement" checked color="#00A653"/>
+            <text>我已阅读并同意</text>
+            <text class="c-00A653" catchtap="tapToAgreement">《果核服务协议》</text>
+        </label>
+        </checkbox-group>
+    </view>
+
+    <!-- 下单 -->
+    <view class="orders bg-white bt1 {{isIphoneX ?'fix-iphonex-button':''}}">
+        <view class="flex pl32 pr32">
+            <view class="flex-1">
+                <view class="c-00A653 f24">已优惠 {{options.symbol||'MOP$'}} {{discountPrice}}</view>
+                <view class="c-222222 f24">
+                    <text class="">到店支付剩余 {{options.symbol||'MOP$'}} </text>
+                    <text class="f36 fw6">{{ePrice}}</text>
+                </view>
+            </view>
+            <button class="weui-btn w-296" type="primary" bindtap="submitOrder">确认预定</button>
+        </view>
+    </view>
+</view>

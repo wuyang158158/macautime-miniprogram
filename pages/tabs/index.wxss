@@ -1,0 +1,138 @@
+/* pages/tabs/index.wxss */
+.swiper{
+  height: 300rpx;
+}
+.container{
+  width: 100%;
+  height: 500rpx;
+  position: relative;
+}
+.header-bg{
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.header-ct{
+  padding: 30rpx 49rpx;
+  position: relative;
+  z-index: 5;
+}
+.header-ct .title{
+  font-weight:600;
+}
+.location{
+  height: 50rpx;
+}
+.location .location-icon{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 15rpx;
+  margin-top: -4rpx;
+}
+.location .i{
+  padding: 0 24rpx;
+}
+.h-80{
+  height: 80rpx;
+}
+.w-186{
+  width: 186rpx;
+}
+.i-page {
+  position: relative;
+  z-index: 8;
+}
+.i-page .nav{
+  width: 100%;
+  height: 80rpx;
+  padding: 41rpx 0;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 0rpx 30rpx 0rpx rgba(0, 0, 0, 0.1);
+  border-radius:16rpx;
+}
+.nav .flex-1{
+  height: 100%;
+}
+.nav-popular{
+  width: 48rpx;
+  height: 48rpx;
+}
+.i-page .message{
+  height:80rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.15);
+  border-radius:40rpx;
+}
+.message-close-icon{
+  width: 20rpx;
+  height: 20rpx;
+}
+.ex-content{
+  height:406rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.15);
+  border-radius:16rpx;
+  overflow: hidden;
+  position: relative;
+}
+.ex-content-banner-default{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.ex-content-banner{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+.vt-content{
+  height:405rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.15);
+  border-radius:16rpx;
+  overflow: hidden;
+}
+.slide-image{
+  width: 236rpx;
+  height: 236rpx;
+}
+.more{
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 13rpx;
+}
+.h-88{
+  height: 88rpx;
+}
+.slide{
+  height:236rpx;
+  background:rgba(255,255,255,1);
+  border:2rpx solid rgba(237,236,236,1);
+  border-radius:20rpx;
+  overflow: hidden;
+}
+.w-152{
+  width: 152rpx;
+}
+.vt-detail{
+  min-width: 0;
+}
+.mt25{
+  margin-top: 25rpx;
+}
+.mb22{
+  margin-bottom: 22rpx;
+}
+.gh-empty-content{
+  margin-top: 0;
+}

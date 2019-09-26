@@ -1,0 +1,78 @@
+<!--pages/views/feedback.wxml-->
+<view class="container">
+  <form bindsubmit="bindFormSubmit">
+    
+    <view class="bg-white pl32 pr32 pb32">
+        <view class="m0 pt32 pb32 bg-white c-222222">反馈内容</view>
+        <textarea class="weui-textarea f30" name="textarea" placeholder="您的反馈是我们进步的动力" placeholder-class="c-cccccc f30" style="height: 4.3em" />
+        <view class="weui-textarea-counter f24 c-999999 fw3">0/200</view>
+    </view>
+    
+
+    <view class="weui-cells f30 c-222222 mt16">
+    <view class="page__bd">
+        <view class="weui-cells">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd">
+                          <view class="weui-uploader__overview">
+                              <view class="weui-uploader__title">
+                                <text >上传图片</text>
+                                <text class="f24">（不超过3张）</text>
+                              </view>
+                              <view class="weui-uploader__info f24 fw3">{{files.length}}/3</view>
+                          </view>
+                        </view>
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles">
+                                <block wx:for="{{files}}" wx:key="*this">
+                                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                        <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                    </view>
+                                </block>
+                                <!-- <view class="weui-uploader__file weui-uploader__file_status">
+                                    <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                                    <view class="weui-uploader__file-content">
+                                      <view class="weui-loading"></view>
+                                    </view>
+                                </view>
+                                <view class="weui-uploader__file weui-uploader__file_status">
+                                    <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                                    <view class="weui-uploader__file-content">
+                                        <icon type="warn" size="23" color="#F43530"></icon>
+                                    </view>
+                                </view>
+                                <view class="weui-uploader__file weui-uploader__file_status">
+                                    <image class="weui-uploader__img" src="../images/pic_160.png" mode="aspectFill" />
+                                    <view class="weui-uploader__file-content">50%</view>
+                                </view> -->
+                            </view>
+                            <view class="weui-uploader__input-box">
+                                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    </view>
+
+    <view class="weui-cells f30 c-222222 mt16">
+        <view class="weui-cell">
+            <view class="weui-cell__hd">
+                <view class="">手机号：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name="phone" placeholder="我们可能会联系您" placeholder-class="c-cccccc"/>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="form-btn">
+        <button class="weui-btn  ml32 mr32" type="primary" form-type="submit"> 提交 </button>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,16 @@
+<!--pages/views/hot-activity.wxml-->
+<view class="container">
+    <image class="title-bg" src="/images/index/bg_list.jpg" mode="aspectFill"/>
+    <view class="content pl16 pr16 bg-EFEFF4">
+        <gh-aclist source="hot-activity" recommend="{{result}}" wx:if="{{result.length}}"></gh-aclist>
+        <!-- 加载更多 -->
+        <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}">
+            <view wx:if="{{loadmore}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+        </view>
+        <gh-empty prop-type="no-order" prop-text="{{emptytext?emptytext:'暂无数据'}}" prop-mt="100" wx:if="{{noData}}"></gh-empty>
+    </view>
+</view>

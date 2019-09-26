@@ -1,0 +1,83 @@
+<!--pages/tabs/ticket.wxml-->
+<view class="container">
+    <!-- 顶部操作 -->
+    <view class="title">
+        <scroll-view class="scroll-view_H" scroll-x="true">
+        <view wx:for="{{titleBar}}" class="scroll-view-item_H {{item.name==name?'demo-text-1':''}}" data-name="{{item.name}}" data-type="{{item.type}}" wx:key="{{index}}" bindtap="tapTitleBar">
+            <text>{{item.name}}</text>
+            <text class="item-bd" wx:if="{{item.name==name}}"></text>
+        </view>
+        </scroll-view>
+    </view>
+    <!-- 内容展示 -->
+    <view class="content pl16 pr16 pt90" wx:if="{{ticketData.length>0}}">
+        <view wx:for="{{ticketData}}" wx:key="{{index}}" class="ticket-list bg-white mt16" data-id="{{item.orderCode}}" data-status="{{item.status}}" data-coverimgurl="{{item.coverImgUrl}}" bindtap="tapToOrderDetail">
+            <view class="t-top ml16 mr16 flex bd1">
+                <image class="t-icon mr8" src="/images/ticket/icon_food.png" mode="aspectFill" wx:if="{{item.tag==='1'}}"/>
+                <image class="t-icon mr8" src="/images/ticket/icon_scene.png" mode="aspectFill" wx:elif="{{item.tag==='2'}}"/>
+                <image class="t-icon mr8" src="/images/ticket/icon_activity.png" mode="aspectFill" wx:else/>
+                <view class="flex-1 f30 c-222222 fw6 ell">{{item.activityTitle || ''}}</view>
+                <view class="t-status f26 fw5 c-666666">
+                    <text wx:if="{{item.status === 'A'}}">待参加</text>
+                    <!-- <text wx:if="{{item.status === 'B'}}">审核中</text> -->
+                    <text wx:if="{{item.status === 'B'}}">已验票</text>
+                    <text wx:if="{{item.status === 'C'}}">已完成</text>
+                    <text wx:if="{{item.status === 'D'}}">已退票</text>
+                    <text wx:if="{{item.status === 'E'}}">已过期</text>
+                </view>
+            </view>
+            <view class="t-bottom ml16 mr16">
+                <view class="flex">
+                    <image class="order-icon mr16 bg-EFEFF4" src="{{item.coverImgUrl}}" lazy-load mode="aspectFill"/>
+                    <view class="flex-1 f26 c-666666 w-0">
+                        <view class="ell mt8" wx:if="{{item.mealTitle}}">套餐：{{item.mealTitle}}</view>
+                        <view class="ell">下单时间：{{item.orderTimeStr}}</view>
+                        <view class="ell">总价：{{item.currencySymbol||'MOP$'}} {{item.totalPrice}}</view>
+                    </view>
+                </view>
+                <view class="t-handle flex">
+                    <view class="flex-1"></view>
+                    <button class="weui-btn w-132 c-00A653 fw5" type="default-ticket" wx:if="{{item.status === 'A'}}" data-id="{{item.orderCode}}" catchtap="tapCancelOrder">取消</button>
+                    <button class="weui-btn w-132 c-00A653 fw5" type="default-ticket" wx:if="{{item.status === 'D' || item.status === 'E'}}" data-id="{{item.orderCode}}" catchtap="deleteOrder">删除</button>
+                    <button class="weui-btn w-132 c-00A653 ml16 fw5" type="primary-ticket" wx:if="{{item.status === 'C' && item.isComment !== '1'}}">评价</button>
+                    <button class="weui-btn w-132 c-00A653 ml16 fw5" type="primary-ticket" wx:if="{{item.status === 'A'}}" data-id="{{item.orderCode}}" catchtap="tapToTicketDetail">验票</button>
+                </view>
+            </view>
+        </view>
+        
+        <!-- 加载更多 -->
+        <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}">
+            <view wx:if="{{loadmore}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+        </view>
+    </view>
+
+    <!-- 缺省页面，暂无数据 -->
+    <view class="no-data pl16 pr16" wx:if="{{noData}}">
+        <gh-empty prop-type="no-order" prop-text="{{emptytext?emptytext:'暂无订单'}}" prop-mt="200"></gh-empty>
+        <!-- 推荐体验 -->
+        <view class="recommend mt200" wx:if="{{recommend.length}}">
+            <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
+                <view class="flex-1 f32  c-222222">为您推荐</view>
+            </view>
+            <gh-aclist recommend="{{recommend}}"></gh-aclist>
+            <view class="weui-loadmore">
+                <view wx:if="{{loadmore}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="no-login" wx:if="{{!userInfo}}">
+        <view class="ml32 mr32 pl32 pr32 flex no-login-content">
+            <text class="flex-1 f28 c-FFFFFF">登录果核立享体验</text>
+            <button class="weui-btn f30 c-00A653 w-auto" type="tologin" open-type="getUserInfo" bindtap="tapToLogin">立即登录</button>
+        </view>
+        
+    </view>
+</view>

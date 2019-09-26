@@ -1,0 +1,26 @@
+<!--pages/views/ticket-detail.wxml-->
+<view class="container">
+    <view class="title">
+        <view class="p32 l-h56 c-222222">
+            <view class="f32 fw6  mt16">{{orderData.activityTitle}}</view>
+            <view class="f30 fw5 mt5 mb5">{{orderData.timeBucket}}</view>
+            <view class="f30 c-666666 fw4">{{orderData.merchantName || ''}}</view>
+        </view>
+    </view>
+    <view class="content pl32 pr32">
+        <view class="qr bg-EFEFF4">
+            <image class="qr-image" bindtap="previewImg" mode="aspectFill" src="{{imagePath}}"></image>
+        </view>
+        <view class="qr-code bg-EFEFF4 c-222222">
+            <text class="ch f28 mr40">数字码</text>
+            <text class="f36 fw5">{{orderData.chargeOffCodeStr}}</text>
+        </view>
+        <view class="order-id f24 c-999999">订单号：{{orderData.orderCode}}</view>
+        <view class="order-id f24 c-999999">总价：{{orderData.currencySymbol}} {{orderData.price}}（x{{orderData.number}}）</view>
+        <button class="weui-btn w-auto" type="contact" open-type="contact">联系客服</button>
+    </view>
+</view>
+<view hidden="{{maskHidden}}" class="mask"></view>
+<view class="canvas-box">
+  <canvas  hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas"/>
+</view>

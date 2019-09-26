@@ -1,0 +1,58 @@
+<!--pages/views/my-exp-comment.wxml-->
+<view class="container mt16">
+    <view class="exp-list" wx:if="{{ticketData.length>0}}">
+        <swiper class="scroll-view-i" previous-margin="16rpx" next-margin="24rpx">
+        <block wx:for="{{ticketData}}" wx:key="{{index}}">
+            <swiper-item>
+                <view class="bg-white scroll-view-item pl16 pr16 mr16 flex">
+                    <image class="scroll-view-item-img mr16 bg-EFEFF4" mode="aspectFill" src="{{item.coverImgUrl}}"></image>
+                    <view class="flex-1">
+                        <view class="f28 c-222222">{{item.mealTitle}}</view>
+                        <view class="f24 c-666666">{{item.activityTitle}}</view>
+                    </view>
+                    <button class="weui-btn w-120 f24 fw5" type="primary" data-id="{{item.orderCode}}" catchtap="tapToTicketDetail">评价</button>
+                </view>
+            </swiper-item>
+        </block>
+        <!-- <swiper-item>
+            <view class="bg-white scroll-view-item pl16 pr16 mr16 flex">
+                <view class="flex-1"></view>
+                <button class="weui-btn w-160 f24 fw5" type="primary" catchtap="tapMoreExp">更多体验</button>
+            </view>
+        </swiper-item> -->
+        </swiper>
+    </view>
+    <!-- 体验评论 -->
+    <view class="review pb45 pl16 pr16" wx:if="{{expComment.length}}">
+        <view class="handpick bg-white mt16 p16" wx:for="{{expComment}}" wx:key="{{item.commentId}}">
+            <view class="flex bd1 pb16">
+                <image class="scroll-view-item-img mr16 bg-EFEFF4" src="{{item.coverImgUrl}}" mode="aspectFill"/>
+                <view class="flex-1 c-222222 exp-comment-100">
+                    <view class="f30 l-h30" wx:if="{{item.activityTitle}}">{{item.activityTitle}}</view>
+                    <!-- <view class="f24 c-666666">{{item.mealTitle || ''}}</view> -->
+                    <view class="f24 l-h30 c-999999">评价时间：{{item.createDate || ''}}</view>
+                </view>
+            </view>
+            <view class="user-content f28 l-h40 pt16 pb16">{{item.comment || ''}}</view>
+            <!-- <view class="user-activity f24 c-666666" wx:if="{{item.mealTitle}}">{{item.mealTitle}}</view> -->
+            <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles">
+                    <block wx:for="{{item.imgUrl}}" wx:key="*this" wx:for-item="imgItem">
+                        <view class="weui-uploader__file" bindtap="previewImage" data-comment="{{item.id}}" id="{{imgItem.imgUrl}}">
+                            <image class="weui-uploader__img bd bg-EFEFF4" src="{{imgItem.imgUrl}}" mode="aspectFill" />
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 加载更多 -->
+    <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}">
+        <view wx:if="{{loadmore}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+    </view>
+    <gh-empty prop-type="no-order" prop-text="{{emptytext?emptytext:'暂无数据'}}" prop-mt="100" wx:if="{{noData}}"></gh-empty>
+</view>

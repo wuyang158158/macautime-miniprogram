@@ -1,0 +1,34 @@
+/* pages/views/map-activity.wxss */
+page{
+    background: #fff;
+}
+.myMap{
+    width: 100%;
+    height: 600rpx;
+}
+.l-h94{
+    line-height: 94rpx;
+}
+.icon{
+    width: 128rpx;
+    height: 128rpx;
+    border-radius:16rpx;
+}
+.list{
+    align-items: flex-start;
+}
+.pin{
+    width: 40rpx;
+    height: 72rpx;
+    position: absolute;
+    top: 264rpx;
+    left: 50%;
+    margin-left: -20rpx;
+}
+.location{
+    width: 120rpx;
+    height: 120rpx;
+    position: absolute;
+    right: 12rpx;
+    bottom: 12rpx;
+}

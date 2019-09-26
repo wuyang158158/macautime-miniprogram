@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty",
+    "half-screen-dialog": "/components/halfScreenDialog/halfScreenDialog",
+    "Parser":"/components/Parser/index"
+  },
+  "navigationBarTitleText": "详情",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#FFFFFF"
+}

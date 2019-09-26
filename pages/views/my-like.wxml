@@ -1,0 +1,13 @@
+<!--pages/views/my-like.wxml-->
+<view class="container mt16">
+    <gh-acmylist result="{{result}}" wx:if="{{result.length}}"></gh-acmylist>
+    <!-- 加载更多 -->
+    <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}">
+        <view wx:if="{{loadmore}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+    </view>
+    <gh-empty prop-type="no-order" prop-text="{{emptytext?emptytext:'暂无数据'}}" prop-mt="200" wx:if="{{noData}}"></gh-empty>
+</view>

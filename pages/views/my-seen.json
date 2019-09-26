@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty",
+    "gh-acmylist": "/components/acMyList/acMyList"
+  },
+  "navigationBarTitleText": "我看过的",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default"
+}

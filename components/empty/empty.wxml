@@ -1,0 +1,16 @@
+<!--components/searchbar/empty.wxml-->
+<view class="gh-empty-content" style="margin-top:{{propMt}}rpx">
+    <view class="gh-empty-circle">
+        <!-- 缺省页-无网络链接 -->
+        <image class="gh-empty-logo" src="/images/default/no-network.png" mode="aspectFit" wx:if="{{propType === 'no-network'}}"/>
+        <!-- 缺省页-页面失效 -->
+        <image class="gh-empty-logo" src="/images/default/no-page.png" mode="aspectFit" wx:elif="{{propType === 'no-page'}}"/>
+        <!-- 缺省页-系统繁忙没有记录 -->
+        <image class="gh-empty-logo" src="/images/default/no-recore.png" mode="aspectFit" wx:elif="{{propType === 'no-recore'}}"/>
+        <!-- 缺省页-暂无订单 -->
+        <image class="gh-empty-logo" src="/images/default/no-order.png" mode="aspectFit" wx:elif="{{propType === 'no-order'}}"/>
+        <!-- 缺省页-暂无数据 -->
+        <image class="gh-empty-logo" src="/images/default/no-data.png" mode="aspectFit" wx:else/>
+        <text class="gh-empty-tips">{{ propText || '暂无数据' }}</text>
+    </view>
+</view>

@@ -1,0 +1,45 @@
+<!--pages/views/more-settings.wxml-->
+<view class="container">
+    <view class="bg-white">
+        <view class="flex bd1 f30 ml32 pr32" bindtap="tapToCenterDetail">
+            <view class="c-222222 flex-1">个人信息</view>
+            <image class="header-bg" src="{{userInfo.url}}" mode="aspectFill"/>
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+        <view class="flex f30 ml32 pr32" bindtap="tapToAccountManagement">
+            <view class="c-222222 flex-1">账号管理</view>
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+    </view>
+    <!-- <view class="bg-white mt16">
+        <view class="flex bd1 f30 ml32 pr32" bindtap="">
+            <view class="c-222222 flex-1">消息通知</view>
+            <view class="c-999999 fw3">已开启</view>
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+        <view class="flex f30 ml32 pr32" bindtap="">
+            <view class="c-222222 flex-1">清除缓存</view>
+            <view class="c-999999 fw3">10.8M</view>
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+    </view> -->
+    <view class="bg-white mt16">
+        <view class="flex bd1 f30 ml32 pr32" bindtap="tapToAboutUs">
+            <view class="c-222222 flex-1">协议政策</view>
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+        <view class="flex bd1 f30 ml32 pr32" bindtap="tapToAboutUs">
+            <view class="c-222222 flex-1">关于我们</view>
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+        <view class="flex f30 ml32 pr32" bindtap="tapToAboutUs">
+            <view class="c-222222 flex-1">鼓励我们</view>
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+    </view>
+    <!-- <view class="bg-white mt16">
+        <view class="flex f30 ml32 pr32" bindtap="">
+            <view class="c-999999 flex-1">退出</view>
+        </view>
+    </view> -->
+</view>

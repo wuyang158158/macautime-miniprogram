@@ -1,0 +1,38 @@
+/* components/searchbar/empty.wxss */
+
+.gh-empty-content {
+    width: 100%;
+    /* height: 100vh; */
+    margin-top: 200rpx;
+}
+
+.gh-empty-circle {
+    position: relative;
+    margin: 0 auto auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 500rpx;
+    height: 400rpx;
+    border-radius: 50%;
+}
+
+.gh-empty-logo {
+    position: absolute;
+    left: 50%;
+    width: 320rpx;
+    height: 320rpx;
+    margin-left: -160rpx;
+}
+
+.gh-empty-tips {
+    position: absolute;
+    margin: 0 auto auto;
+    top: 370rpx;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #000;
+    font-size: 32rpx;
+    font-weight: 600;
+}

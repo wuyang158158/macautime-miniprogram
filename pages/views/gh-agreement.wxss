@@ -1,0 +1,4 @@
+/* pages/views/gh-agreement.wxss */
+page{
+    background: #fff;
+}

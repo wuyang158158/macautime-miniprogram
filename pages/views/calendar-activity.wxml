@@ -1,0 +1,63 @@
+<!--pages/views/calendar-activity.wxml-->
+<!--配置属性-->
+<view class="bg-white box-shadow pb32">
+  <calendar
+    id="calendar"
+    calendarConfig="{{calendarConfig}}"
+    bind:afterTapDay="afterTapDay"
+    bind:whenChangeMonth="whenChangeMonth"
+    bind:onTapDay="onTapDay"
+    bind:afterCalendarRender="afterCalendarRender"
+    ></calendar>
+</view>
+
+
+<view class="content pl16 pr16 pb16">
+    <!-- 推荐体验 -->
+    <view class="recommend">
+      <view class="rec-title flex pb32 pt32 fw6 l-h32">
+        <view class="flex-1 f32  c-222222">我的行程</view>
+      </view>
+      <view class="gather flex bg-white">
+          <view class="flex-1">
+              <view class="c-00A653 f36 fw6">{{journey.day || 0}}</view>
+              <view class="c-222222 f24">今日</view>
+          </view>
+          <view class="flex-1">
+              <view class="c-00A653 f36 fw6">{{journey.week || 0}}</view>
+              <view class="c-222222 f24">本周</view>
+          </view>
+          <view class="flex-1">
+              <view class="c-00A653 f36 fw6">{{journey.month || 0}}</view>
+              <view class="c-222222 f24">本月</view>
+          </view>
+      </view>
+    </view>
+
+
+
+    <!-- 今日体验 -->
+    <view class="recommend">
+      <view class="rec-title flex pb32 pt32 fw6 l-h32">
+        <view class="flex-1 f32  c-222222">当日体验</view>
+      </view>
+      <gh-aclist recommend="{{todayAc}}" wx:if="{{todayAc.length}}"></gh-aclist>
+      <view class="flex flex-jc c-00A653 f26" wx:else>当日您没有预定体验！</view>
+      <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}" wx:if="{{loadmore||loadmoreLine}}">
+        <view wx:if="{{loadmore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">今日体验已经到底了！</view>
+      </view>
+    </view>
+
+    <!-- 今日推荐 -->
+    <view class="recommend" wx:if="{{recommend.length>0}}">
+      <view class="rec-title flex pb32 pt32 fw6 l-h32">
+        <view class="flex-1 f32  c-222222">今日推荐</view>
+      </view>
+      <gh-aclist recommend="{{recommend}}"></gh-aclist>
+    </view>
+    
+</view>

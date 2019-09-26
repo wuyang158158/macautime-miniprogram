@@ -1,0 +1,80 @@
+<!--pages/views/order-detail.wxml-->
+<view class="container {{isIphoneX ?'pb220':'pb180'}}">
+    <view class="title ml16 mr16 mt16 bg-white">
+        <view class="flex ml32 mr32 bd1">
+            <image class="cover-image mt32 mb32 mr16" mode="aspectFill" src="{{options.coverImgUrl}}"></image>
+            <view class="flex-1 h-100 w-0 flex flex-column">
+                <view class="f32 c-222222 fw6 ell view">{{orderData.activityTitle || ''}}</view>
+                <view class="f24 c-222222 view">{{orderData.currencySymbol||'MOP$'}} {{orderData.price}} x {{orderData.number}}</view>
+            </view>
+        </view>
+        <view class="flex ml32 mr32 bd1 c-222222 h-100">
+            <view class="flex-1 f28">套餐</view>
+            <view class="f28">{{orderData.mealTitle || ''}}</view>
+        </view>
+        <view class="flex ml32 mr32 bd1 c-222222 h-100">
+            <view class="flex-1 f28">总额</view>
+            <view class="f28">{{orderData.currencySymbol||'MOP$'}} {{orderData.totalPrice}}</view>
+        </view>
+        <view class="flex ml32 mr32 bd1 c-222222 h-100" wx:if="{{orderData.discount}}">
+            <view class="flex-1 f28">会员专属折扣</view>
+            <view class="f28">{{orderData.discount}}%OFF</view>
+        </view>
+        <!-- <view class="flex ml32 mr32 bd1 c-222222 h-100">
+            <view class="flex-1 f28">会员红包</view>
+            <view class="f28">- {{orderData.currencySymbol||'MOP$'}} 20</view>
+        </view> -->
+        <view class="flex ml32 mr32 c-222222 h-100">
+            <view class="flex-1 f30 fw5">合计</view>
+            <view class="c-00A653 fw5">
+                <text class="f30">{{orderData.currencySymbol||'MOP$'}} </text>
+                <text class="f36">{{orderData.totalPrice}}</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="title ml16 mr16 mt16 bg-white">
+        <view class="flex ml32 mr32 bd1 c-222222 h-100">
+            <view class="flex-1 f32 fw6">参与信息</view>
+        </view>
+        <view class="flex ml32 mr32 bd1 c-222222 h-100">
+            <view class="flex-1 f28">联系人</view>
+            <view class="f28">{{orderData.linkman}} {{orderData.linkmanPhone}}</view>
+        </view>
+        <view class="flex ml32 mr32 c-222222 h-100">
+            <view class="flex-1 f28">体验地点</view>
+            <view class="f28">{{orderData.addr||''}}</view>
+        </view>
+    </view>
+
+    <view class="title ml16 mr16 mt16 bg-white">
+        <view class="flex ml32 mr32 bd1 c-222222 h-100">
+            <view class="flex-1 f32 fw6">订单信息</view>
+        </view>
+        <view class="flex ml32 mr32 bd1 c-222222 h-100">
+            <view class="flex-1 f28">订单号</view>
+            <view class="f28">{{orderData.orderCode}}</view>
+        </view>
+        <view class="flex ml32 mr32 bd1 c-222222 h-100">
+            <view class="flex-1 f28">下单时间</view>
+            <view class="f28">{{orderData.orderTimeStamp}}</view>
+        </view>
+        <view class="flex ml32 mr32 c-222222 h-100">
+            <view class="flex-1 f28">支付方式</view>
+            <view class="f28">{{orderData.paymentType===1?'线上':'线下'}}支付</view>
+        </view>
+        <view class="flex c-222222 bt1 h-100 v-btn">
+            <view class="flex-1 br1">
+                <button class="weui-btn" bindtap="tapCallMerchant" type="call">联系商家</button>
+            </view>
+            <view class="flex-1">
+                <button class="weui-btn" open-type="contact" type="contact">联系果核</button>
+            </view>
+        </view>
+    </view>
+
+    <view class="evaluate bg-white flex bt1 {{isIphoneX ?'fix-iphonex-button':''}}" wx:if="{{orderData.status === 'C'&&orderData.isComment!=='1'}}">
+        <view class="flex-1"></view>
+        <button class="weui-btn w-132 c-00A653 ml16 mr32 fw5" type="primary-ticket" bindtap="tapToExpComment">评价</button>
+    </view>
+</view>

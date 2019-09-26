@@ -1,0 +1,36 @@
+/* pages/views/exp-comment.wxss */
+page{
+    background: #fff;
+}
+.weui-btn{
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 36rpx;
+    border-radius: 44rpx;
+}
+.form-btn{
+    position: absolute;
+    bottom: 80rpx;
+    width: 100%;
+}
+.weui-cells{
+    /* position: static; */
+}
+.weui-cells::after{
+    content: none;
+}
+.weui-cells::before{
+    content: none;
+}
+.weui-uploader__file{
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+.weui-uploader__input-box,.weui-uploader__img{
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 16rpx;
+}
+.bd{
+    border: 1rpx solid #E6E6E6;
+}

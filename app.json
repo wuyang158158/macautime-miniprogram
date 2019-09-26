@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/tabs/index",
+    "pages/tabs/ticket",
+    "pages/tabs/center",
+    "pages/views/ac-detail",
+    "pages/views/submit-order",
+    "pages/views/vip-center",
+    "pages/views/ticket-detail",
+    "pages/views/map-activity",
+    "pages/views/calendar-activity",
+    "pages/views/gh-agreement",
+    "pages/views/center-detail",
+    "pages/views/feedback",
+    "pages/views/information",
+    "pages/views/more-settings",
+    "pages/views/account-management",
+    "pages/views/about-us",
+    "pages/views/order-detail",
+    "pages/views/my-seen",
+    "pages/views/my-like",
+    "pages/views/hot-activity",
+    "pages/views/set-meal",
+    "pages/views/exp-comment",
+    "pages/views/all-exp-comment",
+    "pages/views/my-exp-comment",
+    "pages/web-view/web-view"
+  ],
+  "subpackages": [],
+  "preloadRule": {},
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "果核",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#EFEFF4"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#1F991F",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/tabs/index",
+        "text": "首页",
+        "iconPath": "images/tab/index.png",
+        "selectedIconPath": "images/tab/index-ac.png"
+      },
+      {
+        "pagePath": "pages/tabs/ticket",
+        "text": "票劵",
+        "iconPath": "images/tab/ticket.png",
+        "selectedIconPath": "images/tab/ticket-ac.png"
+      },
+      {
+        "pagePath": "pages/tabs/center",
+        "text": "我的",
+        "iconPath": "images/tab/center.png",
+        "selectedIconPath": "images/tab/center-ac.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 20000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于果核使用！"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

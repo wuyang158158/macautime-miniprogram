@@ -1,0 +1,41 @@
+<!--pages/views/all-exp-comment.wxml-->
+<view class="container mt16">
+    <!-- 体验评论 -->
+    <view class="review pb45 pl32 pr32" wx:if="{{expComment.length}}">
+        <!-- <view class="review-tag flex f28 c-00A653 fw5">
+            <view class="tag-i flex mb16">浪漫美好(25)</view>
+            <view class="tag-i flex mb16">性价比高(20)</view>
+            <view class="tag-i flex mb16">兑票快速(18)</view>
+            <view class="tag-i flex mb16">唱歌好听(16)</view>
+            <view class="tag-i-low flex mb16">排队太久(13)</view>
+            <view class="tag-i flex mb16">很喜欢(12)</view>
+        </view> -->
+        <view class="handpick flex" wx:for="{{expComment}}" wx:key="{{item.commentId}}">
+            <image class="photo" src="{{item.headUrl}}" mode="aspectFill"/>
+            <view class="flex-1 c-222222 mb32">
+                <view class="user-name f30 l-h30">{{item.nickname || ''}}</view>
+                <view class="user-time f24 l-h30 c-999999">{{item.createDate || ''}}</view>
+                <view class="user-content f28 l-h40">{{item.comment || ''}}</view>
+                <view class="user-activity f24 c-666666" wx:if="{{item.mealTitle}}">{{item.mealTitle}}</view>
+                <view class="weui-uploader__bd mt8">
+                    <view class="weui-uploader__files" id="uploaderFiles">
+                        <block wx:for="{{item.imgUrl}}" wx:key="*this" wx:for-item="imgItem">
+                            <view class="weui-uploader__file" bindtap="previewImage" data-comment="{{item.id}}" id="{{imgItem.imgUrl}}">
+                                <image class="weui-uploader__img bd" src="{{imgItem.imgUrl}}" mode="aspectFill" />
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 加载更多 -->
+    <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}">
+        <view wx:if="{{loadmore}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+    </view>
+    <gh-empty prop-type="no-order" prop-text="{{emptytext?emptytext:'暂无数据'}}" prop-mt="100" wx:if="{{noData}}"></gh-empty>
+</view>

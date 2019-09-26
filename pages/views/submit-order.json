@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty"
+  },
+  "navigationBarTitleText": "提交订单",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#FFFFFF"
+}

@@ -1,0 +1,14 @@
+/* pages/views/more-settings.wxss */
+.flex{
+    height: 120rpx;
+}
+.header-bg{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+.more-icon{
+    width: 30rpx;
+    height: 30rpx;
+    margin-left: 10rpx;
+}

@@ -1,0 +1,25 @@
+<!--pages/views/center-detail.wxml-->
+<view class="container">
+    <view class="content pl32 pr32 bg-white f30 c-222222">
+        <view class="flex bd1 pt32 pb32">
+            <view class="flex-1">头像</view>
+            <image class="header-bg" src="{{userInfo.url}}" mode="aspectFill"/>
+        </view>
+        <view class="flex bd1 pt32 pb32">
+            <view class="flex-1">昵称</view>
+            <view>{{userInfo.nickName}}</view>
+        </view>
+        <view class="flex bd1 pt32 pb32">
+            <view class="flex-1">性别</view>
+            <view>{{userInfo.sex === '1' ? '女' : '男'}}</view>
+        </view>
+        <!-- <view class="flex bd1 pt32 pb32">
+            <view class="flex-1">城市</view>
+            <view>{{userInfo.city||''}}</view>
+        </view> -->
+        <view class="flex pt32 pb32">
+            <view class="flex-1">手机</view>
+            <view>{{userInfo.phone}}</view>
+        </view>
+    </view>
+</view>

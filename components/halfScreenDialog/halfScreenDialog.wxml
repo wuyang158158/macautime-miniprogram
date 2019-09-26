@@ -1,0 +1,19 @@
+<!--components/halfScreenDialog/halfScreenDialog.wxml-->
+<view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask" bindtap="closeDialog"></view>
+    <view class="weui-half-screen-dialog" catchtap="stopEvent">
+    <view class="weui-half-screen-dialog__hd dialog-tip">
+        <view class="weui-half-screen-dialog__hd__side">
+        <view bindtap="closeDialog" class="weui-icon-btn weui-icon-btn_close">关闭</view>
+        </view>
+    </view>
+    <view class="weui-half-screen-dialog__bd ofy-auto pl32 pr32">
+       <view class="ql-container ql-snow">
+            <view class="ql-editor">
+                <rich-text nodes="{{result.details}}"></rich-text>
+                <!-- <Parser html="{{result.details}}" /> -->
+            </view>
+        </view>
+    </view>
+    </view>
+</view>

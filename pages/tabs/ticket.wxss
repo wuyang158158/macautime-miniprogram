@@ -1,0 +1,122 @@
+/* pages/tabs/ticket.wxss */
+.container{
+}
+.title{
+    width: 100%;
+    font-size: 30rpx;
+    color: #666666;
+    display: flex;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
+    background:#fff;
+    box-shadow:0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.15);
+}
+.scroll-view_H{
+    width: 100%;
+    white-space: nowrap;
+}
+.scroll-view-item{
+    height: 100%;
+}
+.scroll-view-item_H{
+    display: inline-block;
+    width: auto;
+    height: 90rpx;
+    line-height: 90rpx;
+    padding: 0 20rpx;
+    text-align: center;
+    position: relative;
+}
+.demo-text-1{
+    color: #222222;
+    font-weight: 500;
+}
+.item-bd{
+    position: absolute;
+    width: 100%;
+    height: 4rpx;
+    bottom: 0;
+    background: #00A653;
+    display: block;
+    left: 0%;
+}
+.demo-text-1{
+    font-weight: normal;
+}
+
+
+/* 票劵 */
+.ticket-list{
+    width: 100%;
+    height: 311rpx;
+    box-shadow:0rpx 0rpx 8rpx 0rpx rgba(0, 0, 0, 0.15);
+    border-radius:16rpx;
+}
+.pt90{
+    padding-top: 90rpx;
+}
+.t-top{
+    height: 90rpx;
+}
+.t-icon{
+    width: 42rpx;
+    height: 42rpx;
+}
+.t-handle{
+    margin-top: 20rpx;
+}
+.order-icon{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius:16rpx;
+    margin-top: 0;
+}
+.w-132{
+    width: 132rpx;
+    margin-top: 0!important;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 26rpx;
+}
+.mt200{
+    margin-top: 200rpx;
+}
+.weui-loadmore{
+    margin: 0 auto;
+    margin-top: 1.4em;
+    padding-bottom: 2em;
+}
+.weui-loadmore_line{
+    margin-top: 2.4em;
+}
+
+.no-login{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 115rpx;
+    height: 96rpx;
+    line-height: 96rpx;
+}
+.no-login-content{
+    background:rgba(51,48,46,1);
+    border-radius:10rpx;
+}
+.w-auto{
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+button[type=tologin]{
+    background:rgba(51,48,46,1);
+    color: rgba(0,166,83,1);
+}
+.button-hover[type=tologin]{
+    background:rgba(51,48,46,1);
+    color: rgba(0,166,83,0.6);
+}
+.ml16{
+    margin-left: 16rpx!important;
+}

@@ -1,0 +1,27 @@
+<!--pages/views/map-activity.wxml-->
+<view class="container">
+    <map
+        id="myMap"
+        class="myMap"
+        latitude="{{latitude}}"
+        longitude="{{longitude}}"
+        markers="{{recommend}}"
+        scale="{{scale}}"
+        bindmarkertap="bindmarkertap"
+        bindregionchange="bindregionchange">
+        <cover-image class="pin" src="/images/index/map_icon1.png" />
+        <cover-image class="location" src="/images/index/map_icon_location.png" bindtap="tapLocationInit"/>
+    </map>
+    <view class="pl32 pr32 f22 c-999999 bd1 l-h94">附近体验</view>
+    <view wx:if="{{recommend.length>0}}" wx:for="{{recommend}}" wx:key="{{index}}" class="list pl32 pr32 mt32 mb32 flex" data-title="{{item.activityTitle}}" data-id="{{item.expSerial}}" bindtap="tapToDetail">
+        <image class="icon mr16" src="{{item.coverUrl}}" lazy-load mode="aspectFill"/>
+        <view class="flex-1 f24 c-222222 w0">
+            <view class="f32 fw6 ell">{{item.activityTitle}}</view>
+            <view class="">{{item.merchantName}}</view>
+            <view class="c-666666">{{item.distance}}</view>
+        </view>
+        <view class="tag f24 c-00A653">{{item.activityTag}}</view>
+    </view>
+    <gh-empty prop-type="no-data" prop-text="暂无数据" prop-mt="20" wx:if="{{recommend.length<=0}}"></gh-empty>
+
+</view>

@@ -1,0 +1,133 @@
+<!--pages/views/vip-center.wxml-->
+<view class="container">
+    <!-- 会员类型 -->
+    <view class="vip-list pt16">
+        <swiper class="swiper" previous-margin="24rpx" next-margin="24rpx" bindchange="vSwiperChange">
+            <block wx:for="{{vipType}}" wx:key="{{index}}">
+            <swiper-item class="">
+                <view class="slide flex ml8 mr8 relative">
+                    <image src="{{item.bgPath}}" class="slide-image"/>
+                    <view class="slide-text">
+                        <view class="c-292624 fw6 f40 l-h61">享专属特权</view>
+                        <view class="c-292624 f26 l-h61">{{item.name}}</view>
+                        <view class="f24 c-292624 mt48 pt32 fw3 l-h56" wx:if="{{userInfo.vip}}">有效期至{{userInfo.rt}}</view>
+                        <view wx:if="{{vipLoadding}}" class="f28 c-292624 mt65 mr32">您已购买会员，系统正在处理中，稍后下拉刷新享受会员权益！</view>
+                        <view wx:else>
+                            <button class="weui-btn w-216 fw5" type="primaryv" wx:if="{{!userInfo.vip}}" data-ghykt="{{getVipBtn}}" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo?'tapJoinVip':'tapToLogin'}}">立即加入</button>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="pl32 pr32">
+        <!-- 通知 -->
+        <view class="inform mt40 mb32">
+            <view class="flex ml23 mr23">
+                <image class="inform-image" src="/images/vip/vip_icon_notice.png" mode="aspectFill"/>
+                <view class="flex-1 f24 c-FFFFFF h100">
+                    <swiper
+                        capture-catch:touchmove="capturecatchtouchmove"
+                        class="h100"
+                        autoplay="5000" 
+                        circular="{{true}}"
+                        vertical="{{true}}">
+                        <swiper-item>
+                            <view class="h100 flex">澳门打卡必去果核会员尊享上线！</view>
+                        </swiper-item>
+                        <swiper-item>
+                            <view class="h100 flex">果核会员尊享专属体验折扣权益！</view>
+                        </swiper-item>
+                    </swiper>
+                </view>
+                
+            </view>
+        </view>
+        <!-- 会员权益 -->
+        <view class="equity mt32">
+            <view class="weui-loadmore weui-loadmore_line">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">会员权益</view>
+            </view>
+            <view class="eq-list flex white f26">
+                <view wx:for="{{equityList}}" wx:key="{{index}}" class="f-items">
+                    <image class="item-image" src="{{item.bgPath}}" mode="aspectFill"/>
+                    <view class="item-text mt5">专属体验</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 会员红包 -->
+    <view class="mt32">
+        <view class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">会员红包</view>
+        </view>
+        <view wx:if="{{discounts.length>0}}">
+            <swiper class="discounts-swiper">
+                <block wx:for="{{discounts}}" wx:key="{{index}}">
+                <swiper-item class="">
+                    <view class="discounts-slide flex flex-jc">
+                        <view class="relative ml8 mr8" wx:for="{{item.array}}" wx:for-item="v" wx:for-index="i" wx:key="{{i}}">
+                            <image class="zx" src="/images/vip/vip_text_zhuanxiang.png" mode="aspectFill"/>
+                            <image class="absolute" src="/images/vip/vip_coupon.png" mode="aspectFill"/>
+                            <view class="absolute ab-text">
+                                <view class="limit c-292624">
+                                    <text class="sp1 f32">¥</text>
+                                    <text class="sp2 f66 fw6 mr12">{{v.limit}}</text>
+                                    <text class="sp3 f24">无门槛</text>
+                                </view>
+                                <view class="get f24 c-00A653">开卡领取</view>
+                            </view>
+                        </view>
+                    </view>
+                </swiper-item>
+                </block>
+            </swiper>
+            <view class="discounts-num f-F5CE93 f26 mt32">
+                <text>剩余 2/6 张</text>
+            </view>
+        </view>
+        <view class="flex flex-jc f-F5CE93 f26" wx:else>会员红包敬请期待...</view>
+    </view>
+    <!-- 会员专享 -->
+    <view class="mt32">
+        <view class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">会员专享</view>
+        </view>
+        <view class="recommend f28 c-222222" wx:if="{{vImgUrls.length>0}}">
+            <swiper class="re-swiper" autoplay interval="5000" previous-margin="24rpx" next-margin="24rpx">
+            <block wx:for="{{vImgUrls}}" wx:key="{{index}}">
+                <swiper-item class="re-swiper-item" data-title="{{item.vipActivityTitle}}" data-id="{{item.experienceSerial}}" bindtap="{{userInfo ? userInfo.vip?'tapToDetail':'tapJoinVip' : 'tapModelToLogin'}}">
+                <view class="slide flex ml8 mr8 bg-white">
+                    <image class="zx" src="/images/vip/vip_text_zhuanxiang.png" mode="aspectFill"/>
+                    <image class="slide-image-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+                    <view class="con-top">
+                        <image class="slide-image" src="{{item.logoUrl}}" mode="aspectFill"/>
+                        <view class="flex-1 flex pl32 pr32 slide-text">
+                            <view class="flex-1 f32 c-222222 fw6">{{item.vipActivityTitle}}</view>
+                            <view class="tag c-00A653 f24 l-h24" wx:if="{{item.activityTag}}">{{item.activityTag}}</view>
+                        </view>
+                    </view>
+                </view>
+                </swiper-item>
+            </block>
+            </swiper>
+        </view>
+        <view class="flex flex-jc f-F5CE93 f26" wx:else>专享体验敬请期待...</view>
+    </view>
+
+    <!-- 开通下单 -->
+    <view class="pb140" wx:if="{{!vipLoadding}}">
+        <button 
+            class="weui-btn dredge c-292624" 
+            type="dredge" 
+            data-ghykt="{{getVipBtn}}" 
+            open-type="{{userInfo?'':'getUserInfo'}}" 
+            bindtap="{{userInfo?'tapJoinVip':'tapToLogin'}}"
+            >{{userInfo.vip ? amount + ' 元续费会员卡' : amount + ' 元开通年卡'}}
+        </button>
+    </view>
+    
+    
+    
+</view>

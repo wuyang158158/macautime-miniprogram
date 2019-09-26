@@ -1,0 +1,21 @@
+/* pages/views/feedback.wxss */
+.weui-btn{
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 36rpx;
+    border-radius: 44rpx;
+}
+.form-btn{
+    position: absolute;
+    bottom: 80rpx;
+    width: 100%;
+}
+.weui-cells{
+    /* position: static; */
+}
+.weui-cells::after{
+    content: none;
+}
+.weui-cells::before{
+    content: none;
+}

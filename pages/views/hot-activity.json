@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty",
+    "gh-aclist": "/components/acList/acList"
+  },
+  "navigationBarTitleText": "人气体验",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default"
+}

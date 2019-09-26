@@ -1,0 +1,51 @@
+<!--pages/views/set-meal.wxml-->
+<view class="container pb220">
+    <view class="box-shadow"></view>
+    <view class="m16">
+        <view class="title bg-white p32 mb16">
+            <view class="flex mb8">
+                <view class="flex-1 f32 c-222222 fw6">套餐类型</view>
+                <view class="f24 c-00A653 fw5" bindtap="openDialog">查看详情</view>
+            </view>
+            <view class="flex mt16 f28 meal">
+                <button wx:for="{{expAllMeal}}" wx:key="{{index}}" class="weui-btn mr16 meal-btn flex h-64" type="{{mealSerial === item.mealSerial ? 'primary' : 'hot-btn'}}" data-mealSerial="{{item.mealSerial}}" bindtap="tapChangMeal">
+                    <view class="ell l-h36">{{item.mealName}}</view>
+                </button>
+                <!-- <button class="weui-btn flex flex-jc" type="hot-btn">日式二人餐</button> -->
+            </view>
+        </view>
+        <view class="calendar mb16 bg-white pb32">
+            <calendar
+                id="calendar"
+                calendarConfig="{{calendarConfig}}"
+                bind:afterTapDay="afterTapDay"
+                bind:whenChangeMonth="whenChangeMonth"
+                bind:onTapDay="onTapDay"
+                bind:afterCalendarRender="afterCalendarRender"
+                ></calendar>
+        </view>
+        <view class="number flex bg-white h-100 f30 fw6 pl32 pr32">
+            <view class="flex-1">数量</view>
+            <view class="c-999999 f28 fw4 mr32">
+                <text>库存 {{repertory}} 件，</text>
+                <text wx:if="{{result.numberLimit === 0}}">不限购</text>
+                <text wx:else>每次限购 {{result.numberLimit}} 件</text>
+            </view>
+            <image class="icon-36 mr32" src="/images/submit-order/icon_sub_dis.png" mode="aspectFill" bindtap="tapOrderDelete"/>
+            <view class="ml16 mr16">{{orderCount}}</view>
+            <image class="icon-36 ml32" src="/images/submit-order/icon_plus.png" mode="aspectFill" bindtap="{{repertory > 0 ? 'tapOrderAdd':''}}"/>
+        </view>
+    </view>
+    
+    <view class="orders bg-white bt1 {{isIphoneX ?'fix-iphonex-button':''}}">
+        <view class="flex w-100 pl32 pr32">
+            <view class="flex-1">
+                <text class="c-00AF66 f44 fw6 mr16">{{acData.symbol||'MOP$'}} {{vipPrice}}</text>
+                <text class="f24 c-999999 text-decoration">{{price}}</text>
+            </view>
+            <button class="weui-btn w-296" type="primary" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo?'tapToSubmitOrder':'tapToLogin'}}">预订</button>
+        </view>
+    </view>
+</view>
+
+<half-screen-dialog istrue="{{istrue}}" result="{{result}}" bind:closeDialog="closeDialog"></half-screen-dialog>

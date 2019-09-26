@@ -1,0 +1,38 @@
+/* pages/views/my-exp-comment.wxss */
+@import 'ac-detail.wxss';
+page{
+    background: #EFEFF4!important;
+}
+.scroll-view-i{
+    width: 100%;
+    height: 132rpx;
+}
+.scroll-view-item{
+    height: 132rpx;
+    border-radius:16rpx;
+}
+.scroll-view-item-img{
+    width:100rpx;
+    height:100rpx;
+    border-radius:16rpx;
+}
+.w-120{
+    width: 120rpx;
+}
+.w-160{
+    width: 160rpx;
+}
+.handpick{
+    border-radius:16rpx;
+}
+.weui-uploader__input-box,.weui-uploader__img {
+    width:124rpx;
+    height:124rpx;
+    border-radius:12rpx;
+}
+.exp-comment-100{
+    height: 100rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

@@ -1,0 +1,27 @@
+<!--components/acList.wxml-->
+<view wx:for="{{recommend}}" wx:key="{{index}}" class="rec-items mb16 relative {{source === 'hot-activity' ? 'rec-items-1' : ''}}" data-title="{{item.activityTitle}}" data-id="{{item.experienceSerial}}" bindtap="tapToDetail">
+    <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+    <view class="con-top">
+        <image class="item-pic" src="{{item.coverUrl}}" lazy-load mode="aspectFill"/>
+        <view class="item pl32 pr32 f24">
+            <view class="flex l-h32 pt32">
+            <view class="flex-1 f32 c-222222 fw6 ell mr16">{{item.activityTitle}}</view>
+            <view class="tag c-00A653 f24" wx:if="{{item.activityTag}}">{{item.activityTag}}</view>
+            </view>
+            <view class="c-666666 l-h32 pt16">{{item.stime}}</view>
+        </view>
+
+        <view class="flex mt32 f28" wx:if="{{source === 'hot-activity'}}">
+            <button class="weui-btn mr16 ml32 flex flex-jc" type="hot-btn" data-id="{{item.experienceSerial}}" data-like="{{item.like}}" catchtap="tapLike">
+                <image class="hot-btn-icon" src="{{item.like?'/images/index/nav_icon_like_pre.png':'/images/index/nav_icon_like_k.png'}}" mode="aspectFill"/>
+                <text class="ml16">喜欢</text>
+            </button>
+            <button class="weui-btn mr32 flex flex-jc" type="hot-btn" data-id="{{item.experienceSerial}}" data-title="{{item.activityTitle}}" data-coverUrl="{{item.coverUrl}}" catchtap="share" open-type="share">
+                <image class="hot-btn-icon" src="/images/index/nav_icon_share_k.png" mode="aspectFill"/>
+                <text class="ml16">分享</text>
+            </button>
+        </view>
+    </view>
+
+    <view class="sort bg-F5CE93 f22 c-222222" wx:if="{{source === 'hot-activity'}}">No.{{item.index}}</view>
+</view>

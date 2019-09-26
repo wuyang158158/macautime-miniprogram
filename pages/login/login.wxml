@@ -1,0 +1,13 @@
+<!--pages/login.wxml-->
+<view class="gh-container" wx:if="{{container}}">
+    <image class="login-bg" src="/images/login_bg.png" mode="aspectFill"/>
+    <view class="c-666666 f28 mt32 mb32 f-c">登录果核发现更多精彩</view>
+    <view class="pl32 pr32 pt32">
+        <button class="weui-btn" open-type="getUserInfo" type="primary" bindtap="onLogin" wx:if="{{!register}}">微信快捷登录</button>
+        <button class="weui-btn" open-type="getPhoneNumber" type="primary" bindgetphonenumber="onRegister" wx:else>微信快捷登录</button>
+    </view>
+    <view class="f24 f-c agreement">
+        <text class="c-999999">登录表示您同意</text>
+        <text class="c-00A653" bindtap="tapToAgreement">《果核用户协议》</text>
+    </view>
+</view>
