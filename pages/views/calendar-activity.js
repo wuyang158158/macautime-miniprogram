@@ -201,7 +201,7 @@ Page({
       const data = res.rows
       data.map(item => {
         // debugger
-        item.stime = util.formatTimeTwo(item.stimeStr || item.stime,'Y/M/D h:m:s')
+        item.stime = util.formatTimeTwo(item.stimeStr || item.stime,'Y/M/D')
         item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
       })
       this.setData({
@@ -224,7 +224,7 @@ Page({
       const data = res
       data.map(item => {
         // debugger
-        item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D h:m:s')
+        item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D')
         item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
       })
       this.setData({

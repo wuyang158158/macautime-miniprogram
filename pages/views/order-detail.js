@@ -97,7 +97,7 @@ Page({
     .then(res=>{
       const data = res;
       // data.chargeOffCode = res.chargeOffCode ? res.chargeOffCode.replace(/(.{4})/g, "$1 ") : ''
-      data.orderTimeStamp = res.orderTimeStamp ? util.formatTimeTwo(data.orderTimeStamp,'Y/M/D h:m:s') : ''
+      data.orderTimeStamp = res.orderTimeStamp ? util.formatTimeTwo(data.orderTimeStamp,'Y/M/D') : ''
       this.setData({
         orderData: data
       })

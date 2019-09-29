@@ -187,7 +187,7 @@ Page({
       wx.navigateTo({
         url: '/pages/views/ac-detail?id=' + query.id + '&title=' + query.title
       })
-      home = true
+      // home = true
       acDetail = true
     }else{
       const optionsObj = {
@@ -210,6 +210,11 @@ Page({
       wx.switchTab({
         url: '/pages/tabs/index'
       })
+    }
+  },
+  onHide: function() {
+    if(acDetail){
+      home = true
     }
   },
   /**

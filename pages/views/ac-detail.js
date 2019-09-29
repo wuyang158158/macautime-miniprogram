@@ -164,8 +164,8 @@ Page({
       }
       data.activityTag = data.activityTag ? data.activityTag.split(',') : ''
       data.bannarUrls = data.bannarUrls ? data.bannarUrls.split('|') : ''
-      data.stimeStr = data.stimeStr || data.stime ? util.formatTimeTwo(Number(data.stimeStr) || data.stime,'Y/M/D h:m:s') : ''
-      data.etimeStr = data.etimeStr || data.etime ? util.formatTimeTwo(Number(data.etimeStr) || data.etime,'Y/M/D h:m:s') : ''
+      data.stimeStr = data.stimeStr || data.stime ? util.formatTimeTwo(Number(data.stimeStr) || data.stime,'Y/M/D') : ''
+      data.etimeStr = data.etimeStr || data.etime ? util.formatTimeTwo(Number(data.etimeStr) || data.etime,'Y/M/D') : ''
       data.activityDetails =  data.activityDetails ? data.activityDetails.replace(/\<img/gi, '<img style="border-radius: 8px;" ') : ''
       data.bookings = data.bookings ? data.bookings.replace(/\<img/gi, '<img style="border-radius: 8px;" ') : ''
       data.markers = this.data.markers ? [Object.assign(this.data.markers[0],location)] : ''
