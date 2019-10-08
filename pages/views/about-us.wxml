@@ -2,7 +2,7 @@
 <view class="container">
     <image class="gh-logo" src="/images/center/logo_mine.png" mode="aspectFill"/>
     <view class="content pl32 pr32">
-        果核平台汇聚优质旅行体验，在这里您可以感受地道而又风情的当地活动，希望能给你的旅途带来美好！        
+        <rich-text nodes="{{content}}"></rich-text>       
     </view>
-    <view class="gh-message f20 c-999999">Copyright © 2019 GuoHe. All Rights Reserved.</view>
+    <view class="gh-message f20 c-999999 pt16 pb16">Copyright © 2019 GuoHe. All Rights Reserved.</view>
 </view>

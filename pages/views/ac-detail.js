@@ -209,9 +209,18 @@ Page({
     api.getExpAllMeal(this.data.roleFrom)
     .then(res=>{
       // console.log(res)
+      const meal = res.meal || []
+      const lowestPrice = res.lowestPrice
+      let upperPrice = 0
+      meal.map(item=>{
+        if(item.vipPrice === lowestPrice){
+          upperPrice = item.price
+        }
+      })
       this.setData({
-       expAllMeal: res.meal || [],
-       lowestPrice: res.lowestPrice
+       expAllMeal: meal,
+       lowestPrice: lowestPrice,
+       upperPrice: upperPrice
       })
     })
     .catch(err=>{

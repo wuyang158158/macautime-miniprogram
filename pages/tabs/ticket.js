@@ -98,6 +98,10 @@ Page({
     if(app.globalData.ticket){
       app.globalData.ticket = false
       this.onPullDownRefresh()
+    }else{
+      this.setData({
+        userInfo: wx.getStorageSync("userInfo"), //用户信息
+      })
     }
   },
 

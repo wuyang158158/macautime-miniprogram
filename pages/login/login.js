@@ -275,9 +275,12 @@ Page({
       }
     })
   },
-  tapToAgreement() { //跳转到果核协议
+  tapToAgreement() { //跳转到Macau Time协议
+    // wx.navigateTo({
+    //   url: '/pages/views/gh-agreement'
+    // })
     wx.navigateTo({
-      url: '/pages/views/gh-agreement'
+      url: '/pages/views/about-us?id=4'
     })
   }
 });

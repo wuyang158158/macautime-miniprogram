@@ -5,7 +5,7 @@
         <image class="header-bg" src="/images/vip/vip_card1.png" mode="aspectFill"/>
         <view class="slide-text c-292624">
             <view class="fw6 f40 l-h61">享专属特权</view>
-            <view class="f26 l-h61">果核会员</view>
+            <view class="f26 l-h61">Macau Time会员</view>
             <view class="f22 fw3 vip-ctime">有效期至{{userInfo.rt}}</view>
         </view>
     </view>
@@ -18,7 +18,7 @@
     <!-- 会员介绍 -->
     <view class="join-vip flex mt16" wx:if="{{!userInfo.vip}}">
         <image class="join-vip-icon mr16" src="/images/center/mine_logo_vip.png" mode="aspectFill"/>
-        <view class="flex-1 f30 c-292624">果核会员享专属特权</view>
+        <view class="flex-1 f30 c-292624">Macau Time会员享专属特权</view>
         <button class="weui-btn w-160 fw5" type="primaryv" open-type="userInfo?'':'getUserInfo'" bindtap="{{userInfo?'tapToVipCenter':'tapToLogin'}}">{{userInfo?'立即加入':'登录查看'}}</button>
     </view>
     <!-- 个人记录 -->

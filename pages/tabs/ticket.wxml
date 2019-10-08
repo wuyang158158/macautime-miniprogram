@@ -75,7 +75,7 @@
 
     <view class="no-login" wx:if="{{!userInfo}}">
         <view class="ml32 mr32 pl32 pr32 flex no-login-content">
-            <text class="flex-1 f28 c-FFFFFF">登录果核立享体验</text>
+            <text class="flex-1 f28 c-FFFFFF">登录Macau Time立享体验</text>
             <button class="weui-btn f30 c-00A653 w-auto" type="tologin" open-type="getUserInfo" bindtap="tapToLogin">立即登录</button>
         </view>
         

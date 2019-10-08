@@ -115,7 +115,7 @@ Page({
   submitOrder() { //提交订单
     const that = this
     if(!this.data.userAgreement){
-      NT.showToastNone('需要同意果核服务协议才能预定',2000)
+      NT.showToastNone('需要同意Macau Time服务协议才能预定',2000)
       return
     }
     NT.showToast('处理中...')
@@ -181,9 +181,12 @@ Page({
       }
     })
   },
-  tapToAgreement() { //跳转到果核协议
+  tapToAgreement() { //跳转到Macau Time协议
+    // wx.navigateTo({
+    //   url: '/pages/views/gh-agreement'
+    // })
     wx.navigateTo({
-      url: '/pages/views/gh-agreement'
+      url: '/pages/views/about-us?id=2'
     })
   },
   orderConfirmHandle() { //预定订单成功后

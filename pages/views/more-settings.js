@@ -74,9 +74,10 @@ Page({
       url: '/pages/views/account-management'
     })
   },
-  tapToAboutUs() { // 跳转到关于我们
+  tapToAboutUs(e) { // 跳转到关于我们
+    const id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/views/about-us'
+      url: '/pages/views/about-us?id=' + id
     })
   }
 })

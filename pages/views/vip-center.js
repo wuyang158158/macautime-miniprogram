@@ -33,12 +33,12 @@ Page({
       {
         type: '1',
         bgPath: '/images/vip/vip_card1.png',
-        name: '果核会员'
+        name: 'Macau Time会员'
       },
       // {
       //   type: '2',
       //   bgPath: '/images/vip/vip_card2.png',
-      //   name: '果核体验会员'
+      //   name: 'Macau Time体验会员'
       // }
     ],
     getVipBtn: '1', // 领取会员形式 同vipType字段里面的type

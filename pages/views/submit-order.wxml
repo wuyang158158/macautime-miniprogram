@@ -10,12 +10,12 @@
         <label class="checkbox">
             <view class="flex">
                 <image class="v-icon mr16" src="/images/submit-order/logo_vip.png" mode="aspectFill"/>
-                <view class="flex-1 f-222222 f-32 fw6">果核会员</view>
+                <view class="flex-1 f-222222 f-32 fw6">Macau Time会员</view>
                 <radio value="vip" checked color="#00A653"/>
             </view>
             <view class="flex">
                 <image class="v-icon mr16" src="" mode="aspectFill"/>
-                <view class="flex-1 f-222222 f24 fw3 l-h30 mt16">尊敬的果核会员，该体验已加入「果核会员行动」，本次预订您可享受专属会员优惠政策。</view>
+                <view class="flex-1 f-222222 f24 fw3 l-h30 mt16">尊敬的Macau Time会员，该体验已加入「Macau Time会员行动」，本次预订您可享受专属会员优惠政策。</view>
             </view>
         </label>
         </radio-group>
@@ -58,16 +58,16 @@
         <view class="bd1 pb32">
             <view class="flex">
                 <image class="icon-24 mr16" src="/images/submit-order/icon_book_promise.png" mode="aspectFill"/>
-                <view class="flex-1 f-222222 f-32 fw6">果核承诺</view>
+                <view class="flex-1 f-222222 f-32 fw6">Macau Time承诺</view>
             </view>
-            <view class="f-222222 f24 fw3 l-h30 mt16">体验均为果核官方上线，保证真实可靠；果核保障用户的最高权益和个人隐私。</view>
+            <view class="f-222222 f24 fw3 l-h30 mt16">体验均为Macau Time官方上线，保证真实可靠；Macau Time保障用户的最高权益和个人隐私。</view>
         </view>
         <view class="pt32">
             <view class="flex">
                 <image class="icon-24 mr16" src="/images/submit-order/icon_book_prompt.png" mode="aspectFill"/>
                 <view class="flex-1 f-222222 f-32 fw6">预订须知</view>
             </view>
-            <view class="f-222222 f24 fw3 l-h30 mt16">用户通过果核预订体验，一天内取消订单超过三次则当日不接受预订，订单提交成功后超过三日不能取消。</view>
+            <view class="f-222222 f24 fw3 l-h30 mt16">用户通过Macau Time预订体验，一天内取消订单超过三次则当日不接受预订，订单提交成功后超过三日不能取消。</view>
         </view>
     </view>
 
@@ -76,7 +76,7 @@
         <label class="checkbox f24 flex">
             <checkbox value="agreement" checked color="#00A653"/>
             <text>我已阅读并同意</text>
-            <text class="c-00A653" catchtap="tapToAgreement">《果核服务协议》</text>
+            <text class="c-00A653" catchtap="tapToAgreement">《Macau Time服务协议》</text>
         </label>
         </checkbox-group>
     </view>

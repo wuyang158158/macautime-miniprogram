@@ -6,7 +6,7 @@
     <view class="common" wx:if="{{!userInfo.vip}}">
       <image class="header-bg" src="/images/index/index-bg.jpg" mode="aspectFill"/>
       <view class="header-ct">
-        <view class="c-title f44 white fw6 mt32 mb16">果核会员</view>
+        <view class="c-title f44 white fw6 mt32 mb16">Macau Time会员</view>
         <view class="f42 l-h56 white fw3">便捷入会、乐享体验</view>
         <view class="f42 l-h56 white fw3">专属优惠、玩转全球</view>
         <button class="weui-btn w-186 c-222222 m0 mt32 mb32 fw5" type="default" bindtap="tapToVipCenter">了解更多</button>
@@ -15,7 +15,7 @@
     <view class="vip" wx:else>
       <image class="header-bg" src="/images/index/index-bgv.png" mode="aspectFill"/>
       <view class="header-ct">
-        <view class="title f44 c-222222">果核体验，享受美好旅行时光</view>
+        <view class="title f44 c-222222">Macau Time体验，享受美好旅行时光</view>
         <view class="location f24 flex" bindtap="tapToMapActivity">
           <image class="location-icon" src="/images/index/index_icon_location.png" mode="aspectFill"/>
           <view class="">{{rgcData.business}} · {{rgcData.distance}}</view>

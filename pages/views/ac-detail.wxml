@@ -13,7 +13,9 @@
             <image src="/images/detail/nav_icon_calendar_w.png" mode="aspectFill"/>
         </view>
     </view>
-    <!-- bannar大图展示 -->
+    <!-- bannar大图展示
+        object-fit="{{direction!=='horizontal'?'cover':'contain'}}" 
+    -->
     <view class="relative">
         <swiper class="bannar" bindchange="swiperHandle" current="{{current}}">
             <swiper-item wx:if="{{acData.videoUrl}}">
@@ -24,8 +26,8 @@
                     controls 
                     autoplay
                     enable-play-gesture 
-                    poster="{{acData.videoCoverUrl}}" 
-                    object-fit="cover"
+                    poster="{{acData.videoCoverUrl}}"
+                    object-fit="{{direction!=='horizontal'?'cover':'contain'}}" 
                     play-btn-position="bottom"
                     show-fullscreen-btn
                     enable-progress-gesture
@@ -155,10 +157,10 @@
                     enable-scroll="{{false}}"
                     vslide-gesture-in-fullscreen="{{false}}"
                     markers="{{acData.markers}}"
-                    bindtap="openLocation"
                     show-location>
-                    <cover-image class="map-bg" src="/images/detail/mask_map.png" hidden="{{istrue}}"/>
+                    
                 </map>
+                <cover-image class="map-bg" src="/images/detail/mask_map.png" hidden="{{istrue}}" bindtap="openLocation"/>
             </view>
         </view>
         <!-- 预定须知 -->
@@ -204,8 +206,12 @@
     <!-- 下单 -->
     <cover-view class="orders {{isIphoneX ?'fixiphonexbutton':''}}" wx:if="{{direction!=='horizontal'}}" hidden="{{istrue}}">
         <cover-view class="price">
-            <cover-view class="sp1">{{acData.symbol||'MOP$'}}</cover-view>
-            <cover-view class="sp2">{{ lowestPrice ? lowestPrice : 0 }}</cover-view>
+            <!-- <cover-view class="sp1">{{acData.symbol||'MOP$'}}</cover-view> -->
+            <cover-view class="sp2 mr16">{{acData.symbol||'MOP$'}} {{lowestPrice ? lowestPrice : 0 }}</cover-view>
+            <cover-view class="f24 c-999999 upper-price">
+                <cover-view>{{ upperPrice ? upperPrice : 0 }}</cover-view>
+                <cover-view class="text-bd"></cover-view>
+            </cover-view>
         </cover-view>
         <button class="ordersbtn" type="primary" hover-class="hoverclass" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo? 'tapToSetMeal':'tapToLogin'}}">立即预订</button>
     </cover-view>

@@ -34,10 +34,10 @@
                         circular="{{true}}"
                         vertical="{{true}}">
                         <swiper-item>
-                            <view class="h100 flex">澳门打卡必去果核会员尊享上线！</view>
+                            <view class="h100 flex">澳门打卡必去Macau Time会员尊享上线！</view>
                         </swiper-item>
                         <swiper-item>
-                            <view class="h100 flex">果核会员尊享专属体验折扣权益！</view>
+                            <view class="h100 flex">Macau Time会员尊享专属体验折扣权益！</view>
                         </swiper-item>
                     </swiper>
                 </view>

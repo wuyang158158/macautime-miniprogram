@@ -38,6 +38,13 @@ const execute = (url, method, params, resolve, reject) => {
     success: res => {
       NT.hideToast()
       // console.log(res)
+      if(url==='/user/user/wxMiniProgramLogin'&&res.data.data&&res.data.data.isRegistered!==undefined&&!res.data.data.isRegistered){ //未注册
+        reject({
+          code: '10019',
+          data: {}
+        })
+        return
+      }
       if (res.statusCode === 401) {
         //需要校验用户信息
         reject({
@@ -545,6 +552,18 @@ export default {
     return new Promise((resolve, reject) => {
       execute(
         `/experience/expCMNT/myComment`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 协议政策等
+  getClerkByType(query){
+    return new Promise((resolve, reject) => {
+      execute(
+        `/baseService/clerkApi/getClerkByType`,
         'POST',
         query,
         resolve,

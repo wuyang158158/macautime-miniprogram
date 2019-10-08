@@ -68,7 +68,7 @@
                 <button class="weui-btn" bindtap="tapCallMerchant" type="call">联系商家</button>
             </view>
             <view class="flex-1">
-                <button class="weui-btn" open-type="contact" type="contact">联系果核</button>
+                <button class="weui-btn" open-type="contact" type="contact">联系Macau Time</button>
             </view>
         </view>
     </view>
