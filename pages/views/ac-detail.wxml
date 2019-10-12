@@ -213,7 +213,8 @@
                 <cover-view class="text-bd"></cover-view>
             </cover-view>
         </cover-view>
-        <button class="ordersbtn" type="primary" hover-class="hoverclass" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo? 'tapToSetMeal':'tapToLogin'}}">立即预订</button>
+        <button class="ordersbtn" type="primary" hover-class="hoverclass" disabled wx:if="{{acData.expStatus === 2}}">敬请期待</button>
+        <button class="ordersbtn" type="primary" hover-class="hoverclass" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo? 'tapToSetMeal':'tapToLogin'}}" wx:else>立即预订</button>
     </cover-view>
     <!-- <view class="orders bg-white bt1 {{isIphoneX ?'fix-iphonex-button':''}}" wx:if="{{acData}}">
         <view class="flex pl32 pr32">
