@@ -1,4 +1,4 @@
-/* pages/views/ticket-detail.wxss */
+/* pages/views/ticket-detail.wxss 
 page{
     background: #fff;
 }
@@ -57,4 +57,46 @@ button[type=contact]{
     position: fixed;
     top:999999rpx;
     left: 0
+}
+
+*/
+
+@import "vip-center.wxss";
+.tiket-msg{
+    min-height: 730rpx;
+    border-radius: 16rpx;
+}
+.tiket-msg-bg{
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border-radius: 16rpx;
+}
+.tiket-msg-content{
+    position: absolute;
+    z-index: 5;
+    height: 100%;
+}
+.order-id{
+    line-height: 47rpx;
+}
+.w-auto{
+    width: 98rpx;
+    font-size: 24rpx;
+    padding: 0;
+    margin: 0;
+}
+button[type=contact]{
+    background: rgba(255,255,255,1);
+    color: rgba(0,166,83,1);
+}
+.button-hover[type=contact]{
+    background: rgba(255,255,255,0.6);
+    color: rgba(0,166,83,0.6);
+}
+.number{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 32rpx;
 }

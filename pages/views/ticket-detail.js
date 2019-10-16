@@ -15,6 +15,20 @@ Page({
     maskHidden:true,
     imagePath:'',
     placeholder: '',  //默认二维码生成文本
+
+    vipType: [ //会员类型
+      {
+        type: '1',
+        bgPath: '/images/vip/vip_card1.png',
+        name: 'Macau Time会员'
+      },
+      // {
+      //   type: '2',
+      //   bgPath: '/images/vip/vip_card2.png',
+      //   name: 'Macau Time体验会员'
+      // }
+    ],
+    userInfo: wx.getStorageSync("userInfo"), //用户信息
   },
 
   /**
@@ -38,7 +52,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getUserInfo()
   },
 
   /**
@@ -68,6 +82,35 @@ Page({
   onReachBottom: function () {
 
   },
+  //获取用户信息
+  getUserInfo() {
+    const userFrom = {
+      loginType: '1',
+      phone: this.data.userInfo.phone,
+      type: '1'
+    }
+    api.getUserInfo(userFrom)
+    .then(res=>{
+      console.log(res)
+      const userInfo = Object.assign(wx.getStorageSync("userInfo")||{},res)
+      this.setData({
+        userInfo: userInfo
+      })
+      wx.setStorage({
+        key:"userInfo",
+        data:userInfo
+      })
+    })
+    .catch(err=>{
+      NT.showModal(err.codeMsg||err.message||'请求失败！')
+    })
+  },
+  //跳转到会员中心重新开通
+  tapToJoinVip() {
+    wx.navigateTo({
+      url: '/pages/views/vip-center'
+    })
+  },
 
   /**
    * 用户点击右上角分享
@@ -82,12 +125,12 @@ Page({
       const data = res;
       data.chargeOffCodeStr = res.chargeOffCode ? res.chargeOffCode.replace(/(.{4})/g, "$1 ") : ''
       // 页面初始化 options为页面跳转所带来的参数
-      var size = this.setCanvasSize();//动态设置画布大小
-      var initUrl = this.data.placeholder;
-      this.createQrCode('gh-'+data.chargeOffCode, "mycanvas", size.w, size.h);
+      // var size = this.setCanvasSize();//动态设置画布大小
+      // var initUrl = this.data.placeholder;
+      // this.createQrCode('gh-'+data.chargeOffCode, "mycanvas", size.w, size.h);
       this.setData({
         orderData: data,
-        maskHidden:true
+        // maskHidden:true
       })
     })
     .catch(err=>{

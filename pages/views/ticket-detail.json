@@ -1,6 +1,8 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "验票详情",
-  "navigationBarBackgroundColor": "#FFFFFF",
-  "backgroundColor": "#FFFFFF"
+  "navigationBarTitleText": "验票",
+  "navigationBarBackgroundColor": "#33302E",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false,
+  "backgroundColor": "#33302E"
 }

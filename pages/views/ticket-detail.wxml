@@ -1,5 +1,5 @@
 <!--pages/views/ticket-detail.wxml-->
-<view class="container">
+<!-- <view class="container">
     <view class="title">
         <view class="p32 l-h56 c-222222">
             <view class="f32 fw6  mt16">{{orderData.activityTitle}}</view>
@@ -23,4 +23,47 @@
 <view hidden="{{maskHidden}}" class="mask"></view>
 <view class="canvas-box">
   <canvas  hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas"/>
+</view> -->
+
+<view class="container">
+    <!-- 会员类型 -->
+    <view class="vip-list pt16">
+        <swiper class="swiper" previous-margin="24rpx" next-margin="24rpx" bindchange="vSwiperChange">
+            <block wx:for="{{vipType}}" wx:key="{{index}}">
+            <swiper-item class="">
+                <view class="slide flex ml8 mr8 relative">
+                    <image src="{{item.bgPath}}" class="slide-image"/>
+                    <view class="slide-text">
+                        <view class="c-292624 fw6 f40 l-h61">享专属特权</view>
+                        <view class="c-292624 f26 l-h61">{{item.name}}</view>
+                        <view class="f24 c-292624 mt48 pt32 fw3 l-h56" wx:if="{{userInfo.vip}}">有效期至{{userInfo.rt}}</view>
+                        <view wx:else>
+                            <button class="weui-btn w-216 fw5" type="primaryv" wx:if="{{!userInfo.vip}}" data-ghykt="{{getVipBtn}}" bindtap="tapToJoinVip">去续费</button>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <!-- 票券信息 -->
+    <view class="tiket-msg mt16 ml32 mr32 relative">
+        <image class="absolute tiket-msg-bg" src="/images/ticket/bg@2x.png" mode="aspectFill"/>
+        <view class="tiket-msg-content">
+            <view class="m32 l-h56 c-222222 bd1">
+                <view class="f32 fw6  mt16">{{orderData.activityTitle}}</view>
+                <view class="f30 fw5 mt5 mb5">{{orderData.timeBucket}}</view>
+                <view class="f30 c-666666 fw4 pb32">{{orderData.merchantName || ''}}</view>
+            </view>
+            <view class="m32">
+                <view class="order-id f24 c-999999">订单号：{{orderData.orderCode}}</view>
+                <view class="order-id f24 c-999999">总价：{{orderData.currencySymbol || 'MOP$'}} {{orderData.price}}（x{{orderData.number}}）</view>
+                <button class="weui-btn w-auto" type="contact" open-type="contact">联系客服</button>
+            </view>
+            <view class="number">
+                <view class="f44 fw6 c-222222">{{orderData.chargeOffCodeStr}}</view>
+                <view class="f26 c-999999">数字码</view>
+            </view>
+        </view>
+    </view>
 </view>
