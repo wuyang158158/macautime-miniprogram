@@ -127,7 +127,7 @@ Page({
     return {
       path: '/pages/login/login?id=' + acData.experienceSerial + '&title=' + acData.activityTitle + '&shareType=acDetail',
       title: acData.activityTitle,
-      imageUrl: acData.coverUrl
+      imageUrl: acData.sharePic||acData.coverUrl
     }
   },
   //滑动

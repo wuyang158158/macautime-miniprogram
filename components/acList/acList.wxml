@@ -8,7 +8,10 @@
             <view class="flex-1 f32 c-222222 fw6 ell mr16">{{item.activityTitle}}</view>
             <view class="tag c-00A653 f24" wx:if="{{item.activityTag}}">{{item.activityTag}}</view>
             </view>
-            <view class="c-666666 l-h32 pt16">{{item.stime}}</view>
+            <view class="flex c-666666 l-h32 pt16">
+                <view class="flex-1">{{item.stime}}</view>
+                <view class="c-FF7626" wx:if="{{item.instructions}}">{{item.instructions||'限时特惠'}}</view>
+            </view>
         </view>
 
         <view class="flex mt32 f28" wx:if="{{source === 'hot-activity'}}">

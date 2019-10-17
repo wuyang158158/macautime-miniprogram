@@ -510,6 +510,9 @@ button[type=none]::after{
 .c-00AF66{
     color: #00AF66;
 }
+.c-FF7626{
+    color: #FF7626;
+}
 
 /* 1像素边框 */
 .bt1 {
