@@ -15,6 +15,12 @@
     left: 0;
     right: 0;
 }
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
 
 /* 复写weui样式 */
 .weui-cell{
@@ -23,12 +29,24 @@
 
 .weui-search-bar {
     border: none;
-    background-color: #F3F3F3;
     color: #999999;
     padding: 10px 15px;
+    background-color: transparent;
 }
 
 .weui-search-bar__form {
-    border-radius: 0;
+    border-radius: 32rpx;
     border: none;
+    overflow: hidden;
+}
+.weui-search-bar__cancel-btn{
+    font-size: 30rpx;
+    color: #333333;
+}
+.weui-search-bar-bg{
+    background-color: #EFEFF4;
+}
+.weui-search-bar__input{
+    font-size: 30rpx;
+    color: #333333;
 }

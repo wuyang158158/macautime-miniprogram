@@ -147,6 +147,12 @@ Page({
   search(e) {
     console.log(e)
   },
+  //跳转搜索中心
+  tapSearch() {
+    wx.navigateTo({
+      url: '/pages/views/search-center'
+    })
+  },
   vSwiperChange(e) { // 会员专属礼物滑动
     const current = e.detail.current
     this.data.vImgUrls.forEach((v,i) => {

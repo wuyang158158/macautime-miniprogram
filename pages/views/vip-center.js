@@ -29,19 +29,7 @@ Page({
    */
   data: {
     userInfo: wx.getStorageSync("userInfo"), //用户信息
-    vipType: [ //会员类型
-      {
-        type: '1',
-        bgPath: '/images/vip/vip_card1.png',
-        name: 'Macau Time会员'
-      },
-      // {
-      //   type: '2',
-      //   bgPath: '/images/vip/vip_card2.png',
-      //   name: 'Macau Time体验会员'
-      // }
-    ],
-    getVipBtn: '1', // 领取会员形式 同vipType字段里面的type
+    vipType: [], //会员类型
     equityList: equityList,  // 会员权益列表
     discounts: [], //会员优惠劵红包
     vImgUrls: [],  // 会员专享活动
@@ -122,7 +110,8 @@ Page({
     this.data.vipType.forEach((v,i) => {
       if(Number(i) === current){
         this.setData({
-          getVipBtn: v.type
+          amount: v.price,
+          type: v.type
         })
       }
     });
@@ -141,30 +130,29 @@ Page({
     NT.showToast('处理中...')
     api.payVipOrder(roleFrom)
     .then(res=>{
-      if(this.data.getVipBtn === '1'){
-        wx.requestPayment({
-          timeStamp: res.timeStamp,
-          nonceStr: res.nonceStr,
-          package: res.package,
-          signType: res.signType,
-          paySign: res.paySign,
-          success (res) {
-            NT.showModal('恭喜您，开通会员成功！')
-            wx.setStorage({
-              key:"vipLoadding",
-              data:"open"
-            })
-            that.setData({
-              vipLoadding: true
-            })
-            that.getUserInfo()
-          },
-          fail (res) {
-            console.log(res)
-            // NT.showModal('支付失败！')
-          }
-        })
-      }
+      wx.requestPayment({
+        timeStamp: res.timeStamp,
+        nonceStr: res.nonceStr,
+        package: res.package,
+        signType: res.signType,
+        paySign: res.paySign,
+        success (res) {
+          NT.showModal('恭喜您，开通会员成功！')
+          wx.setStorage({
+            key:"vipLoadding",
+            data:"open"
+          })
+          that.setData({
+            vipLoadding: true
+          })
+          that.vipPriceList()
+          that.getUserInfo()
+        },
+        fail (res) {
+          console.log(res)
+          // NT.showModal('支付失败！')
+        }
+      })
     })
     .catch(err=>{
       NT.showModal(err.codeMsg||err.message||'请求失败！')
@@ -228,23 +216,32 @@ Page({
     api.vipPriceList()
     .then(res=>{
       console.log(res)
-      let amount = 0
-      let type = 0
-      res.forEach(item=>{
-        if(ENV === 'prod' && item.title === '正式会员'){ //生产环境使用正式会员，其余都为测试
-          amount = item.price
-          type = item.type
-        }
-        if(ENV !== 'prod' && item.title === '测试会员'){ //生产环境使用正式会员，其余都为测试
-          amount = item.price
-          type = item.type
-        }
+      const bgPath = '/images/vip/vip_card1.png'
+      res.map(item=>{
+        item.bgPath = bgPath
       })
-      console.log(amount)
       this.setData({
-        amount: amount,
-        type: type
+        vipType: res,
+        amount: res[0].price,
+        type: res[0].type
       })
+    //   let amount = 0
+    //   let type = 0
+    //   res.forEach(item=>{
+    //     if(ENV === 'prod' && item.title === '正式会员'){ //生产环境使用正式会员，其余都为测试
+    //       amount = item.price
+    //       type = item.type
+    //     }
+    //     if(ENV !== 'prod' && item.title === '测试会员'){ //生产环境使用正式会员，其余都为测试
+    //       amount = item.price
+    //       type = item.type
+    //     }
+    //   })
+    //   console.log(amount)
+    //   this.setData({
+    //     amount: amount,
+    //     type: type
+    //   })
     })
   },
   tapModelToLogin() {
@@ -299,7 +296,7 @@ Page({
               .catch((err)=>{
                 if(err.code==='10019'){ //用户未注册
                   wx.navigateTo({
-                    url: '/pages/login/login?openid='+err.data.openid + '&unionid=' + err.data.unionid
+                    url: '/pages/login/login?openid='+err.data.miniProgram + '&unionid=' + err.data.wxUnionid
                   })
                 }else{
                   NT.showModal(err.codeMsg||'登录失败！')

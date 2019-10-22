@@ -596,6 +596,10 @@ button[type=none]::after{
     font-size: 44rpx;
 }
 
+.f38{
+    font-size: 38rpx;
+}
+
 .f42{
     font-size: 42rpx;
 }

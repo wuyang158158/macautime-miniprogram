@@ -20,9 +20,11 @@
   padding: 30rpx 49rpx;
   position: relative;
   z-index: 5;
+  padding-top: 52px;
 }
 .header-ct .title{
   font-weight:600;
+  line-height: 54rpx;
 }
 .location{
   height: 50rpx;

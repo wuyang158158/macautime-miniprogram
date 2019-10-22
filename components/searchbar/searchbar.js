@@ -6,7 +6,23 @@ Component({
   properties: {
     searchPlaceholder: {
       type: 'string',
-      value: '搜索'
+      value: '搜索体验'
+    },
+    disabled: {
+      type: 'Boolean',
+      value: false
+    },
+    source: { //来源
+      type: 'string',
+      value: ''
+    },
+    inputVal: {
+      type: 'string',
+      value: ''
+    },
+    inputShowed: {
+      type: 'Boolean',
+      value: false
     }
   },
   /**
@@ -24,7 +40,8 @@ Component({
      */
     clearInput() {
       this.setData({
-        inputVal: ""
+        inputVal: "",
+        inputShowed: true
       })
       this.triggerEvent('search', '')
     },
@@ -37,6 +54,22 @@ Component({
     onParentEvent(event) {
       console.log(event)
       this.triggerEvent('search', event.detail.value)
-    }
+    },
+    tapToSearch() {
+      this.triggerEvent('tapSearch')
+    },
+    showInput: function () {
+      this.setData({
+          inputShowed: true
+      });
+    },
+    hideInput: function () {
+        this.setData({
+            inputVal: ""
+        });
+        wx.navigateBack({
+          delta: 1
+        })
+    },
   }
 })

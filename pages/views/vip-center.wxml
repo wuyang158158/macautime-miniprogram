@@ -9,11 +9,11 @@
                     <image src="{{item.bgPath}}" class="slide-image"/>
                     <view class="slide-text">
                         <view class="c-292624 fw6 f40 l-h61">享专属特权</view>
-                        <view class="c-292624 f26 l-h61">{{item.name}}</view>
+                        <view class="c-292624 f26 l-h61">{{item.title}}</view>
                         <view class="f24 c-292624 mt48 pt32 fw3 l-h56" wx:if="{{userInfo.vip}}">有效期至{{userInfo.rt}}</view>
                         <view wx:if="{{vipLoadding}}" class="f28 c-292624 mt65 mr32">您已购买会员，系统正在处理中，稍后下拉刷新享受会员权益！</view>
                         <view wx:else>
-                            <button class="weui-btn w-216 fw5" type="primaryv" wx:if="{{!userInfo.vip}}" data-ghykt="{{getVipBtn}}" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo?'tapJoinVip':'tapToLogin'}}">立即加入</button>
+                            <button class="weui-btn w-216 fw5" type="primaryv" wx:if="{{!userInfo.vip}}" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo?'tapJoinVip':'tapToLogin'}}">立即加入</button>
                         </view>
                     </view>
                 </view>
@@ -120,8 +120,7 @@
     <view class="pb140" wx:if="{{!vipLoadding}}">
         <button 
             class="weui-btn dredge c-292624" 
-            type="dredge" 
-            data-ghykt="{{getVipBtn}}" 
+            type="dredge"
             open-type="{{userInfo?'':'getUserInfo'}}" 
             bindtap="{{userInfo?'tapJoinVip':'tapToLogin'}}"
             >{{userInfo.vip ? amount + ' 元续费会员卡' : amount + ' 元开通年卡'}}

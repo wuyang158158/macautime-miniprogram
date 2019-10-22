@@ -1,0 +1,55 @@
+<!--pages/views/search-center.wxml-->
+<view class="container">
+  <!-- 搜索组件 -->
+  <gh-searchbar bind:search="search" input-val="{{inputVal}}" inputShowed searchPlaceholder="搜索体验"></gh-searchbar>
+
+  <view class="mt52 ml32 mr32">
+    <!-- 搜索标签 -->
+    <view wx:if="{{!recommend.length&&!noData}}">
+      <view wx:if="{{!associativeWords.length}}">
+        <!-- 历史记录 -->
+        <view class="history" wx:if="{{historyRecord.length}}">
+          <view class="flex">
+            <view class="flex-1 c-333333 f32">历史记录</view>
+            <view class="c-666666 f24" bindtap="tapClearRecord">清空记录</view>
+          </view>
+          <view class="flex mt32 flex-wrap">
+            <view class="s-tag mb16" wx:for="{{historyRecord}}" wx:key="{{index}}" data-content="{{item}}" bindtap="tapHostSearch">{{item}}</view>
+          </view>
+        </view>
+
+        <!-- 热门搜索 -->
+        <view class="history mt32">
+          <view class="flex">
+            <view class="flex-1 c-333333 f32">热门搜索</view>
+          </view>
+          <view class="flex flex-wrap mt32">
+            <view wx:for="{{hostSearch}}" wx:key="{{index}}" class="s-tag mb16" data-content="{{item.content}}" bindtap="tapHostSearch">{{item.content}}</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 联想词 -->
+      <view wx:else >
+        <view wx:for="{{associativeWords}}" wx:key="{{index}}" class="associative-words f30 c-333333 bd1" data-content="{{item.name}}" bindtap="tapHostSearch">
+          <rich-text nodes="{{item.content}}"></rich-text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:else>
+      <view class="mt16">
+        <gh-aclist recommend="{{recommend}}"></gh-aclist>
+      </view>
+      <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}" wx:if="{{!noData}}">
+        <view wx:if="{{loadmore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+      </view>
+      <gh-empty prop-type="no-data" prop-text="暂无推荐体验" prop-mt="250" wx:if="{{noData}}"></gh-empty>
+    </view>
+  </view>
+  
+</view>

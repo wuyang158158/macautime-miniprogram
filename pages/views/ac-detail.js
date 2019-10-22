@@ -326,7 +326,7 @@ Page({
               .catch((err)=>{
                 if(err.code==='10019'){ //用户未注册
                   wx.navigateTo({
-                    url: '/pages/login/login?openid='+err.data.openid + '&unionid=' + err.data.unionid
+                    url: '/pages/login/login?openid='+err.data.miniProgram + '&unionid=' + err.data.wxUnionid
                   })
                 }else{
                   NT.showModal(err.codeMsg||'登录失败！')

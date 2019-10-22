@@ -1,7 +1,7 @@
 <!--pages/tabs/index.wxml-->
 <view class="container">
   <!-- 搜索组件 -->
-  <!-- <gh-searchbar bind:search="search"></gh-searchbar> -->
+  <gh-searchbar bind:search="search" bind:tapSearch="tapSearch" searchPlaceholder="搜索体验" source="index" disabled></gh-searchbar>
   <view class="header">
     <view class="common" wx:if="{{!userInfo.vip}}">
       <image class="header-bg" src="/images/index/index-bg.jpg" mode="aspectFill"/>
@@ -15,7 +15,7 @@
     <view class="vip" wx:else>
       <image class="header-bg" src="/images/index/index-bgv.png" mode="aspectFill"/>
       <view class="header-ct">
-        <view class="title f44 c-222222">Macau Time体验，享受美好旅行时光</view>
+        <view class="title f44 c-222222 pb16">Macau Time体验，享受美好旅行时光</view>
         <view class="location f24 flex" bindtap="tapToMapActivity">
           <image class="location-icon" src="/images/index/index_icon_location.png" mode="aspectFill"/>
           <view class="">{{rgcData.business}} · {{rgcData.distance}}</view>

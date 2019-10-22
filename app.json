@@ -25,6 +25,7 @@
     "pages/views/exp-comment",
     "pages/views/all-exp-comment",
     "pages/views/my-exp-comment",
+    "pages/views/search-center",
     "pages/web-view/web-view"
   ],
   "subpackages": [],

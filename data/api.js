@@ -38,10 +38,12 @@ const execute = (url, method, params, resolve, reject) => {
     success: res => {
       NT.hideToast()
       // console.log(res)
-      if(url==='/user/user/wxMiniProgramLogin'&&res.data.data&&res.data.data.isRegistered!==undefined&&!res.data.data.isRegistered){ //未注册
+      const result = res.data.data
+      if(url==='/user/user/wxMiniProgramLogin'&&result&&result.isRegistered!==undefined&&!result.isRegistered){ //未注册
+        wx.removeStorageSync('userInfo')
         reject({
           code: '10019',
-          data: {}
+          data: result
         })
         return
       }
@@ -62,7 +64,7 @@ const execute = (url, method, params, resolve, reject) => {
         return
       }
       if (res.data.code === '00000') {
-        resolve(res.data.data)
+        resolve(result)
       } else {
         reject(res.data)
       }
@@ -564,6 +566,30 @@ export default {
     return new Promise((resolve, reject) => {
       execute(
         `/baseService/clerkApi/getClerkByType`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 搜索联想词
+  getLikeage(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/baseService/module/getLikeage`,
+        'GET',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 热搜词汇
+  hostSearch(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/baseService/base/hostSearch`,
         'POST',
         query,
         resolve,
