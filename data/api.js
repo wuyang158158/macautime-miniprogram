@@ -596,6 +596,18 @@ export default {
         reject
       )
     })
+  },
+  // 领取体验
+  saveDisCountOrder(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/experience/experience/order/saveDisCountOrder`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
   }
   /*** file-end ***/
 }

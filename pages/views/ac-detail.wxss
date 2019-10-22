@@ -190,8 +190,8 @@ rich-text .rich-img {
 .orders{
     background: #fff;
     border-top: 1rpx solid #E6E6E6;
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
 }
 .fixiphonexbutton{
     padding-bottom:58rpx;

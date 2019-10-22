@@ -205,26 +205,27 @@
     </view>
     <!-- 下单 -->
     <cover-view class="orders {{isIphoneX ?'fixiphonexbutton':''}}" wx:if="{{direction!=='horizontal'}}" hidden="{{istrue}}">
-        <cover-view class="price">
-            <!-- <cover-view class="sp1">{{acData.symbol||'MOP$'}}</cover-view> -->
-            <cover-view class="sp2 mr16">{{acData.symbol||'MOP$'}} {{lowestPrice ? lowestPrice : 0 }}</cover-view>
-            <cover-view class="f24 c-999999 upper-price">
-                <cover-view>{{ upperPrice ? upperPrice : 0 }}</cover-view>
-                <cover-view class="text-bd"></cover-view>
+        <!-- 是否可购买    0：不可被购买  1：可以被购买 -->
+        <cover-view class="flex" wx:if="{{acData.isBuying===0}}">
+            <cover-view class="price">
+                <cover-view class="sp2 mr16">有效期：{{acData.daysBetween||0}}天</cover-view>
             </cover-view>
+            <button class="ordersbtn" type="primary" hover-class="hoverclass" disabled wx:if="{{acData.isBuyed||isBuyed}}">已领取</button>
+            <button class="ordersbtn" type="primary" hover-class="hoverclass" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo? 'tapGetEx':'tapToLogin'}}" wx:else>领取</button>
+            
         </cover-view>
-        <button class="ordersbtn" type="primary" hover-class="hoverclass" disabled wx:if="{{acData.expStatus === 2}}">敬请期待</button>
-        <button class="ordersbtn" type="primary" hover-class="hoverclass" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo? 'tapToSetMeal':'tapToLogin'}}" wx:else>立即预订</button>
+        <cover-view class="flex" wx:if="{{acData.isBuying===1}}">
+            <cover-view class="price">
+                <cover-view class="sp2 mr16">{{acData.symbol||'MOP$'}} {{lowestPrice ? lowestPrice : 0 }}</cover-view>
+                <cover-view class="f24 c-999999 upper-price">
+                    <cover-view>{{ upperPrice ? upperPrice : 0 }}</cover-view>
+                    <cover-view class="text-bd"></cover-view>
+                </cover-view>
+            </cover-view>
+            <button class="ordersbtn" type="primary" hover-class="hoverclass" disabled wx:if="{{acData.expStatus === 2}}">敬请期待</button>
+            <button class="ordersbtn" type="primary" hover-class="hoverclass" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo? 'tapToSetMeal':'tapToLogin'}}" wx:else>立即预订</button>
+        </cover-view>
     </cover-view>
-    <!-- <view class="orders bg-white bt1 {{isIphoneX ?'fix-iphonex-button':''}}" wx:if="{{acData}}">
-        <view class="flex pl32 pr32">
-            <view class="flex-1">
-                <text class="c-00AF66 f44 fw6 mr16">{{acData.symbol||'MOP$'}} {{ acData.originalPrice ? acData.newOriginalPrice : 0 }}</text>
-                <text class="f24 c-999999 text-decoration">{{acData.originalPrice || 0}}</text>
-            </view>
-            <button class="weui-btn w-296" type="primary" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo?'tapToSetMeal':'tapToLogin'}}">预订</button>
-        </view>
-    </view> -->
 </view>
 <!-- 详情 -->
 <half-screen-dialog istrue="{{istrue}}" result="{{mealDetailResult}}" bind:closeDialog="closeDialog"></half-screen-dialog>

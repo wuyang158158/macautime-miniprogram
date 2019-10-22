@@ -81,7 +81,7 @@ button[type=contact]{
     line-height: 47rpx;
 }
 .w-auto{
-    width: 98rpx;
+    width: 102rpx;
     font-size: 24rpx;
     padding: 0;
     margin: 0;

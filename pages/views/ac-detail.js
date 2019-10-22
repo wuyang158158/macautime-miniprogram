@@ -170,6 +170,7 @@ Page({
       data.bookings = data.bookings ? data.bookings.replace(/\<img/gi, '<img style="border-radius: 8px;" ') : ''
       data.markers = this.data.markers ? [Object.assign(this.data.markers[0],location)] : ''
       data.newOriginalPrice = data.originalPrice && data.discount ? util.discountPrice(data.originalPrice,data.discount) : ''
+      data.daysBetween = util.daysBetween(data.stimeStr,data.etimeStr)
       // console.log(data.newOriginalPrice)
       this.setData({
         acData: data
@@ -418,6 +419,36 @@ Page({
         // 通过eventChannel向被打开页面传送数据
         result.eventChannel.emit('params', params)
       }
+    })
+  },
+  // 领取体验
+  tapGetEx() {
+    NT.showToast('处理中...')
+    const acData = this.data.acData
+    const expAllMeal = this.data.expAllMeal
+    const saveDisCountOrderForm = {
+      expMealSerial: expAllMeal[0].mealSerial,
+      expSerial: acData.experienceSerial
+    }
+    api.saveDisCountOrder(saveDisCountOrderForm)
+    .then(res=>{
+      console.log(res)
+      acData.isBuyed = true;
+      this.setData({
+        acData: acData
+      })
+      NT.showModalPromise('领取成功，是否查看订单详情？')
+        .then(()=>{
+          wx.navigateTo({
+            url: '/pages/views/ticket-detail?orderCode=' + res + '&userName=' + this.data.userInfo.userName
+          })
+        })
+        .catch(()=>{
+
+        })
+    })
+    .catch(err=>{
+      NT.showModal(err.codeMsg||err.message||'请求失败！')
     })
   },
   //点击查看全部评论

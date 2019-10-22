@@ -5,7 +5,7 @@
             <image class="cover-image mt32 mb32 mr16" mode="aspectFill" src="{{options.coverImgUrl}}"></image>
             <view class="flex-1 h-100 w-0 flex flex-column">
                 <view class="f32 c-222222 fw6 ell view">{{orderData.activityTitle || ''}}</view>
-                <view class="f24 c-222222 view">{{orderData.currencySymbol||'MOP$'}} {{orderData.price}} x {{orderData.number}}</view>
+                <view class="f24 c-222222 view" wx:if="{{orderData.price}}">{{orderData.currencySymbol||'MOP$'}} {{orderData.price}} x {{orderData.number}}</view>
             </view>
         </view>
         <view class="flex ml32 mr32 bd1 c-222222 h-100">
@@ -14,7 +14,7 @@
         </view>
         <view class="flex ml32 mr32 bd1 c-222222 h-100">
             <view class="flex-1 f28">总额</view>
-            <view class="f28">{{orderData.currencySymbol||'MOP$'}} {{orderData.totalPrice}}</view>
+            <view class="f28">{{orderData.currencySymbol||'MOP$'}} {{orderData.totalPrice || 0}}</view>
         </view>
         <view class="flex ml32 mr32 bd1 c-222222 h-100" wx:if="{{orderData.discount}}">
             <view class="flex-1 f28">会员专属折扣</view>
@@ -28,7 +28,7 @@
             <view class="flex-1 f30 fw5">合计</view>
             <view class="c-00A653 fw5">
                 <text class="f30">{{orderData.currencySymbol||'MOP$'}} </text>
-                <text class="f36">{{orderData.totalPrice}}</text>
+                <text class="f36">{{orderData.totalPrice || 0}}</text>
             </view>
         </view>
     </view>
@@ -37,9 +37,9 @@
         <view class="flex ml32 mr32 bd1 c-222222 h-100">
             <view class="flex-1 f32 fw6">参与信息</view>
         </view>
-        <view class="flex ml32 mr32 bd1 c-222222 h-100">
+        <view class="flex ml32 mr32 bd1 c-222222 h-100" wx:if="{{orderData.linkmanPhone}}">
             <view class="flex-1 f28">联系人</view>
-            <view class="f28">{{orderData.linkman}} {{orderData.linkmanPhone}}</view>
+            <view class="f28">{{orderData.linkman || ''}} {{orderData.linkmanPhone}}</view>
         </view>
         <view class="flex ml32 mr32 c-222222 h-100">
             <view class="flex-1 f28">体验地点</view>

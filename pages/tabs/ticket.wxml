@@ -32,7 +32,7 @@
                     <view class="flex-1 f26 c-666666 w-0">
                         <view class="ell mt8" wx:if="{{item.mealTitle}}">套餐：{{item.mealTitle}}</view>
                         <view class="ell">下单时间：{{item.orderTimeStr}}</view>
-                        <view class="ell">总价：{{item.currencySymbol||'MOP$'}} {{item.totalPrice}}</view>
+                        <view class="ell">总价：{{item.currencySymbol||'MOP$'}} {{item.totalPrice || 0}}</view>
                     </view>
                 </view>
                 <view class="t-handle flex">
