@@ -3,13 +3,13 @@ export default {
     "dev": {
       // "baseUrl": "https://192.168.31.185:8080",
       // "baseUrl": "https://134.175.154.194:8443",
-      "baseUrl": "https://test.guoh.com.cn:8443"
+      // "baseUrl": "https://test.guoh.com.cn:8443"
     },
     "prod": {
       "baseUrl": "https://time.guoh.com.cn:8443"
     },
   },
-  "curEnv": "dev",
+  "curEnv": "prod",
   //接口请求返回码
   //TODO 了解当前后台系统所有返回code并添加进错误码枚举对象里面
   "messageCode": {
