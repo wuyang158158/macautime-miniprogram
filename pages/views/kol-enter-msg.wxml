@@ -1,0 +1,18 @@
+<!--pages/views/kol-enter-msg.wxml-->
+<view class="page">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <icon type="success" color="#00A653" size="100"></icon>
+        </view>
+        <view class="weui-msg__text-area pl32 pr32">
+            <view class="weui-msg__title f36">提交完成</view>
+            <view class="f28 c-333333 mt32">审核编号：201910150001</view>
+            <view class="weui-msg__desc f28 c-999999">请使用主平台账号复制如下内容：“KOL认证，注册手机号：138***，审核编号：201910150001”私信给澳门时光官方账户：微博：@果核-澳门时光，抖音：@果核-澳门时光，小红书：@果核-澳门时光。以确认身份，我们会于 7 个工作日发送审核结果。</view>
+        </view>
+        <view class="weui-msg__opr-area">
+            <view class="weui-btn-area">
+                <button class="weui-btn next c-00A653 f36" type="primary">完成</button>
+            </view>
+        </view>
+    </view>
+</view>

@@ -608,6 +608,18 @@ export default {
         reject
       )
     })
+  },
+  // 新增kol审核
+  addKolAduit(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/user/kol/addKolAduit`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
   }
   /*** file-end ***/
 }

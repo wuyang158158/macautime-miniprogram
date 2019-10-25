@@ -1,0 +1,63 @@
+<!--pages/views/kol-enter.wxml-->
+<view class="container">
+    <view class="list bg-white ml16 mr16 mt16">
+        <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">澳门时光个人信息</view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">账号昵称</view>
+            <input class="flex-1 weui-input t-right" disabled="{{true}}" placeholder="请输入账号昵称" value="苏小果"/>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">注册手机</view>
+            <input class="flex-1 weui-input t-right" disabled="{{true}}" placeholder="请输入注册手机" value="188****9898"/>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32">
+            <view class="">粉丝数量</view>
+            <input class="flex-1 weui-input t-right" placeholder="请输入粉丝数量" disabled="{{true}}" value="20118"/>
+        </view>
+    </view>
+
+    <view class="list bg-white ml16 mr16 mt16" wx:for="{{platformList}}" wx:key="{{index}}">
+        <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">
+            <view class="flex-1">其他平台信息</view>
+            <view class="delete f28 fw4 c-F24949" data-index="{{index}}" bindtap="tapDeletePlatformMsg">删除</view>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">账号昵称</view>
+            <input class="flex-1 weui-input t-right" placeholder="请输入注册手机" value="{{array[item.account]}}"/>
+            <picker class="t-right" data-index="{{index}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="picker flex">
+                    <!-- <text >{{array[item.account]}}</text> -->
+                    <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+                </view>
+                
+            </picker>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">注册手机</view>
+            <input class="flex-1 weui-input t-right" data-index="{{index}}" data-type="platformNickName" bindinput="bindinput" placeholder="请输入注册手机" value="{{item.platformNickName}}"/>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32">
+            <view class="">粉丝数量</view>
+            <input class="flex-1 weui-input t-right" data-index="{{index}}" data-type="numberOfFans" bindinput="bindinput" placeholder="请输入粉丝数量(以提交时间为准)" value="{{item.numberOfFans}}"/>
+        </view>
+    </view>
+
+    <view class="flex" wx:if="{{platformList.length<4}}">
+        <button class="weui-btn c-00A653 ml16 f30 add" type="primary-kol" catchtap="tapAddPlatformMsg">添加平台信息</button>
+    </view>
+
+    <view class="ml16 mr16 mt32 mb32">
+        <checkbox-group class="radio-group" bindchange="radioChange">
+        <label class="checkbox f24 flex">
+            <checkbox value="agreement" checked color="#00A653"/>
+            <text class="c-999999">我已阅读并同意</text>
+            <text class="c-00A653" catchtap="tapToAgreement">《相关协议》</text>
+        </label>
+        </checkbox-group>
+    </view>
+
+    <view class="ml16 mr16">
+        <button class="weui-btn c-00A653 ml16 f36 next" type="primary" catchtap="tapNext">下一步</button>
+    </view>
+    
+</view>
