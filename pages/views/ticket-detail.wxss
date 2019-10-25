@@ -76,6 +76,7 @@ button[type=contact]{
     position: absolute;
     z-index: 5;
     height: 100%;
+    width: 100%;
 }
 .order-id{
     line-height: 47rpx;

@@ -262,6 +262,12 @@ Page({
       url: '/pages/web-view/web-view?url=' + url + '&title=' + TITLE
     })
   },
+  // 跳转到kol入驻
+  tapToKolEnter() {
+    wx.navigateTo({
+      url: '/pages/views/kol-enter'
+    })
+  },
   // 获取当前定位城市或者商圈
   getLocationCity() {
     var BMap = new bmap.BMapWX({

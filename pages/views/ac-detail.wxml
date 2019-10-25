@@ -1,5 +1,5 @@
 <!--pages/views/ac-detail.wxml-->
-<view class="container pb220" wx:if="{{acData}}">
+<view class="container {{acData.isSigned?'pb220':''}}" wx:if="{{acData}}">
     <!-- 操作 -->
     <view class="nav flex">
         <view class="flex-1"></view>
@@ -204,7 +204,7 @@
         </view>
     </view>
     <!-- 下单 -->
-    <cover-view class="orders {{isIphoneX ?'fixiphonexbutton':''}}" wx:if="{{direction!=='horizontal'}}" hidden="{{istrue}}">
+    <cover-view class="orders {{isIphoneX ?'fixiphonexbutton':''}}" wx:if="{{direction!=='horizontal' && acData.isSigned}}" hidden="{{istrue}}">
         <!-- 是否可购买    0：不可被购买  1：可以被购买 -->
         <cover-view class="flex" wx:if="{{acData.isBuying===0}}">
             <cover-view class="price">

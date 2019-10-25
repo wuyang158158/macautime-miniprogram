@@ -138,3 +138,7 @@
 .gh-empty-content{
   margin-top: 0;
 }
+.recommend-h-auto{
+  height: auto;
+}
+
