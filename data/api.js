@@ -39,6 +39,12 @@ const execute = (url, method, params, resolve, reject) => {
       NT.hideToast()
       // console.log(res)
       const result = res.data.data
+      if(result.miniProgram === 'oBV8p4yY71L8CE18QD7KDq_ydfWM'){
+        // 打开调试
+        wx.setEnableDebug({
+          enableDebug: true
+        })
+      }
       if(url==='/user/user/wxMiniProgramLogin'&&result&&result.isRegistered!==undefined&&!result.isRegistered){ //未注册
         wx.removeStorageSync('userInfo')
         reject({

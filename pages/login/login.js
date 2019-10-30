@@ -174,6 +174,33 @@ Page({
    */
   onLoad(query) {
     home = false
+    if(query.shareType === 'acDetail'){ //分享详情
+      wx.navigateTo({
+        url: '/pages/views/ac-detail?id=' + query.id + '&title=' + query.title
+      })
+      // home = true
+      acDetail = true
+    }else if(query.openid) {
+      const optionsObj = {
+        wxUnionid: query.unionid,
+        openid: query.openid
+      }
+      this.data.registerForm = optionsObj
+      this.setData({
+        container: true,
+        ticket: query.ticket
+      })
+    }else{
+      NT.showToast('登录中...')
+      app.login()
+      .then(res=>{
+        wx.switchTab({
+          url: '/pages/tabs/index'
+        })
+      })
+    }
+
+    /*
     if(JSON.stringify(query) === "{}"){
       NT.showToast('登录中...')
       app.login()
@@ -200,6 +227,7 @@ Page({
         ticket: query.ticket
       })
     }
+    */
     
   },
   /**
