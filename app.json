@@ -26,6 +26,8 @@
     "pages/views/all-exp-comment",
     "pages/views/my-exp-comment",
     "pages/views/search-center",
+    "pages/views/kol-enter",
+    "pages/views/kol-enter-msg",
     "pages/web-view/web-view"
   ],
   "subpackages": [],

@@ -1,0 +1,69 @@
+<!--components/kolList.wxml-->
+<view class="kol-content flex">
+    <view class="kol-list">
+    <view class="relative">
+        <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+        <image class="kol-slide-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+    </view>
+
+    <view class="kol-msg">
+        <view class="flex">
+        <view class="f26 c-222222 fw6">夏天</view>
+        <image class="icon-vip" src="/images/index/icon_vip.png" mode="aspectFill"/>
+        </view>
+        <view class="flex f24 c-666666 mt5">
+        <view class="mr16">摄影师</view>
+        <view class="">旅行达人</view>
+        </view>
+        <view class="flex mt5">
+        <view class="f24 c-666666 flex-1">2.2w 粉丝</view>
+        <button class="weui-btn w-86 f24" type="primary">关注</button>
+        </view>
+    </view>
+    </view>
+
+    <view class="kol-list">
+    <view class="relative">
+        <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+        <image class="kol-slide-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+    </view>
+
+    <view class="kol-msg">
+        <view class="flex">
+        <view class="f26 c-222222 fw6">夏天</view>
+        <image class="icon-vip" src="/images/index/icon_vip.png" mode="aspectFill"/>
+        </view>
+        <view class="flex f24 c-666666 mt5">
+        <view class="mr16">摄影师</view>
+        <view class="">旅行达人</view>
+        </view>
+        <view class="flex mt5">
+        <view class="f24 c-666666 flex-1">2.2w 粉丝</view>
+        <button class="weui-btn w-86 f24" type="primary">关注</button>
+        </view>
+    </view>
+    </view>
+
+    <view class="kol-list">
+    <view class="relative">
+        <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+        <image class="kol-slide-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+    </view>
+
+    <view class="kol-msg">
+        <view class="flex">
+        <view class="f26 c-222222 fw6">夏天</view>
+        <image class="icon-vip" src="/images/index/icon_vip.png" mode="aspectFill"/>
+        </view>
+        <view class="flex f24 c-666666 mt5">
+        <view class="mr16">摄影师</view>
+        <view class="">旅行达人</view>
+        </view>
+        <view class="flex mt5">
+        <view class="f24 c-666666 flex-1">2.2w 粉丝</view>
+        <button class="weui-btn w-86 f24" type="primary">关注</button>
+        </view>
+    </view>
+    </view>
+    
+</view>

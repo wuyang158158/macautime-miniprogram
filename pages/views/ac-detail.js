@@ -395,7 +395,9 @@ Page({
     this.setData({
       istrue: false
     })
-    this.videoContext.play()
+    if(this.data.acData.videoUrl&&this.data.current===0){
+      this.videoContext.play()
+    }
   },
   //点击查看套餐详情
   tapShowMealDetail(e){

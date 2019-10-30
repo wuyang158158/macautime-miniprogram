@@ -1,0 +1,16 @@
+/* pages/views/kol-enter-msg.wxss */
+page{
+    background-color: #FFFFFF;
+}
+page,.page{height:100%;}
+.weui-msg__desc{
+    margin-top: 100rpx;
+    text-align: left;
+}
+.next{
+    height: 88rpx;
+    line-height: 88rpx;
+}
+.c-333333{
+    color: #333333;
+}
