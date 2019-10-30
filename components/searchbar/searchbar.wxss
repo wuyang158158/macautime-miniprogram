@@ -50,3 +50,6 @@
     font-size: 30rpx;
     color: #333333;
 }
+.c-00A653{
+    color: #00A653;
+}

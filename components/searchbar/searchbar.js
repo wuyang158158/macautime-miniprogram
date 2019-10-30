@@ -29,7 +29,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    inputVal: ""
+    inputVal: "",
   },
   /**
    * 组件的方法列表
@@ -53,7 +53,10 @@ Component({
     },
     onParentEvent(event) {
       console.log(event)
-      this.triggerEvent('search', event.detail.value)
+      this.triggerEvent('bindconfirm', event.detail.value)
+    },
+    onParentEvent1() {
+      this.triggerEvent('bindconfirm', this.data.inputVal)
     },
     tapToSearch() {
       this.triggerEvent('tapSearch')
@@ -70,6 +73,6 @@ Component({
         wx.navigateBack({
           delta: 1
         })
-    },
+    }
   }
 })

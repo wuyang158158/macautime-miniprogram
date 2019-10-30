@@ -9,7 +9,7 @@ export default {
       "baseUrl": "https://time.guoh.com.cn:8443"
     },
   },
-  "curEnv": "dev",
+  "curEnv": "prod",
   //接口请求返回码
   //TODO 了解当前后台系统所有返回code并添加进错误码枚举对象里面
   "messageCode": {

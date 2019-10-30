@@ -103,7 +103,7 @@
     </view>
 
     <!-- KOL入驻 -->
-    <view class="recommend recommend-h-auto">
+    <!-- <view class="recommend recommend-h-auto">
       <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
         <view class="flex-1 f32  c-222222">金牌KOL</view>
         <view class="f30 c-00A653" bindtap="tapToKolEnter">入驻</view>
@@ -111,7 +111,7 @@
 
       <gh-kolList></gh-kolList>
 
-    </view>
+    </view> -->
 
     <!-- 推荐体验 -->
     <view class="recommend">

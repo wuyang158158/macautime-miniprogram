@@ -147,6 +147,16 @@ Page({
     }
     
   },
+  bindconfirm(e) {
+    if(e.detail){
+      this.setData({
+        associativeWords: []
+      })
+      this.data.params.paramEntity.activityTitle = e.detail
+      this.getExperience('onPullDownRefresh')
+    }
+    
+  },
   // 联想词
   getLikeage(e) {
     NT.showToast('处理中...')

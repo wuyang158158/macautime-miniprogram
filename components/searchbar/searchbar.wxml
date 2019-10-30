@@ -5,7 +5,7 @@
       <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
           <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-          <input type="text" class="weui-search-bar__input" placeholder="{{searchPlaceholder}}" value="{{inputVal}}" disabled="{{disabled}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="onParentEvent"/>
+          <input type="text" class="weui-search-bar__input" placeholder="{{searchPlaceholder}}" value="{{inputVal}}" disabled="{{disabled}}" focus="{{inputShowed}}" confirm-type="搜索" bindinput="inputTyping" bindconfirm="onParentEvent"/>
           <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
             <icon type="clear" size="14"></icon>
           </view>
@@ -15,7 +15,7 @@
             <view class="weui-search-bar__text">{{searchPlaceholder}}</view>
         </label>
       </view>
-      <view class="weui-search-bar__cancel-btn" hidden="{{source==='index'}}" bindtap="hideInput">取消</view>
+      <view class="weui-search-bar__cancel-btn {{inputVal.length > 0?'c-00A653':''}}" hidden="{{source==='index'}}" bindtap="{{inputVal.length > 0?'onParentEvent1':'hideInput'}}">{{inputVal.length > 0?'搜索':'取消'}}</view>
     </view>
     <!-- <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
             <navigator wx:for="{{4}}" url="" class="weui-cell" hover-class="weui-cell_active" hover-stay-time="50">
