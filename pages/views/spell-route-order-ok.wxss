@@ -1,0 +1,36 @@
+/* pages/views/spell-route-order-ok.wxss */
+page{
+    background-color: #FFFFFF;
+}
+page,.page{height:100%;}
+.weui-msg__desc{
+    margin-top: 100rpx;
+    text-align: left;
+}
+.next{
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.c-333333{
+    color: #333333;
+}
+.weui-msg__opr-area .weui-btn-area{
+    margin: 0 195rpx;
+}
+.weui-msg__text-area{
+    flex: none;
+    margin-bottom: 64px;
+}
+button[type=default]{
+    background: rgba(255,255,255,1);
+    color: rgba(34,34,34,1);
+    border: 1px solid rgba(204, 204, 204, 1);
+}
+.button-hover[type=default]{
+    color: rgba(34,34,34, 0.6);
+    background-color: rgb(255,255,255, 0.6);
+    border: 1px solid rgba(204, 204, 204, 0.6);
+}
+.mt32{
+    margin-top: 32rpx!important;
+}

@@ -3,6 +3,7 @@
     "gh-searchbar": "/components/searchbar/searchbar",
     "gh-empty": "/components/empty/empty",
     "gh-aclist": "/components/acList/acList",
+    "gh-hotRecommend": "/components/hotRecommend/hotRecommend",
     "gh-kolList": "/components/kolList/kolList"
   },
   "navigationBarTitleText": "首页",

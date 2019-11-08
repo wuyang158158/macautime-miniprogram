@@ -3,7 +3,7 @@
   <view class="page__bd">
     <view class="weui-search-bar {{source==='index'?'':'weui-search-bar-bg'}}" bindtap="tapToSearch">
       <view class="weui-search-bar__form">
-        <view class="weui-search-bar__box">
+        <view class="weui-search-bar__box {{source==='index'?'':'weui-search-bar_box-bg'}}">
           <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
           <input type="text" class="weui-search-bar__input" placeholder="{{searchPlaceholder}}" value="{{inputVal}}" disabled="{{disabled}}" focus="{{inputShowed}}" confirm-type="搜索" bindinput="inputTyping" bindconfirm="onParentEvent"/>
           <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">

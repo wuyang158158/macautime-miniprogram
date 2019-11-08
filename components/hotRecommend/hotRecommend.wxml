@@ -1,0 +1,62 @@
+<!--components/hotRecommend/hotRecommend.wxml-->
+<view class="hot-recommend">
+    <view class="hot" bindtap="tapToSpellRoute">
+        <view class="relative">
+            <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+            <image class="hot-slide-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+
+            <view class="hot-msg">
+                <view class="hot-tag f22 c-333333 flex">Top1</view>
+                <view class="m32 c-FFFFFF">
+                <view class="f44 fw5 mt32">澳门都市风情经典游</view>
+                <view class="f26 mt16">含 3 个体验</view>
+                <view class="flex mt32">
+                    <image class="hot-icon-start" src="/images/index/icon_start@2x.png" mode="aspectFill"/>
+                    <view class="hot-line"></view>
+                    <view class="hot-view">大三巴</view>
+                    <view class="hot-line"></view>
+                    <view class="hot-view">氹仔</view>
+                    <view class="hot-line"></view>
+                    <image class="hot-icon-start" src="/images/index/icon_end@2x.png" mode="aspectFill"/>
+                </view>
+                <view class="flex hot-userinfo">
+                    <image class="hot-avatar" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    <view class="f24 ml16">西柚酱</view>
+                </view>
+                </view>
+                
+            </view>
+        </view>
+        
+    </view>
+
+    <view class="hot mt16" bindtap="tapToSpellRoute">
+        <view class="relative">
+            <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+            <image class="hot-slide-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+
+            <view class="hot-msg">
+                <view class="hot-tag f22 c-333333 flex">Top2</view>
+                <view class="m32 c-FFFFFF">
+                <view class="f44 fw5 mt32">澳门都市风情经典游</view>
+                <view class="f26 mt16">含 3 个体验</view>
+                <view class="flex mt32">
+                    <image class="hot-icon-start" src="/images/index/icon_start@2x.png" mode="aspectFill"/>
+                    <view class="hot-line"></view>
+                    <view class="hot-view">大三巴</view>
+                    <view class="hot-line"></view>
+                    <view class="hot-view">氹仔</view>
+                    <view class="hot-line"></view>
+                    <image class="hot-icon-start" src="/images/index/icon_end@2x.png" mode="aspectFill"/>
+                </view>
+                <view class="flex hot-userinfo">
+                    <image class="hot-avatar" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    <view class="f24 ml16">西柚酱</view>
+                </view>
+                </view>
+                
+            </view>
+        </view>
+        
+    </view>
+</view>

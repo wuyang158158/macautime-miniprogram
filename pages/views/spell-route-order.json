@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty"
+  },
+  "navigationBarTitleText": "选择票种",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+}

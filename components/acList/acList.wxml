@@ -8,9 +8,22 @@
             <view class="flex-1 f32 c-222222 fw6 ell mr16">{{item.activityTitle}}</view>
             <view class="tag c-00A653 f24" wx:if="{{item.activityTag}}">{{item.activityTag}}</view>
             </view>
+            <view class="flex l-h32 pt16 baseline">
+                <view class="f30 c-222222 fw6 mr16">$120</view>
+                <view class="f24 c-999999 mr16">$188</view>
+                <view class="c-FF7626 mr16" wx:if="{{item.instructions}}">{{item.instructions||'限时特惠'}}</view>
+            </view>
+            <view class="flex l-h32 pt16">
+                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                <view class="f24 c-999999 ml5">(35)</view>
+            </view>
             <view class="flex c-666666 l-h32 pt16">
                 <view class="flex-1">{{item.stime}}</view>
-                <view class="c-FF7626" wx:if="{{item.instructions}}">{{item.instructions||'限时特惠'}}</view>
+                <view class="c-999999">路环岛</view>
             </view>
         </view>
 

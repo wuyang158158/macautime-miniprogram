@@ -1,2 +1,5 @@
 /* components/acList.wxss */
 @import '../../app.wxss';
+.baseline{
+    align-items: baseline;
+}

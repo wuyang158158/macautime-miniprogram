@@ -36,10 +36,10 @@
             <view class="flex-1">数量</view>
             <view class="ml16 mr16">{{orderCount}} 件</view>
         </view>
-        <view class="flex h-100 bd1 f30 fw6">
+        <!-- <view class="flex h-100 bd1 f30 fw6">
             <view class="flex-1">原价</view>
             <view class="">{{options.symbol||'MOP$'}} {{sPrice}}</view>
-        </view>
+        </view> -->
         <!-- <view class="flex h-100 bd1 f30 fw6">
             <view class="flex-1">会员专属折扣</view>
             <view class="c-00A653 fw4">{{options.discount}}%OFF</view>
@@ -49,8 +49,17 @@
             <view class="c-00A653 fw4">减 {{options.symbol||'MOP$'}} 20</view>
         </view> -->
          <view class="flex h-100 f30 fw6">
-            <view class="flex-1">会员价</view>
+            <view class="flex-1">合计</view>
             <view class="c-00A653 fw6">{{options.symbol||'MOP$'}} {{ePrice}}</view>
+        </view>
+    </view>
+
+    <!-- 会员特享 -->
+    <view class="default m16 mt0 p32">
+        <view class="flex">
+            <image class="icon-42 mr16" src="/images/submit-order/icon_taxi@2x.png" mode="aspectFill"/>
+            <view class="flex-1 f26 c-222222 fw5">【会员特享】澳门全城通用打车券</view>
+            <button class="weui-btn w-120" type="primary" bindtap="submitOrder">领取</button>
         </view>
     </view>
 
@@ -68,6 +77,23 @@
                 <view class="flex-1 f-222222 f-32 fw6">预订须知</view>
             </view>
             <view class="f-222222 f24 fw3 l-h30 mt16">用户通过Macau Time预订体验，一天内取消订单超过三次则当日不接受预订，订单提交成功后超过三日不能取消。</view>
+        </view>
+    </view>
+
+    <view class="default m16 mt0 p32">
+        <view class="bd1 pb32">
+            <view class="flex">
+                <view class="flex-1 f-222222 f-30">付款说明</view>
+            </view>
+            <view class="f-222222 f24 fw3 l-h30 mt16">1. 本活动仅支持线上付款；</view>
+            <view class="f-222222 f24 fw3 l-h30 mt16">2. 付款费用为报名费。</view>
+        </view>
+        <view class="pt32">
+            <view class="flex">
+                <view class="flex-1 f-222222 f-30">退款说明</view>
+            </view>
+            <view class="f-222222 f24 fw3 l-h30 mt16">1. 付款成功后 7 天内可申请退款；</view>
+            <view class="f-222222 f24 fw3 l-h30 mt16">2. 活动开始前 24 小时内不支持退款。</view>
         </view>
     </view>
 
@@ -91,7 +117,8 @@
                     <text class="f36 fw6">{{ePrice}}</text>
                 </view>
             </view>
-            <button class="weui-btn w-296" type="primary" bindtap="submitOrder">确认预定</button>
+            <!-- <button class="weui-btn w-296" type="primary" bindtap="submitOrder">确认</button> -->
+            <button class="weui-btn w-296" type="primary" bindtap="submitOrderNew">确认</button>
         </view>
     </view>
 </view>

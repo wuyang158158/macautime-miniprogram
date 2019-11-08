@@ -4,7 +4,10 @@
     <view class="content bg-white flex p16 mb16" data-title="{{item.expTitle}}" data-id="{{item.expSerial}}" bindtap="tapToDetail">
         <image class="i-img mr16 bg-EFEFF4" src="{{item.coverUrl}}" lazy-load mode="aspectFill"/>
         <view class="flex-1 c-222222">
-            <view class="f32 fw6">{{item.expTitle}}</view>
+            <view class="flex">
+                <view class="f32 fw6 flex-1">{{item.expTitle}}</view>
+                <view class="tag c-00A653 f24">美食</view>
+            </view>
             <view class="f24 mt8 mb8">{{item.merchantName || ''}}</view>
             <view class="f24 c-999999">参考价格：{{item.currencySymbol||'MOP$'}} {{item.price || 0}}</view>
         </view>

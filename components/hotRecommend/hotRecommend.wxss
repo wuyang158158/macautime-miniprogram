@@ -1,0 +1,77 @@
+/* components/hotRecommend/hotRecommend.wxss */
+@import '../../app.wxss';
+/**
+* 热点推荐
+*/
+.hot-recommend{
+  
+}
+.hot{
+  width: 100%;
+  height: 404rpx;
+  background:linear-gradient(90deg,rgba(3,0,0,0.4));
+  border-radius:16rpx;
+  overflow: hidden;
+}
+.hot .relative{
+  height: 100%;
+}
+.pic-default{
+  position: absolute;
+  width: 100%;
+  height: 404rpx;
+  left: 0;
+  top: 0; 
+  z-index: 2; 
+}
+.hot-slide-image{
+  position: absolute;
+  width: 100%;
+  height: 404rpx;
+  left: 0;
+  top: 0; 
+  z-index: 5;
+}
+.hot-msg{
+  position: absolute;
+  width: 100%;
+  height: 404rpx;
+  left: 0;
+  top: 0; 
+  z-index: 8;
+  background:linear-gradient(90deg,rgba(3,0,0,0.4),rgba(3,0,0,0.4));
+}
+.hot-tag{
+  width:80rpx;
+  height:42rpx;
+  background:rgba(245,206,147,1);
+  border-radius:0rpx 16rpx 0rpx 16rpx;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.hot-icon-start{
+  width: 30rpx;
+  height: 30rpx;
+}
+.hot-line{
+  width: 20rpx;
+  height: 1px;
+  background: #fff;
+}
+.hot-view{
+  font-size: 20rpx;
+  padding: 5rpx 16rpx;
+  border-radius: 15rpx;
+  border:1px solid rgba(255, 255, 255, 1);
+}
+.hot-userinfo{
+  position: absolute;
+  bottom: 32rpx;
+}
+.hot-avatar{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}

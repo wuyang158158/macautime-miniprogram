@@ -1,0 +1,186 @@
+/* pages/views/spell-route.wxss */
+page{
+    background: #fff;
+}
+.myMap{
+    width: 100%;
+    height: 650rpx;
+}
+.l-h94{
+    line-height: 94rpx;
+}
+.icon{
+    width: 128rpx;
+    height: 128rpx;
+    border-radius:16rpx;
+}
+.list{
+    align-items: flex-start;
+}
+.pin{
+    width: 40rpx;
+    height: 72rpx;
+    position: absolute;
+    top: 264rpx;
+    left: 50%;
+    margin-left: -20rpx;
+}
+.location{
+    width: 120rpx;
+    height: 120rpx;
+    position: absolute;
+    right: 12rpx;
+    bottom: 12rpx;
+}
+.c-FF7626{
+    color: #FF7626;
+}
+.tag{
+    padding: 3rpx 12rpx;
+
+}
+.tag1{
+    padding: 3rpx 12rpx;
+
+}
+.bg-DAF2E6{
+    background: #DAF2E6;
+}
+.bg-FFF2EB{
+    background: #FFF2EB;
+}
+.flex-end{
+    justify-content: flex-end;
+}
+.slice-icon{
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 8rpx;
+}
+.slice-text{
+    vertical-align: 5rpx;
+}
+.items{
+    padding-bottom: 43rpx;
+}
+.pt43{
+    padding-top: 43rpx;
+}
+.user-list{
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 50%;
+    border: 1rpx solid #FFFFFF;
+    background-color: #e6e6e6;
+}
+.user-list-ac{
+    margin-right: -5rpx;
+}
+.kol-avatar{
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 50%;
+    margin-right: 24rpx;
+}
+.kol-avatar-pic{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+.kol-avatar-pic-v{
+    width: 22rpx;
+    height: 22rpx;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 8;
+}
+.mr12{
+    margin-right: 12rpx;
+}
+.tag2{
+    display: inline-block;
+    font-size: 20rpx;
+    color: #333333;
+    background: #EEEEEE;
+    border-radius:15rpx;
+    padding: 5rpx 15rpx;
+}
+.kol-bannar{
+    width:100%;
+    height:386rpx;
+    border-radius:16rpx;
+    position: relative;
+    overflow: hidden;
+}
+.experience-route-icon{
+    width: 20rpx;
+    height: 20rpx;
+}
+.ml36{
+    margin-left: 36rpx;
+}
+.experience-avatar{
+    position: relative;
+    width: 128rpx;
+    height: 128rpx;
+    border-radius:12rpx;
+    overflow: hidden;
+}
+.mr26{
+    margin-right: 26rpx;
+}
+.experience-index-icon{
+    position: absolute;
+    width: 46rpx;
+    height: 54rpx;
+
+}
+.experience-index-text{
+    position: absolute;
+    display: inline-block;
+    width: 46rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    text-align: center;
+}
+.experience-index{
+    width: 46rpx;
+    height: 54rpx;
+}
+.pb165{
+    padding-bottom: 165rpx;
+}
+.btn{
+    position: fixed;
+    width: 100%;
+    height: 165rpx;
+    bottom: 0;
+    left: 0;
+    z-index: 12;
+}
+.btn .flex-d{
+    justify-content: space-between;
+}
+.btn .w-default{
+    padding: 0;
+    width: 150rpx;
+    height: 100%;
+    display: block;
+    text-align: center;
+}
+.route-like{
+    width: 36rpx;
+    height: 36rpx;
+}
+.flex-f{
+    justify-content: flex-end;
+}
+.w-296{
+    padding: 0;
+    margin: 0;
+}

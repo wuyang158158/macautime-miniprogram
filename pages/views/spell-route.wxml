@@ -1,0 +1,206 @@
+<!--pages/views/spell-route.wxml-->
+<view class="container pb165">
+    <map
+        id="myMap"
+        class="myMap"
+        latitude="{{latitude}}"
+        longitude="{{longitude}}"
+        markers="{{recommend}}"
+        scale="{{scale}}"
+        bindmarkertap="bindmarkertap"
+        bindregionchange="bindregionchange">
+        <cover-image class="pin" src="/images/index/map_icon1.png" />
+        <cover-image class="location" src="/images/index/map_icon_location.png" bindtap="tapLocationInit"/>
+    </map>
+    <view class="i-page ml32 mr32">
+
+        <!-- 基本信息 -->
+        <view class="items bd1">
+            <view class="f44 c-333333 fw5 pt32">澳门都市风情经典游</view>
+            <view class="flex f22 pt16">
+                <view class="tag c-00A653">美食</view>
+                <view class="flex-1 flex flex-end">
+                    <view class="tag1 c-00A653 bg-DAF2E6 mr16">线上支付</view>
+                    <view class="tag1 c-FF7626 bg-FFF2EB">到店支付</view>
+                </view>
+            </view>
+            <view class="c-00A653 pt16">
+                <text class="f24 mr5">MOP$</text>
+                <text class="f36">580</text>
+            </view>
+            <view class="flex">
+                <view class="flex-1 flex">
+                    <view class="mr32">
+                        <image class="slice-icon" src="/images/index/icon_view@2x.png" mode="aspectFill"/>
+                        <text class="slice-text f24 c-999999">2680 次浏览</text>
+                    </view>
+                    <view >
+                        <image class="slice-icon" src="/images/index/icon_like@2x.png" mode="aspectFill"/>
+                        <text class="slice-text f24 c-999999">615 次喜欢</text>
+                    </view>
+                </view>
+                <view >
+                    <image class="slice-icon" src="/images/index/icon_time@2x.png" mode="aspectFill"/>
+                    <text class="slice-text f24 c-999999">10/20-10/22</text>
+                </view>
+            </view>
+            
+        </view>
+
+         <!-- 参与者展示 -->
+        <view class="items bd1 flex pt43">
+            <view class="flex-1 f26 c-999999">已报名 20 人</view>
+            <image class="user-list user-list-ac" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=48" mode="aspectFill"/>
+            <image class="user-list user-list-ac" src="https://images.unsplash.com/photo-1551214012-84f95e060dee?w=48" mode="aspectFill"/>
+            <image class="user-list user-list-ac" src="https://images.unsplash.com/photo-1551446591-142875a901a1?w=48" mode="aspectFill"/>
+            <image class="user-list" src="/images/detail/detail_more.png" mode="aspectFill"/>
+        </view>
+
+        <!-- 路线详情 -->
+        <view class="items route-detail">
+            <view class="f32 c-222222 fw6 pt43">路线详情</view>
+            <view class="flex pt32">
+                <view class="relative kol-avatar">
+                    <image class="kol-avatar-pic" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=48" mode="aspectFill"/>
+                    <image class="kol-avatar-pic-v" src="/images/index/vip_30@2x.png" mode="aspectFill"/>
+                </view>
+                <view class="flex-1">
+                    <view class="">
+                        <text class="f32 fw5 c-333333 mr12">Baby 安亚</text>
+                        <text class="f22 c-00A653">认证KOL</text>
+                    </view>
+                    <view class="">
+                        <text class="tag2 mr16">美食达人</text>
+                        <text class="tag2">认证摄影师</text>
+                    </view>
+                </view>
+            </view>
+            <view class="f24 c-333333 pt32 pb32">从澳门老街到渔人码头公园，给你一次想不到的轻松，当然你一定要准备好相机，因为太多网红拍照点。</view>
+            <view class="kol-bannar">
+              <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+              <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+            </view>
+        </view>
+    </view>
+    <!-- 体验路线 -->
+    <view class="items experience-route">
+        <view class="f32 c-222222 fw6 pt32 ml32">体验路线</view>
+
+        <view class="pl32 bd1">
+            <view class="pt16">
+                <image class="experience-route-icon mr16" src="/images/index/icon_day@2x.png" mode="aspectFill"/>
+                <text class="f30 c-222222 fw6">DAY 1</text>
+            </view>
+            <view class="f24 c-666666 ml36"> 3 个体验</view>
+            <view class="flex">
+                <view class="relative experience-index flex pt32 pb32 mr26">
+                    <image class="experience-index-icon" src="/images/index/icon_map_g1@2x.png" mode="aspectFill"/>
+                    <text class="experience-index-text f26 fw5 c-FFFFFF z-index5">1</text>
+                </view>
+                <view class="flex-1 flex pt32 pb32 pr32 bd1">
+                    <view class="experience-avatar mr16">
+                        <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                        <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    </view>
+                    <view class="flex-1">
+                        <view class="flex">
+                            <view class="f32 c-222222 fw6 flex-1">澳门渔人码头摄影</view>
+                            <view class="tag c-00A653 f24">美食</view>
+                        </view>
+                        
+                        <view class="f24 c-999999">渔人码头</view>
+                        <view class="f24 c-666666">MOP$ 100-200</view>
+                    </view>
+                </view>
+            </view>
+            <view class="flex">
+                <view class="relative experience-index flex pt32 pb32 mr26">
+                    <image class="experience-index-icon" src="/images/index/icon_map_g1@2x.png" mode="aspectFill"/>
+                    <text class="experience-index-text f26 fw5 c-FFFFFF z-index5">1</text>
+                </view>
+                <view class="flex-1 flex pt32 pb32 pr32 bd1">
+                    <view class="experience-avatar mr16">
+                        <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                        <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    </view>
+                    <view class="flex-1">
+                        <view class="flex">
+                            <view class="f32 c-222222 fw6 flex-1">澳门渔人码头摄影</view>
+                            <view class="tag c-00A653 f24">美食</view>
+                        </view>
+                        
+                        <view class="f24 c-999999">渔人码头</view>
+                        <view class="f24 c-666666">MOP$ 100-200</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="pl32 bd1">
+            <view class="pt16">
+                <image class="experience-route-icon mr16" src="/images/index/icon_day@2x.png" mode="aspectFill"/>
+                <text class="f30 c-222222 fw6">DAY 2</text>
+            </view>
+            <view class="f24 c-666666 ml36"> 3 个体验</view>
+            <view class="flex">
+                <view class="relative experience-index flex pt32 pb32 mr26">
+                    <image class="experience-index-icon" src="/images/index/icon_map_g1@2x.png" mode="aspectFill"/>
+                    <text class="experience-index-text f26 fw5 c-FFFFFF z-index5">1</text>
+                </view>
+                <view class="flex-1 flex pt32 pb32 pr32 bd1">
+                    <view class="experience-avatar mr16">
+                        <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                        <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    </view>
+                    <view class="flex-1">
+                        <view class="flex">
+                            <view class="f32 c-222222 fw6 flex-1">澳门渔人码头摄影</view>
+                            <view class="tag c-00A653 f24">美食</view>
+                        </view>
+                        
+                        <view class="f24 c-999999">渔人码头</view>
+                        <view class="f24 c-666666">MOP$ 100-200</view>
+                    </view>
+                </view>
+            </view>
+            <view class="flex">
+                <view class="relative experience-index flex pt32 pb32 mr26">
+                    <image class="experience-index-icon" src="/images/index/icon_map_g1@2x.png" mode="aspectFill"/>
+                    <text class="experience-index-text f26 fw5 c-FFFFFF z-index5">1</text>
+                </view>
+                <view class="flex-1 flex pt32 pb32 pr32 bd1">
+                    <view class="experience-avatar mr16">
+                        <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                        <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    </view>
+                    <view class="flex-1">
+                        <view class="flex">
+                            <view class="f32 c-222222 fw6 flex-1">澳门渔人码头摄影</view>
+                            <view class="tag c-00A653 f24">美食</view>
+                        </view>
+                        
+                        <view class="f24 c-999999">渔人码头</view>
+                        <view class="f24 c-666666">MOP$ 100-200</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 下单按钮 -->
+    <view class="btn bt1 bg-white">
+        <view class="p32 flex flex-d">
+            <view class="w-default">
+                <image class="route-like" src="/images/index/nav_icon_like_k.png" mode="aspectFill"/>
+                <view class="f20 c-666666">喜欢</view>
+            </view>
+            <button type="none" class="w-default">
+                <image class="route-like" src="/images/index/nav_icon_share_k.png" mode="aspectFill"/>
+                <view class="f20 c-666666">分享</view>
+            </button>
+            <view class="flex-1 flex flex-f">
+                <button class="weui-btn w-296 f36" type="primary" bindtap="submitOrder">立即参加</button>
+            </view>
+        </view>
+    </view>
+</view>

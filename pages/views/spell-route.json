@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty"
+  },
+  "navigationBarTitleText": "拼团路线",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+}

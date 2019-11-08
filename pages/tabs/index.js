@@ -37,6 +37,9 @@ Page({
     // wx.navigateTo({
     //   url: '/pages/views/ac-detail?id=610859100309291008' + '&title=3如如'
     // })
+    // wx.navigateTo({
+    //   url: '/pages/views/spell-route-order'
+    // })
     NT.showToast('加载中...')
     this.setData({
       userInfo: wx.getStorageSync("userInfo"), //用户信息

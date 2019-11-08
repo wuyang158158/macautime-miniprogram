@@ -37,8 +37,36 @@
   </view>
     
   <view class="i-page ml16 mr16 pb32">
+      <!-- 热点推荐 -->
+      <view class="recommend-h-auto">
+          <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
+            <view class="flex-1 f32  c-222222">热点推荐</view>
+            <view class="f30 c-00A653">查看更多</view>
+          </view>
+          <gh-hotRecommend></gh-hotRecommend>
 
-    <view class="nav flex">
+          <view class="r-items flex mt16">
+            <view class="r-items-list">
+              <image class="r-items-pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+              <image class="r-items-slide-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+              <view class="r-items-msg c-333333">
+                <view class="f32">渔人码头</view>
+                <view class="f24">网红拍照圣地</view>
+              </view>
+            </view>
+            <view class="r-items-list">
+              <image class="r-items-pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+              <image class="r-items-slide-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+              <view class="r-items-msg c-333333">
+                <view class="f32">渔人码头</view>
+                <view class="f24">网红拍照圣地</view>
+              </view>
+            </view>
+          </view>
+      </view>
+
+
+    <!-- <view class="nav flex">
       <view class="flex-1 br1 flex flex-jc" bindtap="tapToHotActivity">
         <image class="nav-popular mr32" src="/images/index/home_icon_menu_popular.png" mode="aspectFill"/>
         <view class="popular">
@@ -53,7 +81,7 @@
         </view>
         <image class="nav-popular ml32" src="/images/index/home_icon_menu_calendar.png" mode="aspectFill"/>
       </view>
-    </view>
+    </view> -->
 
     <!-- 消息通知 -->
     <!-- <view class="message mt40 flex pl32 pr32">
@@ -65,22 +93,22 @@
     </view> -->
 
     <!-- 会员专属 -->
-    <view class="exclusive" wx:if="{{promotions.length}}">
+    <!-- <view class="exclusive" wx:if="{{promotions.length}}">
       <view class="ex-title f32 l-h32 c-222222 pt32 pb32 mt32 fw6">会员专属体验</view>
       <view wx:for="{{promotions}}" wx:key="{{index}}" class="ex-content" data-title="{{item.promotionTitle}}" data-id="{{item.expSerial}}" data-url="{{item.url}}" bindtap="{{userInfo.vip? item.isBingExp?'tapToDetail':'tapToWebView':'tapToVipCenter'}}">
         <image class="ex-content-banner-default" src="/images/default/bg_img.png" mode="aspectFill"/>
         <image class="ex-content-banner" src="{{item.picUrl}}" lazy-load mode="aspectFill"/>
       </view>
-    </view>
+    </view> -->
 
     <!-- 会员限时礼 -->
-    <view class="v-time" wx:if="{{vImgUrls.length}}">
+    <!-- <view class="v-time" wx:if="{{vImgUrls.length}}">
       <view class="f32 l-h32 c-222222 pt32 pb32 mt32 fw6">会员限时礼</view>
       <view class="vt-content">
         <view class="vt-ctitle flex pl32 pr32 h-88">
           <view class="flex-1 f32 c-222222">{{vTimeTitle}}</view>
-          <!-- <view class="f28 c-666666" bindtap="tapToVipCenter">查看全部</view> 
-          <image class="more" src="/images/index/icon_more-2.png" mode="aspectFill"/> -->
+          <view class="f28 c-666666" bindtap="tapToVipCenter">查看全部</view> 
+          <image class="more" src="/images/index/icon_more-2.png" mode="aspectFill"/>
         </view>
         <swiper class="swiper" indicator-dots autoplay interval="5000" bindchange="vSwiperChange" previous-margin="18rpx" next-margin="18rpx">
           <block wx:for="{{vImgUrls}}" wx:key="{{index}}">
@@ -100,10 +128,10 @@
           </block>
         </swiper>
       </view>
-    </view>
+    </view> -->
 
     <!-- KOL入驻 -->
-    <!-- <view class="recommend recommend-h-auto">
+    <view class="recommend recommend-h-auto">
       <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
         <view class="flex-1 f32  c-222222">金牌KOL</view>
         <view class="f30 c-00A653" bindtap="tapToKolEnter">入驻</view>
@@ -111,13 +139,128 @@
 
       <gh-kolList></gh-kolList>
 
-    </view> -->
+    </view>
+
+    <!-- 精选商家 -->
+    <view class="recommend-h-auto">
+      <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
+        <view class="flex-1 f32  c-222222">精选商家</view>
+        <view class="f30 c-00A653" bindtap="">如何入驻?</view>
+      </view>
+
+      <view class="handpick-merchant">
+        <image class="handpick-merchant-pic-default" src="/images/index/bg@2x.png" mode="aspectFill"/>
+        <view class="merchant ml16 mr16 relative">
+          <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+          <image class="items-slide-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+          <view class="merchant-msg">
+            
+            <view class="merchant-discount">
+              <image class="merchant-discount-tag" src="/images/index/bg_tag@2x.png" mode="aspectFill"/>
+              <view class="merchant-discount-text f22 c-FFFFFF fw5">8折</view>
+            </view>
+            <view class="merchant-star">
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+            </view>
+            <view class="merchant-name f24 c-FFFFFF">氹仔岛</view>
+          </view>
+        </view>
+        <view class="merchant-info">
+          <view class="ml16 mr16 mb16 text-align bg-white">
+            <view class="f41 c-000000 fw6 pt16">GW.Bar</view>
+            <view class="f22 c-000000 fw3"> #陈奕迅#梁汉文最爱的 香港本地潮文化啤酒吧</view>
+            <view class="flex flex-jc mt16">
+               <view class="tag c-00A653 f24 mr16">美食</view>
+               <view class="tag c-00A653 f24">休闲</view>
+            </view>
+            <view class="flex merchant-info-pic-list mt16">
+              <view class="info-pics ml16">
+                <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+                <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+              </view>
+              <view class="info-pics ml16">
+                <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+                <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+              </view>
+              <view class="info-pics ml16">
+                <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+                <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+              </view>
+            </view>
+          </view>
+          
+        </view>
+      </view>
+
+    </view>
+
+    <view class="recommend-h-auto">
+      <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
+        <view class="flex-1 f32  c-222222">澳门时光官方专访栏目</view>
+      </view>
+      <view class="exclusive-interview mb16">
+        <view class="exclusive-interview-list flex bg-white">
+          <view class="interview-list-pics">
+            <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+            <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+          </view>
+          <view class="flex-1 ml32 mr32 flex flex-column">
+            <view class="f30 fw6 l-h36 c-222222 pt32">我们的味觉记忆，一代饮食文化的传承</view>
+            <view class="flex pb32 exclusive-interview-dec">
+              <view class="flex-1 f24 c-999999 mt8">工匠传承・20万阅读</view>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="exclusive-interview mb16">
+        <view class="exclusive-interview-list flex bg-white">
+          <view class="interview-list-pics">
+            <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+            <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+          </view>
+          <view class="flex-1 ml32 mr32 flex flex-column">
+            <view class="f30 fw6 l-h36 c-222222 pt32">我们的味觉记忆，一代饮食文化的传承</view>
+            <view class="flex pb32 exclusive-interview-dec">
+              <view class="flex-1 f24 c-999999 mt8">工匠传承・20万阅读</view>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="exclusive-interview mb16">
+        <view class="exclusive-interview-list flex bg-white">
+          <view class="interview-list-pics">
+            <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+            <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+          </view>
+          <view class="flex-1 ml32 mr32 flex flex-column">
+            <view class="f30 fw6 l-h36 c-222222 pt32">我们的味觉记忆，一代饮食文化的传承</view>
+            <view class="flex pb32 exclusive-interview-dec">
+              <view class="flex-1 f24 c-999999 mt8">工匠传承・20万阅读</view>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
 
     <!-- 推荐体验 -->
-    <view class="recommend">
+    <!-- <view class="recommend">
       <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
         <view class="flex-1 f32  c-222222">推荐体验</view>
-        <!-- <view class="f30 c-00A653">查看更多</view> -->
+        <view class="f30 c-00A653">查看更多</view>
       </view>
       <gh-aclist recommend="{{recommend}}"></gh-aclist>
       <gh-empty prop-type="no-data" prop-text="暂无推荐体验" prop-mt="0" wx:if="{{noData}}"></gh-empty>
@@ -128,7 +271,7 @@
         </view>
         <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>
  <!-- 缺省页面，暂无数据 -->

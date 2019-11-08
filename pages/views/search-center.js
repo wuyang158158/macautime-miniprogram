@@ -3,6 +3,9 @@ import NT from "../../utils/native.js"
 import PAGE from "../../utils/config.js"
 import api from "../../data/api.js"
 import util from "../../utils/util.js"
+const menuData = [
+  '体验','商家','用户'
+]
 Page({
 
   /**
@@ -22,6 +25,17 @@ Page({
     loadmoreLine: false, //暂无更多信息
     noData: false,  //没有数据时
     recommend: [], // 首页推荐体验列表
+
+    menuData: menuData,
+    menuDataIndex: 0,
+    merchantParams: {
+      limit: PAGE.limit,
+      start: PAGE.start,
+      paramEntity: {
+        userName: wx.getStorageSync("userInfo").userName
+      }
+    },
+    result: [],
   },
 
   /**
@@ -266,6 +280,55 @@ Page({
       })
       if(!that.data.recommend.length>0){ //暂无数据
         that.setData({
+          noData: true
+        })
+      }
+    })
+  },
+  // 点击菜单切换
+  tapSMenuItem(e) {
+    const index = e.currentTarget.dataset.index;
+    if(index === 1){
+      NT.showToast('处理中...')
+      this.getUserRecord()
+    }
+    this.setData({
+      menuDataIndex: index
+    })
+  },
+
+  getUserRecord(source) { // 请求用户记录
+    api.getUserRecord(this.data.merchantParams)
+    .then(res=>{
+      // console.log(res)
+      const data = source === 'onPullDownRefresh' ? res.rows : this.data.result.concat(res.rows)
+      this.setData({
+        result: data,
+        total: res.total,
+        loadmoreLine: false,
+        loadmore: false,
+        noData: false,
+      })
+      if(!this.data.result.length>0){ //暂无数据
+        this.setData({
+          noData: true
+        })
+      }
+    })
+    .catch(err=>{
+      console.log(err)
+      this.setData({
+        loadmore: false,
+      })
+      if(err.code === '401'){
+        this.setData({
+          emptytext: err.codeMsg
+        })
+      }else{
+        NT.showModal(err.codeMsg||err.message||'请求失败！')
+      }
+      if(!this.data.result.length>0){ //暂无数据
+        this.setData({
           noData: true
         })
       }

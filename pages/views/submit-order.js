@@ -212,5 +212,11 @@ Page({
         }
       }
     })
+  },
+  // 预定成功
+  submitOrderNew(){
+    wx.navigateTo({
+      url: '/pages/views/spell-route-order-ok'
+    })
   }
 })

@@ -30,3 +30,17 @@ checkbox,radio{
     transform:scale(0.6);
     margin-top: -3rpx;
 }
+.premium{
+    height: 108rpx;
+}
+.icon-42{
+    width: 42rpx;
+    height: 42rpx;
+}
+.w-120{
+    width: 120rpx;
+    padding: 0;
+    margin: 0;
+    height: 48rpx;
+    line-height: 48rpx;
+}
