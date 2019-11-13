@@ -23,6 +23,10 @@ Component({
     inputShowed: {
       type: 'Boolean',
       value: false
+    },
+    position: {
+      type: 'string',
+      value: ''
     }
   },
   /**

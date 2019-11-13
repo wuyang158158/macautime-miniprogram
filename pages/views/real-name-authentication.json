@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+
+  },
+  "navigationBarTitleText": "实名认证",
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default"
+}

@@ -1,5 +1,5 @@
 <!--components/searchbar/searchbar.wxml-->
-<view class="page {{source==='index'?'absolute':'fixed'}}" style="z-index: 999;">
+<view class="page {{source==='index'?'absolute':'fixed'}} {{position==='static'?'static':''}}" style="z-index: 999;">
   <view class="page__bd">
     <view class="weui-search-bar {{source==='index'?'':'weui-search-bar-bg'}}" bindtap="tapToSearch">
       <view class="weui-search-bar__form">

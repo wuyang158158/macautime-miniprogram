@@ -1,0 +1,6 @@
+/* pages/views/bind-bank-card.wxss */
+@import 'real-name-authentication.wxss';
+.vcode-btn{
+    height: 32rpx;
+    line-height: 32rpx;
+}

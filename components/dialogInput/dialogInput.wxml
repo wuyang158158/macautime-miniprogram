@@ -1,0 +1,35 @@
+<!--components/dialogInput/dialogInput.wxml-->
+<!-- <view class='toast-box'>
+    <view class='toastbg'></view>
+    <view class='showToast'>
+        <view class='toast-title'>
+            <text>自定义标签</text>
+        </view>
+        <view class='toast-main'>
+            <view class='toast-input'>
+                <input placeholder='请输入' bindinput='setValue' data-name='stuEidtName'></input>
+            </view>
+        </view>
+        <view class='toast-button'>
+            <view class='button1'>
+                <button type="none" catchtap='cancel'>取消</button>
+            </view>
+            <view class='button2'>
+                <button type="none" catchtap='confirmAcceptance'>确定</button>
+            </view>
+        </view>
+    </view>
+</view> -->
+
+<view class="toast-box" wx:if="{{isShowConfirm}}">
+    <view class="toastbg" bindtap="cancel"></view>
+    <view class="showToast">
+        <view class="toast-title">自定义标签</view>
+        <input class="toast-input" placeholder="请输入" bindinput="setValue"></input>
+        <view class="toast-msg">最多 6 个字</view>
+        <view class="flex">
+            <button class="btn-style" type="none" catchtap="cancel">取消</button>
+            <button class="btn-style bd1" type="none" catchtap="confirmAcceptance">确定</button>
+        </view>
+    </view>
+</view>

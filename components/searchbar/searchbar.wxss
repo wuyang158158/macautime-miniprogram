@@ -56,3 +56,6 @@
 .weui-search-bar_box-bg{
     background:rgba(247,247,250,1);
 }
+.static{
+    position: static;
+}

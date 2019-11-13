@@ -15,6 +15,29 @@
             <input class="flex-1 weui-input t-right" placeholder="请输入粉丝数量" disabled="{{true}}" value="20118"/>
         </view>
     </view>
+    <!-- 个人形象照片 -->
+    <view class="list bg-white ml16 mr16 mt16">
+        <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">个人形象照</view>
+        <view class="personage">
+            <image class="personage-icon" src="/images/center/pic1@2x.png" mode="aspectFill"/>
+        </view>
+        <view class="f24 c-666666 mt16 pb32 text-algin-c">请选择您的个人形象照，用于封面展示</view>
+    </view>
+    <!-- 优势特长 -->
+    <view class="list bg-white ml16 mr16 mt16">
+        <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">优势特长</view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">旅行达人</view>
+            <input class="flex-1 weui-input t-right" placeholder="请选择" value="{{array[item.account]}}"/>
+            <picker class="t-right" data-index="{{index}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="picker flex">
+                    <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+                </view>
+                
+            </picker>
+        </view>
+    </view>
+
 
     <view class="list bg-white ml16 mr16 mt16" wx:for="{{platformList}}" wx:key="{{index}}">
         <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">

@@ -1,0 +1,18 @@
+<!--pages/views/kol-tag.wxml-->
+<view class="container pb100">
+    <view class="ml32 mr32">
+        <view class="f24 c-666666 pt32 pb32 t-c">请选择您的优势特长标签，最多 3 个</view>
+        <view class="flex flex-r">
+            <view wx:for="{{tagArray}}" wx:key="{{index}}" class="item f28 mt32 mb32 {{item.selected?'item-ac':''}}" data-name="{{item.name}}" bindtap="tapTag">{{item.name}}</view>
+        </view>
+        <view class="flex pt32 flex-d">
+            <view class="item f28 mt32 mb32 item-c" bindtap="tapToAddTag">+ 自定义</view>
+        </view>
+    </view>
+
+    <dialogInput bind:bindinput="bindinput" bind:confirm="confirm" isShowConfirm="{{isShowConfirm}}"></dialogInput>
+
+    <view class="btn bt1 bg-white flex">
+        <button class="weui-btn f30 flex-1 ml32 mr32" type="primary" bindtap="submitNext">下一步</button>
+    </view>
+</view>

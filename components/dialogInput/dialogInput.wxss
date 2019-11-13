@@ -1,0 +1,105 @@
+/* components/dialogInput/dialogInput.wxss */
+button[type=none]{
+    width: inherit;
+    height: inherit;
+    display: inherit;
+    text-align: inherit;
+    position: static;
+    margin-left: inherit;
+    margin-right: inherit;
+    box-sizing: inherit;
+    line-height: inherit;
+    overflow: inherit;
+    color: inherit;
+    background-color: inherit;
+    border-radius: inherit;
+    -webkit-tap-highlight-color: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    font-size: inherit;
+    text-decoration: inherit;
+}
+button[type=none]::after{
+    content: none;
+}
+.toast-box {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 20;
+}
+ 
+ 
+.toastbg {
+    opacity: 0.5;
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+}
+ 
+.showToast {
+    position: absolute;
+    opacity: 1;
+    width: 640rpx;
+    height: 486rpx;
+    top: 50%;
+    left: 50%;
+    margin-left: -320rpx;
+    margin-top: -243rpx;
+    background: #fff;
+    border-radius:12rpx;
+    overflow: hidden;
+    z-index: 10;
+}
+ 
+.toast-title {
+    font-size: 36rpx;
+    font-weight: 600;
+    text-align: center;
+    padding: 65rpx 0;
+    color: #222222;
+    font-weight:600;
+}
+.toast-input{
+    font-size:32rpx;
+    height: 96rpx;
+    line-height: 96rpx;
+    border-radius:4rpx;
+    border:1rpx solid rgba(224, 222, 225, 1);
+    padding: 0 32rpx;
+    margin: 0 48rpx;
+}
+.toast-msg{
+    font-size: 28rpx;
+    color: #999999;
+    text-align: center;
+    margin-top: 32rpx;
+}
+.flex{
+    display: flex;
+    height: 111rpx;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1rpx solid #E0DEE1;
+}
+.btn-style{
+    flex:1;
+    font-size: 34rpx;
+    font-weight:500;
+    color: #999999;
+    text-align: center;
+    height: 111rpx;
+    line-height: 111rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bd1{
+    border-left: 1rpx solid #E0DEE1;
+    color: #00A653!important;
+}

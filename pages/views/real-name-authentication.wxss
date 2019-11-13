@@ -1,0 +1,22 @@
+/* pages/views/real-name-authentication.wxss */
+@import 'kol-enter.wxss';
+.title{
+
+}
+.id-icon{
+    width: 280rpx;
+    height: 186rpx;
+
+}
+.t-align{
+    text-align: center;
+}
+.pt8{
+    padding-top: 8rpx;
+}
+.weui-btn{
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 36rpx;
+    margin-top: 64rpx;
+}

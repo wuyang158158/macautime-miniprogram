@@ -1,0 +1,69 @@
+<!--pages/tabs/experience.wxml-->
+<view class="container">
+    <!-- 搜索组件 -->
+    <view class="flex h-52">
+        <view class="flex-1">
+            <gh-searchbar bind:search="search" bind:tapSearch="tapSearch" searchPlaceholder="搜索体验" source="index" position="static" disabled></gh-searchbar>
+        </view>
+        <view class="location f24 flex mr32" bindtap="tapToMapActivity">
+            <image class="location-icon" src="/images/index/index_icon_location.png" mode="aspectFill"/>
+            <view class="c-222222">{{rgcData.city}}</view>
+        </view>
+    </view>
+    
+    <!-- 轮播图 -->
+    <swiper class="swiper ml16 mr16" indicator-dots autoplay interval="5000" indicator-color="rgba(255,255,255,1)" indicator-active-color="#00A653" bindchange="vSwiperChange">
+        <swiper-item>
+            <view class="relative swiper-url mr16">
+                <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+                <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="relative swiper-url mr16">
+                <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+                <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+            </view>
+        </swiper-item>
+    </swiper>
+
+    <!-- 顶部切换栏 -->
+    <view class="flex c-222222 ml16 mr16 mt32">
+        <view wx:for="{{navArray}}" wx:key="{{index}}" class="flex-1 t-c" data-index="{{index}}" bindtap="tapToNav">
+            <text class="nav {{index===idx?'nav-ac':''}}">{{item}}</text>
+        </view>
+    </view>
+
+    <!-- 体验活动 -->
+    <view wx:if="{{idx===0}}">
+        <!-- 顶部操作 -->
+        <view class="title mt32">
+            <scroll-view class="scroll-view_H" scroll-x="true">
+            <view wx:for="{{titleBar}}" class="scroll-view-item_H {{item.name==name?'demo-text-1':''}}" data-name="{{item.name}}" data-type="{{item.type}}" wx:key="{{index}}" bindtap="tapTitleBar">
+                <text>{{item.name}}</text>
+            </view>
+            </scroll-view>
+        </view>
+        <view class="ml16 mr16 mt32 pb32">
+            <gh-hotRecommend></gh-hotRecommend>
+            <view class="more f32 fw5 c-00A653">更多体验活动</view>
+        </view>
+    </view>
+
+    <!-- 精选商家 -->
+    <view wx:if="{{idx===1}}">
+        <!-- 顶部操作 -->
+        <view class="title mt32">
+            <scroll-view class="scroll-view_H" scroll-x="true">
+            <view wx:for="{{titleBar}}" class="scroll-view-item_H {{item.name==name?'demo-text-1':''}}" data-name="{{item.name}}" data-type="{{item.type}}" wx:key="{{index}}" bindtap="tapTitleBar">
+                <text>{{item.name}}</text>
+            </view>
+            </scroll-view>
+        </view>
+        <view class="ml16 mr16 mt32 pb32">
+            <gh-hmList></gh-hmList>
+            <view class="more f32 fw5 c-00A653">更多商家</view>
+        </view>
+    </view>
+   
+</view>

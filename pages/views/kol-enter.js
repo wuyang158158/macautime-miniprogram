@@ -119,8 +119,13 @@ Page({
       NT.showToastNone('需要同意服务协议才能继续提交',2000)
       return
     }
-    NT.showToast('处理中...')
-    this.addKolAduit()
+    // NT.showToast('处理中...')
+    // this.addKolAduit()
+    
+    // 跳转到实名认证
+    wx.navigateTo({
+      url: '/pages/views/real-name-authentication'
+    })
   },
   // 单列选择器
   bindPickerChange: function(e) {

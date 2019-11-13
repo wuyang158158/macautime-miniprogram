@@ -1,0 +1,62 @@
+<!--pages/views/real-name-authentication.wxml-->
+<view class="container ml16 mr16">
+    <view class="title f28 c-666666 mt32 ml16 mr16">进行实名认证成功后，成为认证KOL即可预约探店，获得收益分成；并有机会成为我们平台金牌销售，能够发布路线，尊享更多收益特权。</view>
+    <view class="list bg-white ml16 mr16 mt16">
+        <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">
+            <view class="flex-1">实名认证 (选填)</view>
+            <view class="delete f28 fw4 c-00A653">详情说明</view>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">真实姓名</view>
+            <input class="flex-1 weui-input t-right" data-index="{{index}}" data-type="platformNickName" bindinput="bindinput" placeholder="请输入真实姓名" value="{{item.platformNickName}}"/>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">性别</view>
+            <input class="flex-1 weui-input t-right" placeholder="请选择性别" disabled value="{{array[item.account]}}"/>
+            <picker class="t-right" data-index="{{index}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="picker flex">
+                    <!-- <text >{{array[item.account]}}</text> -->
+                    <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+                </view>
+                
+            </picker>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">年龄</view>
+            <input class="flex-1 weui-input t-right" placeholder="请选择年龄" value="{{array[item.account]}}"/>
+            <picker class="t-right" data-index="{{index}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="picker flex">
+                    <!-- <text >{{array[item.account]}}</text> -->
+                    <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+                </view>
+            </picker>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">身份证</view>
+            <input class="flex-1 weui-input t-right" data-index="{{index}}" data-type="platformNickName" bindinput="bindinput" placeholder="请输入身份证" value="{{item.platformNickName}}"/>
+        </view>
+
+        <!-- 上传身份证 -->
+        <view class="id-card flex bd1 ml32 mr32 pt16 pb16">
+            <view class="m16">
+                <image class="id-icon" src="/images/center/id1@2x.png" mode="aspectFill"/>
+                <view class="t-align f24 c-666666 pt8">上传身份证正面</view>
+            </view>
+            <view class="m16">
+                <image class="id-icon" src="/images/center/id2@2x.png" mode="aspectFill"/>
+                <view class="t-align f24 c-666666 pt8">上传身份证正面</view>
+            </view>
+        </view>
+
+        <view class="flex f30 c-222222 h-90 ml32 mr32" bindtap="tapToBindBankCard">
+            <view class="">银行卡</view>
+            <input class="flex-1 weui-input t-right" disabled placeholder="请绑定"/>
+            <view class="picker flex">
+                <!-- <text >{{array[item.account]}}</text> -->
+                <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+            </view>
+        </view>
+    </view>
+
+    <button class="weui-btn" type="primary" bindtap="tapToNext">下一步</button>
+</view>

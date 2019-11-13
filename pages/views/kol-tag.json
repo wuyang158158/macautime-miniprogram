@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "dialogInput": "/components/dialogInput/dialogInput"
+  },
+  "navigationBarTitleText": "优势特长",
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default",
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "backgroundColor": "#FFFFFF"
+}

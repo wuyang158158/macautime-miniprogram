@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    
+  },
+  "navigationBarTitleText": "绑定银行卡",
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default"
+}

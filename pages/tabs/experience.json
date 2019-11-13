@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "gh-searchbar": "/components/searchbar/searchbar",
+    "gh-empty": "/components/empty/empty",
+    "gh-aclist": "/components/acList/acList",
+    "gh-hotRecommend": "/components/hotRecommend/hotRecommend",
+    "gh-kolList": "/components/kolList/kolList",
+    "gh-hmList": "/components/hmList/hmList"
+  },
+  "navigationBarTitleText": "体验",
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default"
+}

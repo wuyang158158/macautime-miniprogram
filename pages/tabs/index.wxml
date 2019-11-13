@@ -257,7 +257,7 @@
     
 
     <!-- 推荐体验 -->
-    <!-- <view class="recommend">
+    <view class="recommend">
       <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
         <view class="flex-1 f32  c-222222">推荐体验</view>
         <view class="f30 c-00A653">查看更多</view>
@@ -271,7 +271,7 @@
         </view>
         <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
       </view>
-    </view> -->
+    </view>
   </view>
 </view>
  <!-- 缺省页面，暂无数据 -->
