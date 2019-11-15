@@ -479,4 +479,10 @@ Page({
         urls: urls // 需要预览的图片http链接列表
     })
   }, 
+  // 领券中心
+  tapGetDiscounts() {
+    wx.navigateTo({
+      url: '/pages/views/get-ticket-detail'
+    })
+  }
 })

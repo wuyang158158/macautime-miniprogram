@@ -1,6 +1,122 @@
 <!--pages/tabs/center.wxml-->
-<view class="container pl16 pr16 pb32">
-    <!-- 用户会员信息 -->
+<view class="">
+    <view class="relative c-title">
+        <image class="pic-default-new" src="{{!userInfo.vip?'/images/center/bg_vip.png':'/images/center/bg-2.png'}}" mode="aspectFill"/>
+        <view class="pic-default-new z-index5">
+            <!-- 用户信息 -->
+            <view class="f44 fw6 c-222222 p-d" wx:if="{{!userInfo}}">欢迎来到澳门时光</view>
+            <view class="userinfo mt140 flex {{userInfo.vip?'userinfo-vip':''}}" bindtap="{{userInfo?'tapToCenterDetail':''}}">
+                <view class="relative avatar m32 mr32">
+                    <image class="avatar-url" src="{{userInfo?userInfo.url:'/images/center/avater.png'}}" mode="aspectFill"/>
+                    <image class="avatar-vip" src="/images/center/avatar_vip.png" mode="aspectFill"/>
+                </view>
+                
+                <button class="weui-btn username flex-1 f36 l-h40 c-222222 fw6 ell" type="contact" open-type="getUserInfo" bindtap="{{userInfo?'':'tapToLogin'}}">
+                    <view>{{userInfo?userInfo.nickName:'登录/注册'}}</view>
+                    <view class="f24 mt16 fw4" wx:if="{{userInfo}}">ID：GH201910300012</view>
+                </button>
+                <view class="f24 c-222222" wx:if="{{userInfo}}">个人主页</view>
+                <image class="more-icon mr32" src="/images/center/icon_more-2.png" mode="aspectFill" wx:if="{{userInfo}}"/>
+            </view>
+            <!-- 菜单栏 -->
+            <view class="flex t-c" wx:if="{{userInfo}}">
+                <view class="c-222222 flex-1">
+                    <view class="f32">12</view>
+                    <view class="f24">收藏</view>
+                </view>
+                <view class="c-222222 flex-1">
+                    <view class="f32">8</view>
+                    <view class="f24">评论</view>
+                </view>
+                <view class="c-222222 flex-1">
+                    <view class="f32">150</view>
+                    <view class="f24">关注</view>
+                </view>
+                <view class="c-222222 flex-1">
+                    <view class="f32">9592</view>
+                    <view class="f24">粉丝</view>
+                </view>
+                <view class="c-222222 flex-1">
+                    <view class="f32">260</view>
+                    <view class="f24">时光币</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 开通菜单栏 -->
+    <view class="ml16 mr16">
+        <view class="c-nav flex bg-white">
+            <view class="flex-1 flex br1">
+                <image class="open-vip-icon" src="/images/center/icon_vip42.png" mode="aspectFill"/>
+                <view class="open-vip-text f30 c-222222 fw6 ml16">开通会员</view>
+            </view>
+            <view class="flex-1 flex">
+                <image class="open-vip-icon" src="/images/center/icon_attest.png" mode="aspectFill"/>
+                <view class="open-vip-text f30 c-222222 fw6 ml16">认证中心</view>
+            </view>
+        </view>
+    </view>
+    <!-- 我的订单 -->
+    <view class="ml16 mr16 mt16 bg-white my-order">
+        <view class="c-nav c-nav-ac">
+            <view class="flex my-order-title ml32 mr32 bd1">
+                <view class="flex-1 f30 c-222222">我的订单</view>
+                <view class="f24 c-999999">查看全部</view>
+                <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+            </view>
+        </view>
+
+        <view class="flex t-c">
+            <view class="flex-1">
+                <image class="my-order-icon" src="/images/center/icon_order1.png" mode="aspectFill"/>
+                <view class="f24 c-222222 mb16">待支付</view>
+            </view>
+            <view class="flex-1">
+                <image class="my-order-icon" src="/images/center/icon_order2.png" mode="aspectFill"/>
+                <view class="f24 c-222222 mb16">可使用</view>
+            </view>
+            <view class="flex-1">
+                <image class="my-order-icon" src="/images/center/icon_order3.png" mode="aspectFill"/>
+                <view class="f24 c-222222 mb16">已完成</view>
+            </view>
+            <view class="flex-1">
+                <image class="my-order-icon" src="/images/center/icon_order4.png" mode="aspectFill"/>
+                <view class="f24 c-222222 mb16">已过期</view>
+            </view>
+            <view class="flex-1">
+                <image class="my-order-icon" src="/images/center/icon_order5.png" mode="aspectFill"/>
+                <view class="f24 c-222222 mb16">退票/售后</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="ml16 mr16 mt16 pb16 bg-white my-order">
+        <view class="flex t-c flex-wrap">
+            <view class="flex-1" wx:for="{{record}}" wx:key="{{index}}" data-menu="{{item.text}}" bindtap="tapMenu">
+                <image class="my-order-icon" src="{{item.iconPath}}" mode="aspectFill"/>
+                <view class="f24 c-222222 mb16">{{item.text}}</view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 用户反馈等 -->
+    <view class="user-menu bg-white m16 pl32 pr32">
+        <view wx:for="{{menu}}" wx:key="{{index}}" class="flex h-120 {{index+1!=menu.length?'bd1':''}}" data-menu="{{item.text}}" bindtap="tapMenu">
+            <image class="menu-icon mr32" src="{{item.iconPath}}" mode="aspectFill"/>
+            <view class="flex-1 f32 c-222222">
+                <button class="weui-btn w-auto" type="contact" open-type="contact" wx:if="{{item.text==='联系客服'}}">{{item.text}}</button>
+                <button class="weui-btn w-auto" type="contact" open-type="feedback" wx:elif="{{item.text==='意见反馈'}}">{{item.text}}</button>
+                <text wx:else>{{item.text}}</text>
+            </view>
+           
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+    </view>
+
+    
+</view>
+
+<!-- <view class="container pl16 pr16 pb32">
     <view class="vip-info relative" wx:if="{{userInfo&&userInfo.vip}}" bindtap="tapToVipCenter">
         <image class="header-bg" src="/images/vip/vip_card1.png" mode="aspectFill"/>
         <view class="slide-text c-292624">
@@ -9,26 +125,22 @@
             <view class="f22 fw3 vip-ctime">有效期至{{userInfo.rt}}</view>
         </view>
     </view>
-    <!-- 用户信息 -->
     <view class="userinfo mt16 bg-white flex {{userInfo.vip?'userinfo-vip':''}}" bindtap="{{userInfo?'tapToCenterDetail':''}}">
         <image class="avatar m32 mr16" src="{{userInfo?userInfo.url:'/images/center/mine_avatar.png'}}" mode="aspectFill"/>
         <button class="weui-btn username flex-1 f44 c-222222 fw6 ell" type="contact" open-type="getUserInfo" bindtap="{{userInfo?'':'tapToLogin'}}">{{userInfo?userInfo.nickName:'登录/注册'}}</button>
         <image class="more-icon mr32" src="/images/center/icon_more-2.png" mode="aspectFill" wx:if="{{userInfo}}"/>
     </view>
-    <!-- 会员介绍 -->
     <view class="join-vip flex mt16" wx:if="{{!userInfo.vip}}">
         <image class="join-vip-icon mr16" src="/images/center/mine_logo_vip.png" mode="aspectFill"/>
         <view class="flex-1 f30 c-292624">Macau Time会员享专属特权</view>
         <button class="weui-btn w-160 fw5" type="primaryv" open-type="userInfo?'':'getUserInfo'" bindtap="{{userInfo?'tapToVipCenter':'tapToLogin'}}">{{userInfo?'立即加入':'登录查看'}}</button>
     </view>
-    <!-- 个人记录 -->
     <view class="record mt16 bg-white flex">
         <view wx:for="{{record}}" wx:key="{{index}}" class="flex-1 flex flex-column f26 c-222222" data-menu="{{item.text}}" bindtap="tapMenu">
             <image class="record-icon mb16" src="{{item.iconPath}}" mode="aspectFill"/>
             <view class="record-text">{{item.text}}</view>
         </view>
     </view>
-    <!-- 用户反馈等 -->
     <view class="user-menu bg-white mt16 pl32 pr32">
         <view wx:for="{{menu}}" wx:key="{{index}}" class="flex h-120 {{index+1!=menu.length?'bd1':''}}" data-menu="{{item.text}}" bindtap="tapMenu">
             <image class="menu-icon mr32" src="{{item.iconPath}}" mode="aspectFill"/>
@@ -41,4 +153,4 @@
             <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
         </view>
     </view>
-</view>
+</view> -->

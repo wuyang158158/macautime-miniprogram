@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty",
+    "gh-acmylist": "/components/acMyList/acMyList"
+  },
+  "navigationBarTitleText": "店铺视频",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default",
+  "backgroundColor": "#FFFFFF"
+}

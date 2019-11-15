@@ -4,15 +4,31 @@ import api from "../../data/api.js"
 const app = getApp()
 const record = [{
   iconPath: '/images/center/mine_icon_like.png',
-    text: '我喜欢的'
+    text: '我的点赞'
   },
   {
     iconPath: '/images/center/mine_icon_comment.png',
-    text: '我评价的'
+    text: '我的评价'
   },
   {
     iconPath: '/images/center/mine_icon_history.png',
-    text: '我看过的'
+    text: '浏览记录'
+  },
+  {
+    iconPath: '/images/center/mine_icon_video.png',
+    text: '我的视频'
+  },
+  {
+    iconPath: '/images/center/mine_icon_photo.png',
+    text: '我的相册'
+  },
+  {
+    iconPath: '/images/center/mine_icon_line.png',
+    text: '我的路线'
+  },
+  {
+    iconPath: '/images/center/mine_icon_card.png',
+    text: '会员卡券'
 }];
 const menu = [
   // {
@@ -199,17 +215,17 @@ Page({
         url: '/pages/views/more-settings'
       })
     }
-    if(menu === '我看过的'){
+    if(menu === '浏览记录'){
       wx.navigateTo({
         url: '/pages/views/my-seen'
       })
     }
-    if(menu === '我评价的'){
+    if(menu === '我的评价'){
       wx.navigateTo({
         url: '/pages/views/my-exp-comment'
       })
     }
-    if(menu === '我喜欢的'){
+    if(menu === '我的点赞'){
       wx.navigateTo({
         url: '/pages/views/my-like'
       })

@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/tabs/index",
+    "pages/tabs/center",
     "pages/login/login",
+    "pages/tabs/index",
     "pages/tabs/experience",
     "pages/tabs/ticket",
-    "pages/tabs/center",
     "pages/views/ac-detail",
     "pages/views/submit-order",
     "pages/views/vip-center",
@@ -35,7 +35,9 @@
     "pages/web-view/web-view",
     "pages/views/spell-route",
     "pages/views/spell-route-order",
-    "pages/views/spell-route-order-ok"
+    "pages/views/spell-route-order-ok",
+    "pages/views/get-ticket-detail",
+    "pages/views/shop-video-all"
   ],
   "subpackages": [],
   "preloadRule": {},

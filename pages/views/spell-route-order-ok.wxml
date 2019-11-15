@@ -1,5 +1,21 @@
 <!--pages/views/spell-route-order-ok.wxml-->
-<view class="page">
+<view class="page" wx:if="{{route==='get-ticket-detail'}}">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <icon type="success" color="#00A653" size="100"></icon>
+        </view>
+        <view class="weui-msg__text-area pl32 pr32">
+            <view class="weui-msg__title f36">领取成功</view>
+        </view>
+        <view class="weui-msg__opr-area">
+            <view class="weui-btn-area">
+                <button class="weui-btn next c-00A653 f34" type="primary" bindtap="tapToConfirm">返回商家</button>
+                <button class="weui-btn next c-00A653 f34 mt32" type="default" bindtap="tapSeeOrder">查看票券</button>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="page" wx:else>
     <view class="weui-msg">
         <view class="weui-msg__icon-area">
             <icon type="success" color="#00A653" size="100"></icon>

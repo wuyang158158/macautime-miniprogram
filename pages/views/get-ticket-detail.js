@@ -1,4 +1,4 @@
-// pages/views/spell-route-order-ok.js
+// pages/views/get-ticket-detail.js
 Page({
 
   /**
@@ -12,9 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      route: options.route
-    })
+
   },
 
   /**
@@ -64,17 +62,26 @@ Page({
    */
   // onShareAppMessage: function () {
 
-  // },
-  //返回活动
-  tapToConfirm() { 
-    wx.navigateBack({
-      delta: 3
-    })
-  },
-  // 查看订单
-  tapSeeOrder() {
-    wx.switchTab({
-      url: '/pages/tabs/ticket'
+  // }
+  // 立即领取
+  tapNowGet() {
+    wx.showModal({
+      title: '提示',
+      content: '优惠券仅供时光卡会员用户使用，现在开通，领取优惠券，还能享受更多会员增值优惠及特权。',
+      cancelText: '再看看',
+      cancelColor: '#999999',
+      confirmText: '开通会员',
+      confirmColor: '#00A653',
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.navigateTo({
+            url: '/pages/views/spell-route-order-ok?route=get-ticket-detail' 
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   }
 })

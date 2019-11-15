@@ -1,0 +1,66 @@
+<!--pages/views/shop-video-all.wxml-->
+<view class="container ml32 mr32 pb32">
+    <view class="flex">
+        <view class="items">
+            <view class="items-top relative">
+                <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+            </view>
+            <view class="f24 c-404040 mt16">
+                <view >和最喜欢的人一起吃日料，世界上加倍幸福的事。</view>
+                <view class="flex mt8">
+                    <image class="avatar" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    <view class="flex-1 ml12 fw5">桃子</view>
+                    <image class="like" src="/images/detail/icon_like28.png" mode="aspectFill"/>
+                    <view class="c-999999 ml5 mr16">962</view>
+                </view>
+            </view>
+        </view>
+        <view class="items">
+            <view class="items-top relative">
+                <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+            </view>
+            <view class="f24 c-404040 mt16">
+                <view >和最喜欢的人一起吃日料，世界上加倍幸福的事。</view>
+                <view class="flex mt8">
+                    <image class="avatar" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    <view class="flex-1 ml12 fw5">桃子</view>
+                    <image class="like" src="/images/detail/icon_like28_r.png" mode="aspectFill"/>
+                    <view class="c-999999 ml5 mr16">962</view>
+                </view>
+            </view>
+        </view>
+
+        <view class="items">
+            <view class="items-top relative">
+                <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+            </view>
+            <view class="f24 c-404040 mt16">
+                <view >和最喜欢的人一起吃日料，世界上加倍幸福的事。</view>
+                <view class="flex mt8">
+                    <image class="avatar" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    <view class="flex-1 ml12 fw5">桃子</view>
+                    <image class="like" src="/images/detail/icon_like28.png" mode="aspectFill"/>
+                    <view class="c-999999 ml5 mr16">962</view>
+                </view>
+            </view>
+        </view>
+        <view class="items">
+            <view class="items-top relative">
+                <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+            </view>
+            <view class="f24 c-404040 mt16">
+                <view >和最喜欢的人一起吃日料，世界上加倍幸福的事。</view>
+                <view class="flex mt8">
+                    <image class="avatar" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    <view class="flex-1 ml12 fw5">桃子</view>
+                    <image class="like" src="/images/detail/icon_like28_r.png" mode="aspectFill"/>
+                    <view class="c-999999 ml5 mr16">962</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

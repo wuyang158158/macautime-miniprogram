@@ -1,4 +1,4 @@
-// pages/views/spell-route-order-ok.js
+// pages/views/shop-video-all.js
 Page({
 
   /**
@@ -12,9 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      route: options.route
-    })
+
   },
 
   /**
@@ -62,19 +60,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  // onShareAppMessage: function () {
+  onShareAppMessage: function () {
 
-  // },
-  //返回活动
-  tapToConfirm() { 
-    wx.navigateBack({
-      delta: 3
-    })
-  },
-  // 查看订单
-  tapSeeOrder() {
-    wx.switchTab({
-      url: '/pages/tabs/ticket'
-    })
   }
 })

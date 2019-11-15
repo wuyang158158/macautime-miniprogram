@@ -55,13 +55,28 @@
     <view class="ac-page">
         <view class="pl32 pr32">
         <!-- 基本标题展示信息 -->
-        <view class="title pb54 bd1">
+        <view class="title pb32 bd1">
             <view class="name f44 c-222222 fw6 l-h56">{{acData.activityTitle}}</view>
+            <view class="flex pb16">
+                <view class="flex-1 flex l-h32">
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <view class="f24 c-222222 ml5">5.0</view>
+                </view>
+                <view class="c-222222 l-h32 f24">{{acData.merchantName || ''}}</view>
+            </view>
             <view class="flex f24">
                 <view class="flex-1 flex flex-wrap">
                     <view wx:for="{{acData.activityTag}}" wx:key="{{index}}" class="tag tag-ac c-00A653 mr10">{{item}}</view>
                 </view>
-                <view class="f26 c-222222">{{acData.merchantName || ''}}</view>
+                <!-- <view class="f26 c-222222">{{acData.merchantName || ''}}</view> -->
+                <view class="flex flex-end">
+                    <view class="tag1 c-00A653 bg-DAF2E6 mr16">线上支付</view>
+                    <view class="tag1 c-FF7626 bg-FFF2EB">到店支付</view>
+                </view>
             </view>
             <!-- <view class="mt24 flex">
                 <view class="coupon f22 c-292624 flex mr16">
@@ -78,13 +93,77 @@
             </view> -->
         </view>
         <!-- 参与者展示 -->
-        <!-- <view class="peer flex h-156 bd1">
+        <view class="peer flex h-156 bd1">
             <view class="flex-1 f28 c-999999">20k 人参加过</view>
             <image class="user-list user-list-ac" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=48" mode="aspectFill"/>
             <image class="user-list user-list-ac" src="https://images.unsplash.com/photo-1551214012-84f95e060dee?w=48" mode="aspectFill"/>
             <image class="user-list user-list-ac" src="https://images.unsplash.com/photo-1551446591-142875a901a1?w=48" mode="aspectFill"/>
             <image class="user-list" src="/images/detail/detail_more.png" mode="aspectFill"/>
-        </view> -->
+        </view>
+        <!-- 商家专访 -->
+        <view class="merchant-ei bd1 pb45">
+            <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32 flex">
+                <text>商家专访</text>
+                <image class="merchant-ei-icon ml16" src="/images/detail/logo@2x.png" mode="aspectFill"/>
+            </view>
+            <video class="myVideo" id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" controls></video>
+            <view class="f30 c-222222 fw6 pt32">日料的世界，颜值即正义</view>
+            <view class="f26 c-666666 pt16">日本料理不仅重视味觉，而且很重视视觉享受。色自然、味鲜美、形多样、器精良。材料和调理法重视季节感。</view>
+        </view>
+        <!-- 商家优惠 -->
+        <view class="merchant-discounts bd1 pb45">
+            <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32 flex">商家优惠</view>
+            <view class="">
+                <view class="discounts flex">
+                    <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                        <view class="">
+                            <text class="f44">80</text>
+                            <text class="f24">%</text>
+                        </view>
+                        <view >折扣券</view>
+                    </view>
+                    <view class="flex-1 discounts-items flex ml32 mr32">
+                        <view class="flex-1">
+                            <view >
+                                <text class="f28 c-222222 fw6">全店可用</text>
+                                <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">限时</text>
+                            </view>
+                            <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                        </view>
+                        <view >
+                            <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                        </view>
+                    </view>
+                </view>
+                <view class="discounts flex mt16">
+                    <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                        <view class="">
+                            <text class="f24">MOP$</text>
+                            <text class="f44">50</text>
+                        </view>
+                        <view >满减券</view>
+                    </view>
+                    <view class="flex-1 discounts-items flex ml32 mr32">
+                        <view class="flex-1">
+                            <view class="">
+                                <text class="f28 c-222222 fw6">指定商品满100减50 </text>
+                            </view>
+                            <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                        </view>
+                        <view >
+                            <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 商品类型 -->
+        <view class="product-types bd1 pb45">
+            <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32">商品类型</view>
+            <view class="flex">
+
+            </view>
+        </view>
         <!-- 套餐类型 -->
         <view class="combo bd1 pb45" wx:if="{{expAllMeal.length}}">
             <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32">套餐类型</view>

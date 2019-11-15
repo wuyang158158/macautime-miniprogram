@@ -1,0 +1,30 @@
+/* pages/views/shop-video-all.wxss */
+.flex{
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.items{
+    width: 335rpx;
+    margin-top: 32rpx;
+}
+.items-top{
+    width: 100%;
+    height: 335rpx;
+    border-radius:12rpx;
+    overflow: hidden;
+}
+.c-404040{
+    color: #404040;
+}
+.avatar{
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+}
+.like{
+    width: 28rpx;
+    height: 28rpx;
+}
+.ml12{
+    margin-left: 12rpx;
+}

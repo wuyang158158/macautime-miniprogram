@@ -8,7 +8,7 @@
                 <view class="flex mt32">
                     <view class="relative experience-avatar mr16">
                         <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
-                            <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                        <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
                     </view>
                     <view class="flex-1">
                         <view class="f30 c-222222">水舞间</view>

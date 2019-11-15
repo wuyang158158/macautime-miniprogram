@@ -32,7 +32,7 @@ Page({
   onLoad: function(options) {
     // console.log(wx.getStorageSync("userInfo"))
     // wx.navigateTo({
-    //   url: '/pages/views/hot-activity'
+    //   url: '/pages/views/shop-video-all'
     // })
     // wx.navigateTo({
     //   url: '/pages/views/ac-detail?id=610859100309291008' + '&title=3如如'

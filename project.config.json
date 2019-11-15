@@ -47,6 +47,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 1,
 			"list": [
@@ -54,7 +58,7 @@
 					"id": 0,
 					"name": "体验详情",
 					"pathName": "pages/login/login",
-					"query": "id=613764137545105408&title= 吃喝玩乐在河南&shareType=acDetail",
+					"query": "id=642013447134904320&title=后宫烧&shareType=acDetail",
 					"scene": 1036,
 					"referrerInfo": {
 						"appId": ""
