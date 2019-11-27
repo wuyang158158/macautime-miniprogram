@@ -1,0 +1,21 @@
+/* pages/route/release-route.wxss */
+@import "../views/kol-enter.wxss";
+.release-bg{
+    height: 364rpx;
+    overflow: hidden;
+}
+.pic-bg{
+    display: block;
+    width: 88rpx;
+    height: 88rpx;
+    margin: 0 auto;
+    margin-top: 88rpx;
+}
+.mr148{
+    margin-right: 148rpx;
+}
+.weui-btn-release{
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 36rpx;
+}

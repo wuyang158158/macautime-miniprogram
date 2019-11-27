@@ -1,0 +1,24 @@
+<!--pages/tabs/ticket.wxml-->
+<view class="container">
+    <!-- 搜索组件 -->
+    <view class="flex h-52">
+        <gh-searchbar bind:search="search" bind:tapSearch="tapSearch" searchPlaceholder="搜索体验" source="index" disabled></gh-searchbar>
+    </view>
+
+    <!-- 体验活动 -->
+    <view>
+        <!-- 顶部操作 -->
+        <view class="title mt32">
+            <scroll-view class="scroll-view_H" scroll-x="true">
+            <view wx:for="{{titleBar}}" class="scroll-view-item_H {{item.name==name?'demo-text-1':''}}" data-name="{{item.name}}" data-type="{{item.type}}" wx:key="{{index}}" bindtap="tapTitleBar">
+                <text>{{item.name}}</text>
+            </view>
+            </scroll-view>
+        </view>
+        <view class="ml16 mr16 mt32 pb32">
+            <gh-hmList bind:toDetail="toDetail"></gh-hmList>
+        </view>
+    </view>
+   
+</view>
+

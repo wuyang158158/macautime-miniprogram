@@ -13,9 +13,20 @@
                 
                 <button class="weui-btn username flex-1 f36 l-h40 c-222222 fw6 ell" type="contact" open-type="getUserInfo" bindtap="{{userInfo?'':'tapToLogin'}}">
                     <view>{{userInfo?userInfo.nickName:'登录/注册'}}</view>
-                    <view class="f24 mt16 fw4" wx:if="{{userInfo}}">ID：GH201910300012</view>
+                    <view class="f24 fw4" wx:if="{{userInfo}}">ID：GH201910300012</view>
+                    <view class="flex f24 mt5">
+                        <view class="c-tag kol-tag">
+                            <image class="c-tag-icon" src="/images/center/icon_kol.png" mode="aspectFill"/>
+                            <text class="c-FFFFFF">认证KOL</text>
+                        </view>
+                        <view class="c-tag">
+                            <image class="c-tag-icon" src="/images/center/icon_sale.png" mode="aspectFill"/>
+                            <text class="c-F9D8A5">认证销售</text>
+                        </view>
+                    </view>
+                    <!-- <view class="f24 c-FFFFFF bg-00A653 kol-tag1">KOL</view> -->
                 </button>
-                <view class="f24 c-222222" wx:if="{{userInfo}}">个人主页</view>
+                <view class="f24 c-222222" wx:if="{{userInfo}}" bindtap="tapTopagesPersonalHome">个人主页</view>
                 <image class="more-icon mr32" src="/images/center/icon_more-2.png" mode="aspectFill" wx:if="{{userInfo}}"/>
             </view>
             <!-- 菜单栏 -->
@@ -36,7 +47,7 @@
                     <view class="f32">9592</view>
                     <view class="f24">粉丝</view>
                 </view>
-                <view class="c-222222 flex-1">
+                <view class="c-222222 flex-1" bindtap="tapToTimeCoinStore">
                     <view class="f32">260</view>
                     <view class="f24">时光币</view>
                 </view>

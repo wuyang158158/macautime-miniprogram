@@ -1,0 +1,53 @@
+<!--pages/route/route-plan.wxml-->
+<view class="container">
+    <view class="list bg-white ml16 mr16 mt16">
+       <view class="flex f30 c-222222 h-100 ml32 mr32 bd1">
+            <view class="flex-1">DAY 1</view>
+            <view class="f28 c-00A653 fw4">添加体验</view>
+        </view>
+        <view class="ml32 mr32 bd1">
+            <view class="flex h-100 pt32 pb32">
+                <image class="left-icon" src="/images/route/icon_del_r1.png" mode="aspectFill"/>
+                <view class="flex-1 flex ml32">
+                    <image class="bannar-icon" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    <view class="flex-1">
+                        <view >
+                            <text class="mr16 c-222222 f30 fw6">旗舰日料综合店</text>
+                            <text class="tag f24 c-00A653">美食</text>
+                        </view>
+                        <view class="f24 c-999999">氹仔</view>
+                        <view class="c-222222 f24">MOP$ 500-1000</view>
+                    </view>
+                </view>
+                <image class="right-icon" src="/images/route/icon_icon1.png" mode="aspectFill"/>
+            </view>
+            <view class="flex h-100 pt32 pb32">
+                <image class="left-icon" src="/images/route/icon_del_r1.png" mode="aspectFill"/>
+                <view class="flex-1 flex ml32">
+                    <image class="bannar-icon" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                    <view class="flex-1">
+                        <view >
+                            <text class="mr16 c-222222 f30 fw6">旗舰日料综合店</text>
+                            <text class="tag f24 c-00A653">美食</text>
+                        </view>
+                        <view class="f24 c-999999">氹仔</view>
+                        <view class="c-222222 f24">MOP$ 500-1000</view>
+                    </view>
+                </view>
+                <image class="right-icon" src="/images/route/icon_icon1.png" mode="aspectFill"/>
+            </view>
+        </view>
+        <view class="ml32 mr32 pt32 pb32 flex">
+            <view class="flex-1 flex">
+                <button class="weui-btn btn-day-before mr32" type="primary-ticket" catchtap="tapDayBefore">前一天</button>
+                <button class="weui-btn btn-day-before" type="primary-ticket" disabled catchtap="tapDayBefore">后一天</button>
+            </view>
+            <button class="weui-btn btn-day-before" type="p-delete" catchtap="tapDayDelete">删除</button>
+        </view>
+    </view>
+    <view class="flex m32 pt32 jus">
+        <button class="weui-btn btn-day-Add" type="p-delete" catchtap="tapAddDay">+ 添加一天</button>
+        <button class="weui-btn btn-day-Add" type="primary" catchtap="tapSave">保存</button>
+    </view>
+    
+</view>

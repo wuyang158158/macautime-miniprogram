@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty"
+  },
+  "navigationBarTitleText": "澳门新濠",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+}

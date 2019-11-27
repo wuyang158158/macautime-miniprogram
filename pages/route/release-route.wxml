@@ -1,0 +1,52 @@
+<!--pages/route/release-route.wxml-->
+<view class="container">
+    <view class="list bg-white ml16 mr16 mt16 release-bg relative">
+        <image class="pic-default-new" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+        <view class="pic-default-new z-index5">
+            <image class="pic-bg" src="/images/route/pic-2.png" mode="aspectFill"/>
+            <view class="f30 c-FFFFFF t-c mt32">添加封面图片</view>
+            <view class="f24 c-FFFFFF t-c fw3 mt32 pt16">高颜值的封面海报能帮助您获得更多的曝光</view>
+        </view>
+    </view>
+    <view class="list bg-white ml16 mr16 mt16">
+         <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">路线信息</view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">路线名称</view>
+            <input class="flex-1 weui-input t-right" data-type="platformNickName" bindinput="bindinput" placeholder="请输入体验名称" value=""/>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
+            <view class="">路线详情</view>
+            <input class="flex-1 weui-input t-right" placeholder="请完善" value="{{array[index]}}"/>
+            <picker class="t-right" data-index="{{index}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="picker flex">
+                    <!-- <text >{{array[item.account]}}</text> -->
+                    <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+                </view>
+                
+            </picker>
+        </view>
+        <view class="flex f30 c-222222 h-90 ml32 mr32">
+            <view class="">路线人数</view>
+            <input class="flex-1 weui-input t-right" data-type="numberOfFans" bindinput="bindinput" placeholder="若不限制人数则不填" value=""/>
+        </view>
+    </view>
+    <view class="list bg-white ml16 mr16 mt16">
+       <view class="flex f30 c-222222 h-100 fw6 ml32 mr32">
+            <view class="flex-1">平台增值优惠</view>
+            <switch checked="{{switch1Checked}}" bindchange="switch1Change" color="#00A653"/>
+        </view>
+        <view class="f24 fw3 c-222222 ml32 mr148 pb32">选择平台增值优惠，澳门时光卡会员可享受更多权益，促进购买优惠券参团费。</view>
+    </view>  
+    <view class="ml16 mr16 mt32 mb32">
+        <radio-group class="radio-group" bindchange="radioChange">
+        <label class="checkbox f24 flex">
+            <radio value="agreement" checked="{{checked}}" color="#00A653"/>
+            <text class="c-999999">我已阅读并同意</text>
+            <text class="c-00A653" catchtap="tapToAgreement">《服务协议》</text>
+        </label>
+        </radio-group>
+    </view>
+    <view class="ml32 mr32">
+        <button class="weui-btn weui-btn-release c-00A653" type="primary" catchtap="tapRelease">发布</button>
+    </view>
+</view>

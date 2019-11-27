@@ -1,0 +1,38 @@
+/* pages/route/route-plan.wxss */
+@import "../views/kol-enter.wxss";
+.left-icon{
+    width: 30rpx;
+    height: 30rpx;
+}
+.right-icon{
+    width: 32rpx;
+    height: 32rpx;
+}
+.bannar-icon{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius:12rpx;
+    margin-right: 20rpx;
+}
+.btn-day-before{
+    width:140rpx;
+    height:56rpx;
+    line-height: 56rpx;
+    border-radius:28rpx;
+    font-size:28rpx;
+    padding: 0;
+    margin: 0;
+}
+button[disabled]{
+    opacity: 0.5;
+}
+.btn-day-Add{
+    width: 296rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
+    margin: 0;
+}
+.jus{
+    justify-content: space-between;
+}

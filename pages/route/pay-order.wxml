@@ -1,0 +1,24 @@
+<!--pages/route/pay-order.wxml-->
+<view class="container">
+    <view class="title c-222222 fw5">
+        <text class="f36">MOP$</text>
+        <text class="f60">20.00</text>
+    </view>
+    <view class="t-c f30 mt32 pt5">
+        <text class="c-999999 mr16">支付剩余时间</text>
+        <text class="c-00A653">03:59:56</text>
+    </view>
+    <view class="t-c f24 c-999999 mt5">温馨提示：4 小时未完成支付，系统将自动取消订单</view>
+    <view class="bd1 f22 c-999999 p32">支付方式</view>
+    <view class="ml32 bd1">
+        <view class="flex h-120">
+            <image class="pay-icon" src="/images/route/icon_pay_we.png" mode="aspectFill"/>
+            <view class="flex-1 f32 c-222222 ml32">微信支付</view>
+            <image class="choose-icon pr32" src="/images/route/icon_tick_pre.png" mode="aspectFill"/>
+        </view>
+    </view>
+    <view class="btn pt32 pb32">
+        <button class="weui-btn weui-btn-release f36 ml32 mr32" type="primary" bindtap="submitNext">确认支付</button>
+    </view>
+    
+</view>

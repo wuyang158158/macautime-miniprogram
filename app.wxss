@@ -51,6 +51,16 @@ button[type=primary-ticket]{
     background-color: rgb(255,255,255, 0.6);
     border: 1px solid rgba(0,166,83,0.6);
 }
+button[type=p-delete]{
+    background: rgba(255,255,255,1);
+    color: rgba(153,153,153,1);
+    border: 1px solid rgba(204, 204, 204,1);
+}
+.button-hover[type=p-delete]{
+    color: rgba(153,153,153, 0.6);
+    background-color: rgb(255,255,255, 0.6);
+    border: 1px solid rgba(204, 204, 204,0.6);
+}
 button[type=hot-btn]{
     margin: 0;
     height: 64rpx;
@@ -875,4 +885,7 @@ page {
 }
 .z-index5{
     z-index: 5;
+}
+.t-c{
+    text-align: center;
 }

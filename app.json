@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/tabs/center",
     "pages/login/login",
+    "pages/tabs/center",
     "pages/tabs/index",
     "pages/tabs/experience",
     "pages/tabs/ticket",
@@ -37,7 +37,15 @@
     "pages/views/spell-route-order",
     "pages/views/spell-route-order-ok",
     "pages/views/get-ticket-detail",
-    "pages/views/shop-video-all"
+    "pages/views/shop-video-all",
+    "pages/views/time-coin-store",
+    "pages/views/personal-home",
+    "pages/coupon/my-coupon",
+    "pages/route/release-route",
+    "pages/route/route-plan",
+    "pages/route/choose-merchant",
+    "pages/route/choose-merchant-setmeal",
+    "pages/route/pay-order"
   ],
   "subpackages": [],
   "preloadRule": {},

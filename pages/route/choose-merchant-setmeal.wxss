@@ -1,0 +1,11 @@
+/* pages/route/choose-merchant-setmeal.wxss */
+@import "/pages/views/spell-route-order.wxss";
+.weui-btn-release{
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 36rpx;
+}
+radio{
+    display: block;
+}

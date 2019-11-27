@@ -29,7 +29,24 @@ const record = [{
   {
     iconPath: '/images/center/mine_icon_card.png',
     text: '会员卡券'
-}];
+  },
+  {
+    iconPath: '/images/center/mine_icon_wallet.png',
+    text: '我的钱包'
+  },
+  {
+    iconPath: '/images/center/mine_icon_store.png',
+    text: '预约探店'
+  },
+  {
+    iconPath: '/images/center/mine_icon_list.png',
+    text: '我的发布'
+  },
+  {
+    iconPath: '/images/center/mine_icon_push.png',
+    text: '我要发布'
+  }
+];
 const menu = [
   // {
   //   iconPath: '/images/center/mine_icon_message.png',
@@ -64,7 +81,7 @@ Page({
   onLoad: function (options) {
     let that = this
     // wx.navigateTo({
-    //   url: '/pages/views/my-seen'
+    //   url: '/pages/route/pay-order'
     // })
   },
   /**
@@ -230,5 +247,27 @@ Page({
         url: '/pages/views/my-like'
       })
     }
+    if(menu === '会员卡券'){
+      wx.navigateTo({
+        url: '/pages/coupon/my-coupon'
+      })
+    }
+    if(menu === '我要发布'){
+      wx.navigateTo({
+        url: '/pages/route/release-route'
+      })
+    }
+  },
+  // 跳转到时光币商城页面
+  tapToTimeCoinStore() {
+    wx.navigateTo({
+      url: '/pages/views/time-coin-store'
+    })
+  },
+  // 跳转到个人主页
+  tapTopagesPersonalHome() {
+    wx.navigateTo({
+      url: '/pages/views/personal-home'
+    })
   }
 })

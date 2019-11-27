@@ -1,0 +1,185 @@
+<!--pages/coupon/my-coupon.wxml-->
+<view class="container mb16">
+    <view class="coupon m16 bg-white pb16 mb0">
+        <view class="ml16 mr16">
+            <view class="title f32 fw6 bd1">旗舰综合日本料理（氹仔店）</view>
+            <view class="discounts flex mt32">
+                <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                    <view class="">
+                        <text class="f44">80</text>
+                        <text class="f24">%</text>
+                    </view>
+                    <view >折扣券</view>
+                </view>
+                <view class="flex-1 discounts-items flex ml32 mr32">
+                    <view class="flex-1">
+                        <view >
+                            <text class="f28 c-222222 fw6">全店可用</text>
+                            <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">限时</text>
+                        </view>
+                        <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                    </view>
+                    <view >
+                        <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                    </view>
+                </view>
+            </view>
+            <view class="discounts flex mt16">
+                <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                    <view class="">
+                        <text class="f24">MOP$</text>
+                        <text class="f44">50</text>
+                    </view>
+                    <view >满减券</view>
+                </view>
+                <view class="flex-1 discounts-items flex ml32 mr32">
+                    <view class="flex-1">
+                        <view class="">
+                            <text class="f28 c-222222 fw6">指定商品满100减50 </text>
+                        </view>
+                        <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                    </view>
+                    <view >
+                        <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="coupon m16 bg-white pb16 mb0">
+        <view class="ml16 mr16">
+            <view class="title f32 fw6 bd1">旗舰综合日本料理（氹仔店）</view>
+            <view class="discounts flex mt32">
+                <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                    <view class="">
+                        <text class="f44">80</text>
+                        <text class="f24">%</text>
+                    </view>
+                    <view >折扣券</view>
+                </view>
+                <view class="flex-1 discounts-items flex ml32 mr32">
+                    <view class="flex-1">
+                        <view >
+                            <text class="f28 c-222222 fw6">全店可用</text>
+                            <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">限时</text>
+                        </view>
+                        <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                    </view>
+                    <view >
+                        <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                    </view>
+                </view>
+            </view>
+            <view class="discounts flex mt16">
+                <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                    <view class="">
+                        <text class="f44">80</text>
+                        <text class="f24">%</text>
+                    </view>
+                    <view >折扣券</view>
+                </view>
+                <view class="flex-1 discounts-items flex ml32 mr32">
+                    <view class="flex-1">
+                        <view >
+                            <text class="f28 c-222222 fw6">全店可用</text>
+                            <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">限时</text>
+                        </view>
+                        <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                    </view>
+                    <view >
+                        <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                    </view>
+                </view>
+            </view>
+            <view class="discounts flex mt16">
+                <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                    <view class="">
+                        <text class="f24">MOP$</text>
+                        <text class="f44">50</text>
+                    </view>
+                    <view >满减券</view>
+                </view>
+                <view class="flex-1 discounts-items flex ml32 mr32">
+                    <view class="flex-1">
+                        <view class="">
+                            <text class="f28 c-222222 fw6">指定商品满100减50 </text>
+                        </view>
+                        <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                    </view>
+                    <view >
+                        <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="coupon m16 bg-white pb16 mb0">
+        <view class="ml16 mr16">
+            <view class="title f32 fw6 bd1">旗舰综合日本料理（氹仔店）</view>
+            <view class="discounts flex mt32">
+                <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                    <view class="">
+                        <text class="f44">80</text>
+                        <text class="f24">%</text>
+                    </view>
+                    <view >折扣券</view>
+                </view>
+                <view class="flex-1 discounts-items flex ml32 mr32">
+                    <view class="flex-1">
+                        <view >
+                            <text class="f28 c-222222 fw6">全店可用</text>
+                            <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">限时</text>
+                        </view>
+                        <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                    </view>
+                    <view >
+                        <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                    </view>
+                </view>
+            </view>
+            <view class="discounts flex mt16">
+                <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                    <view class="">
+                        <text class="f44">80</text>
+                        <text class="f24">%</text>
+                    </view>
+                    <view >折扣券</view>
+                </view>
+                <view class="flex-1 discounts-items flex ml32 mr32">
+                    <view class="flex-1">
+                        <view >
+                            <text class="f28 c-222222 fw6">全店可用</text>
+                            <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">限时</text>
+                        </view>
+                        <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                    </view>
+                    <view >
+                        <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                    </view>
+                </view>
+            </view>
+            <view class="discounts flex mt16">
+                <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
+                    <view class="">
+                        <text class="f24">MOP$</text>
+                        <text class="f44">50</text>
+                    </view>
+                    <view >满减券</view>
+                </view>
+                <view class="flex-1 discounts-items flex ml32 mr32">
+                    <view class="flex-1">
+                        <view class="">
+                            <text class="f28 c-222222 fw6">指定商品满100减50 </text>
+                        </view>
+                        <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                    </view>
+                    <view >
+                        <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

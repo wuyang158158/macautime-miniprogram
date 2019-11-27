@@ -1,0 +1,152 @@
+<!--pages/views/time-coin-store.wxml-->
+<view class="container">
+    <view class="relative title c-FFFFFF">
+        <image class="pic-default-new" src="/images/center/bg-3.png" mode="aspectFill"/>
+        <view class="pic-default-new z-index5">
+            <view class="amount">666</view>
+            <view class="f26">当前时光币</view>
+        </view>
+    </view>
+    <!-- 菜单栏 -->
+    <view class="ml32 mr32">
+        <view class="c-nav flex bg-white">
+            <view class="flex-1">
+                <image class="open-vip-icon" src="/images/center/icon_gift.png" mode="aspectFill"/>
+                <view class="open-vip-text f26 c-222222">我获得的</view>
+            </view>
+            <view class="flex-1">
+                <image class="open-vip-icon" src="/images/center/icon_detail.png" mode="aspectFill"/>
+                <view class="open-vip-text f26 c-222222">时光币明细</view>
+            </view>
+            <view class="flex-1">
+                <image class="open-vip-icon" src="/images/center/icon_task.png" mode="aspectFill"/>
+                <view class="open-vip-text f26 c-222222">做任务赚积分</view>
+            </view>
+        </view>
+    </view>
+    <!-- 兑换 -->
+    <view class="ml32 mr32">
+        <view class="f32 fw6 c-222222 mb32 mt64">我可兑换</view>
+        <view class="flex list-flex">
+            <view class="items mb32">
+                <view class="relative item-top">
+                    <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                    <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                </view>
+                <view class="ml20 mr20">
+                    <view class="f28 c-222222 mt16">儿童餐具</view>
+                    <view class="c-00A653">
+                        <text class="f32 fw6">100</text>
+                        <text class="f24 ml8">时光币</text>
+                    </view>
+                    <button class="weui-btn mt8" type="primary">立即兑换</button>
+                </view>
+            </view>
+            <view class="items mb32">
+                <view class="relative item-top">
+                    <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                    <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                </view>
+                <view class="ml20 mr20">
+                    <view class="f28 c-222222 mt16">儿童餐具</view>
+                    <view class="c-00A653">
+                        <text class="f32 fw6">100</text>
+                        <text class="f24 ml8">时光币</text>
+                    </view>
+                    <button class="weui-btn mt8" type="primary">立即兑换</button>
+                </view>
+            </view>
+            <view class="items mb32">
+                <view class="relative item-top">
+                    <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                    <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                </view>
+                <view class="ml20 mr20">
+                    <view class="f28 c-222222 mt16">儿童餐具</view>
+                    <view class="c-00A653">
+                        <text class="f32 fw6">100</text>
+                        <text class="f24 ml8">时光币</text>
+                    </view>
+                    <button class="weui-btn mt8" type="primary">立即兑换</button>
+                </view>
+            </view>
+            <view class="items mb32">
+                <view class="relative item-top">
+                    <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                    <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                </view>
+                <view class="ml20 mr20">
+                    <view class="f28 c-222222 mt16">儿童餐具</view>
+                    <view class="c-00A653">
+                        <text class="f32 fw6">100</text>
+                        <text class="f24 ml8">时光币</text>
+                    </view>
+                    <button class="weui-btn mt8" type="primary">立即兑换</button>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 更多好礼 -->
+    <view class="ml32 mr32">
+        <view class="f32 fw6 c-222222 mb32 mt32">更多好礼</view>
+        <view class="flex list-flex">
+            <view class="items mb32">
+                <view class="relative item-top">
+                    <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                    <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                </view>
+                <view class="ml20 mr20">
+                    <view class="f28 c-222222 mt16">儿童餐具</view>
+                    <view class="c-00A653">
+                        <text class="f32 fw6">100</text>
+                        <text class="f24 ml8">时光币</text>
+                    </view>
+                    <button class="weui-btn mt8" type="primary">立即兑换</button>
+                </view>
+            </view>
+            <view class="items mb32">
+                <view class="relative item-top">
+                    <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                    <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                </view>
+                <view class="ml20 mr20">
+                    <view class="f28 c-222222 mt16">儿童餐具</view>
+                    <view class="c-00A653">
+                        <text class="f32 fw6">100</text>
+                        <text class="f24 ml8">时光币</text>
+                    </view>
+                    <button class="weui-btn mt8" type="primary">立即兑换</button>
+                </view>
+            </view>
+            <view class="items mb32">
+                <view class="relative item-top">
+                    <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                    <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                </view>
+                <view class="ml20 mr20">
+                    <view class="f28 c-222222 mt16">儿童餐具</view>
+                    <view class="c-00A653">
+                        <text class="f32 fw6">100</text>
+                        <text class="f24 ml8">时光币</text>
+                    </view>
+                    <button class="weui-btn mt8" type="primary">立即兑换</button>
+                </view>
+            </view>
+            <view class="items mb32">
+                <view class="relative item-top">
+                    <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                    <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                </view>
+                <view class="ml20 mr20">
+                    <view class="f28 c-222222 mt16">儿童餐具</view>
+                    <view class="c-00A653">
+                        <text class="f32 fw6">100</text>
+                        <text class="f24 ml8">时光币</text>
+                    </view>
+                    <button class="weui-btn mt8" type="primary">立即兑换</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

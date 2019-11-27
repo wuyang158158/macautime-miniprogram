@@ -1,0 +1,15 @@
+/* pages/coupon/my-coupon.wxss */
+@import "../views/ac-detail.wxss";
+page{
+    background-color: #EFEFF4!important;
+}
+.coupon{
+    border-radius:16rpx;
+}
+.title{
+    height: 100rpx;
+    line-height: 100rpx;
+}
+.mb0{
+    margin-bottom: 0;
+}

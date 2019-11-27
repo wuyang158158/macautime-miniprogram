@@ -1,0 +1,2 @@
+/* pages/route/choose-merchant.wxss */
+@import '/pages/tabs/experience.wxss';

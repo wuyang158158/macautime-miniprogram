@@ -1,0 +1,32 @@
+/* pages/route/pay-order.wxss */
+page{
+    background: #fff;
+}
+.container{
+    padding-bottom: 200rpx;
+}
+.title{
+    text-align: center;
+    padding-top: 100rpx;
+}
+.f60{
+    font-size: 60rpx;
+}
+.pay-icon{
+    width: 36rpx;
+    height: 36rpx;
+}
+.choose-icon{
+    width: 30rpx;
+    height: 30rpx;
+}
+.h-120{
+    height: 120rpx;
+    line-height: 120rpx;
+}
+.btn{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}

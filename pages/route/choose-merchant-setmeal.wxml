@@ -1,0 +1,57 @@
+<!--pages/route/choose-merchant-setmeal.wxml-->
+<view class="container pb120">
+
+    <view class="day bg-white ml16 mr16 mt16 mb16">
+        <view class="ml32 mr32">
+            <view class="f32 c-222222 fw6 bd1 h-100 flex">
+                <radio-group class="radio-group flex-1 h-100" bindchange="">
+                    <radio class="radio pb20" value="" checked="">
+                        <text class="ml16">水舞间</text>
+                    </radio>    
+                </radio-group>
+                <view class="c-00A653 f28">关联视频</view>
+            </view>
+            <view class="bd1">
+                <view class="mt32 pb32">
+                    <view class="bg-F5F5FA c-222222 f28 p20 pb0 b-radius8">
+                        <radio-group class="radio-group" bindchange="radioChange">
+                            <radio class="radio pb20" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                                <text class="ml16">{{item.value}}</text>
+                            </radio>
+                        </radio-group>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="day bg-white ml16 mr16 mt16 mb16">
+        <view class="ml32 mr32">
+            <view class="f32 c-222222 fw6 bd1 h-100 flex">
+                <radio-group class="radio-group flex-1 h-100" bindchange="">
+                    <radio class="radio pb20" value="" checked="">
+                        <text class="ml16">水舞间</text>
+                    </radio>    
+                </radio-group>
+                <view class="c-00A653 f28">关联视频</view>
+            </view>
+            <view class="bd1">
+                <view class="mt32 pb32">
+                    <view class="bg-F5F5FA c-222222 f28 p20 pb0 b-radius8">
+                        <radio-group class="radio-group" bindchange="radioChange">
+                            <radio class="radio pb20" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                                <text class="ml16">{{item.value}}</text>
+                            </radio>
+                        </radio-group>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="btn bt1 bg-white">
+        <view class="pl32 pr32 flex flex-d">
+            <button class="weui-btn weui-btn-release f30" type="primary" bindtap="submitNext">完成</button>
+        </view>
+    </view>
+</view>

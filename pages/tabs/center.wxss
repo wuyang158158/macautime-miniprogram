@@ -160,3 +160,32 @@ button[type=contact]{
     right: 0;
     bottom: 0;
 }
+.c-tag{
+    width: 150rpx;
+    height: 42rpx;
+    border-radius:21rpx;
+    background: #413955;
+    text-align: center;
+    line-height: 42rpx;
+}
+.c-tag text{
+    vertical-align: 5rpx;
+}
+.c-tag-icon{
+    width: 26rpx;
+    height: 26rpx;
+}
+.kol-tag{
+    background: #6D69CC;
+    margin-right: 10rpx;
+}
+.c-F9D8A5{
+    color: #F9D8A5;
+}
+.kol-tag1{
+    width: 80rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+    border-radius:21rpx;
+    text-align: center;
+}

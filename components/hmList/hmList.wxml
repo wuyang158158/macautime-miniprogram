@@ -1,6 +1,6 @@
 <!--components/hmList/hmList.wxml-->
 <view class="flex flex-c">
-    <view class="hm-list bg-white mb16">
+    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
         <view class="relative hm-top">
             <view class="merchant-discount">
                 <image class="merchant-discount-tag" src="/images/index/bg_tag@2x.png" mode="aspectFill"/>
@@ -26,7 +26,7 @@
         </view>
     </view>
 
-    <view class="hm-list bg-white mb16">
+    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
         <view class="relative hm-top">
             <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
             <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
@@ -48,7 +48,7 @@
         </view>
     </view>
 
-    <view class="hm-list bg-white mb16">
+    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
         <view class="relative hm-top">
             <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
             <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
@@ -70,7 +70,7 @@
         </view>
     </view>
 
-    <view class="hm-list bg-white mb16">
+    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
         <view class="relative hm-top">
             <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
             <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
@@ -92,7 +92,7 @@
         </view>
     </view>
 
-    <view class="hm-list bg-white mb16">
+    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
         <view class="relative hm-top">
             <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
             <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
@@ -114,7 +114,7 @@
         </view>
     </view>
 
-    <view class="hm-list bg-white mb16">
+    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
         <view class="relative hm-top">
             <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
             <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
