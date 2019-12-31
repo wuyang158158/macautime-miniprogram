@@ -28,7 +28,7 @@
               <text class="f64">6</text>
               <text class="f34">/6</text>
             </view> -->
-            <view class="f24 fw5">会员专享优惠券礼包</view>
+            <view class="f24 fw5">尊贵特权 ∙ 专享优惠 ∙ 超值礼包</view>
           </view>
           <button class="weui-btn w-186" type="primary" bindtap="tapToVipCenter">查看会员</button>
         </view>
@@ -38,7 +38,7 @@
     
   <view class="i-page ml16 mr16 pb32">
       <!-- 热点推荐 -->
-      <view class="recommend-h-auto">
+      <view class="recommend-h-auto" wx:if="{{holdList}}">
           <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
             <view class="flex-1 f32  c-222222">热点推荐</view>
             <view class="f30 c-00A653">查看更多</view>
@@ -137,7 +137,8 @@
         <view class="f30 c-00A653" bindtap="tapToKolEnter">入驻</view>
       </view>
 
-      <gh-kolList></gh-kolList>
+      <gh-kolList kolList="{{kolList}}" wx:if="{{kolList.length}}"></gh-kolList>
+      <gh-empty prop-type="no-data" prop-text="暂无KOL数据" prop-mt="0" wx:else></gh-empty>
 
     </view>
 
@@ -145,50 +146,41 @@
     <view class="recommend-h-auto">
       <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
         <view class="flex-1 f32  c-222222">精选商家</view>
-        <view class="f30 c-00A653" bindtap="">如何入驻?</view>
+        <view class="f30 c-00A653" bindtap="tapToEnter">如何入驻?</view>
       </view>
 
       <view class="handpick-merchant">
         <image class="handpick-merchant-pic-default" src="/images/index/bg@2x.png" mode="aspectFill"/>
         <view class="merchant ml16 mr16 relative">
           <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
-          <image class="items-slide-image" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
-          <view class="merchant-msg">
-            
-            <view class="merchant-discount">
+          <image class="items-slide-image" src="{{selecMerchants[0].mImage}}" mode="aspectFill"/>
+          <view class="merchant-msg" data-id="{{selecMerchants[0].msId}}" data-title="{{selecMerchants[0].name}}" bindtap="tapToDetail">
+            <view class="merchant-discount" wx:if="{{selecMerchants[0].discount}}">
               <image class="merchant-discount-tag" src="/images/index/bg_tag@2x.png" mode="aspectFill"/>
-              <view class="merchant-discount-text f22 c-FFFFFF fw5">8折</view>
+              <view class="merchant-discount-text f22 c-FFFFFF fw5">{{selecMerchants[0].discount}}折</view>
             </view>
             <view class="merchant-star">
-              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
-              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
-              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
-              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
-              <image class="merchant-star-icon" src="/images/index/icon_star2@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+              <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
             </view>
-            <view class="merchant-name f24 c-FFFFFF">氹仔岛</view>
+            <view class="merchant-name f24 c-FFFFFF">{{selecMerchants[0].address}}</view>
           </view>
         </view>
         <view class="merchant-info">
           <view class="ml16 mr16 mb16 text-align bg-white">
-            <view class="f41 c-000000 fw6 pt16">GW.Bar</view>
-            <view class="f22 c-000000 fw3"> #陈奕迅#梁汉文最爱的 香港本地潮文化啤酒吧</view>
+            <view class="f41 c-000000 fw6 pt16">{{selecMerchants[0].name}}</view>
+            <view class="f22 c-000000 fw3">{{selecMerchants[0].remark}}</view>
             <view class="flex flex-jc mt16">
-               <view class="tag c-00A653 f24 mr16">美食</view>
-               <view class="tag c-00A653 f24">休闲</view>
+               <view class="tag c-00A653 f24 mr16">{{selecMerchants[0].labelRemark}}</view>
+               <!-- <view class="tag c-00A653 f24">休闲</view> -->
             </view>
             <view class="flex merchant-info-pic-list mt16">
-              <view class="info-pics ml16">
+              <view wx:for="{{selecMerchants}}" wx:key="{{index}}" wx:if="{{index!==1}}" class="info-pics {{index!==0?'ml16':''}}" data-id="{{item.msId}}" data-title="{{item.name}}" bindtap="tapToDetail">
                 <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
-                <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
-              </view>
-              <view class="info-pics ml16">
-                <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
-                <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
-              </view>
-              <view class="info-pics ml16">
-                <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
-                <image class="pic-default z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+                <image class="pic-default z-index5" src="{{item.mImage}}" mode="aspectFill"/>
               </view>
             </view>
           </view>
@@ -198,7 +190,7 @@
 
     </view>
 
-    <view class="recommend-h-auto">
+    <view class="recommend-h-auto diplay-no">
       <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
         <view class="flex-1 f32  c-222222">澳门时光官方专访栏目</view>
       </view>
@@ -257,7 +249,7 @@
     
 
     <!-- 推荐体验 -->
-    <view class="recommend">
+    <view class="recommend" wx:if="{{recommend.length}}">
       <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
         <view class="flex-1 f32  c-222222">推荐体验</view>
         <view class="f30 c-00A653">查看更多</view>

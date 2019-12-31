@@ -12,7 +12,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 监听expAllMeal事件，获取上一页面通过eventChannel传送到当前页面的数据
+    const eventChannel = this.getOpenerEventChannel()
+    // 接受上一个页面传递过来的数据
+    eventChannel.on('msInterviewVideoVoList', data => {
+      console.log(data)
+      this.setData({
+        videoVoList: data
+      })
+    })
   },
 
   /**

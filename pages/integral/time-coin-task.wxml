@@ -1,0 +1,103 @@
+<!--pages/integral/time-coin-task.wxml-->
+<view class="container">
+    <view class="relative title c-FFFFFF">
+        <image class="pic-default-new" src="/images/center/bg-3.png" mode="aspectFill"/>
+        <view class="pic-default-new z-index5">
+            <view class="amount">666</view>
+            <view class="f26">当前时光币</view>
+        </view>
+    </view>
+    <!-- 菜单栏 -->
+    <view class="c-nav ml32 mr32 bg-white">
+        <view class="f30 pl32 pr32 pt16 pb16">
+            <text class="c-222222">已连续签到</text>
+            <text class="c-FF7626"> 3 天</text>
+        </view>
+        <view class="flex ml32 mr32 pb32">
+            <view class="item bg-00A653 flex flex-dec">
+                <image class="icon_done" src="/images/center/icon_done.png" mode="aspectFill"/>
+                <view class="c-FFFFFF f22">11.08</view>
+            </view>
+            <view class="line-yes"></view>
+            <view class="item bg-00A653 flex flex-dec">
+                <image class="icon_done" src="/images/center/icon_done.png" mode="aspectFill"/>
+                <view class="c-FFFFFF f22">11.09</view>
+            </view>
+            <view class="line-yes"></view>
+            <view class="item bg-00A653 flex flex-dec">
+                <image class="icon_done" src="/images/center/icon_done.png" mode="aspectFill"/>
+                <view class="c-FFFFFF f22">11.10</view>
+            </view>
+            <view class="line-yes"></view>
+            <view class="item bg-F7F7FA flex flex-dec">
+                <view class="c-222222 f24 fw6 integral">+20</view>
+                <view class="c-666666 f22">11.11</view>
+            </view>
+            <view class="line-no"></view>
+            <view class="item bg-F7F7FA flex flex-dec">
+                <view class="c-222222 f24 fw6 integral">+20</view>
+                <view class="c-666666 f22">11.12</view>
+            </view>
+            <view class="line-no"></view>
+            <view class="item bg-F7F7FA flex flex-dec">
+                <view class="c-222222 f24 fw6 integral">+20</view>
+                <view class="c-666666 f22">11.13</view>
+            </view>
+            <view class="line-no"></view>
+            <view class="item bg-F7F7FA flex flex-dec">
+                <view class="c-222222 f24 fw6 integral">+20</view>
+                <view class="c-666666 f22">11.13</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="c-nav ml32 mr32 static">
+        <view class="flex p30 mb16 bg-white br-16">
+            <image class="i-icon" src="/images/center/icon_push.png" mode="aspectFill"/>
+            <view class="flex-1 t-l">
+                <view class="f30">
+                    <text class="c-222222">发布路线</text>
+                    <text class="c-FF7626 ml10">+100</text>
+                </view>
+                <view class="f24 c-666666">路线精彩，收益更多</view>
+            </view>
+            <button class="weui-btn i-btn" type="primary">去完成</button>
+        </view>
+
+        <view class="flex p30 mb16 bg-white br-16">
+            <image class="i-icon" src="/images/center/icon_video.png" mode="aspectFill"/>
+            <view class="flex-1 t-l">
+                <view class="f30">
+                    <text class="c-222222">上传视频</text>
+                    <text class="c-FF7626 ml10">+100</text>
+                </view>
+                <view class="f24 c-666666">成功发布视频</view>
+            </view>
+            <button class="weui-btn i-btn" type="primary">去完成</button>
+        </view>
+
+        <view class="flex p30 mb16 bg-white br-16">
+            <image class="i-icon" src="/images/center/icon_edict.png" mode="aspectFill"/>
+            <view class="flex-1 t-l">
+                <view class="f30">
+                    <text class="c-222222">完善资料</text>
+                    <text class="c-FF7626 ml10">+100</text>
+                </view>
+                <view class="f24 c-666666">补充个人信息</view>
+            </view>
+            <button class="weui-btn i-btn" type="primary">去完成</button>
+        </view>
+
+        <view class="flex p30 mb16 bg-white br-16">
+            <image class="i-icon" src="/images/center/icon_push.png" mode="aspectFill"/>
+            <view class="flex-1 t-l">
+                <view class="f30">
+                    <text class="c-222222">注册</text>
+                    <text class="c-FF7626 ml10">+100</text>
+                </view>
+                <view class="f24 c-666666">完成注册</view>
+            </view>
+            <button class="weui-btn i-btn" type="default">去完成</button>
+        </view>
+    </view>
+</view>

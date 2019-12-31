@@ -39,7 +39,7 @@
         <!-- 顶部操作 -->
         <view class="title mt32">
             <scroll-view class="scroll-view_H" scroll-x="true">
-            <view wx:for="{{titleBar}}" class="scroll-view-item_H {{item.name==name?'demo-text-1':''}}" data-name="{{item.name}}" data-type="{{item.type}}" wx:key="{{index}}" bindtap="tapTitleBar">
+            <view wx:for="{{titleBar}}" class="scroll-view-item_H {{item.name==name?'demo-text-1':''}}" data-name="{{item.name}}" data-labelid="{{item.labelId}}" wx:key="{{index}}" bindtap="tapTitleBar">
                 <text>{{item.name}}</text>
             </view>
             </scroll-view>
@@ -55,14 +55,22 @@
         <!-- 顶部操作 -->
         <view class="title mt32">
             <scroll-view class="scroll-view_H" scroll-x="true">
-            <view wx:for="{{titleBar}}" class="scroll-view-item_H {{item.name==name?'demo-text-1':''}}" data-name="{{item.name}}" data-type="{{item.type}}" wx:key="{{index}}" bindtap="tapTitleBar">
+            <view wx:for="{{titleBar}}" class="scroll-view-item_H {{item.name==name?'demo-text-1':''}}" data-name="{{item.name}}" data-labelid="{{item.labelId}}" wx:key="{{index}}" bindtap="tapTitleBar">
                 <text>{{item.name}}</text>
             </view>
             </scroll-view>
         </view>
         <view class="ml16 mr16 mt32 pb32">
-            <gh-hmList></gh-hmList>
-            <view class="more f32 fw5 c-00A653">更多商家</view>
+            <gh-hmList merchantList="{{merchantList}}"></gh-hmList>
+            <!-- <view class="more f32 fw5 c-00A653" wx:if="{{!noData}}">更多商家</view> -->
+            <gh-empty prop-type="no-data" prop-text="暂无更多商家" prop-mt="0" wx:if="{{noData}}"></gh-empty>
+            <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}">
+                <view wx:if="{{loadmore}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+                </view>
+                <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+            </view>
         </view>
     </view>
    

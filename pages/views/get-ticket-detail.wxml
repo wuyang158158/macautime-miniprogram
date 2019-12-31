@@ -6,19 +6,28 @@
         </view>
         <view class="pic-default-new z-index5 flex">
             <view class="f24 discounts-items c-FFFFFF discounts-flex">
-                <view class="">
-                    <text class="f44">80</text>
+                <view class="" wx:if="{{item.typeId == 1}}">
+                    <text class="f44">{{item.discount * 100}}</text>
                     <text class="f24">%</text>
                 </view>
-                <view >折扣券</view>
+                <view class="" wx:if="{{item.typeId == 2}}">
+                    <text class="f24">MOP$</text>
+                    <text class="f24">{{item.money}}</text>
+                </view>
+                <view class="" wx:if="{{item.typeId == 3}}">
+                    <text class="f24">MOP$</text>
+                    <text class="f24">{{item.money}}</text>
+                </view>
+                <view >{{item.typeName}}券</view>
             </view>
             <view class="flex-1 discounts-items flex ml32 mr32">
                 <view class="flex-1">
                     <view >
-                        <text class="f28 c-222222 fw6">全店可用</text>
+                        <text class="f28 c-222222 fw6">{{item.typeId == 1 ? item.conditionName:item.discountsContent}}</text>
                         <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">限时</text>
+                        <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">{{item.payType == 1 ? '线上':'线下'}}</text>
                     </view>
-                    <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                    <view class="f24 c-999999 mt8">有效期至 {{endTime || ''}}</view>
                 </view>
             </view>
         </view>

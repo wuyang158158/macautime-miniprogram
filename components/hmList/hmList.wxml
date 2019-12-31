@@ -1,16 +1,16 @@
 <!--components/hmList/hmList.wxml-->
 <view class="flex flex-c">
-    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
+    <view wx:for="{{merchantList}}" class="hm-list bg-white mb16 {{bd?'bd1':''}}" data-id="{{item.msId}}" data-title="{{item.name}}" bindtap="tapToDetail">
         <view class="relative hm-top">
-            <view class="merchant-discount">
+            <!-- <view class="merchant-discount">
                 <image class="merchant-discount-tag" src="/images/index/bg_tag@2x.png" mode="aspectFill"/>
                 <view class="merchant-discount-text f22 c-FFFFFF fw5">8折</view>
-            </view>
+            </view> -->
             <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
-            <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+            <image class="pic-default-new z-index5" src="{{item.mImage}}" mode="aspectFill"/>
         </view>
         <view class="hm-bottom">
-            <view class="f30 c-222222 fw6">旗舰日料综合店</view>
+            <view class="f30 c-222222 fw6">{{item.name}}</view>
             <view class="flex l-h32">
                 <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
                 <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
@@ -20,118 +20,9 @@
                 <view class="f24 c-222222 ml5">5.0</view>
             </view>
             <view class="flex f24 c-999999">
-                <view class="flex-1">氹仔</view>
-                <view>12.2km</view>
-            </view>
-        </view>
-    </view>
-
-    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
-        <view class="relative hm-top">
-            <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
-            <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
-        </view>
-        <view class="hm-bottom">
-            <view class="f30 c-222222 fw6">旗舰日料综合店</view>
-            <view class="flex l-h32">
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <view class="f24 c-222222 ml5">5.0</view>
-            </view>
-            <view class="flex f24 c-999999">
-                <view class="flex-1">氹仔</view>
-                <view>12.2km</view>
-            </view>
-        </view>
-    </view>
-
-    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
-        <view class="relative hm-top">
-            <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
-            <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
-        </view>
-        <view class="hm-bottom">
-            <view class="f30 c-222222 fw6">旗舰日料综合店</view>
-            <view class="flex l-h32">
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <view class="f24 c-222222 ml5">5.0</view>
-            </view>
-            <view class="flex f24 c-999999">
-                <view class="flex-1">氹仔</view>
-                <view>12.2km</view>
-            </view>
-        </view>
-    </view>
-
-    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
-        <view class="relative hm-top">
-            <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
-            <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
-        </view>
-        <view class="hm-bottom">
-            <view class="f30 c-222222 fw6">旗舰日料综合店</view>
-            <view class="flex l-h32">
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <view class="f24 c-222222 ml5">5.0</view>
-            </view>
-            <view class="flex f24 c-999999">
-                <view class="flex-1">氹仔</view>
-                <view>12.2km</view>
-            </view>
-        </view>
-    </view>
-
-    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
-        <view class="relative hm-top">
-            <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
-            <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
-        </view>
-        <view class="hm-bottom">
-            <view class="f30 c-222222 fw6">旗舰日料综合店</view>
-            <view class="flex l-h32">
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <view class="f24 c-222222 ml5">5.0</view>
-            </view>
-            <view class="flex f24 c-999999">
-                <view class="flex-1">氹仔</view>
-                <view>12.2km</view>
-            </view>
-        </view>
-    </view>
-
-    <view class="hm-list bg-white mb16" bindtap="tapToDetail">
-        <view class="relative hm-top">
-            <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
-            <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
-        </view>
-        <view class="hm-bottom">
-            <view class="f30 c-222222 fw6">旗舰日料综合店</view>
-            <view class="flex l-h32">
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
-                <view class="f24 c-222222 ml5">5.0</view>
-            </view>
-            <view class="flex f24 c-999999">
-                <view class="flex-1">氹仔</view>
-                <view>12.2km</view>
+                <view class="flex-1">{{item.address||item.city||''}}</view>
+                <!-- <view>12.2km</view> -->
+                <view class="tag mb5 c-00A653" wx:if="{{item.labelRemark}}">{{item.labelRemark}}</view>
             </view>
         </view>
     </view>

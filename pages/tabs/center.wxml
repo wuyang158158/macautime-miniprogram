@@ -12,9 +12,9 @@
                 </view>
                 
                 <button class="weui-btn username flex-1 f36 l-h40 c-222222 fw6 ell" type="contact" open-type="getUserInfo" bindtap="{{userInfo?'':'tapToLogin'}}">
-                    <view>{{userInfo?userInfo.nickName:'登录/注册'}}</view>
+                    <view>{{userInfo?userInfo.nick:'登录/注册'}}</view>
                     <view class="f24 fw4" wx:if="{{userInfo}}">ID：GH201910300012</view>
-                    <view class="flex f24 mt5">
+                    <view class="flex f24 mt16">
                         <view class="c-tag kol-tag">
                             <image class="c-tag-icon" src="/images/center/icon_kol.png" mode="aspectFill"/>
                             <text class="c-FFFFFF">认证KOL</text>
@@ -32,23 +32,23 @@
             <!-- 菜单栏 -->
             <view class="flex t-c" wx:if="{{userInfo}}">
                 <view class="c-222222 flex-1">
-                    <view class="f32">12</view>
+                    <view class="f32">{{userInfo.collection || 0}}</view>
                     <view class="f24">收藏</view>
                 </view>
                 <view class="c-222222 flex-1">
-                    <view class="f32">8</view>
+                    <view class="f32">{{userInfo.comments || 0}}</view>
                     <view class="f24">评论</view>
                 </view>
-                <view class="c-222222 flex-1">
-                    <view class="f32">150</view>
+                <view class="c-222222 flex-1" bindtap="tapToMyFocusKol">
+                    <view class="f32">{{userInfo.focus || 0}}</view>
                     <view class="f24">关注</view>
                 </view>
-                <view class="c-222222 flex-1">
-                    <view class="f32">9592</view>
+                <view class="c-222222 flex-1" bindtap="getFansList">
+                    <view class="f32">{{userInfo.fans || 0}}</view>
                     <view class="f24">粉丝</view>
                 </view>
                 <view class="c-222222 flex-1" bindtap="tapToTimeCoinStore">
-                    <view class="f32">260</view>
+                    <view class="f32">{{userInfo.timeCoin || 0}}</view>
                     <view class="f24">时光币</view>
                 </view>
             </view>
@@ -138,7 +138,7 @@
     </view>
     <view class="userinfo mt16 bg-white flex {{userInfo.vip?'userinfo-vip':''}}" bindtap="{{userInfo?'tapToCenterDetail':''}}">
         <image class="avatar m32 mr16" src="{{userInfo?userInfo.url:'/images/center/mine_avatar.png'}}" mode="aspectFill"/>
-        <button class="weui-btn username flex-1 f44 c-222222 fw6 ell" type="contact" open-type="getUserInfo" bindtap="{{userInfo?'':'tapToLogin'}}">{{userInfo?userInfo.nickName:'登录/注册'}}</button>
+        <button class="weui-btn username flex-1 f44 c-222222 fw6 ell" type="contact" open-type="getUserInfo" bindtap="{{userInfo?'':'tapToLogin'}}">{{userInfo?userInfo.nick:'登录/注册'}}</button>
         <image class="more-icon mr32" src="/images/center/icon_more-2.png" mode="aspectFill" wx:if="{{userInfo}}"/>
     </view>
     <view class="join-vip flex mt16" wx:if="{{!userInfo.vip}}">

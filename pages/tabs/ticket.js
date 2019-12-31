@@ -6,29 +6,45 @@ import util from "../../utils/util.js"
 const app = getApp();
 const titleBar = [ //顶部标题bar
   {
-    name: '待参加',
-    type: 'A'
+    name: '全部',
+    type: ''
   },
   {
-    name: '已验票',
-    type: 'B'
+    name: '待支付',
+    type: '1'
+  },
+  {
+    name: '已支付',
+    type: '2'
+  },
+  {
+    name: '支付失败',
+    type: '3'
+  },
+  {
+    name: '失效',
+    type: '4'
+  },
+  {
+    name: '取消支付',
+    type: '5'
+  },
+  {
+    name: '退订',
+    type: '6'
   },
   {
     name: '已完成',
-    type: 'C'
+    type: '7'
   },
   {
-    name: '退票/取消',
-    type: 'D'
+    name: '已退订',
+    type: '8'
   },
   {
-    name: '已过期',
-    type: 'E'
+    name: '退订失败',
+    type: '9'
   },
-  {
-    name: '全部',
-    type: ''
-  }
 ];
 Page({
 
@@ -42,10 +58,15 @@ Page({
     params: { //请求订单列表
       limit: PAGE.limit,
       start: PAGE.start,
-      paramEntity: {
-        status: 'A',  //A:待使用 B:已验票 C:已完成 D:已取消 ,
-        userName: wx.getStorageSync("userInfo").userName
-      }
+      accountId: wx.getStorageSync("userInfo").userId,
+      orderType: 4, // 订单类型 4代表优惠卷
+      // isUse: '0', //优惠卷是否可用 0可用 1不可用
+      // isEffective: '0', //优惠卷是否有效 0无效 1有效
+      // status: ''//订单状态  1、待支付  2、已支付 3、支付失败 4、失效 5、取消支付 6、退订 7、已完成 8、已退订 9、退订失败
+      // paramEntity: {
+      //   status: 'A',  //A:待使用 B:已验票 C:已完成 D:已取消 ,
+      //   userName: wx.getStorageSync("userInfo").userName
+      // }
     },
     total: 0,
     loadmore: false, //加载更多
@@ -69,15 +90,14 @@ Page({
       params: { //请求列表
         limit: PAGE.limit,
         start: PAGE.start,
-        paramEntity: {
-          status: this.data.params.paramEntity.status,  //A:待使用 B:已验票 C:已完成 D:已取消 ,
-          userName: wx.getStorageSync("userInfo").userName
-        }
+        accountId: wx.getStorageSync("userInfo").userId,
+        orderType: 4,
       },
       userInfo: wx.getStorageSync("userInfo"), //用户信息
     })
     NT.showToast('加载中...')
-    this.getOrderListPersonal()
+    this.poSelectDiscountList()
+    // this.poSelectDiscountList()
 
     // wx.navigateTo({
     //   url: '/pages/views/order-detail?orderCode=20190814170055930217' + '&userName=59038' + '&status=A' + '&coverImgUrl=' + "https://byair-1256706050.cos.ap-guangzhou.myqcloud.com/dev/experience/608700601064226816/coverImg/byair_images_1565332047193_native.png"
@@ -129,15 +149,13 @@ Page({
       params: { //请求列表
         limit: PAGE.limit,
         start: PAGE.start,
-        paramEntity: {
-          status: this.data.params.paramEntity.status,  //A:待使用 B:已验票 C:已完成 D:已取消 ,
-          userName: wx.getStorageSync("userInfo").userName
-        }
+        accountId: wx.getStorageSync("userInfo").userId,
+        orderType: 4,
       },
       loadmoreLine: false,
       loadmore: false
     })
-    this.getOrderListPersonal('onPullDownRefresh')
+    this.poSelectDiscountList('onPullDownRefresh')
   },
 
   /**
@@ -151,7 +169,7 @@ Page({
         loadmore: true
       })
       this.data.params.start = this.data.params.start + 1;
-      this.getOrderListPersonal()
+      this.poSelectDiscountList()
     }else {
       //暂无更多数据
       NT.hideToast()
@@ -196,12 +214,15 @@ Page({
         this.data.params = { //请求订单列表
           limit: PAGE.limit,
           start: PAGE.start,
-          paramEntity: {
-            status: type,  //A:待使用 B:已验票 C:已完成 D:已取消 ,
-            userName: wx.getStorageSync("userInfo").userName
-          }
+          accountId: wx.getStorageSync("userInfo").userId,
+          orderType: 4,
+          status: type
+          // paramEntity: {
+          //   status: type,  //A:待使用 B:已验票 C:已完成 D:已取消 ,
+          //   userName: wx.getStorageSync("userInfo").userName
+          // }
         };
-        this.getOrderListPersonal()
+        this.poSelectDiscountList()
   },
   // 点击去订单详情
   tapToOrderDetail(e) {
@@ -255,7 +276,7 @@ Page({
           api.cancelOrder({orderCode:orderCode})
           .then(res=>{
             NT.showToastNone('订单取消成功')
-            // that.getOrderListPersonal()
+            // that.poSelectDiscountList()
             that.refreshData(orderCode)
           })
           .catch(err=>{
@@ -303,7 +324,7 @@ Page({
           api.deleteOrder({orderCode:orderCode})
           .then(res=>{
             NT.showToastNone('订单删除成功')
-            // that.getOrderListPersonal()
+            // that.poSelectDiscountList()
             that.refreshData(orderCode)
           })
           .catch(err=>{
@@ -317,11 +338,15 @@ Page({
     })
   },
   //请求订单列表
-  getOrderListPersonal(source) {
-    api.getOrderListPersonal(this.data.params)
+  poSelectDiscountList(source) {
+    api.poSelectDiscountList(this.data.params)
     .then(res=>{
       // console.log(res)
-      const data = res.rows
+      const data = res.data
+      data.map(item => {
+        // debugger
+        item.endTime = util.formatTimeTwo(item.createTime,'Y/M/D')
+      })
       this.setData({
         ticketData: source === 'onPullDownRefresh' ? data : this.data.ticketData.concat(data),
         total: res.total,
@@ -360,18 +385,28 @@ Page({
   //获取猜你喜欢推荐数据
   getGuessLike() {
     this.data.getGuessLike = true
-    api.getGuessLike({userName:this.data.userInfo.userName})
+    // api.getGuessLike({userName:this.data.userInfo.userName})
+    // .then(res=>{
+    //   const data = res
+    //   data.map(item => {
+    //     // debugger
+    //     // item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D h:m:s')
+    //     item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
+    //   })
+    //   this.setData({
+    //     recommend: data
+    //   })
+    //   console.log(data)
+    // })
+    // .catch(err=>{
+    //   console.log(err)
+    // })
+    api.msSelectedMsListGuessYouLike()
     .then(res=>{
       const data = res
-      data.map(item => {
-        // debugger
-        // item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D h:m:s')
-        item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
-      })
       this.setData({
         recommend: data
       })
-      console.log(data)
     })
     .catch(err=>{
       console.log(err)
@@ -436,10 +471,14 @@ Page({
               .catch((err)=>{
                 if(err.code==='10019'){ //用户未注册
                   wx.navigateTo({
-                    url: '/pages/login/login?openid='+err.data.miniProgram + '&unionid=' + err.data.wxUnionid + '&ticket=true'
+                    url: '/pages/login/login?openId='+err.data.openId + '&sessionKey=' + err.data.sessionKey + '&ticket=true',
+                    success: function(res) {
+                      // 通过eventChannel向被打开页面传送数据
+                      res.eventChannel.emit('acceptDataFromOpenerPage', err.data)
+                    }
                   })
                 }else{
-                  NT.showModal(err.codeMsg||'登录失败！')
+                  NT.showModal(err.message||'登录失败！')
                 }
               })
             },
@@ -451,4 +490,19 @@ Page({
       }
     })
   },
+  // 查询所有优惠卷
+  // poSelectDiscountList() {
+  //   const params = { //请求订单列表
+  //     limit: PAGE.limit,
+  //     start: PAGE.start,
+  //     accountId: this.data.userInfo.userId
+  //   }
+  //   api.poSelectDiscountList(params)
+  //   .then(res=>{
+  //     debugger
+  //   })
+  //   .catch(err=>{
+  //     NT.showModal(err.message||'请求失败！')
+  //   })
+  // }
 })

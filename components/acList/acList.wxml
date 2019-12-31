@@ -1,8 +1,8 @@
 <!--components/acList.wxml-->
-<view wx:for="{{recommend}}" wx:key="{{index}}" class="rec-items mb16 relative {{source === 'hot-activity' ? 'rec-items-1' : ''}}" data-title="{{item.activityTitle}}" data-id="{{item.experienceSerial}}" bindtap="tapToDetail">
+<view wx:for="{{recommend}}" wx:key="{{index}}" class="rec-items mb16 relative {{source === 'hot-activity' ? 'rec-items-1' : ''}}" data-id="{{item.msId}}" data-title="{{item.name}}" bindtap="tapToDetail">
     <image class="pic-default" src="/images/default/bg_img.png" mode="aspectFill"/>
     <view class="con-top">
-        <image class="item-pic" src="{{item.coverUrl}}" lazy-load mode="aspectFill"/>
+        <image class="item-pic" src="{{item.mImage}}" lazy-load mode="aspectFill"/>
         <view class="item pl32 pr32 f24">
             <view class="flex l-h32 pt32">
             <view class="flex-1 f32 c-222222 fw6 ell mr16">{{item.activityTitle}}</view>
@@ -22,7 +22,7 @@
                 <view class="f24 c-999999 ml5">(35)</view>
             </view>
             <view class="flex c-666666 l-h32 pt16">
-                <view class="flex-1">{{item.stime}}</view>
+                <view class="flex-1">{{item.name}}</view>
                 <view class="c-999999">路环岛</view>
             </view>
         </view>

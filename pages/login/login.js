@@ -38,8 +38,8 @@ Page({
     btn_clear_show: "",
     register: true, //用户是否注册手机号码
     registerForm: {
-      wxUnionid: '',
-      openid: ''
+      openId: '',
+      sessionKey: ''
     },
     container: false, //内容
   },
@@ -173,6 +173,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(query) {
+    const that = this
     home = false
     if(query.shareType === 'acDetail'){ //分享详情
       wx.navigateTo({
@@ -180,12 +181,18 @@ Page({
       })
       // home = true
       acDetail = true
-    }else if(query.openid) {
-      const optionsObj = {
-        wxUnionid: query.unionid,
-        openid: query.openid
-      }
-      this.data.registerForm = optionsObj
+    }else if(query.openId) {
+      const eventChannel = this.getOpenerEventChannel()
+      // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+      eventChannel.on('acceptDataFromOpenerPage', function(data) {
+        console.log(data)
+        const optionsObj = {
+          openId: data.openId,
+          sessionKey: data.sessionKey
+        }
+        that.data.registerForm = optionsObj
+      })
+      
       this.setData({
         container: true,
         ticket: query.ticket
@@ -276,9 +283,11 @@ Page({
           source: '1'  //1-微信小程序  2-微信公众号"
         }
         var registerForm = Object.assign({},that.data.registerForm, obj)
-        api.register(registerForm)
+        api.usLogin(registerForm)
         .then((res) => {
-          // debugger
+          that.setData({
+            userInfo: res
+          })
           wx.setStorage({
             key:"userInfo",
             data:res
@@ -292,10 +301,20 @@ Page({
               delta: 1
             })
           },1000)
+          // const loginForm = {
+          //   phone: res.phone
+          // }
+          // api.usLogin(loginForm)
+          // .then((res) => {
+            
+          // })
+          // .catch((err) => {
+            
+          // })
         })
         .catch((err)=>{
           console.log(err)
-          NT.showModal(err.codeMsg||'登录失败！')
+          NT.showModal(err.message||'登录失败！')
         })
       },
       fail : function(err) {

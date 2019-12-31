@@ -1,0 +1,12 @@
+/* pages/integral/time-coin-store-gift.wxss */
+.item{
+    border-radius:16rpx;
+}
+.item-avatar{
+    width:120rpx;
+    height:120rpx;
+    border:1rpx solid rgba(204, 204, 204, 1);
+    border-radius:50%;
+    overflow: hidden;
+    margin-right: 26rpx;
+}

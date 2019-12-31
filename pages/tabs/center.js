@@ -81,7 +81,7 @@ Page({
   onLoad: function (options) {
     let that = this
     // wx.navigateTo({
-    //   url: '/pages/route/pay-order'
+    //   url: '/pages/integral/time-coin-task'
     // })
   },
   /**
@@ -185,10 +185,14 @@ Page({
                 console.log(err)
                 if(err.code==='10019'){ //用户未注册
                   wx.navigateTo({
-                    url: '/pages/login/login?openid='+err.data.miniProgram + '&unionid=' + err.data.wxUnionid
+                    url: '/pages/login/login?openId='+err.data.openId + '&sessionKey=' + err.data.sessionKey,
+                    success: function(res) {
+                      // 通过eventChannel向被打开页面传送数据
+                      res.eventChannel.emit('acceptDataFromOpenerPage', err.data)
+                    }
                   })
                 }else{
-                  NT.showModal(err.codeMsg||'登录失败！')
+                  NT.showModal(err.message||'登录失败！')
                 }
               })
             },
@@ -261,13 +265,25 @@ Page({
   // 跳转到时光币商城页面
   tapToTimeCoinStore() {
     wx.navigateTo({
-      url: '/pages/views/time-coin-store'
+      url: '/pages/integral/time-coin-store'
     })
   },
   // 跳转到个人主页
   tapTopagesPersonalHome() {
     wx.navigateTo({
       url: '/pages/views/personal-home'
+    })
+  },
+  // 跳转到我的关注
+  tapToMyFocusKol() {
+    wx.navigateTo({
+      url: '/pages/my/my-focus-kol'
+    })
+  },
+  // 跳转到我的粉丝
+  getFansList() {
+    wx.navigateTo({
+      url: '/pages/my/my-fans'
     })
   }
 })

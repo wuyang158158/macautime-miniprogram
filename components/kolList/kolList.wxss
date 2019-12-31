@@ -41,8 +41,8 @@
     margin-left: 8rpx;
   }
   .w-86{
-    width: 86rpx;
+    min-width: 86rpx;
     height: 42rpx;
     line-height: 42rpx;
-    padding: 0;
+    padding: 0 10rpx;
   }

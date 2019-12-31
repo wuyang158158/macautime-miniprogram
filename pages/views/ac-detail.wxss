@@ -170,6 +170,7 @@ page{
     z-index: 2;
     left: 0;
     top: 0;
+    background: #ccc;
 }
 .relative{
     width: 100%;
@@ -241,12 +242,19 @@ rich-text .rich-img {
 .flex-wrap{
     flex-wrap: wrap;
 }
-.combo .flex{
-    height: 100rpx;
+.combo .btn-flex{
+    height: 160rpx;
     border:1rpx solid rgba(230, 230, 230, 1);
     border-radius:12rpx;
     display: flex;
     padding: 0 32rpx;
+}
+.set-meal-icon{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius:8rpx;
+    overflow: hidden;
+    margin-right: 20rpx;
 }
 .weui-uploader__file{
     margin-right: 14rpx;
@@ -288,6 +296,18 @@ rich-text .rich-img {
     width: 100%;
     height: 386rpx;
     border-radius:16rpx;
+    overflow: hidden;
+    background: #ccc;
+}
+.icon_video86{
+    position: absolute;
+    width: 86rpx;
+    height: 86rpx;
+    left: 50%;
+    top: 50%;
+    margin-left: -43rpx;
+    margin-top: -43rpx;
+    z-index: 2;
 }
 
 /* 优惠卷 */
@@ -321,4 +341,28 @@ rich-text .rich-img {
     border-radius:4rpx;
     margin-left: 16rpx;
     vertical-align: 3rpx;
+}
+.mer-type-icon{
+    width: 148rpx;
+    height: 148rpx;
+    border-radius:12rpx;
+    overflow: hidden;
+}
+.scroll-view_H{
+    width: 100%;
+    white-space: nowrap;
+}
+.scroll-view-item{
+    height: 100%;
+}
+.scroll-view-item_H{
+    display: inline-block;
+    width: auto;
+    height: 200rpx;
+    padding-right: 20rpx;
+    text-align: center;
+    position: relative;
+}
+.weui-loadmore_line{
+    padding-bottom: 0;
 }

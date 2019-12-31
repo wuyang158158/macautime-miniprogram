@@ -13,6 +13,26 @@ const mapObj = {
   ak: 'yGcrSwdG3beEibxivQuiShqGQxp4BSqc' //地图key
 }
 
+const header = {
+  'content-type': 'text/DM-', // 默认值
+  // Authorization: 'Basic Yml4aW46Qml4aW5AMjAxOA==',
+  auth: wx.getStorageSync('userInfo').auth || '' ,
+  // token: token,
+  // loginType: 1
+}
+const upImgHeader = {
+  'content-type': 'multipart/form-data',
+  auth: wx.getStorageSync('userInfo').auth || '' ,
+}
+
+const global = {
+  appType: 1,  // appType  1-用户 2-商户
+  appVersion: '',
+  deviceMode: 3, //deviceMode   1-IOS 2-Android 3-小程序
+  sellerId: '', 
+  userId: wx.getStorageSync('userInfo').userId || ''
+}
+
 /**
  * 公共request方法(登录后接口调用)
  * @param url 请求接口地址
@@ -23,53 +43,56 @@ const mapObj = {
 const execute = (url, method, params, resolve, reject) => {
   const token = wx.getStorageSync('userInfo').token || ''
   const obj = { userName: wx.getStorageSync('userInfo').userName || '' }
-  const data = Object.assign(params || {}, obj)
+  // const data = Object.assign(params || {}, obj)
+
+  // const body = {
+  //   "password":"123456","account":"18168723160","verCode":"1"
+  // }
+  const body = params || {}
   wx.request({
     url: baseUrl + url,
     method: method,
-    data: data,
-    header: {
-      'content-type': 'application/json', // 默认值
-      Authorization: 'Basic Yml4aW46Qml4aW5AMjAxOA==',
-      token: token,
-      loginType: 1
-    },
+    data: {body,global},
+    // data: data,
+    header: header,
     dataType: 'json',
     success: res => {
       NT.hideToast()
-      // console.log(res)
-      const result = res.data.data
-      if(url === '/user/user/wxMiniProgramLogin'&&result.miniProgram === 'oBV8p4yY71L8CE18QD7KDq_ydfWM'){
-        // 打开调试
-        wx.setEnableDebug({
-          enableDebug: true
-        })
-      }
-      if(url==='/user/user/wxMiniProgramLogin'&&result&&result.isRegistered!==undefined&&!result.isRegistered){ //未注册
+      const result = res.data.body
+      // if(url === '/usRegist/1.0/'&&result.openId === 'oBV8p4yY71L8CE18QD7KDq_ydfWM'){
+      //   // 打开调试
+      //   wx.setEnableDebug({
+      //     enableDebug: true
+      //   })
+      // }
+      if(url==='/usRegist/1.0/'&&!result.register){ //未注册
         wx.removeStorageSync('userInfo')
         reject({
           code: '10019',
-          data: result
+          data: {
+            openId: result.openId,
+            sessionKey: result.sessionKey
+          }
         })
         return
       }
-      if (res.statusCode === 401) {
-        //需要校验用户信息
-        reject({
-          code: '401',
-          codeMsg: '暂未登录'
-        })
-        NT.showToastNone('需要登录！')
-        // wx.switchTab({
-        //   url: '/pages/tabs/center'
-        // })
-        if(getApp()){
-          NT.showToast('登录中...')
-          getApp().login()
-        }
-        return
-      }
-      if (res.data.code === '00000') {
+      // if (res.statusCode === 401) {
+      //   //需要校验用户信息
+      //   reject({
+      //     code: '401',
+      //     codeMsg: '暂未登录'
+      //   })
+      //   NT.showToastNone('需要登录！')
+      //   // wx.switchTab({
+      //   //   url: '/pages/tabs/center'
+      //   // })
+      //   if(getApp()){
+      //     NT.showToast('登录中...')
+      //     getApp().login()
+      //   }
+      //   return
+      // }
+      if (res.data.code === '000000') {
         resolve(result)
       } else {
         reject(res.data)
@@ -150,12 +173,7 @@ export default {
         uploads[i] = new Promise(resolve1 => {
           wx.uploadFile({
             url: url,
-            header: {
-              'content-type': 'application/json', // 默认值
-              Authorization: 'Basic Yml4aW46Qml4aW5AMjAxOA==',
-              token: token,
-              loginType: 1
-            },
+            header: upImgHeader,
             filePath: filePath[i],
             formData: formData,
             name: 'file',
@@ -181,12 +199,7 @@ export default {
     return new Promise(resolve => {
       wx.uploadFile({
         url: config.env[config.curEnv].baseUrl + `/experience/expCMNT/expCommentImg`,
-        header: {
-          'content-type': 'application/json', // 默认值
-          Authorization: 'Basic Yml4aW46Qml4aW5AMjAxOA==',
-          token: token,
-          loginType: 1
-        },
+        header: header,
         filePath: filePath,
         formData: formData,
         name: 'file',
@@ -202,33 +215,70 @@ export default {
     })
     */
   },
+  // 上传图片
+  userUploadImage(filePath) {
+    debugger
+    const url = config.env[config.curEnv].baseUrl + `/imageUp/1.0/`
+    const formData = {}
+    return new Promise(resolve => {
+      wx.uploadFile({
+        url: url,
+        header: upImgHeader,
+        filePath: filePath,
+        formData: formData,
+        name: 'file',
+        success: res => {
+          console.log('上传成功')
+          console.log('res')
+          const data = JSON.parse(res.data)
+          resolve(data)
+        },
+        fail: err => {
+          console.log(err)
+          NT.showModal(err)
+        }
+      })
+    })
+  },
   // 登录
   login() {
     return new Promise((resolve, reject) => {
-      // execute(`/user/user/wxMiniProgramLogin`, 'POST', query, resolve,reject)
       wx.login({
         success(res) {
           if (res.code) {
             const query = { code: res.code }
             //发起网络请求
-            execute(
-              `/user/user/wxMiniProgramLogin`,
-              'POST',
-              query,
-              resolve,
-              reject
-            )
+            // execute(
+            //   `/user/user/wxMiniProgramLogin`,
+            //   'POST',
+            //   query,
+            //   resolve,
+            //   reject
+            // )
+            execute(`/usRegist/1.0/`, 'POST', query, resolve, reject)
           } else {
             reject('登录失败！')
           }
         }
       })
+      // return new Promise((resolve, reject) => {
+      //   execute(`/usRegist/1.0/`, 'POST', query, resolve, reject)
+      // })
+    })
+  },
+  // 登录
+  usLogin(query) {
+    return new Promise((resolve, reject) => {
+      execute(`/usLoginForPhone/1.0/`, 'POST', query, resolve, reject)
     })
   },
   // 注册
   register(query) {
+    // return new Promise((resolve, reject) => {
+    //   execute(`/user/user/wxRegistered`, 'POST', query, resolve, reject)
+    // })
     return new Promise((resolve, reject) => {
-      execute(`/user/user/wxRegistered`, 'POST', query, resolve, reject)
+      execute(`/usRegist/1.0/`, 'POST', query, resolve, reject)
     })
   },
   // 获取所有体验产品
@@ -620,6 +670,273 @@ export default {
     return new Promise((resolve, reject) => {
       execute(
         `/user/kol/addKolAduit`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+
+
+
+  // 商家搜索列表-按关键字分页搜索
+  msSelectedMsByKeyWord(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/msSelectedMsByKeyWord/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 精选商家-按标签类别获取列表
+  msSelectedMsByLabel(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/msSelectedMsByLabel/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 商家详情
+  msSelectedMsDetailsByMsId(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/msSelectedMsDetailsByMsId/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 查询当前优惠券信息
+  mkSelectDiscountsCardById(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/mkSelectDiscountsCardById/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 获取kol用户信息
+  getKolBaseInfo(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/getKolBaseInfo/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 添加kol用户信息
+  usKolOtherInfo(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/usKolOtherInfo/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 新增用户标签关联信息
+  usInsertLabel(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/usInsertLabel/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 新增用户身份证信息
+  usInsertIdentity(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/usInsertIdentity/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 新增用户银行卡信息
+  usInsertCard(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/usInsertCard/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 精选商家-首页
+  msSelectedMsListHome(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/msSelectedMsListHome/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 精选商家-详情-猜你喜欢
+  msSelectedMsListGuessYouLike(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/msSelectedMsListGuessYouLike/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 精选商家-详情-相关视频
+  msSelectedMsVideoByMsId(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/msSelectedMsVideoByMsId/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 获取商家标签类别列表
+  msSelectMsLabelList(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/msSelectMsLabelList/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 获取系统标签
+  sysLabelInfo(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/sysLabelInfo/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 新增用户标签
+  usInsertLabel(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/usInsertLabel/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 获取认证KOL信息列表
+  usIsCertificationKol(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/usIsCertificationKol/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 关注用户
+  usInsertFocus(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/usInsertFocus/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 获取用户关注列表
+  getFocusList(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/getFocusList/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 获取用户的粉丝列表
+  getFansList(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/getFansList/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 领取优惠卷
+  poInsertDiscountOrder(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/poInsertDiscountOrder/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 查询所有优惠卷
+  poSelectDiscountList(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/poSelectDiscountList/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 微信支付
+  wxPay(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/wxPay/1.0/`,
         'POST',
         query,
         resolve,

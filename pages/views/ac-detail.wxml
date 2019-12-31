@@ -18,15 +18,15 @@
     -->
     <view class="relative">
         <swiper class="bannar" bindchange="swiperHandle" current="{{current}}">
-            <swiper-item wx:if="{{acData.videoUrl}}">
+            <swiper-item wx:if="{{acData.msMyVideoVo.videoUrl}}">
                 <video 
                     class="bannar" 
                     id="video" 
-                    src="{{acData.videoUrl}}" 
+                    src="{{acData.msMyVideoVo.videoUrl}}" 
                     controls 
                     autoplay
                     enable-play-gesture 
-                    poster="{{acData.videoCoverUrl}}"
+                    poster="{{acData.msMyVideoVo.imageUrl}}"
                     object-fit="{{direction!=='horizontal'?'cover':'contain'}}" 
                     play-btn-position="bottom"
                     show-fullscreen-btn
@@ -35,20 +35,20 @@
                     bindfullscreenchange="bindfullscreenchange">
                 </video>
             </swiper-item>
-            <block wx:for="{{acData.bannarUrls}}" wx:key="{{index}}">
-            <swiper-item data-item="{{item}}" bindtap="tapPreviewImage">
-                <image src="{{item}}" class="bannar-img" mode="aspectFill"/>
+            <block wx:for="{{acData.msPhotoVoList}}" wx:key="{{index}}">
+            <swiper-item data-item="{{item.imageUrl}}" bindtap="tapPreviewImage">
+                <image src="{{item.imageUrl}}" class="bannar-img" mode="aspectFill"/>
             </swiper-item>
             </block>
         </swiper>
         <view class="media flex c-222222">
-            <view class="f20 item mr22 {{!current?'item-ac':''}}" data-current="0" bindtap="tapMedia" wx:if="{{acData.videoUrl}}">
+            <view class="f20 item mr22 {{!current?'item-ac':''}}" data-current="0" bindtap="tapMedia" wx:if="{{acData.msMyVideoVo.videoUrl}}">
                 <image class="video-img" src="/images/detail/icon_video_w.png" mode="aspectFill" wx:if="{{!current}}"/>
                 <image class="video-img" src="/images/detail/icon_video_k.png" mode="aspectFill" wx:else/>
                 <text>视频</text>
             </view>
-            <view class="f20 item {{current?'item-ac':''}}" data-current="1" bindtap="tapMedia" wx:if="{{acData.videoUrl}}">图片</view>
-            <view class="swiper-index f20 c-FFFFFF mr32" wx:if="{{current||!acData.videoUrl}}">{{ acData.videoUrl ?current || 1 : current + 1}}/{{acData.bannarUrls.length || 0}}</view>
+            <view class="f20 item {{current?'item-ac':''}}" data-current="1" bindtap="tapMedia" wx:if="{{acData.msMyVideoVo.videoUrl}}">图片</view>
+            <view class="swiper-index f20 c-FFFFFF mr32" wx:if="{{current||!acData.msMyVideoVo.videoUrl}}">{{ acData.msMyVideoVo.videoUrl ?current || 1 : current + 1}}/{{acData.msPhotoVoList.length || 0}}</view>
         </view>
     </view>
     <!-- 内容展示 -->
@@ -56,7 +56,7 @@
         <view class="pl32 pr32">
         <!-- 基本标题展示信息 -->
         <view class="title pb32 bd1">
-            <view class="name f44 c-222222 fw6 l-h56">{{acData.activityTitle}}</view>
+            <view class="name f44 c-222222 fw6 l-h56">{{acData.msBaseInfo.name}}</view>
             <view class="flex pb16">
                 <view class="flex-1 flex l-h32">
                     <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
@@ -66,11 +66,12 @@
                     <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
                     <view class="f24 c-222222 ml5">5.0</view>
                 </view>
-                <view class="c-222222 l-h32 f24">{{acData.merchantName || ''}}</view>
+                <view class="c-222222 l-h32 f24">{{acData.msBaseInfo.address || ''}}</view>
             </view>
             <view class="flex f24">
-                <view class="flex-1 flex flex-wrap">
-                    <view wx:for="{{acData.activityTag}}" wx:key="{{index}}" class="tag tag-ac c-00A653 mr10">{{item}}</view>
+                <view class="flex-1 flex flex-wrap" wx:if="{{acData.msBaseInfo.labelRemark}}">
+                    <!-- <view wx:for="{{acData.msBaseInfo.labelRemark}}" wx:key="{{index}}" class="tag tag-ac c-00A653 mr10">{{item}}</view> -->
+                    <view class="tag tag-ac c-00A653 mr10">{{acData.msBaseInfo.labelRemark}}</view>
                 </view>
                 <!-- <view class="f26 c-222222">{{acData.merchantName || ''}}</view> -->
                 <view class="flex flex-end">
@@ -93,103 +94,161 @@
             </view> -->
         </view>
         <!-- 参与者展示 -->
-        <view class="peer flex h-156 bd1">
+        <!-- <view class="peer flex h-156 bd1">
             <view class="flex-1 f28 c-999999">20k 人参加过</view>
             <image class="user-list user-list-ac" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=48" mode="aspectFill"/>
             <image class="user-list user-list-ac" src="https://images.unsplash.com/photo-1551214012-84f95e060dee?w=48" mode="aspectFill"/>
             <image class="user-list user-list-ac" src="https://images.unsplash.com/photo-1551446591-142875a901a1?w=48" mode="aspectFill"/>
             <image class="user-list" src="/images/detail/detail_more.png" mode="aspectFill"/>
-        </view>
+        </view> -->
         <!-- 商家专访 -->
-        <view class="merchant-ei bd1 pb45">
+        <view class="merchant-ei bd1 pb45" wx:if="{{acData.msInterviewVideoVoList.length}}" bindtap="tapToShopVideoAll">
             <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32 flex">
                 <text>商家专访</text>
                 <image class="merchant-ei-icon ml16" src="/images/detail/logo@2x.png" mode="aspectFill"/>
             </view>
-            <video class="myVideo" id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" controls></video>
-            <view class="f30 c-222222 fw6 pt32">日料的世界，颜值即正义</view>
-            <view class="f26 c-666666 pt16">日本料理不仅重视味觉，而且很重视视觉享受。色自然、味鲜美、形多样、器精良。材料和调理法重视季节感。</view>
+            <view class="relative myVideo">
+                <image class="pic-default-new z-index5" src="{{acData.msInterviewVideoVoList[0].imageUrl}}" mode="aspectFill" />
+                <image class="icon_video86" src="/images/detail/icon_video86.png" mode="aspectFill" />
+            </view>
+            <view class="f30 c-222222 fw6 pt32">{{acData.msInterviewVideoVoList[0].title}}</view>
+            <view class="f26 c-666666 pt16">{{acData.msInterviewVideoVoList[0].text}}</view>
         </view>
         <!-- 商家优惠 -->
-        <view class="merchant-discounts bd1 pb45">
+        <view class="merchant-discounts bd1 pb45" wx:if="{{acData.discountsCardList.length}}">
             <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32 flex">商家优惠</view>
             <view class="">
-                <view class="discounts flex">
+                <view wx:for="{{acData.discountsCardList}}" wx:key="{{item.id}}" class="discounts flex {{index===0?'':'mt16'}}" data-id="{{item.id}}" bindtap="tapTopagesGetTicketDetail">
                     <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
-                        <view class="">
-                            <text class="f44">80</text>
+                        <view class="" wx:if="{{item.typeId == 1}}">
+                            <text class="f44">{{item.discount * 100}}</text>
                             <text class="f24">%</text>
                         </view>
-                        <view >折扣券</view>
+                        <view class="" wx:if="{{item.typeId == 2}}">
+                            <text class="f24">MOP$</text>
+                            <text class="f24">{{item.money}}</text>
+                        </view>
+                        <view class="" wx:if="{{item.typeId == 3}}">
+                            <text class="f24">MOP$</text>
+                            <text class="f24">{{item.money}}</text>
+                        </view>
+                        <view >{{item.typeName}}券</view>
                     </view>
                     <view class="flex-1 discounts-items flex ml32 mr32">
                         <view class="flex-1">
                             <view >
-                                <text class="f28 c-222222 fw6">全店可用</text>
+                                <text class="f28 c-222222 fw6">{{item.conditionName}}</text>
                                 <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">限时</text>
+                                <text class="f20 c-FFFFFF bg-FF7626 discounts-tag">{{item.payType == 1 ? '线上':'线下'}}</text>
                             </view>
-                            <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
+                            <view class="f24 c-999999 mt8">有效期至 {{endTime || ''}}</view>
                         </view>
                         <view >
-                            <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
-                        </view>
-                    </view>
-                </view>
-                <view class="discounts flex mt16">
-                    <view class="discounts-left f24 discounts-items c-00A653 discounts-flex">
-                        <view class="">
-                            <text class="f24">MOP$</text>
-                            <text class="f44">50</text>
-                        </view>
-                        <view >满减券</view>
-                    </view>
-                    <view class="flex-1 discounts-items flex ml32 mr32">
-                        <view class="flex-1">
-                            <view class="">
-                                <text class="f28 c-222222 fw6">指定商品满100减50 </text>
-                            </view>
-                            <view class="f24 c-999999 mt8">有效期至 2019-12-30</view>
-                        </view>
-                        <view >
-                            <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" catchtap="tapGetDiscounts">领取</button>
+                            <button class="weui-btn weui-btn-get c-00A653 ml16 fw5" type="primary" data-amount="{{item.money}}" data-discountscardid="{{item.id}}" catchtap="tapGetDiscounts">领取</button>
                         </view>
                     </view>
                 </view>
             </view>
         </view>
-        <!-- 商品类型 -->
-        <view class="product-types bd1 pb45">
-            <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32">商品类型</view>
-            <view class="flex">
+        </view>
 
-            </view>
+        <view class="pl32">
+        <!-- 商品类型 -->
+        <view class="product-types">
+            <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32">商品类型</view>
+            <scroll-view class="scroll-view_H" scroll-x="true">
+                <view wx:for="{{acData.msGoodsVoList}}" class="scroll-view-item_H" wx:key="{{index}}" bindtap="tapTitleBar">
+                    <view class="relative mer-type-icon">
+                        <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                        <image class="pic-default-new z-index5" src="{{item.imageUrl}}" mode="aspectFill"/>
+                    </view>
+                    <view class="f26 c-222222 mt16">{{item.title}}</view>
+                </view>
+            </scroll-view>
         </view>
+        <view class="bd1 pb45 mr32"></view>
+        </view>
+
+        <view class="pl32 pr32">
         <!-- 套餐类型 -->
-        <view class="combo bd1 pb45" wx:if="{{expAllMeal.length}}">
+        <view class="combo bd1 pb45" wx:if="{{acData.msMenuVoList.length}}">
             <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32">套餐类型</view>
-            <button class="flex mb16 bg-white" wx:for="{{expAllMeal}}" wx:key="{{index}}" data-mealSerial="{{item.mealSerial}}" type="none" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo? 'tapShowMealDetail':'tapToLogin'}}">
-                <view class="flex-1 c-222222 f28 ell">{{item.mealName}}</view>
+            <button class="flex mb16 bg-white btn-flex" wx:for="{{acData.msMenuVoList}}" wx:key="{{index}}" data-mealSerial="{{item.mealSerial}}" type="none" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo? 'tapShowMealDetail':'tapToLogin'}}">
+                <view class="flex-1 c-222222 f28 ell flex">
+                    <view class="relative set-meal-icon">
+                        <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+                        <image class="pic-default-new z-index5" src="{{item.imageUrl}}" mode="aspectFill"/>
+                    </view>
+                    <view class="flex-1 c-222222">
+                        <view class="f30 fw5">{{item.useConditions}}</view>
+                        <view class="f26">{{item.iconUnit|| 'MOP$ '}} {{item.money}}</view>
+                    </view>
+                </view>
                 <image class="more" src="/images/index/icon_more-2.png" mode="aspectFill"/>
             </button>
         </view>
+        <!-- 相关视频 -->
+        <view class="pb45" wx:if="{{videoList.length}}">
+            <view class="f32 c-222222 fw6 l-h55 pt32 p32">相关视频</view>
+            <view class="recommend f28 c-222222">
+                <swiper class="re-swiper" autoplay interval="5000" previous-margin="24rpx" next-margin="24rpx">
+                <block wx:for="{{videoList}}" wx:key="{{index}}">
+                    <swiper-item class="re-swiper-item" data-title="{{item.activityTitle}}" data-id="{{item.experienceSerial}}" bindtap="tapToDetail">
+                    <view class="slide flex ml8 mr8">
+                        <image class="slide-image" src="{{item.imgUrl}}" mode="aspectFill"/>
+                        <view class="flex-1 flex pl32 pr32 slide-text">
+                            <view class="flex-1 f32 c-222222 fw6">{{item.activityTitle}}</view>
+                            <view class="tag l-h30 c-00A653 f24">{{item.activityTag}}</view>
+                        </view>
+                    </view>
+                    </swiper-item>
+                </block>
+                </swiper>
+            </view>
+        </view>
         <!-- 体验时长 -->
-        <view class="ac-time h-156 bd1 flex">
+        <!-- <view class="ac-time h-156 bd1 flex">
             <view class="f32 c-222222 fw6 l-h55">开始时间</view>
             <view class="f28 c-222222 l-h55">{{acData.stimeStr}}</view>
         </view>
         <view class="ac-time h-156 bd1 flex">
             <view class="f32 c-222222 fw6 l-h55">结束时间</view>
             <view class="f28 c-222222 l-h55">{{acData.etimeStr}}</view>
-        </view>
+        </view> -->
         <!-- 体验内容 -->
         <view class="content bd1 pb45">
             <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32">体验内容</view>
             <view class="ql-container ql-snow">
                 <view class="ql-editor">
                     <!-- <rich-text nodes="{{acData.activityDetails}}"></rich-text> -->
-                    <Parser html="{{acData.activityDetails}}" />
+                    <Parser html="{{acData.msIntroductionVo.text}}" />
                 </view>
             </view>
+        </view>
+        <!-- 体验地点 -->
+        <view class="location bd1 pb45">
+            <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32">体验地点</view>
+            <view class="addr f28 c-222222">{{acData.msBaseInfo.address}}</view>
+            <view class="map mt32">
+                <map
+                    id="myMap"
+                    class="myMap"
+                    latitude="{{acData.msBaseInfo.lat}}"
+                    longitude="{{acData.msBaseInfo.lng}}"
+                    enable-zoom="{{false}}"
+                    enable-scroll="{{false}}"
+                    vslide-gesture-in-fullscreen="{{false}}"
+                    markers="{{acData.markers}}"
+                    show-location>
+                    
+                </map>
+                <cover-image class="map-bg" src="/images/detail/mask_map.png" hidden="{{istrue}}" bindtap="openLocation"/>
+            </view>
+        </view>
+        <!-- 营业时间 -->
+        <view class="ac-time h-156 bd1 flex" wx:if="{{acData.msBaseInfo.openTime}}">
+            <view class="f32 c-222222 fw6 l-h55">营业时间</view>
+            <view class="f28 c-222222 l-h55">{{acData.msBaseInfo.openTime}}</view>
         </view>
         <!-- 体验评论 -->
         <view class="review bd1 pb45" wx:if="{{expComment.expCommetn.length>0}}">
@@ -222,50 +281,31 @@
             </view>
             <view class="handpick-more f28 c-00A653" bindtap="tapToAllExpComment" wx:if="{{expComment.expCommetn.length<expComment.expCommetnCount.commentSum}}">查看全部 {{expComment.expCommetnCount.commentSum}} 条评论</view>
         </view>
-        <!-- 体验地点 -->
-        <view class="location bd1 pb45">
-            <view class="c-title f32 c-222222 fw6 l-h55 pt32 pb32">体验地点</view>
-            <view class="addr f28 c-222222">{{acData.addr}}</view>
-            <view class="map mt32">
-                <map
-                    id="myMap"
-                    class="myMap"
-                    latitude="{{acData.lat}}"
-                    longitude="{{acData.lng}}"
-                    enable-zoom="{{false}}"
-                    enable-scroll="{{false}}"
-                    vslide-gesture-in-fullscreen="{{false}}"
-                    markers="{{acData.markers}}"
-                    show-location>
-                    
-                </map>
-                <cover-image class="map-bg" src="/images/detail/mask_map.png" hidden="{{istrue}}" bindtap="openLocation"/>
-            </view>
-        </view>
         <!-- 预定须知 -->
-        <view class="bd1 pb45">
+        <!-- <view class="bd1 pb45">
             <view class="f32 c-222222 fw6 l-h55 pt32 pb32">预订须知</view>
             <view class="ql-container ql-snow">
                 <view class="ql-editor">
-                    <rich-text nodes="{{acData.bookings}}"></rich-text>
+                    <rich-text nodes="{{acData.msBaseInfo.remark}}"></rich-text>
                 </view>
             </view>
-        </view>
+        </view> -->
         <!-- 使用体验 -->
-        <view class="bd1 pb45">
+        <!-- <view class="bd1 pb45">
             <view class="f32 c-222222 fw6 l-h55 pt32 pb32">使用体验</view>
             <view class="f28 c-222222 l-h30">{{acData.usage || ''}}</view>
-        </view>
+        </view> -->
         <!-- 退改须知 -->
-        <view class="bd1 pb45">
+        <!-- <view class="bd1 pb45">
             <view class="f32 c-222222 fw6 l-h55 pt32 pb32">退改须知</view>
             <view class="f28 c-222222 l-h30">{{acData.returnNotice || ''}}</view>
-        </view>
+        </view> -->
         </view>
         <!-- 猜你喜欢 -->
-        <view class="pb45" wx:if="{{vImgUrls.length}}">
-            <view class="f32 c-222222 fw6 l-h55 p32">猜你喜欢</view>
-            <view class="recommend f28 c-222222">
+        <view class="pl16 pr16" wx:if="{{vImgUrls.length}}">
+            <view class="f32 c-222222 fw6 l-h55 pt32 pb32 pl16 pr16">猜你喜欢</view>
+            <gh-hmList merchantList="{{vImgUrls}}" bd></gh-hmList>
+            <!-- <view class="recommend f28 c-222222">
                 <swiper class="re-swiper" autoplay interval="5000" previous-margin="24rpx" next-margin="24rpx">
                 <block wx:for="{{vImgUrls}}" wx:key="{{index}}">
                     <swiper-item class="re-swiper-item" data-title="{{item.activityTitle}}" data-id="{{item.experienceSerial}}" bindtap="tapToDetail">
@@ -279,9 +319,12 @@
                     </swiper-item>
                 </block>
                 </swiper>
-            </view>
+            </view> -->
         </view>
-    </view>
+        <view class="weui-loadmore weui-loadmore_line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了</view>
+        </view>
+        </view>
     <!-- 下单 -->
     <cover-view class="orders {{isIphoneX ?'fixiphonexbutton':''}}" wx:if="{{direction!=='horizontal' && acData.isSigned}}" hidden="{{istrue}}">
         <!-- 是否可购买    0：不可被购买  1：可以被购买 -->
@@ -293,7 +336,7 @@
             <button class="ordersbtn" type="primary" hover-class="hoverclass" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo? 'tapGetEx':'tapToLogin'}}" wx:else>领取</button>
             
         </cover-view>
-        <cover-view class="flex" wx:if="{{acData.isBuying===1}}">
+        <cover-view class="flex">
             <cover-view class="price">
                 <cover-view class="sp2 mr16">{{acData.symbol||'MOP$'}} {{lowestPrice ? lowestPrice : 0 }}</cover-view>
                 <cover-view class="f24 c-999999 upper-price">

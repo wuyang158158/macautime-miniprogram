@@ -1,0 +1,40 @@
+<!--pages/integral/time-coin-detail.wxml-->
+<view class="container">
+    <view class="title pl32 pr32 flex">
+        <view class="flex-1 f26 c-666666">
+            <text class="mr25">获得 600</text>
+            <text >使用 100</text>
+        </view>
+        <view class="f26 c-666666">全部</view>
+    </view>
+    <view class="bg-white content">
+        <view class="flex item bd1">
+            <view class="flex">
+                <view class="flex-1 f30 c-333333">发布路线</view>
+                <view class="f32 c-00A653 fw5 mr25">+200</view>
+            </view>
+            <view class="c-999999 f26">2019-11-10 12:08</view>
+        </view>
+        <view class="flex item bd1">
+            <view class="flex">
+                <view class="flex-1 f30 c-333333">发布路线</view>
+                <view class="f32 c-222222 fw5 mr25">-100</view>
+            </view>
+            <view class="c-999999 f26">2019-11-10 12:08</view>
+        </view>
+        <view class="flex item bd1">
+            <view class="flex">
+                <view class="flex-1 f30 c-333333">发布路线</view>
+                <view class="f32 c-00A653 fw5 mr25">+200</view>
+            </view>
+            <view class="c-999999 f26">2019-11-10 12:08</view>
+        </view>
+        <view class="flex item">
+            <view class="flex">
+                <view class="flex-1 f30 c-333333">发布路线</view>
+                <view class="f32 c-00A653 fw5 mr25">+200</view>
+            </view>
+            <view class="c-999999 f26">2019-11-10 12:08</view>
+        </view>
+    </view>
+</view>

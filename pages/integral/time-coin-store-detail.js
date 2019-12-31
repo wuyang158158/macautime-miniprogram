@@ -1,4 +1,4 @@
-// pages/views/time-coin-store.js
+// pages/integral/time-coin-store-detail.js
 Page({
 
   /**

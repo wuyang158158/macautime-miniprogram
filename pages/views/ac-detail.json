@@ -2,7 +2,8 @@
   "usingComponents": {
     "gh-empty": "/components/empty/empty",
     "half-screen-dialog": "/components/halfScreenDialog/halfScreenDialog",
-    "Parser":"/components/Parser/index"
+    "Parser":"/components/Parser/index",
+    "gh-hmList": "/components/hmList/hmList"
   },
   "navigationBarTitleText": "详情",
   "navigationBarBackgroundColor": "#FFFFFF",

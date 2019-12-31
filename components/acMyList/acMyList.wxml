@@ -1,15 +1,30 @@
 <!--components/acMyList.wxml-->
 <view class="items ml16 mr16" wx:for="{{result}}" wx:key="{{index}}">
     <view class="time f24 c-999999 mt32 mb16" wx:if="{{item.createTimeStr}}">{{item.createTimeStr}}</view>
-    <view class="content bg-white flex p16 mb16" data-title="{{item.expTitle}}" data-id="{{item.expSerial}}" bindtap="tapToDetail">
-        <image class="i-img mr16 bg-EFEFF4" src="{{item.coverUrl}}" lazy-load mode="aspectFill"/>
-        <view class="flex-1 c-222222">
-            <view class="flex">
-                <view class="f32 fw6 flex-1">{{item.expTitle}}</view>
-                <view class="tag c-00A653 f24">美食</view>
+    <view class="content bg-white flex p16 mb16" data-id="{{item.msId}}" data-title="{{item.name}}" bindtap="tapToDetail">
+        <!-- <image class="i-img mr16 bg-EFEFF4" src="{{item.mImage}}" lazy-load mode="aspectFill"/> -->
+        <view class="relative i-img mr16">
+            <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+            <image class="pic-default-new z-index5" src="{{item.mImage}}" mode="aspectFill"/>
+        </view>
+        <view class="flex-1 c-222222 flex flex-custom">
+            <view class="flex-1">
+                <view class="flex">
+                    <view class="f32 fw6 flex-1">{{item.name}}</view>
+                    <view class="tag c-00A653 f24" wx:if="{{item.labelRemark}}">{{item.labelRemark}}</view>
+                </view>
+                <view class="flex l-h32">
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <image class="merchant-star-icon" src="/images/index/icon_star1@2x.png" mode="aspectFill"/>
+                    <view class="f24 c-222222 ml5">5.0</view>
+                </view>
             </view>
-            <view class="f24 mt8 mb8">{{item.merchantName || ''}}</view>
-            <view class="f24 c-999999">参考价格：{{item.currencySymbol||'MOP$'}} {{item.price || 0}}</view>
+            <!-- <view class="f24 mt8 mb8">{{item.name || ''}}</view> -->
+            <view class="f24 c-999999">{{item.address||item.city||''}}</view>
+            <!-- <view class="f24 c-999999">参考价格：{{item.currencySymbol||'MOP$'}} {{item.price || 0}}</view> -->
         </view>
     </view>
 </view>

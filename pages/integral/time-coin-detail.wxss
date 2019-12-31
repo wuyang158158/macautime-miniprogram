@@ -1,0 +1,16 @@
+/* pages/integral/time-coin-detail.wxss */
+.title{
+    height: 100rpx;
+}
+.mr25{
+    margin-right: 25rpx;
+}
+.content{
+    padding-left: 24rpx;
+}
+.item{
+    height: 150rpx;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}

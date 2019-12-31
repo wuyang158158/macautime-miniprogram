@@ -1,0 +1,14 @@
+<!--pages/integral/time-coin-store-gift.wxml-->
+<view class="container">
+    <view class="item flex ml32 mr32 mt16 p32 bg-white">
+        <view class="relative item-avatar">
+            <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+            <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+        </view>
+        <view class="flex-1">
+            <view class="f30 c-222222">时尚墨镜</view>
+            <view class="f24 c-999999">2019-11-10 12:02:58</view>
+        </view>
+        <view class="f30 c-222222">-350时光币</view>
+    </view>
+</view>

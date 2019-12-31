@@ -9,5 +9,7 @@
   },
   "navigationBarTitleText": "体验",
   "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
   "navigationStyle": "default"
 }

@@ -1,0 +1,24 @@
+<!--pages/my/my-focus-kol.wxml-->
+<view class="container">
+    <gh-mykollist result="{{result}}" wx:if="{{result.length}}" source="focus"></gh-mykollist>
+    <!-- <view class="flex ml32">
+        <view wx:for="{{result}}" wx:key="{{item.accountId}}" class="relative i-img mr16">
+            <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+            <image class="pic-default-new z-index5" src="{{item.headIco}}" mode="aspectFill"/>
+        </view>
+        <view class="flex-1 bd1 flex p32">
+            <view class="flex-1 f30 fw5 c-404040">{{item.nickName}}</view>
+            <button class="weui-btn focus-ok" type="p-delete">已关注</button>
+        </view>
+    </view> -->
+
+    <!-- 加载更多 -->
+    <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}">
+        <view wx:if="{{loadmore}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+    </view>
+    <gh-empty prop-type="no-order" prop-text="{{emptytext?emptytext:'暂无数据'}}" prop-mt="200" wx:if="{{noData}}"></gh-empty>
+</view>

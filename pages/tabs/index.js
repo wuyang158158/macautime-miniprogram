@@ -37,13 +37,15 @@ Page({
     // wx.navigateTo({
     //   url: '/pages/views/ac-detail?id=610859100309291008' + '&title=3如如'
     // })
-    NT.showToast('加载中...')
+    // NT.showToast('加载中...')
     this.setData({
       userInfo: wx.getStorageSync("userInfo"), //用户信息
     })
-    this.getPromotions()
-    this.getLimitTimeGift()
-    this.getExperience()
+    this.usIsCertificationKol() //获取认证KOL信息列表
+    this.msSelectedMsListHome() // 精选商家-首页
+    // this.getPromotions()
+    // this.getLimitTimeGift()
+    // this.getExperience()
     // 获取当前位置
     // wx.getLocation({  
     //   type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标  
@@ -291,5 +293,35 @@ Page({
     BMap.regeocoding({
         success: success
     });  
+  },
+  // 获取认证KOL信息列表
+  usIsCertificationKol() {
+    api.usIsCertificationKol()
+    .then(res=>{
+      this.setData({
+        kolList: res
+      })
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  },
+  // 精选商家-首页
+  msSelectedMsListHome() {
+    api.msSelectedMsListHome()
+    .then(res=>{
+      this.setData({
+        selecMerchants: res
+      })
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  },
+  // 如何入驻
+  tapToEnter() {
+    wx.navigateTo({
+      url: '/pages/help/merchant-enter'
+    })
   }
 })

@@ -287,6 +287,7 @@
 }
 .merchant-info-pic-list{
   /* justify-content: space-around; */
+  justify-content: center;
 }
 .info-pics{
   width: 207rpx;
@@ -313,4 +314,7 @@
 }
 .exclusive-interview-dec{
   width: 100%;
+}
+.diplay-no{
+  display: none;
 }

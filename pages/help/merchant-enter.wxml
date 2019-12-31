@@ -1,0 +1,4 @@
+<!--pages/help/merchant-enter.wxml-->
+<view class="container">
+    <image class="img" src="/images/index/bg-6.png" mode="aspectFill"/>
+</view>

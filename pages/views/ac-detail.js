@@ -50,6 +50,7 @@ Page({
       title: options.title
     })
     this.setData({
+      msId: options.id,
       recommend: options.recommend,
       roleFrom: {
         expSerial: options.id,
@@ -153,33 +154,39 @@ Page({
   },
   //获取详情数据
   getExpDetails() {
-    api.getExpDetails(this.data.roleFrom)
+    // api.getExpDetails(this.data.roleFrom)
+    api.msSelectedMsDetailsByMsId({msId:this.data.msId})
     .then(res=>{
-      this.getExpAllMeal() //获取套餐接口
+      // this.getExpAllMeal() //获取套餐接口
       const data = res
       const location = { //定位信息
-        latitude: data.lat,
-        longitude: data.lng,
-        name: data.addr
+        latitude: data.msBaseInfo.lat,
+        longitude: data.msBaseInfo.lng,
+        name: data.msBaseInfo.name
       }
-      data.activityTag = data.activityTag ? data.activityTag.split(',') : ''
-      data.bannarUrls = data.bannarUrls ? data.bannarUrls.split('|') : ''
-      data.stimeStr = data.stimeStr || data.stime ? util.formatTimeTwo(Number(data.stimeStr) || data.stime,'Y/M/D') : ''
-      data.etimeStr = data.etimeStr || data.etime ? util.formatTimeTwo(Number(data.etimeStr) || data.etime,'Y/M/D') : ''
-      data.activityDetails =  data.activityDetails ? data.activityDetails.replace(/\<img/gi, '<img style="border-radius: 8px;" ') : ''
-      data.bookings = data.bookings ? data.bookings.replace(/\<img/gi, '<img style="border-radius: 8px;" ') : ''
+      // data.activityTag = data.activityTag ? data.activityTag.split(',') : ''
+      // data.bannarUrls = data.bannarUrls ? data.bannarUrls.split('|') : ''
+      // data.stimeStr = data.stimeStr || data.stime ? util.formatTimeTwo(Number(data.stimeStr) || data.stime,'Y/M/D') : ''
+      // data.etimeStr = data.etimeStr || data.etime ? util.formatTimeTwo(Number(data.etimeStr) || data.etime,'Y/M/D') : ''
+      if(data.msIntroductionVo){
+        data.msIntroductionVo.text =  data.msIntroductionVo.text ? data.msIntroductionVo.text.replace(/\<img/gi, '<img style="border-radius: 8px;" ') : ''
+      }
+      
+      // data.msBaseInfo.remark = data.msBaseInfo.remark ? data.msBaseInfo.remark.replace(/\<img/gi, '<img style="border-radius: 8px;" ') : ''
       data.markers = this.data.markers ? [Object.assign(this.data.markers[0],location)] : ''
-      data.newOriginalPrice = data.originalPrice && data.discount ? util.discountPrice(data.originalPrice,data.discount) : ''
-      data.daysBetween = util.daysBetween(data.stimeStr,data.etimeStr)
+      // data.newOriginalPrice = data.originalPrice && data.discount ? util.discountPrice(data.originalPrice,data.discount) : ''
+      // data.daysBetween = util.daysBetween(data.stimeStr,data.etimeStr)
       // console.log(data.newOriginalPrice)
       this.setData({
         acData: data
       })
-      if(this.data.recommend){
-        this.getGuessLike() //获取推荐喜欢数据
-      }
+      // if(this.data.recommend){
+      //   this.getGuessLike() //获取推荐喜欢数据
+      // }
+      this.getGuessLike() //获取推荐喜欢数据
+      this.msSelectedMsVideoByMsId() //相关视频
       //查询评论
-      this.queryExpComment()
+      // this.queryExpComment()
     })
     .catch(err=>{
       console.log(err)
@@ -230,14 +237,9 @@ Page({
   },
   //获取猜你喜欢推荐数据
   getGuessLike() {
-    api.getGuessLike({userName:this.data.userInfo.userName})
+    api.msSelectedMsListGuessYouLike()
     .then(res=>{
       const data = res
-      data.map(item => {
-        // debugger
-        // item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D h:m:s')
-        item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
-      })
       this.setData({
         vImgUrls: data
       })
@@ -327,10 +329,14 @@ Page({
               .catch((err)=>{
                 if(err.code==='10019'){ //用户未注册
                   wx.navigateTo({
-                    url: '/pages/login/login?openid='+err.data.miniProgram + '&unionid=' + err.data.wxUnionid
+                    url: '/pages/login/login?openId='+err.data.openId + '&sessionKey=' + err.data.sessionKey,
+                    success: function(res) {
+                      // 通过eventChannel向被打开页面传送数据
+                      res.eventChannel.emit('acceptDataFromOpenerPage', err.data)
+                    }
                   })
                 }else{
-                  NT.showModal(err.codeMsg||'登录失败！')
+                  NT.showModal(err.message||'登录失败！')
                 }
               })
             },
@@ -480,9 +486,127 @@ Page({
     })
   }, 
   // 领券中心
-  tapGetDiscounts() {
+  tapGetDiscounts(e) {
+    // wx.navigateTo({
+    //   url: '/pages/views/get-ticket-detail'
+    // })
+    const that = this
+    const discountsCardId = e.currentTarget.dataset.discountscardid
+    const wxPayQuery = {
+      openId: that.data.userInfo.openId, //用户的openId
+      orderNumber: '191226174252010500000', //商户订单号
+      money: 1, //价格
+      title: 'WXPAY_JSAPI', //商品名称
+    }
+    api.wxPay(wxPayQuery)
+    .then(res=>{
+      wx.requestPayment({
+        timeStamp: res.timeStamp,
+        nonceStr: res.nonceStr,
+        package: res.package,
+        signType: res.signType,
+        paySign: res.paySign,
+        success (res) {
+          console.log(res)
+          NT.toastFn('领取成功！',1000)
+          setTimeout(()=>{},1000)
+        },
+        fail (res) {
+          console.log(res)
+          NT.showModal('支付失败！')
+        }
+      })
+    })
+    .catch(err=>{
+      NT.showModal(err.codeMsg||err.message||'请求失败！')
+    })
+    /*
+    let payData = this.data.acData.msPayList
+    let payName = ''
+    let payId = ''
+    payData.map(item=>{
+      if(item.payName==='微信支付'){
+        payName = item.payName
+        payId = item.id
+      }
+    })
+    const query = {
+      amount: 1,
+      accountId: this.data.userInfo.userId,
+      msId: this.data.msId,
+      payId: payId,
+      payName: payName,
+      id: discountsCardId
+    }
+    NT.showToast('领取中...')
+    api.poInsertDiscountOrder(query)
+    .then(res=>{
+      const wxPayQuery = {
+        openId: that.data.userInfo.openId, //用户的openId
+        orderNumber: res.orderNumber, //商户订单号
+        money: 1, //价格
+        title: 'WXPAY_JSAPI', //商品名称
+      }
+      api.wxPay(wxPayQuery)
+      .then(res=>{
+        wx.requestPayment({
+          timeStamp: res.timeStamp,
+          nonceStr: res.nonceStr,
+          package: res.package,
+          signType: res.signType,
+          paySign: res.paySign,
+          success (res) {
+            console.log(res)
+            NT.toastFn('领取成功！',1000)
+            setTimeout(()=>{},1000)
+          },
+          fail (res) {
+            console.log(res)
+            NT.showModal('支付失败！')
+          }
+        })
+      })
+      .catch(err=>{
+        NT.showModal(err.codeMsg||err.message||'请求失败！')
+      })
+    })
+    .catch(err=>{
+      NT.showModal(err.message||'请求失败！')
+    })
+    */
+  },
+
+  // 跳转到商户全部视频页面
+  tapToShopVideoAll() {
+    const that = this
     wx.navigateTo({
-      url: '/pages/views/get-ticket-detail'
+      url: '/pages/views/shop-video-all',
+      success: function(result) {
+        // 通过eventChannel向被打开页面传送数据
+        result.eventChannel.emit('msInterviewVideoVoList', that.data.acData.msInterviewVideoVoList)
+      }
+    })
+  },
+
+  // 跳转到领券详情
+  tapTopagesGetTicketDetail(e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/views/get-ticket-detail?id=' + id
+    })
+  },
+  // 相关视频
+  msSelectedMsVideoByMsId() {
+    api.msSelectedMsVideoByMsId()
+    .then(res=>{
+      const data = res
+      console.log(data)
+      this.setData({
+        videoList: data||[]
+      })
+    })
+    .catch(err=>{
+      console.log(err)
     })
   }
 })

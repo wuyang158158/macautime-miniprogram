@@ -42,3 +42,9 @@
     top: 3rpx;
     z-index: 5;
   }
+  .tag{
+    padding: 0 10rpx;
+  }
+  .bd1{
+    border:1rpx solid rgba(230, 230, 230, 1);
+  }

@@ -296,10 +296,14 @@ Page({
               .catch((err)=>{
                 if(err.code==='10019'){ //用户未注册
                   wx.navigateTo({
-                    url: '/pages/login/login?openid='+err.data.miniProgram + '&unionid=' + err.data.wxUnionid
+                    url: '/pages/login/login?openId='+err.data.openId + '&sessionKey=' + err.data.sessionKey,
+                    success: function(res) {
+                      // 通过eventChannel向被打开页面传送数据
+                      res.eventChannel.emit('acceptDataFromOpenerPage', err.data)
+                    }
                   })
                 }else{
-                  NT.showModal(err.codeMsg||'登录失败！')
+                  NT.showModal(err.message||'登录失败！')
                 }
               })
             },

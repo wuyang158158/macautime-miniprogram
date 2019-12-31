@@ -3,7 +3,7 @@
     <view class="ml32 mr32">
         <view class="f24 c-666666 pt32 pb32 t-c">请选择您的优势特长标签，最多 3 个</view>
         <view class="flex flex-r">
-            <view wx:for="{{tagArray}}" wx:key="{{index}}" class="item f28 mt32 mb32 {{item.selected?'item-ac':''}}" data-name="{{item.name}}" bindtap="tapTag">{{item.name}}</view>
+            <view wx:for="{{tagArray}}" wx:key="{{index}}" class="item f28 mt32 mb32 {{item.selected?'item-ac':''}}" data-remark="{{item.remark}}" bindtap="tapTag">{{item.remark}}</view>
         </view>
         <view class="flex pt32 flex-d">
             <view class="item f28 mt32 mb32 item-c" bindtap="tapToAddTag">+ 自定义</view>

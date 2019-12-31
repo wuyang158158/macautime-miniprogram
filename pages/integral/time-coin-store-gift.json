@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "我获得的",
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}

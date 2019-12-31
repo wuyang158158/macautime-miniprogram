@@ -1,35 +1,35 @@
 <!--pages/views/kol-enter.wxml-->
-<view class="container">
+<view class="container pb32">
     <view class="list bg-white ml16 mr16 mt16">
         <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">澳门时光个人信息</view>
         <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
             <view class="">账号昵称</view>
-            <input class="flex-1 weui-input t-right" disabled="{{true}}" placeholder="请输入账号昵称" value="苏小果"/>
+            <input class="flex-1 weui-input t-right" disabled="{{true}}" placeholder="请输入账号昵称" value="{{userInfo.userName}}"/>
         </view>
         <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
             <view class="">注册手机</view>
-            <input class="flex-1 weui-input t-right" disabled="{{true}}" placeholder="请输入注册手机" value="188****9898"/>
+            <input class="flex-1 weui-input t-right" disabled="{{true}}" placeholder="请输入注册手机" value="{{userInfo.phone}}"/>
         </view>
         <view class="flex f30 c-222222 h-90 ml32 mr32">
             <view class="">粉丝数量</view>
-            <input class="flex-1 weui-input t-right" placeholder="请输入粉丝数量" disabled="{{true}}" value="20118"/>
+            <input class="flex-1 weui-input t-right" placeholder="请输入粉丝数量" disabled="{{true}}" value="{{userInfo.fans}}"/>
         </view>
     </view>
     <!-- 个人形象照片 -->
     <view class="list bg-white ml16 mr16 mt16">
         <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">个人形象照</view>
         <view class="personage">
-            <image class="personage-icon" src="/images/center/pic1@2x.png" mode="aspectFill"/>
+            <image class="personage-icon" src="{{accordingImage?accordingImage:'/images/center/pic1@2x.png'}}" mode="aspectFill" bindtap="tapChooseImage"/>
         </view>
         <view class="f24 c-666666 mt16 pb32 text-algin-c">请选择您的个人形象照，用于封面展示</view>
     </view>
     <!-- 优势特长 -->
     <view class="list bg-white ml16 mr16 mt16">
         <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">优势特长</view>
-        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
-            <view class="">旅行达人</view>
-            <input class="flex-1 weui-input t-right" placeholder="请选择" value="{{array[item.account]}}"/>
-            <picker class="t-right" data-index="{{index}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="flex f30 c-222222 h-90 ml32 mr32 bd1" bindtap="tapToSpeciality">
+            <view wx:for="{{choseTag}}" wx:key="{{index}}" class="mr5">{{item.remark}}、</view>
+            <input class="flex-1 weui-input t-right" placeholder="请选择" disabled value="{{array[item.account]}}"/>
+            <picker class="t-right" data-index="{{index}}" bindchange="bindPickerChange" disabled value="{{index}}" range="{{array}}">
                 <view class="picker flex">
                     <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
                 </view>
@@ -42,11 +42,11 @@
     <view class="list bg-white ml16 mr16 mt16" wx:for="{{platformList}}" wx:key="{{index}}">
         <view class="flex f32 c-222222 h-100 fw6 ml32 mr32 bd1">
             <view class="flex-1">其他平台信息</view>
-            <view class="delete f28 fw4 c-F24949" data-index="{{index}}" bindtap="tapDeletePlatformMsg">删除</view>
+            <view class="delete f28 fw4 c-F24949" data-index="{{index}}" bindtap="tapDeletePlatformMsg" wx:if="{{index!==0}}">删除</view>
         </view>
         <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
-            <view class="">账号昵称</view>
-            <input class="flex-1 weui-input t-right" placeholder="请输入注册手机" value="{{array[item.account]}}"/>
+            <view class="">平台名称</view>
+            <input class="flex-1 weui-input t-right" placeholder="请选择平台" value="{{array[item.account]}}"/>
             <picker class="t-right" data-index="{{index}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
                 <view class="picker flex">
                     <!-- <text >{{array[item.account]}}</text> -->
@@ -56,12 +56,12 @@
             </picker>
         </view>
         <view class="flex f30 c-222222 h-90 ml32 mr32 bd1">
-            <view class="">注册手机</view>
-            <input class="flex-1 weui-input t-right" data-index="{{index}}" data-type="platformNickName" bindinput="bindinput" placeholder="请输入注册手机" value="{{item.platformNickName}}"/>
+            <view class="">账号昵称</view>
+            <input class="flex-1 weui-input t-right" data-index="{{index}}" data-type="nickName" bindinput="bindinput" placeholder="请输入账号昵称" value="{{item.nickName}}"/>
         </view>
         <view class="flex f30 c-222222 h-90 ml32 mr32">
-            <view class="">粉丝数量</view>
-            <input class="flex-1 weui-input t-right" data-index="{{index}}" data-type="numberOfFans" bindinput="bindinput" placeholder="请输入粉丝数量(以提交时间为准)" value="{{item.numberOfFans}}"/>
+            <view class="">账号 ID</view>
+            <input class="flex-1 weui-input t-right" data-index="{{index}}" data-type="accountId" bindinput="bindinput" placeholder="请输入账号 ID（选填）" value="{{item.accountId}}"/>
         </view>
     </view>
 

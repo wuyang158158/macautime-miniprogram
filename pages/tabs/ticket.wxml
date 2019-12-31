@@ -16,23 +16,26 @@
                 <image class="t-icon mr8" src="/images/ticket/icon_food.png" mode="aspectFill" wx:if="{{item.tag==='1'}}"/>
                 <image class="t-icon mr8" src="/images/ticket/icon_scene.png" mode="aspectFill" wx:elif="{{item.tag==='2'}}"/>
                 <image class="t-icon mr8" src="/images/ticket/icon_activity.png" mode="aspectFill" wx:else/>
-                <view class="flex-1 f30 c-222222 fw6 ell">{{item.activityTitle || ''}}</view>
+                <view class="flex-1 f30 c-222222 fw6 ell">{{item.name || item.discountsName || ''}}</view>
                 <view class="t-status f26 fw5 c-666666">
-                    <text wx:if="{{item.status === 'A'}}">待参加</text>
-                    <!-- <text wx:if="{{item.status === 'B'}}">审核中</text> -->
-                    <text wx:if="{{item.status === 'B'}}">已验票</text>
-                    <text wx:if="{{item.status === 'C'}}">已完成</text>
-                    <text wx:if="{{item.status === 'D'}}">已退票</text>
-                    <text wx:if="{{item.status === 'E'}}">已过期</text>
+                    <text wx:if="{{item.status === '1'}}">待支付</text>
+                    <text wx:if="{{item.status === '2'}}">已支付</text>
+                    <text wx:if="{{item.status === '3'}}">支付失败</text>
+                    <text wx:if="{{item.status === '4'}}">失效</text>
+                    <text wx:if="{{item.status === '5'}}">取消支付</text>
+                    <text wx:if="{{item.status === '6'}}">退订</text>
+                    <text wx:if="{{item.status === '7'}}">已完成</text>
+                    <text wx:if="{{item.status === '8'}}">已退订</text>
+                    <text wx:if="{{item.status === '9'}}">退订失败</text>
                 </view>
             </view>
             <view class="t-bottom ml16 mr16">
                 <view class="flex">
                     <image class="order-icon mr16 bg-EFEFF4" src="{{item.coverImgUrl}}" lazy-load mode="aspectFill"/>
                     <view class="flex-1 f26 c-666666 w-0">
-                        <view class="ell mt8" wx:if="{{item.mealTitle}}">套餐：{{item.mealTitle}}</view>
-                        <view class="ell">下单时间：{{item.orderTimeStr}}</view>
-                        <view class="ell">总价：{{item.currencySymbol||'MOP$'}} {{item.totalPrice || 0}}</view>
+                        <view class="ell mt8" wx:if="{{item.discountsName}}">套餐：{{item.discountsName}}</view>
+                        <view class="ell">下单时间：{{item.endTime}}</view>
+                        <view class="ell">总价：{{item.currencySymbol||'MOP$'}} {{item.money || 0}}</view>
                     </view>
                 </view>
                 <view class="t-handle flex">

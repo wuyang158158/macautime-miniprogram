@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "gh-empty": "/components/empty/empty",
+    "gh-mykollist": "/components/myKolList/myKolList"
+  },
+  "navigationBarTitleText": "粉丝",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundTextStyle": "dark",
+  "navigationStyle": "default"
+}

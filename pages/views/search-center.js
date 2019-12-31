@@ -4,7 +4,7 @@ import PAGE from "../../utils/config.js"
 import api from "../../data/api.js"
 import util from "../../utils/util.js"
 const menuData = [
-  '体验','商家','用户'
+  '路线','商家','用户'
 ]
 Page({
 
@@ -16,9 +16,7 @@ Page({
     params: { //请求首页推荐列表
       limit: PAGE.limit,
       start: PAGE.start,
-      paramEntity: {
-        activityTitle: ''
-      }
+      keyWord: ''
     },
     total: 0,
     loadmore: false, //加载更多
@@ -87,13 +85,13 @@ Page({
         limit: PAGE.limit,
         start: PAGE.start,
         paramEntity: {
-          activityTitle: this.data.params.paramEntity.activityTitle
+          activityTitle: this.data.params.keyWord
         }
       },
       loadmoreLine: false,
       loadmore: false
     })
-    this.getExperience('onPullDownRefresh')
+    this.msSelectedMsByKeyWord('onPullDownRefresh')
   },
   */
 
@@ -111,12 +109,10 @@ Page({
         params:{ //请求首页推荐列表
           limit: PAGE.limit,
           start: this.data.params.start + 1,
-          paramEntity: {
-            activityTitle: this.data.params.paramEntity.activityTitle
-          }
+          keyWord: this.data.params.keyWord
         }
       })
-      this.getExperience()
+      this.msSelectedMsByKeyWord()
     }else {
       //暂无更多数据
       NT.hideToast()
@@ -144,14 +140,20 @@ Page({
     this.setData({
       inputVal: content
     })
-    this.data.params.paramEntity.activityTitle = content
-    this.getExperience('onPullDownRefresh')
+    this.data.params.keyWord = content
+    this.msSelectedMsByKeyWord('onPullDownRefresh')
   },
   // 搜索
   search(e) {
     console.log(e)
     if(e.detail){
-      this.getLikeage(e.detail)
+      // this.getLikeage(e.detail)
+      // 商家搜索
+      // if(this.data.menuDataIndex === 1){
+      //   this.msSelectedMsByKeyWord(e.detail)
+      // }
+      this.data.params.keyWord = e.detail
+      this.msSelectedMsByKeyWord()
     }else{
       this.setData({
         associativeWords: [],
@@ -166,8 +168,8 @@ Page({
       this.setData({
         associativeWords: []
       })
-      this.data.params.paramEntity.activityTitle = e.detail
-      this.getExperience('onPullDownRefresh')
+      this.data.params.keyWord = e.detail
+      this.msSelectedMsByKeyWord('onPullDownRefresh')
     }
     
   },
@@ -178,8 +180,8 @@ Page({
     .then(res=>{
       console.log(res)
       if(!res.length>0){
-        this.data.params.paramEntity.activityTitle = e
-        this.getExperience('onPullDownRefresh')
+        this.data.params.keyWord = e
+        this.msSelectedMsByKeyWord('onPullDownRefresh')
       }else{
         res.map(item=>{
           const name = item.name
@@ -224,12 +226,15 @@ Page({
   },
   //缓存处理
   historyRecordStorage() {
-    const activityTitle = this.data.params.paramEntity.activityTitle
+    const keyWord = this.data.params.keyWord
+    if(!keyWord){
+      return
+    }
     var historyRecord = wx.getStorageSync('historyRecord') || []
     //去重
     if(historyRecord.length){
       historyRecord.map((item,index)=>{
-        if(item===activityTitle){
+        if(item===keyWord){
           historyRecord.splice(index,1)
         }
       })
@@ -238,7 +243,7 @@ Page({
     if(historyRecord.length>7){
       historyRecord = historyRecord.slice(0,7)
     }
-    historyRecord.unshift(activityTitle)
+    historyRecord.unshift(keyWord)
     wx.setStorage({
       key:"historyRecord",
       data: historyRecord
@@ -248,18 +253,18 @@ Page({
     })
   },
   //获取推荐列表
-  getExperience(source) {
+  msSelectedMsByKeyWord(source) {
     let that = this
     //历史记录处理
     this.historyRecordStorage()
-    api.getExperience(that.data.params)
+    api.msSelectedMsByKeyWord(that.data.params)
     .then(res=>{
-      let data = res.rows || []
-      data.map(item => {
-        // debugger
-        item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D')
-        item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
-      })
+      let data = res.data || []
+      // data.map(item => {
+      //   // debugger
+      //   item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D')
+      //   item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
+      // })
       that.setData({
         noData: false,
         recommend: source === 'onPullDownRefresh' ? data : this.data.recommend.concat(data),
@@ -288,13 +293,32 @@ Page({
   // 点击菜单切换
   tapSMenuItem(e) {
     const index = e.currentTarget.dataset.index;
-    if(index === 1){
-      NT.showToast('处理中...')
-      this.getUserRecord()
-    }
+    // if(index === 1){
+    //   NT.showToast('处理中...')
+    //   this.getUserRecord()
+    // }
+
     this.setData({
       menuDataIndex: index
     })
+    // wx.pageScrollTo({
+    //   scrollTop: 0,
+    //   duration: 300
+    // })
+    // this.setData({
+    //   recommend: [],
+    //   loadmoreLine: false,
+    //   loadmore: false
+    // })
+    // this.data.params = { //请求订单列表
+    //   limit: PAGE.limit,
+    //   start: PAGE.start,
+    //   keyWord: this.data.params.keyWord
+    // };
+    // this.getOrderListPersonal()
+    if(index === 1){ //商家搜索
+      // this.msSelectedMsByKeyWord()
+    }
   },
 
   getUserRecord(source) { // 请求用户记录

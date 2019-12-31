@@ -1,4 +1,4 @@
-/* pages/views/time-coin-store.wxss */
+/* pages/integral/time-coin-store.wxss */
 @import "../tabs/center.wxss";
 .title{
     width: 100%;

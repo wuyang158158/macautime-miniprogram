@@ -1,4 +1,4 @@
-<!--pages/views/time-coin-store.wxml-->
+<!--pages/integral/time-coin-store.wxml-->
 <view class="container">
     <view class="relative title c-FFFFFF">
         <image class="pic-default-new" src="/images/center/bg-3.png" mode="aspectFill"/>
@@ -10,15 +10,15 @@
     <!-- 菜单栏 -->
     <view class="ml32 mr32">
         <view class="c-nav flex bg-white">
-            <view class="flex-1">
+            <view class="flex-1" bindtap="tapToMyGetGift">
                 <image class="open-vip-icon" src="/images/center/icon_gift.png" mode="aspectFill"/>
                 <view class="open-vip-text f26 c-222222">我获得的</view>
             </view>
-            <view class="flex-1">
+            <view class="flex-1" bindtap="tapToTimeCoinDetail">
                 <image class="open-vip-icon" src="/images/center/icon_detail.png" mode="aspectFill"/>
                 <view class="open-vip-text f26 c-222222">时光币明细</view>
             </view>
-            <view class="flex-1">
+            <view class="flex-1" bindtap="tapToTask">
                 <image class="open-vip-icon" src="/images/center/icon_task.png" mode="aspectFill"/>
                 <view class="open-vip-text f26 c-222222">做任务赚积分</view>
             </view>
@@ -91,7 +91,7 @@
     <view class="ml32 mr32">
         <view class="f32 fw6 c-222222 mb32 mt32">更多好礼</view>
         <view class="flex list-flex">
-            <view class="items mb32">
+            <view class="items mb32" bindtap="tapToDetail">
                 <view class="relative item-top">
                     <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
                     <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
@@ -105,7 +105,7 @@
                     <button class="weui-btn mt8" type="primary">立即兑换</button>
                 </view>
             </view>
-            <view class="items mb32">
+            <view class="items mb32" bindtap="tapToDetail">
                 <view class="relative item-top">
                     <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
                     <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
@@ -119,7 +119,7 @@
                     <button class="weui-btn mt8" type="primary">立即兑换</button>
                 </view>
             </view>
-            <view class="items mb32">
+            <view class="items mb32" bindtap="tapToDetail">
                 <view class="relative item-top">
                     <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
                     <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
@@ -133,7 +133,7 @@
                     <button class="weui-btn mt8" type="primary">立即兑换</button>
                 </view>
             </view>
-            <view class="items mb32">
+            <view class="items mb32" bindtap="tapToDetail">
                 <view class="relative item-top">
                     <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
                     <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>

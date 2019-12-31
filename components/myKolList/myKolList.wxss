@@ -1,0 +1,23 @@
+/* components/myKolList/myKolList.wxss */
+@import '../../app.wxss';
+page{
+    background: #fff;
+}
+.h-130{
+    height: 130rpx;
+}
+.i-img{
+    width:80rpx;
+    height:80rpx;
+    border-radius:50%;
+    overflow: hidden;
+}
+.c-404040{
+    color: #404040;
+}
+.focus-ok{
+    width:120rpx;
+    height:56rpx;
+    line-height: 56rpx;
+    padding: 0;
+}

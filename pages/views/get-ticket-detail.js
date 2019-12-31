@@ -1,3 +1,5 @@
+import api from "../../data/api"
+import NT from "../../utils/native.js"
 // pages/views/get-ticket-detail.js
 Page({
 
@@ -12,7 +14,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      query: {
+        id: options.id
+      }
+    })
+    this.mkSelectDiscountsCardById()
   },
 
   /**
@@ -63,6 +70,19 @@ Page({
   // onShareAppMessage: function () {
 
   // }
+  // 查询当前优惠券信息
+  mkSelectDiscountsCardById() {
+    NT.showToast('加载中...')
+    api.mkSelectDiscountsCardById(this.data.query)
+    .then(res=>{
+      this.setData({
+        item: res
+      })
+    })
+    .catch(err=>{
+      NT.showModal(err.message||'请求失败！')
+    })
+  },
   // 立即领取
   tapNowGet() {
     wx.showModal({

@@ -1,0 +1,11 @@
+<!--components/myKolList/myKolList.wxml-->
+<view wx:for="{{result}}" wx:key="{{item.accountId}}" class="flex ml32">
+    <view class="relative i-img mr16">
+        <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+        <image class="pic-default-new z-index5" src="{{item.headIco}}" mode="aspectFill"/>
+    </view>
+    <view class="flex-1 bd1 flex p32">
+        <view class="flex-1 f30 fw5 c-404040">{{item.nickName}}</view>
+        <button class="weui-btn focus-ok" type="{{item.isFocus?'p-delete':'primary'}}" data-fAccountId="{{item.id}}" bindtap="tapUsInsertFocus">{{item.isFocus? '已关注': '关注'}}</button>
+    </view>
+</view>

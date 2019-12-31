@@ -1,0 +1,76 @@
+/* pages/integral/time-coin-task.wxss */
+@import "time-coin-store.wxss";
+.c-nav{
+    width: auto;
+}
+.item{
+    width: 76rpx;
+    height: 106rpx;
+    border-radius:8rpx;
+}
+.icon_done{
+    width: 56rpx;
+    height: 56rpx;
+}
+.flex-dec{
+    flex-direction: column;
+    justify-content: center;
+}
+.integral{
+    width:56rpx;
+    height:56rpx;
+    line-height: 56rpx;
+    background:rgba(230,230,230,1);
+    border-radius:50%;
+    text-align: center;
+}
+.bg-F7F7FA{
+    background:rgba(247,247,250,1);
+}
+.line-yes{
+    width: 16rpx;
+    height: 6rpx;
+    background: #00A653;
+}
+.line-no{
+    width: 16rpx;
+    height: 6rpx;
+    background:rgba(247,247,250,1);
+}
+.i-icon{
+    width: 80rpx;
+    height: 80rpx;
+}
+.static{
+    position: static;
+    margin-top: 16rpx;
+    min-height: 140rpx;
+}
+.i-btn{
+    width: 140rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    font-size: 26rpx;
+    font-weight:500;
+}
+.c-nav .t-l{
+    text-align: left;
+    margin-left: 20rpx;
+}
+.ml10{
+    margin-left: 10rpx;
+}
+button[type=default]{
+    background-color: rgba(230,230,230,1);
+    color: rgba(153,153,153,1);
+}
+.button-hover[type=default]{
+    background-color: rgb(230,230,230,0.6);
+    color: rgba(153,153,153,0.6);
+}
+.br-16{
+    border-radius: 16rpx;
+}
+.p30{
+    padding: 30rpx;
+}

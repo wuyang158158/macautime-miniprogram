@@ -2,11 +2,13 @@
 @import '../../app.wxss';
 .content{
     border-radius:16rpx;
+    align-items: stretch;
 }
 .i-img{
     width: 160rpx;
     height: 160rpx;
     border-radius:16rpx;
+    overflow: hidden;
 }
 .weui-loadmore{
     margin: 0 auto;
@@ -15,4 +17,13 @@
 }
 .weui-loadmore_line{
     margin-top: 2.4em;
+}
+.tag{
+    padding: 2rpx 10rpx;
+}
+.flex-custom{
+    height: 160rpx;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: stretch;
 }

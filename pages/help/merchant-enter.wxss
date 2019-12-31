@@ -1,0 +1,8 @@
+/* pages/help/merchant-enter.wxss */
+page{
+    background: #fff;
+}
+.img{
+    width: 100%;
+    height: 5161rpx;
+}

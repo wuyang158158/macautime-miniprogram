@@ -47,10 +47,11 @@
 
       <view class="{{menuDataIndex===0?'pl32':''}} {{menuDataIndex===0?'pr32':''}} pt16 m-h {{menuDataIndex!==2?'bg-EFEFF4':''}}">
         <view class="" wx:if="{{menuDataIndex===0}}">
-          <gh-aclist recommend="{{recommend}}"></gh-aclist>
+          <gh-aclist recommend="{{result}}" wx:if="{{result.length}}"></gh-aclist>
+          <gh-empty prop-type="no-data" prop-text="暂无推荐路线" prop-mt="250" wx:else></gh-empty>
         </view>
         <view class="" wx:if="{{menuDataIndex===1}}">
-          <gh-acmylist  result="{{result}}" wx:if="{{result.length}}"></gh-acmylist>
+          <gh-acmylist  result="{{recommend}}" wx:if="{{recommend.length}}"></gh-acmylist>
         </view>
         <view class="" wx:if="{{menuDataIndex===2}}">
           <view class="flex ml32 pt32 pb32 bd1">
@@ -87,7 +88,7 @@
           </view>
           <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line {{menuDataIndex!==2?'bg-EFEFF4':''}}">已经到底了！</view>
         </view>
-        <gh-empty prop-type="no-data" prop-text="暂无推荐体验" prop-mt="250" wx:if="{{noData}}"></gh-empty>
+        <gh-empty prop-type="no-data" prop-text="暂无推荐商家" prop-mt="250" wx:if="{{menuDataIndex===1&&noData}}"></gh-empty>
       </view>
     </view>
   </view>

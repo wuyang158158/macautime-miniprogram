@@ -1,0 +1,27 @@
+<!--pages/integral/time-coin-store-detail.wxml-->
+<view class="container">
+    <view class="relative item-top">
+        <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
+        <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+    </view>
+    <view class="ml32 mr32 bd1 pb32">
+        <view class="f36 fw5 c-222222 mt32">时尚墨镜</view>
+        <view class="c-00A653">
+            <text class="f36 fw5">350</text>
+            <text class="f24"> 时光币</text>
+        </view>
+    </view>
+    <view class="ml32 mr32 bd1 pb32">
+        <view class="f32 fw5 c-222222 mt32 pt16">商品详情</view>
+        <view class="c-666666 f28 mt8">在春夏这两个季节，墨镜绝对是必不可少的C位单品，日常防晒或外出度假时用来拍照凹造型都是一把好手。不过不同脸型和气质的妹子适合的墨镜也不太一样，例如圆脸妹子可能比较适合有点棱角的大框眼镜，瓜子脸或长脸的妹子则更适合圆框的线条流畅的墨镜来修饰脸部，当然了，根据不同的衣服进行墨镜的选择和搭配也是必不可少的。</view>
+    </view>
+    <view class="ml32 mr32 pb32">
+        <view class="f32 fw5 c-222222 mt32 pt16">兑换规则</view>
+        <view class="c-666666 f28 l-h44 mt8">
+            <view>1. 好礼有限，先到先得；</view>
+            <view>2. 商品不支持退换；</view>
+            <view>3. 每个用户每件商品仅限兑换一次。</view>
+        </view>
+    </view>
+    <button class="weui-btn weui-change" type="primary" bindtap="tapChange">立即兑换</button>
+</view>

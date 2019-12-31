@@ -1,11 +1,25 @@
 // pages/views/bind-bank-card.js
+import NT from "../../utils/native.js"
+import api from "../../data/api.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    array: ['微博', '抖音', '快手', '微视'],
+    array: ['中国银行', '工商银行', '招商银行', '建设银行', '农业银行', '平安银行'],
+    cardTypeArray: ['储蓄卡', '银联信用卡', 'VISA信用卡'],
+
+    backQuery: {  // 表单提交信息
+      bankId: '',
+      realName: '',
+      bankCode: '',
+      bankName: '',
+      branchBankInfo: '',
+      bankAddr: '',
+      cardType: '',
+      reservedPhone: ''
+    }
   },
 
   /**
@@ -71,4 +85,51 @@ Page({
       index: e.detail.value
     })
   },
+  // 卡类型
+  bindPickerChangeCardType(e) {
+    this.setData({
+      cardTypeIndex: e.detail.value
+    })
+  },
+  // 提交表单
+  formSubmit(e) {
+    const that = this
+    let params = e.detail.value
+    let data = Object.assign(this.data.backQuery, params)
+    console.log(data)
+    if(!data.realName){
+      NT.showModal('请输入持卡人姓名！')
+      return
+    }
+    if(!data.bankCode){
+      NT.showModal('请输入银行卡号！')
+      return
+    }
+    if(!data.bankName){
+      NT.showModal('请选择银行名称！')
+      return
+    }
+    if(!data.cardType){
+      NT.showModal('请选择卡类型！')
+      return
+    }
+    if(!data.reservedPhone){
+      NT.showModal('请输入预留手机号！')
+      return
+    }
+    NT.showToast('处理中...')
+    api.usInsertCard(data)
+    .then(res=>{
+      console.log(res)
+      NT.toastFn('处理成功',1000)
+      setTimeout(()=>{
+        wx.navigateBack({
+          delta: 1
+        })
+      },1000)
+    })
+    .catch(err=>{
+      NT.showModal(err.message||'请求失败！')
+    })
+  }
 })
