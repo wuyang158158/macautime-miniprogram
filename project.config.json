@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"enhance": false,
 		"postcss": true,
@@ -47,6 +47,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 1,
 			"list": [
@@ -65,6 +69,20 @@
 					"name": "pages/login/login",
 					"pathName": "pages/login/login",
 					"query": "id=626739616543670272&title=舞伎抹茶&shareType=acDetail",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "模拟kol分销",
+					"pathName": "pages/views/vip-center",
+					"query": "speadCode=123456&speadType=2",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/views/vip-center",
+					"pathName": "pages/views/vip-center",
+					"query": "scene=123456%263",
 					"scene": null
 				}
 			]

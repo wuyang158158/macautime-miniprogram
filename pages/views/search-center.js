@@ -234,7 +234,8 @@ Page({
       data.map(item => {
         // debugger
         item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D')
-        item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
+        let activityTagSplit = item.activityTag ? item.activityTag.split(',') : ''
+        item.activityTag = item.activityTag ? activityTagSplit.length>1?[activityTagSplit[0],activityTagSplit[1]] : [activityTagSplit[0]] : ''
       })
       that.setData({
         noData: false,

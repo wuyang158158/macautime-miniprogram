@@ -1,0 +1,69 @@
+<!--pages/kol/kol-share.wxml-->
+<view class="container page">
+    <view class="bg-white mt16">
+        <view class="flex f32 c-222222 bd1 ml48 mr48" bindtap="tapTODetail">
+            <view class="flex-1 fw5">当日推广数量</view>
+            <view >{{result.today || 0}}</view>
+            <image class="icon-32 ml32 {{open?'icon-open':''}}" src="/images/center/icon_more.png" mode="aspectFill"/>
+        </view>
+        <view class="c-999999 f26 t-c bd1 ml48 mr48" wx:if="{{open}}">
+            <view class="flex flex-h100 c-666666">
+                <view class="left">序号</view>
+                <view class="center ell">微信号</view>
+                <view class="flex-1">手机号</view>
+            </view>
+            <view class="flex flex-h60" wx:for="{{cruuentList}}" wx:key="{{index}}">
+                <view class="left">{{item.idx}}</view>
+                <view class="center ell">{{item.nickname}}</view>
+                <view class="flex-1">{{item.phoneStr}}</view>
+            </view>
+        </view>
+        
+        
+        <view class="flex f32 c-222222 ml48 mr48 {{openSum?'bd1':''}}" bindtap="tapTODetailSum">
+            <view class="flex-1 fw5">总数量</view>
+            <view >{{result.total || 0}}</view>
+            <image class="icon-32 ml32 {{openSum?'icon-open':''}}" src="/images/center/icon_more.png" mode="aspectFill"/>
+        </view>
+        <view class="c-999999 f26 t-c ml48 mr48" wx:if="{{openSum}}">
+            <view class="flex flex-h100 c-666666">
+                <view class="left">序号</view>
+                <view class="center ell">微信号</view>
+                <view class="flex-1">手机号</view>
+            </view>
+            <view class="flex flex-h60" wx:for="{{allList}}" wx:key="{{index}}">
+                <view class="left">{{item.idx}}</view>
+                <view class="center ell">{{item.nickname}}</view>
+                <view class="flex-1">{{item.phoneStr}}</view>
+            </view>
+        </view>
+    </view>
+    
+    <!-- 下单购买推广 -->
+    <view class="fixed">
+        <button 
+            class="weui-btn dredge" 
+            type="primary"
+            open-type="{{userInfo?'':'getUserInfo'}}" 
+            bindtap="{{userInfo?'tapShareChose':'tapToLogin'}}"
+            >推广分享
+        </button>
+    </view>
+
+    <view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+      <view class="weui-mask" bindtap="closeDialog"></view>
+      <view class="weui-actionsheet {{istrue ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+          <view class="weui-actionsheet__title">
+              <view class="weui-actionsheet__title-text">请选择推广的分享模式</view>
+          </view>
+          <view class="weui-actionsheet__menu">
+              <button class="weui-actionsheet__cell t-c" type="none" open-type="share">单聊&群聊</button>
+              <view class="weui-actionsheet__cell" bindtap="twoCode">小程序码</view>
+              <!-- <view class="weui-actionsheet__cell weui-actionsheet__cell_warn">负向菜单</view> -->
+          </view>
+          <view class="weui-actionsheet__action">
+              <view class="weui-actionsheet__cell" bindtap="closeDialog">取消</view>
+          </view>
+      </view>
+    </view>
+</view>

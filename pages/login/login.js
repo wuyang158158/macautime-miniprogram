@@ -174,6 +174,9 @@ Page({
    */
   onLoad(query) {
     home = false
+    // wx.navigateTo({
+    //   url: '/pages/views/about-us?id=5'
+    // })
     if(JSON.stringify(query) === "{}"){
       NT.showToast('登录中...')
       app.login()
@@ -281,6 +284,11 @@ Page({
     // })
     wx.navigateTo({
       url: '/pages/views/about-us?id=4'
+    })
+  },
+  tapToAgreementPrivacy() {
+    wx.navigateTo({
+      url: '/pages/views/about-us?id=5'
     })
   }
 });

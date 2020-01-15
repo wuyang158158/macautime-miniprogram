@@ -7,7 +7,11 @@
         <button class="weui-btn" open-type="getPhoneNumber" type="primary" bindgetphonenumber="onRegister" wx:else>微信快捷登录</button>
     </view>
     <view class="f24 f-c agreement">
-        <text class="c-999999">登录表示您同意</text>
-        <text class="c-00A653" bindtap="tapToAgreement">《Macau Time用户协议》</text>
+        <text class="c-999999">登录表示您同意Macau Time的</text>
+        <view class="c-00A653 text-left">
+            <text class="c-00A653" bindtap="tapToAgreement">「服务协议」</text>
+            <text class="c-999999">与</text>
+            <text class="c-00A653" bindtap="tapToAgreementPrivacy">「隐私策略」</text>
+        </view>
     </view>
 </view>

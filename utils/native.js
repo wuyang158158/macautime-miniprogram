@@ -43,6 +43,27 @@ const showModalPromise = msg => {
         })
     })
 }
+// 只带确认
+const showModalConfirm = msg => {
+    return new Promise((resolve) => {
+        hideToast();
+        wx.showModal({
+            title: '提示',
+            showCancel: false,
+            confirmColor: '#00A653',
+            content: msg || '处理异常',
+            success: function(res) {
+                if (res.confirm) {
+                    console.log('用户点击确定')
+                    resolve()
+                }
+            },
+            fail: function(err) {
+                console.log(err)
+            }
+        })
+    })
+}
 /**
  * loadding
  */
@@ -110,5 +131,6 @@ module.exports = {
     showToast: showToast,
     hideToast: hideToast,
     toastFn: toastFn,
-    showToastNone: showToastNone
+    showToastNone: showToastNone,
+    showModalConfirm: showModalConfirm
 };

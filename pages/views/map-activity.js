@@ -124,7 +124,8 @@ Page({
         display: 'ALWAYS',
       }
       data.map(item => {
-        item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
+        let activityTagSplit = item.activityTag ? item.activityTag.split(',') : ''
+        item.activityTag = item.activityTag ? activityTagSplit.length>1?[activityTagSplit[0],activityTagSplit[1]] : [activityTagSplit[0]] : ''
         item.id = item.expSerial
         item.longitude = Number(item.lng)
         item.latitude = Number(item.lat)
@@ -132,7 +133,7 @@ Page({
         item.iconPath = '/images/detail/map_icon_logo.png'
         item.width = '52rpx'
         item.height = '62rpx'
-        item.callout = callout
+        // item.callout = callout
       })
       this.setData({
         recommend: data

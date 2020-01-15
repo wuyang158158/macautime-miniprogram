@@ -6,16 +6,14 @@ page{
 .gh-logo{
     display: block;
     margin: 0 auto;
-    width: 166rpx;
+    width: 200rpx;
     height: 200rpx;
-    margin-top: 16rpx;
+    /* margin-top: 16rpx; */
 }
 .content{
     font-size: 26rpx;
     color: #808080;
-    line-height:40rpx;
-    text-indent: 52rpx;
-    margin-top: 57rpx;
+    /* line-height:40rpx; */
 }
 .gh-message{
     /* position: absolute; */
@@ -27,4 +25,16 @@ page{
     width: 100%;
     margin: 16rpx 0;
     height: auto;
+}
+.t-c{
+    text-align: center;
+}
+.f-w5{
+    font-weight: 500;
+}
+.spce{
+    text-indent: 40rpx;
+}
+.c-333333{
+    color: #333333;
 }

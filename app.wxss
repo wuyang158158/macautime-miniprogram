@@ -51,6 +51,14 @@ button[type=primary-ticket]{
     background-color: rgb(255,255,255, 0.6);
     border: 1px solid rgba(0,166,83,0.6);
 }
+button[type=black]{
+    color: rgba(41,38,36,1);
+    background: rgba(245,206,147,1);
+}
+.button-hover[type=black]{
+    color: rgba(41,38,36, 0.6);
+    background: rgb(245,206,147, 0.6);
+}
 button[type=hot-btn]{
     margin: 0;
     height: 64rpx;

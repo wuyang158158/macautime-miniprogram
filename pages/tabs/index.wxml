@@ -103,7 +103,7 @@
     </view>
 
     <!-- KOL入驻 -->
-    <view class="recommend recommend-h-auto">
+    <view class="recommend recommend-h-auto recommend-none">
       <view class="rec-title flex pt32 pb32 mt32 fw6 l-h32">
         <view class="flex-1 f32  c-222222">金牌KOL</view>
         <view class="f30 c-00A653" bindtap="tapToKolEnter">入驻</view>
@@ -126,7 +126,7 @@
           <view class="weui-loading"></view>
           <view class="weui-loadmore__tips">正在加载</view>
         </view>
-        <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">已经到底了！</view>
+        <view wx:if="{{loadmoreLine}}" class="weui-loadmore__tips weui-loadmore__tips_in-line bg-EFEFF4">更多商家优惠持续上架中</view>
       </view>
     </view>
   </view>

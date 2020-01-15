@@ -6,7 +6,7 @@
         <view class="item pl32 pr32 f24">
             <view class="flex l-h32 pt32">
             <view class="flex-1 f32 c-222222 fw6 ell mr16">{{item.activityTitle}}</view>
-            <view class="tag c-00A653 f24" wx:if="{{item.activityTag}}">{{item.activityTag}}</view>
+            <view  wx:if="{{item.activityTag}}" wx:for="{{item.activityTag}}" wx:key="{{index}}" wx:for-item="i" wx:for-index="idx" class="tag c-00A653 f24 {{idx!=0?'ml5':''}}">{{i}}</view>
             </view>
             <view class="flex c-666666 l-h32 pt16">
                 <view class="flex-1">{{item.stime}}</view>

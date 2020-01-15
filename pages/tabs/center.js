@@ -20,16 +20,29 @@ const menu = [
   //   text: '我的消息'
   // },
   {
+    iconPath: '/images/center/mine_icon_promote.png',
+    text: '我的推广',
+    show: false
+  },
+  // {
+  //   iconPath: '/images/center/mine_icon_promote.png',
+  //   text: 'kol分享数据',
+  //   show: true
+  // },
+  {
     iconPath: '/images/center/mine_icon_service.png',
-    text: '联系客服'
+    text: '联系客服',
+    show: true
   },
   {
     iconPath: '/images/center/mine_icon_set.png',
-    text: '更多设置'
+    text: '更多设置',
+    show: true
   },
   {
     iconPath: '/images/center/mine_icon_suggestion.png',
-    text: '意见反馈'
+    text: '意见反馈',
+    show: true
 }];
 Page({
 
@@ -37,9 +50,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: wx.getStorageSync("userInfo"), //用户信息
-    record: record,
-    menu: menu
+
   },
 
   /**
@@ -50,6 +61,20 @@ Page({
     // wx.navigateTo({
     //   url: '/pages/views/my-seen'
     // })
+    const userInfo = wx.getStorageSync("userInfo")
+    if(userInfo.isTalent == 3 || userInfo.isTalent == 2){
+      menu.map(item=>{
+        if(item.text === '我的推广'){
+          item.show = true
+        }
+      })
+    }
+    this.setData({
+      userInfo: userInfo, //用户信息
+      record: record,
+      menu: menu
+    })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -212,6 +237,17 @@ Page({
     if(menu === '我喜欢的'){
       wx.navigateTo({
         url: '/pages/views/my-like'
+      })
+    }
+    if(menu === '我的推广'){
+      const userInfo = this.data.userInfo
+      var url = '/pages/promotion/promotion-count'
+      if(userInfo.isTalent == 2){
+        // url = '/pages/views/vip-center?source=promotion' + '&speadType=' + userInfo.isTalent
+        url = '/pages/kol/kol-share'
+      }
+      wx.navigateTo({
+        url: url
       })
     }
   }

@@ -1,0 +1,39 @@
+<!--pages/promotion/promotion-count-choice.wxml-->
+<view class="container pb220">
+    <!-- <view class="default m16 mt0 p32">
+        <view class="flex h-100 bd1 f30 fw6">
+            <view class="flex-1">数量</view>
+            <view class="ml16 mr16">{{orderCount}} 件</view>
+        </view>
+        <view class="flex h-100 f30 fw6">
+            <view class="flex-1">合计</view>
+            <view class="">{{options.symbol||'MOP$'}} {{orderCount*sPrice}}</view>
+        </view>
+    </view> -->
+    <view class="default m16 mt0 p32">
+        <view class="number flex bg-white h-100 f30 fw6 bd1">
+            <view class="flex-1">数量</view>
+            <image class="icon-36 mr32" src="/images/submit-order/icon_sub_dis.png" mode="aspectFill" bindtap="tapOrderDelete"/>
+            <view class="ml16 mr16">{{orderCount}}</view>
+            <image class="icon-36 ml32" src="/images/submit-order/icon_plus.png" mode="aspectFill" bindtap="tapOrderAdd"/>
+        </view>
+        <view class="flex h-100 f30 fw6">
+            <view class="flex-1">合计</view>
+            <view class="">¥ {{orderCount*amount}}</view>
+        </view>
+    </view>
+
+    <!-- 下单 -->
+    <view class="orders bg-white bt1 {{isIphoneX ?'fix-iphonex-button':''}}">
+        <view class="flex pl32 pr32">
+            <view class="flex-1">
+                <view class="c-222222 f24">
+                    <text class="">支付 ¥ </text>
+                    <text class="f36 fw6 c-00A653">{{orderCount*amount}}</text>
+                </view>
+            </view>
+            <button class="weui-btn w-296" type="primary" bindtap="tapJoinVip">确认购买</button>
+        </view>
+    </view>
+</view>
+

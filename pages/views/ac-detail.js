@@ -236,7 +236,7 @@ Page({
       data.map(item => {
         // debugger
         // item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D h:m:s')
-        item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
+        item.activityTag = item.activityTag ? item.activityTag.split(',') : ''
       })
       this.setData({
         vImgUrls: data
@@ -253,7 +253,7 @@ Page({
       latitude: Number(markers.latitude),
       longitude: Number(markers.longitude),
       name: markers.addr,
-      scale: 15
+      scale: 18
     })
   },
   tapToDetail(e) {
@@ -450,7 +450,19 @@ Page({
         })
     })
     .catch(err=>{
-      NT.showModal(err.codeMsg||err.message||'请求失败！')
+      if(err.codeMsg === '该用户不是会员'){
+        NT.showModalPromise('您不是会员暂不能预定，是否立即加入会员立即享受体验优惠？')
+        .then(()=>{
+          wx.navigateTo({
+            url: '/pages/views/vip-center'
+          })
+        })
+        .catch(()=>{
+
+        })
+      }else{
+        NT.showModal(err.codeMsg||err.message||'请求失败！')
+      }
     })
   },
   //点击查看全部评论

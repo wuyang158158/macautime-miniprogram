@@ -1,0 +1,60 @@
+/* pages/promotion/promotion-count.wxss */
+.flex{
+    height: 120rpx;
+    margin: 0 48rpx;
+}
+.dredge{
+    margin: 40rpx 32rpx 0!important;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 36rpx;
+}
+.model{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+}
+.model_close{
+    width: 60rpx;
+    height: 60rpx;
+    margin: 0 auto;
+    margin-top: 150rpx;
+    display: block;
+}
+.model_cotent{
+    height:400rpx;
+    background:#fff;
+    border-radius:24rpx;
+    margin-top: 120rpx;
+}
+.mobile{
+    height: 88rpx;
+    line-height: 88rpx;
+    border-radius:44rpx;
+    background:rgba(255,255,255,1);
+    color:#222222;
+    font-size:28rpx;
+    padding: 0 40rpx;
+    border:1px solid rgba(230,230,230,1);
+}
+.mobile-placeholder{
+    color: #999999;
+}
+.weui-btn_black{
+    font-size:36rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    margin-top: 50rpx;
+}
+.m40{
+    margin: 40rpx;
+    margin-top: 0;
+    padding-top: 87rpx;
+}
+.pt380{
+    padding-top: 380rpx;
+}

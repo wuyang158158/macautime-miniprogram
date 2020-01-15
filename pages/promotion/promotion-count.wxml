@@ -1,0 +1,48 @@
+<!--pages/promotion/promotion-count.wxml-->
+<view class="container">
+    <view class="bg-white mt16">
+        <view class="flex f32 c-222222 bd1">
+            <view class="flex-1 fw5">已销售次数</view>
+            <view >{{result.allOpen || 0}}</view>
+        </view>
+        <view class="flex f32 c-222222 bd1">
+            <view class="flex-1 fw5">剩余销售次数</view>
+            <view >{{result.openAmount || 0}}</view>
+        </view>
+        <view class="flex f32 c-222222">
+            <view class="flex-1 fw5">当天开通的次数</view>
+            <view >{{result.todayOpen || 0}}</view>
+        </view>
+    </view>
+    
+    <!-- 下单购买推广 -->
+    <view class="pb32 pt380">
+        <button 
+            class="weui-btn dredge" 
+            type="primary"
+            open-type="{{userInfo?'':'getUserInfo'}}" 
+            bindtap="{{userInfo?'tapToPromotion':'tapToLogin'}}"
+            >购买推广权限
+        </button>
+        <button 
+            class="weui-btn dredge" 
+            type="primary"
+            open-type="{{userInfo?'':'getUserInfo'}}" 
+            bindtap="{{userInfo?'tapPromotionOpenVip':'tapToLogin'}}"
+            >开通会员
+        </button>
+    </view>
+
+    <view class="model" wx:if="{{promotionModel}}">
+        <image class="model_close" src="/images/vip/nav_icon_close_w1.png" mode="aspectFill" bindtap="tapModelClose"/>
+        <view class="model_cotent ml32 mr32">
+            <form class="form" bindsubmit="formSubmit">
+                <view class="m40">
+                    <input class="mobile" type="number" name="mobile" placeholder="请输入手机号" placeholder-class="mobile-placeholder"/>
+                    <button class="weui-btn weui-btn_black" type="black" formType="submit">确认</button>
+                </view>
+                
+            </form>
+        </view>
+    </view>
+</view>

@@ -32,11 +32,12 @@ Page({
   onLoad: function(options) {
     // console.log(wx.getStorageSync("userInfo"))
     // wx.navigateTo({
-    //   url: '/pages/views/hot-activity'
+    //   url: '/pages/promotion/promotion-count-choice'
     // })
-    // wx.navigateTo({
+    // wx.navigateTo({  
     //   url: '/pages/views/ac-detail?id=610859100309291008' + '&title=3如如'
     // })
+
     NT.showToast('加载中...')
     this.setData({
       userInfo: wx.getStorageSync("userInfo"), //用户信息
@@ -44,6 +45,7 @@ Page({
     this.getPromotions()
     this.getLimitTimeGift()
     this.getExperience()
+
     // 获取当前位置
     // wx.getLocation({  
     //   type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标  
@@ -104,10 +106,13 @@ Page({
       loadmoreLine: false,
       loadmore: false
     })
-    this.getPromotions()
-    this.getLimitTimeGift()
-    this.getExperience('onPullDownRefresh')
-    this.getLocationCity()
+    app.login()
+    .then(res=>{
+      this.getPromotions()
+      this.getLimitTimeGift()
+      this.getExperience('onPullDownRefresh')
+      this.getLocationCity()
+    })
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -211,11 +216,14 @@ Page({
     let that = this
     api.getExperience(that.data.params)
     .then(res=>{
+      NT.hideToast()
       let data = res.rows || []
       data.map(item => {
         // debugger
         item.stime = util.formatTimeTwo(item.stimeStr,'Y/M/D')
-        item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
+        // debugger
+        let activityTagSplit = item.activityTag ? item.activityTag.split(',') : ''
+        item.activityTag = item.activityTag ? activityTagSplit.length>1?[activityTagSplit[0],activityTagSplit[1]] : [activityTagSplit[0]] : ''
       })
       that.setData({
         noData: false,
@@ -291,5 +299,11 @@ Page({
     BMap.regeocoding({
         success: success
     });  
+  },
+  /**
+   * 监听用户滑动页面事件--返回页面在垂直方向已滚动的距离（单位px）
+   */
+  onPageScroll(e){
+    // console.log(e)
   }
 })

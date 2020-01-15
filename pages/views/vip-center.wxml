@@ -10,8 +10,8 @@
                     <view class="slide-text">
                         <view class="c-292624 fw6 f40 l-h61">享专属特权</view>
                         <view class="c-292624 f26 l-h61">{{item.title}}</view>
-                        <view class="f24 c-292624 mt48 pt32 fw3 l-h56" wx:if="{{userInfo.vip}}">有效期至{{userInfo.rt}}</view>
-                        <view wx:if="{{vipLoadding}}" class="f28 c-292624 mt65 mr32">您已购买会员，系统正在处理中，稍后下拉刷新享受会员权益！</view>
+                        <view class="f24 c-292624 pt32 fw3 l-h56" wx:if="{{userInfo.vip&&userInfo.rt}}">有效期至{{userInfo.rt}}</view>
+                        <view wx:if="{{vipLoadding}}" class="f26 c-292624 mr32">您已购买会员，系统正在处理中，稍后下拉刷新更新会员权益信息！</view>
                         <view wx:else>
                             <button class="weui-btn w-216 fw5" type="primaryv" wx:if="{{!userInfo.vip}}" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="{{userInfo?'tapJoinVip':'tapToLogin'}}">立即加入</button>
                         </view>
@@ -21,6 +21,9 @@
             </block>
         </swiper>
     </view>
+
+    <view wx:if="{{source !== 'promotion'}}">
+    <!-- 轮滚通知和会员权益 -->
     <view class="pl32 pr32">
         <!-- 通知 -->
         <view class="inform mt40 mb32">
@@ -34,10 +37,19 @@
                         circular="{{true}}"
                         vertical="{{true}}">
                         <swiper-item>
-                            <view class="h100 flex">澳门打卡必去Macau Time会员尊享上线！</view>
+                            <view class="h100 flex">去澳门打卡Macau Time会员尊享上线！</view>
                         </swiper-item>
                         <swiper-item>
                             <view class="h100 flex">Macau Time会员尊享专属体验折扣权益！</view>
+                        </swiper-item>
+                        <swiper-item>
+                            <view class="h100 flex">Macau Time会员尊享专属限时礼包权益！</view>
+                        </swiper-item>
+                        <swiper-item>
+                            <view class="h100 flex">Macau Time会员尊享专属超值优惠权益！</view>
+                        </swiper-item>
+                        <swiper-item>
+                            <view class="h100 flex">Macau Time会员尊享特权标识优惠权益！</view>
                         </swiper-item>
                     </swiper>
                 </view>
@@ -52,7 +64,7 @@
             <view class="eq-list flex white f26">
                 <view wx:for="{{equityList}}" wx:key="{{index}}" class="f-items">
                     <image class="item-image" src="{{item.bgPath}}" mode="aspectFill"/>
-                    <view class="item-text mt5">专属体验</view>
+                    <view class="item-text mt5">{{item.text}}</view>
                 </view>
             </view>
         </view>
@@ -126,6 +138,62 @@
             >{{userInfo.vip ? amount + ' 元续费会员卡' : amount + ' 元开通年卡'}}
         </button>
     </view>
+    </view>
+
+
+    <view class="pl32 pr32" wx:else>
+        <!-- 轮滚通知和会员权益 -->
+        <view class="pl32 pr32">
+            <!-- 会员权益 -->
+            <view class="equity mt32">
+                <view class="weui-loadmore weui-loadmore_line">
+                    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">会员权益</view>
+                </view>
+                <view class="eq-list flex white f26">
+                    <view wx:for="{{equityList}}" wx:key="{{index}}" class="f-items">
+                        <image class="item-image" src="{{item.bgPath}}" mode="aspectFill"/>
+                        <view class="item-text mt5">{{item.text}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 购买推广说明 -->
+        <view class="mt32" wx:if="{{userInfo.isTalent == 3}}">
+            <view class="weui-loadmore weui-loadmore_line">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">购买推广说明</view>
+            </view>
+            <view class="f26 c-FFFFFF">
+                <view class="mb8">1、请先用微信扫码关注本站公众号。</view>
+                <view class="mb8">2、进入公众号点击菜单栏“推广奖励 -> 个人获取奖励”。</view>
+                <view class="mb8">3、如果是第一次打开，会提示您登录会员，登录后进入下图所示页面，点击“点此进行分享”按钮。</view>
+            </view>
+        </view>
+        <!-- 下单购买推广  地推人员-->
+        <view class="pb32" wx:if="{{userInfo.isTalent == 3}}">
+            <button 
+                class="weui-btn dredge c-292624" 
+                type="dredge"
+                open-type="{{userInfo?'':'getUserInfo'}}" 
+                bindtap="{{userInfo?'tapJoinVip':'tapToLogin'}}"
+                >{{amount + ' 元购买权限'}}
+            </button>
+        </view>
+        <view class="pb32" wx:else>
+            <button 
+                class="weui-btn dredge c-292624" 
+                type="dredge"
+                open-type="{{userInfo?'share':'getUserInfo'}}" 
+                bindtap="{{userInfo?'':'tapToLogin'}}"
+                >我要推广
+            </button>
+        </view>
+        <!-- <view class="f24 c-FFFFFF t-c pb32" bindtap="tapPromotionCount">
+            <text >查看推广次数 </text>
+            <image class="see-count" src="/images/vip/vip_view.png" mode="aspectFill"/>
+            <image class="see-count" src="/images/vip/vip_view.png" mode="aspectFill"/>
+        </view> -->
+    </view>
+    
     
     
     

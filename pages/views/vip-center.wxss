@@ -134,3 +134,10 @@ page{
     line-height: 88rpx;
     font-size: 36rpx;
 }
+.see-count{
+    width: 14rpx;
+    height: 22rpx;
+}
+.t-c{
+    text-align: center;
+}

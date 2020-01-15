@@ -28,6 +28,9 @@
     "pages/views/search-center",
     "pages/views/kol-enter",
     "pages/views/kol-enter-msg",
+    "pages/promotion/promotion-count",
+    "pages/promotion/promotion-count-choice",
+    "pages/kol/kol-share",
     "pages/web-view/web-view"
   ],
   "subpackages": [],

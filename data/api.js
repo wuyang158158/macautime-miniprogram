@@ -24,6 +24,7 @@ const execute = (url, method, params, resolve, reject) => {
   const token = wx.getStorageSync('userInfo').token || ''
   const obj = { userName: wx.getStorageSync('userInfo').userName || '' }
   const data = Object.assign(params || {}, obj)
+  NT.showToast('加载中...')
   wx.request({
     url: baseUrl + url,
     method: method,
@@ -614,6 +615,78 @@ export default {
     return new Promise((resolve, reject) => {
       execute(
         `/user/kol/addKolAduit`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 根据推广人员标识获取推广会员价格
+  getExtensionVipPriceByUserName(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/baseService/vipPrice/getExtensionVipPriceByUserName`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 地推人员开通次数
+  ExtensionAmount(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/user/user/ExtensionAmount`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 根据手机号设置会员信息
+  setVipByPhone(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/user/user/setVipByPhone`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 获取小程序吗
+  twoCode(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/user/user/twoCode`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  //  查询kol分享数据
+  selectSpreadAmount(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/user/user/selectSpreadAmount`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 返回详情数据
+  selectSpreadList(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/user/user/selectSpreadList`,
         'POST',
         query,
         resolve,

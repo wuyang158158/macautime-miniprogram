@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    roleForm: { //1: 协议政策 2：Macau Time服务协议 3：关于我们 4：注册协议
+    roleForm: { //1: 协议政策 2：Macau Time服务协议 3：关于我们 4：注册服务协议 ，5隐私策略
       type: ''
     }
   },
@@ -18,12 +18,25 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    NT.showToast('加载中...')
     this.setData({
       roleForm: {
         type: options.id
       }
     })
+    if(options.id == '4' || options.id == '5'|| options.id == '2'){
+      let title = '隐私政策'
+      if(options.id == '4'){
+        title = '服务协议'
+      }
+      if(options.id == '2'){
+        title = '订单规则'
+      }
+      wx.setNavigationBarTitle({
+        title: title
+      })
+      return false;
+    }
+    NT.showToast('加载中...')
     this.getClerkByType()
   },
 

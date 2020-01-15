@@ -108,6 +108,12 @@ const discountPrice = (price, discount) => {
   let newPrice = price * (Number(discount) / 100)
   return newPrice.toFixed(2)
 }
+// 手机号中间四位显示****
+const phoneReplace = (phone) => {
+  var reg = /^(\d{3})\d*(\d{4})$/;
+  var str = phone.replace(reg,'$1****$2');
+  return str;
+}
 
 
 module.exports = {
@@ -117,5 +123,6 @@ module.exports = {
   daysBetween: daysBetween,
   isNull: isNull,
   packedArray: packedArray,
-  discountPrice: discountPrice
+  discountPrice: discountPrice,
+  phoneReplace: phoneReplace
 };

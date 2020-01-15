@@ -19,7 +19,7 @@ const equityList = [ //会员权益列表
   },
   {
     bgPath: '/images/vip/vip_right4.png',
-    text: '生日特权'
+    text: '特权标识'
   }
 ]
 Page({
@@ -35,23 +35,46 @@ Page({
     vImgUrls: [],  // 会员专享活动
     vipLoadding: false, //已开通会员等待中
     amount: 88, //金额
-    type: 1
+    type: 1,
+    source: '',  //来源  promotion为推广人员进入
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 扫码进入
+    if(options.scene){
+      let scene=decodeURIComponent(options.scene);
+      //&是我们定义的参数链接方式
+      options.speadCode = scene.split("&")[0];
+      options.speadType = scene.split('&')[1];
+      //其他逻辑处理。。。。。
+    }
     this.setData({
       discounts: util.packedArray(this.data.discounts),
       userInfo: wx.getStorageSync("userInfo"),
-      vipLoadding: wx.getStorageSync("vipLoadding") || ''
+      vipLoadding: wx.getStorageSync("vipLoadding") || '',
+      source: options.source,
+      options: options
     })
-    this.getLimitTimeGift()
-    this.vipPriceList()
-    if(this.data.vipLoadding){
-      this.getUserInfo()
+
+    var title = '会员中心'
+    if(options.source === 'promotion'){
+      this.getExtensionVipPriceByUserName()
+      title = '推广中心'
+    }else{
+      this.getLimitTimeGift()
+      this.data.options.speadType == 3 ? this.getExtensionVipPriceByUserName() : this.vipPriceList()
+      if(this.data.vipLoadding){
+        this.getUserInfo()
+      }
     }
+
+    wx.setNavigationBarTitle({
+      title: title
+    })
+    
   },
 
   /**
@@ -102,9 +125,18 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  // onShareAppMessage: function () {
-
-  // },
+  onShareAppMessage: function () {
+    const userInfo = this.data.userInfo
+    let path = '/pages/views/vip-center'
+    if(userInfo.isTalent == 2){
+      path = '/pages/views/vip-center?speadCode=' + userInfo.speadCode + '&speadType=' + userInfo.isTalent
+    }
+    return {
+      path: path,
+      title: '您有一张去澳门打卡必备的Macau Time会员待领取！',
+      imageUrl: '/images/vip/share-vip.png'
+    }
+  },
   vSwiperChange(e) { // 会员专属礼物滑动
     const current = e.detail.current
     this.data.vipType.forEach((v,i) => {
@@ -125,7 +157,24 @@ Page({
       billType: 'V', //账单类型（V为会员 ）
       vipType: this.data.type, //vip类型(0:免费体验会员；1:收费金会员；
       userName: this.data.userInfo.userName, //用户ID
-      secretKey: '' //密钥
+      secretKey: '', //密钥
+
+      orderCode: '', //订单号
+      isTalent: this.data.userInfo.isTalent, //用户类型(0:普通用户；1:达人；2:KOL; 3:地推) ,
+      num: 1,
+      speadCode: this.data.options.speadCode, // 推广二维码
+      speadType: this.data.options.speadType, //推广类型 //达人标识 1-达人 0-普通用户  2-KOL  3-地推
+    }
+    if(that.data.source === 'promotion'){
+      console.log('购买推广会员')
+      wx.navigateTo({
+        url: '/pages/promotion/promotion-count-choice',
+        success: function(res) {
+          // 通过eventChannel向被打开页面传送数据
+          res.eventChannel.emit('acceptDataFromOpenerPage', { data: roleFrom })
+        }
+      })
+      return false
     }
     NT.showToast('处理中...')
     api.payVipOrder(roleFrom)
@@ -137,16 +186,21 @@ Page({
         signType: res.signType,
         paySign: res.paySign,
         success (res) {
-          NT.showModal('恭喜您，开通会员成功！')
-          wx.setStorage({
-            key:"vipLoadding",
-            data:"open"
-          })
-          that.setData({
-            vipLoadding: true
-          })
-          that.vipPriceList()
-          that.getUserInfo()
+          if(that.data.source === 'promotion'){
+            NT.showModal('恭喜您，购买成功！')
+          }else{
+            NT.showModal('恭喜您，开通会员成功！')
+            wx.setStorage({
+              key:"vipLoadding",
+              data:"open"
+            })
+            that.setData({
+              vipLoadding: true
+            })
+            that.data.options.speadType == 2 ? that.getExtensionVipPriceByUserName() : that.vipPriceList()
+            that.getUserInfo()
+          }
+          
         },
         fail (res) {
           console.log(res)
@@ -165,7 +219,8 @@ Page({
     .then(res=>{
       const data = res
       data.map(item => {
-        item.activityTag = item.activityTag ? item.activityTag.split(',')[0] : ''
+        let activityTagSplit = item.activityTag ? item.activityTag.split(',') : ''
+        item.activityTag = item.activityTag ? activityTagSplit.length>1?[activityTagSplit[0],activityTagSplit[1]] : [activityTagSplit[0]] : ''
       })
       this.setData({
         vImgUrls: data
@@ -217,13 +272,21 @@ Page({
     .then(res=>{
       console.log(res)
       const bgPath = '/images/vip/vip_card1.png'
-      res.map(item=>{
-        item.bgPath = bgPath
+      var vipType = []
+      var amount = ''
+      var type = ''
+      res.map((item,index)=>{
+        if(item.type == 1) {
+          item.bgPath = bgPath
+          amount = item.price
+          type = item.type
+          vipType.push(item)
+        }
       })
       this.setData({
-        vipType: res,
-        amount: res[0].price,
-        type: res[0].type
+        vipType: vipType,
+        amount: amount,
+        type: type
       })
     //   let amount = 0
     //   let type = 0
@@ -313,5 +376,33 @@ Page({
   },
   capturecatchtouchmove() {
     return false;
+  },
+  // 购买推广会员
+  tapJoinVipPromotion() {
+  },
+  // 根据推广人员标识获取推广会员价格
+  getExtensionVipPriceByUserName() {
+    NT.showToast('加载中...')
+    api.getExtensionVipPriceByUserName({vipPriceType: this.data.options.speadType})
+    .then(res=>{
+      console.log(res)
+      const bgPath = '/images/vip/vip_card1.png'
+      res.bgPath = bgPath
+      this.setData({
+        vipType: [res],
+        amount: res.price,
+        type: res.type
+      })
+    })
+    .catch(err=>{
+      console.log(err)
+      NT.showModal(err.codeMsg||err.message||'请求失败！')
+    })
+  },
+  // 跳转到推广次数页面
+  tapPromotionCount() {
+    wx.navigateTo({
+      url: '/pages/promotion/promotion-count'
+    })
   }
 })

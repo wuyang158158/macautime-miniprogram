@@ -76,7 +76,7 @@
         <label class="checkbox f24 flex">
             <checkbox value="agreement" checked color="#00A653"/>
             <text>我已阅读并同意</text>
-            <text class="c-00A653" catchtap="tapToAgreement">《Macau Time服务协议》</text>
+            <text class="c-00A653" catchtap="tapToAgreement">《Macau Time订单规则》</text>
         </label>
         </checkbox-group>
     </view>

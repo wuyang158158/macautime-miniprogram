@@ -6,7 +6,7 @@
         <view class="slide-text c-292624">
             <view class="fw6 f40 l-h61">享专属特权</view>
             <view class="f26 l-h61">Macau Time会员</view>
-            <view class="f22 fw3 vip-ctime">有效期至{{userInfo.rt}}</view>
+            <view class="f22 fw3 vip-ctime" wx:if="{{userInfo.rt}}">有效期至{{userInfo.rt}}</view>
         </view>
     </view>
     <!-- 用户信息 -->
@@ -30,7 +30,7 @@
     </view>
     <!-- 用户反馈等 -->
     <view class="user-menu bg-white mt16 pl32 pr32">
-        <view wx:for="{{menu}}" wx:key="{{index}}" class="flex h-120 {{index+1!=menu.length?'bd1':''}}" data-menu="{{item.text}}" bindtap="tapMenu">
+        <view wx:for="{{menu}}" wx:key="{{index}}" class="flex h-120 {{index+1!=menu.length?'bd1':''}}" data-menu="{{item.text}}" bindtap="tapMenu" wx:if="{{item.show}}">
             <image class="menu-icon mr32" src="{{item.iconPath}}" mode="aspectFill"/>
             <view class="flex-1 f32 c-222222">
                 <button class="weui-btn w-auto" type="contact" open-type="contact" wx:if="{{item.text==='联系客服'}}">{{item.text}}</button>

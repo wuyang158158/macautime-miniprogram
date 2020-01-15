@@ -141,4 +141,6 @@
 .recommend-h-auto{
   height: auto;
 }
-
+.recommend-none{
+  display: none;
+}
