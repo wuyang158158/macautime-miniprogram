@@ -693,6 +693,18 @@ export default {
         reject
       )
     })
+  },
+  // 购买水舞间 
+  createShopPayOrder(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/payment/vipPay/createShopPayOrder`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
   }
   /*** file-end ***/
 }

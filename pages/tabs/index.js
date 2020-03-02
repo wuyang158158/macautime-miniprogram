@@ -5,6 +5,9 @@ import api from "../../data/api.js"
 import util from "../../utils/util.js"
 import bmap from "../../utils/bmap-wx.min.js"
 const app = getApp()
+import config from '../../data/api_config.js'
+const env = config.env[config.curEnv]
+const baseUrl = env.baseUrlImg
 
 Page({
   /**
@@ -25,6 +28,9 @@ Page({
     vImgUrls: [], // 会员限时礼体验列表
     promotions: [], //会员专属列表
     vTimeTitle: '', //会员限时礼标题
+    vImg: baseUrl + '/images/img2.jpg',
+    promotionModel: false, //模态框
+    cardView: true
   },
   /**
    * 生命周期函数--监听页面加载
@@ -35,9 +41,8 @@ Page({
     //   url: '/pages/promotion/promotion-count-choice'
     // })
     // wx.navigateTo({  
-    //   url: '/pages/views/ac-detail?id=610859100309291008' + '&title=3如如'
+    //   url: '/pages/views/ac-detail?id=' + '&title=水舞间' + '&source=vip'
     // })
-
     NT.showToast('加载中...')
     this.setData({
       userInfo: wx.getStorageSync("userInfo"), //用户信息
@@ -171,9 +176,15 @@ Page({
   tapToDetail(e) { // 点击查看体验详情
     const ID = e.currentTarget.dataset.id
     const TITLE = e.currentTarget.dataset.title
+    const TYPE = e.currentTarget.dataset.type
+    var url = '/pages/views/ac-detail?id=' + ID + '&title=' + TITLE
+    if(TYPE === 'vip'){
+      url = '/pages/views/ac-detail?id=' + ID + '&title=水舞间门票特惠' + '&source=' + TYPE
+    }
     wx.navigateTo({
-      url: '/pages/views/ac-detail?id=' + ID + '&title=' + TITLE
+      url: url
     })
+    
   },
   tapToVipCenter() { // 点击进入会员介绍中心
     wx.navigateTo({
@@ -305,5 +316,59 @@ Page({
    */
   onPageScroll(e){
     // console.log(e)
-  }
+  },
+  tapHideCard() { //隐藏实体卡
+    // cardView
+    NT.showModalPromise('隐藏实体卡激活，本次将不再主页提示！')
+    .then(()=>{
+      this.setData({
+        cardView: false
+      })
+    })
+    .catch(()=>{
+
+    })
+  },
+  cardActivate() { // 隐藏
+    this.setData({
+      promotionModel: true
+    })
+  },
+  tapModelClose() {
+    this.setData({
+      promotionModel: false
+    })
+  },
+  // 提交表单
+  formSubmit(e) {
+    console.log(e)
+    const that = this
+    const mobile = e.detail.value.mobile.trim()
+    if(!mobile){
+      NT.showModal('请输入激活码！')
+      return false;
+    }
+    NT.showModalPromise('确认使用该激活码？')
+      .then(()=>{
+        // NT.showToast('处理中...')
+        // api.setVipByPhone({phone:mobile})
+        // .then(res=>{
+        //   NT.showModalConfirm(res)
+        //   .then(r=>{
+        //     that.setData({
+        //       promotionModel: false,
+        //       mobile: false
+        //     })
+        //     that.ExtensionAmount()
+        //   })
+          
+        // })
+        // .catch(err=>{
+        //   NT.showModal(err.codeMsg||err.message||'请求失败！')
+        // })
+      })
+      .catch(()=>{
+
+      })
+  },
 })

@@ -1,4 +1,5 @@
 // components/searchbar/searchbar.js
+import language from "../../utils/language.js"
 Component({
   /**
    * 组件的属性列表
@@ -46,14 +47,20 @@ Component({
       this.triggerEvent('search', '')
     },
     inputTyping(e) {
+      var value = e.detail.value
       this.setData({
-        inputVal: e.detail.value
+        inputVal: value
       });
-      this.triggerEvent('search', e.detail.value)
+      var newValue = language.convert('0',value)
+      console.log(newValue)
+      this.triggerEvent('search', newValue)
     },
     onParentEvent(event) {
       console.log(event)
-      this.triggerEvent('search', event.detail.value)
+      var value = event.detail.value
+      var newValue = language.convert('0',value)
+      console.log(newValue)
+      this.triggerEvent('searchConfirm', newValue)
     },
     tapToSearch() {
       this.triggerEvent('tapSearch')

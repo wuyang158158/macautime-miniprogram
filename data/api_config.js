@@ -3,11 +3,13 @@ export default {
     "dev": {
       // "baseUrl": "https://192.168.31.213:8443",
       "baseUrl": "https://192.168.31.213:8443",
+      "baseUrlImg": "http://106.52.5.35:8020",
       // "baseUrl": "https://test.guoh.com.cn:8443"
       // "baseUrl": "https://192.168.31.9:8443"
     },
     "prod": {
-      "baseUrl": "https://time.guoh.com.cn:8443"
+      "baseUrl": "https://time.guoh.com.cn:8443",
+      "baseUrlImg": "http://106.52.5.35:8020",
     },
   },
   "curEnv": "prod",

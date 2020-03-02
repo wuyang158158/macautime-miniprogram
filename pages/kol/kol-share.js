@@ -22,6 +22,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      userInfo: wx.getStorageSync("userInfo"), //用户信息
+    })
     this.selectSpreadAmount()
     this.selectSpreadList()
   },
@@ -75,13 +78,14 @@ Page({
     const userInfo = this.data.userInfo
     let path = '/pages/views/vip-center'
     if(userInfo.isTalent == 2){
-      path = '/pages/views/vip-center?speadCode=' + userInfo.speadCode + '&speadType=' + userInfo.isTalent
+      path = '/pages/views/vip-center?speadCode=' + userInfo.spreadCode + '&speadType=' + userInfo.isTalent
     }
     return {
       path: path,
       title: '您有一张去澳门打卡必备的Macau Time会员待领取！',
       imageUrl: '/images/vip/share-vip.png'
     }
+    console.log(path)
   },
   tapTODetail() {
     const today = this.data.result.today

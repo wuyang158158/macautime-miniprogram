@@ -82,7 +82,21 @@
 					"id": 3,
 					"name": "pages/views/vip-center",
 					"pathName": "pages/views/vip-center",
-					"query": "scene=123456%263",
+					"query": "scene= 098573%262",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "/pages/views/vip-center?speadCode=098573&speadType=2",
+					"pathName": "pages/views/vip-center",
+					"query": "speadCode=098573&speadType=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/views/ac-detail",
+					"pathName": "pages/views/ac-detail",
+					"query": "id=undefined&title=%E6%B0%B4%E8%88%9E%E9%97%B4%E9%97%A8%E7%A5%A8%E7%89%B9%E6%83%A0&source=vip",
 					"scene": null
 				}
 			]

@@ -145,7 +145,10 @@ Page({
         noData: false
       })
     }
-    
+  },
+  searchConfirm(e) {
+    this.data.params.paramEntity.activityTitle = e.detail
+    this.getExperience('onPullDownRefresh')
   },
   // 联想词
   getLikeage(e) {
@@ -157,11 +160,16 @@ Page({
         this.data.params.paramEntity.activityTitle = e
         this.getExperience('onPullDownRefresh')
       }else{
-        res.map(item=>{
+        res.map((item,index)=>{
           const name = item.name
+          if(!name){
+            res.splice(index,1)
+          }
           if(name.indexOf(e) !== -1){
             const content = name.replace(new RegExp(e,'g'),'<span class="c-00A653">'+e+'</span>')
             item.content = '<p>' + content + '</p>'
+          }else{
+            item.content = item.name
           }
         })
         this.setData({

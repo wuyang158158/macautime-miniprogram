@@ -1,7 +1,7 @@
 <!--pages/views/ac-detail.wxml-->
 <view class="container {{acData.isSigned?'pb220':''}}" wx:if="{{acData}}">
     <!-- 操作 -->
-    <view class="nav flex">
+    <view class="nav flex" wx:if="{{source !== 'vip'}}">
         <view class="flex-1"></view>
         <button class="nav-icon flex" type="none" open-type="share">
             <image src="/images/detail/nav_icon_share_w.png" mode="aspectFill"/>
@@ -52,7 +52,7 @@
         </view>
     </view>
     <!-- 内容展示 -->
-    <view class="ac-page">
+    <view class="ac-page" wx:if="{{source !== 'vip'}}">
         <view class="pl32 pr32">
         <!-- 基本标题展示信息 -->
         <view class="title pb54 bd1">
@@ -203,6 +203,89 @@
             </view>
         </view>
     </view>
+
+    <view class="ac-page" wx:else>
+        <view class="pl32 pr32">
+            <!-- 基本标题展示信息 -->
+            <view class="title pt40 pb40 bd1">
+                <view class="f44 c-222222 fw5">水舞间门票特惠</view>
+            </view>
+            <!-- 体验时间 -->
+            <!-- <view class="h-156 bd1 flex">
+                <image src="/images/detail/icon_time.png" class="icon_time mr32" mode="aspectFill"/>
+                <view class="f28 c-222222 l-h55">表演时间表</view>
+                <view class="f28 c-222222 l-h55">点击查看</view>
+                <image src="/images/detail/icon_more.png" class="icon_more ml16" mode="aspectFill"/>
+            </view> -->
+            <view class="flex h-156 bd1" bindtap="tapPreviewImage1">
+                <image src="/images/detail/icon_time.png" class="icon_time mr32" mode="aspectFill"/>
+                <view class="l-name f28 c-222222 fw5">表演时间表</view>
+                <view class="flex-1 f28 c-222222 f-r">点击查看</view>
+                <image src="/images/detail/icon_more.png" class="icon_more ml16" mode="aspectFill"/>
+            </view>
+            <!-- 体验地点 -->
+            <view class="h-156 bd1 flex" bindtap="openLocation1">
+                <image src="/images/detail/icon_address.png" class="icon_time mr32" mode="aspectFill"/>
+                <view class="f28 c-222222 l-h55 fw5">澳门路氹连贯公路新濠天地</view>
+            </view>
+            <!-- 详情体验 -->
+            <view class="ac-time bd1 flex">
+                <view class="f32 c-222222 fw6 l-h55">
+                    <image src="/images/detail/new_year.png" class="icon_new_year pt32" mode="aspectFill"/>
+                </view>
+                <view class="f28 c-222222 l-h55">
+                    <view class="flex flex-alg pb32">
+                        <!-- <view class="icon_time ml32 mr32">①</view> -->
+                        <view class="flex-1">
+                            <view class="flex mine">
+                                <view class="mine-left">水舞间套餐</view>
+                                <view >门市价/元</view>
+                                <view >现价/元</view>
+                            </view>
+                            <view class="flex mine">
+                                <view class="mine-left">亲子票1大1小 B区20:00场</view>
+                                <view class="text-decoration">1267</view>
+                                <view >1069</view>
+                            </view>
+                            <view class="flex mine">
+                                <view class="mine-left">亲子票2大1小 B区20:00场</view>
+                                <view class="text-decoration">1971</view>
+                                <view >1599</view>
+                            </view>
+                            <view class="flex mine">
+                                <view class="mine-left">成人票1张 B区20:00场</view>
+                                <view class="text-decoration">704</view>
+                                <view >539</view>
+                            </view>
+                            <view class="flex mine">
+                                <view class="mine-left">成人票2张 B区20:00场</view>
+                                <view class="text-decoration">1408</view>
+                                <view >1069</view>
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="flex flex-alg pb32 f24 c-999999 l-h32">
+                        <!-- <view class="icon_time ml32 mr32">②</view> -->
+                        <view class="flex-1">
+                            <view class="mb8">注意事项：</view>
+                            <view class="mb8">* 99元加购澳门时光超值会员卡（价值99元），可享受300+商家优惠折扣，有效期一年。</view>
+                            <view class="mb8">* 限量特惠补贴，预定从速， 12岁及以上需要购买成人票，请提前两天预定，下单日期第二天请查收邮箱领取电子票，不可退换，请邮箱查收电子票，如有特殊要求，请联系客服。</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="p90">
+                <button class="weui-btn bay" type="primary" hover-class="hoverclass" open-type="{{userInfo?'':'getUserInfo'}}" bindtap="taptoBay">立即购买</button>
+            </view>
+            
+            <!-- <view class="bay-fxied bg-white">
+                
+            </view> -->
+            
+        </view> 
+    </view>
+
     <!-- 下单 -->
     <cover-view class="orders {{isIphoneX ?'fixiphonexbutton':''}}" wx:if="{{direction!=='horizontal' && acData.isSigned}}" hidden="{{istrue}}">
         <!-- 是否可购买    0：不可被购买  1：可以被购买 -->
@@ -230,3 +313,74 @@
 <!-- 详情 -->
 <half-screen-dialog istrue="{{istrue}}" result="{{mealDetailResult}}" bind:closeDialog="closeDialog"></half-screen-dialog>
 <gh-empty prop-type="{{noData.type}}" prop-text="{{noData.text}}" prop-mt="200" wx:if="{{noData&&!acData}}"></gh-empty>
+
+<view class="weui-demo-dialog {{istrueBay ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask" bindtap="closeDialogBay"></view>
+    <view class="weui-half-screen-dialog" catchtap="stopEvent">
+    <view class="weui-half-screen-dialog__hd dialog-tip">
+        <view class="weui-half-screen-dialog__hd__side">
+        <view bindtap="closeDialogBay" class="weui-icon-btn weui-icon-btn_close">关闭</view>
+        </view>
+    </view>
+    <view class="weui-half-screen-dialog__bd ofy-auto pb32">
+       <form bindsubmit="submitBay">
+       <view class="f32 fw5">水舞间</view>
+            <view class="section_gap pl32 pr32 bd1 pb32">
+                <view class="flex">
+                    <radio-group class="radio-group" name="amount" bindchange="radioChange">
+                        <radio class="radio f28" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                            <text class="ml16">{{item.value}}</text>
+                        </radio>
+                    </radio-group>
+                </view>
+                <view class="f24 c-999999 l-h32">
+                    <view class="mb8">注意事项：</view>
+                    <view class="mb8">限量特惠补贴，预定从速， 12岁及以上需要购买成人票，请提前两天预定，下单日期第二天请查收邮箱领取电子票，不可退换，请邮箱查收电子票，如有特殊要求，请联系客服。</view>
+                </view>
+            </view>
+            <view class="flex h-122 bd1">
+                <view class="l-name f32 c-222222">时光卡</view>
+                <view class="flex-1 f28 c-222222 f-r">默认选择    会员卡99元</view>
+            </view>
+            <!-- <view class="flex h-122 bd1">
+                <view class="l-name f32 c-222222">表演时间表</view>
+                <view class="flex-1 f28 c-222222 f-r">点击查看</view>
+                <image src="/images/detail/icon_more.png" class="icon_more ml16" mode="aspectFill"/>
+            </view> -->
+            <view class="flex h-122 bd1">
+                <view class="l-name f32 c-222222">总价</view>
+                <view class="flex-1 f28 c-222222 f-r c-00A653 fw5">{{amount}}元</view>
+            </view>
+
+            <view >
+                <view class="section h-122 bd1">
+                    <view class="f32 c-DA1717">*</view>
+                    <view class="section__title">姓     名：</view>
+                    <input name="realName" placeholder-class="input-placeholder" placeholder="需要与证件姓名一致并请携带证件" />
+                </view>
+                <view class="section h-122 bd1">
+                    <view class="f32 c-DA1717">*</view>
+                    <view class="section__title">手机号：</view>
+                    <input name="phone" placeholder-class="input-placeholder" placeholder="请正确填写手机号" />
+                </view>
+                <view class="section h-122 bd1">
+                    <view class="f32 c-DA1717">*</view>
+                    <view class="section__title">E-mail：</view>
+                    <input name="email" placeholder-class="input-placeholder" placeholder="请正确填写E-mail" />
+                </view>
+                <picker mode="date" value="{{date}}" start="{{time}}" end="2020-06-30" bindchange="bindDateChange">
+                    <view class="section h-122 bd1">
+                            <view class="f32 c-DA1717">*</view>
+                            <view class="section__title">入场日期：</view>
+                            <input name="presenceTime" placeholder-class="input-placeholder" disabled="{{true}}" placeholder="请选择入场日期" value="{{date}}"/>
+                            <image src="/images/detail/icon_more.png" class="icon_more ml16" mode="aspectFill"/>
+                    </view>
+                </picker>
+                <view class="btn-area">
+                    <button class="weui-btn bay" type="primary" hover-class="hoverclass" open-type="{{userInfo?'':'getUserInfo'}}" formType="{{userInfo? 'submit':'tapToLogin'}}">下单购买</button>
+                </view>
+            </view>
+        </form> 
+        </view>
+    </view>
+</view>

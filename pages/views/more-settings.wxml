@@ -24,14 +24,18 @@
         </view>
     </view> -->
     <view class="bg-white mt16">
-        <view class="flex bd1 f30 ml32 pr32" data-id="1" bindtap="tapToAboutUs">
-            <view class="c-222222 flex-1">协议政策</view>
+        <view class="flex bd1 f30 ml32 pr32" data-id="4" bindtap="tapToAboutUs">
+            <view class="c-222222 flex-1">服务协议</view>
             <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
         </view>
-        <view class="flex bd1 f30 ml32 pr32" data-id="3" bindtap="tapToAboutUs">
+        <view class="flex bd1 f30 ml32 pr32" data-id="5" bindtap="tapToAboutUs">
+            <view class="c-222222 flex-1">隐私政策</view>
+            <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
+        </view>
+        <!-- <view class="flex bd1 f30 ml32 pr32" data-id="3" bindtap="tapToAboutUs">
             <view class="c-222222 flex-1">关于我们</view>
             <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>
-        </view>
+        </view> -->
         <!-- <view class="flex f30 ml32 pr32" bindtap="tapToAboutUs">
             <view class="c-222222 flex-1">鼓励我们</view>
             <image class="more-icon" src="/images/center/icon_more-2.png" mode="aspectFill"/>

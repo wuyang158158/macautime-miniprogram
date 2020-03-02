@@ -56,20 +56,24 @@
     </view>
 
     <!-- 消息通知 -->
-    <!-- <view class="message mt40 flex pl32 pr32">
-      <image class="message-close-icon mr32" src="/images/index/home_icon_close20.png" mode="aspectFill"/>
+    <view class="message mt40 flex pl32 pr32" wx:if="{{!cardView}}">
+      <image class="message-close-icon mr32" src="/images/index/home_icon_close20.png" mode="aspectFill" bindtap="tapHideCard"/>
       <view class="flex-1 f26 c-222222">
-        您有 1 条新消息
+        实体卡激活
       </view>
-      <view class="f24 c-00A653">立即查看</view>
-    </view> -->
+      <view class="f24 c-00A653" bindtap="cardActivate">立即查看</view>
+    </view>
 
     <!-- 会员专属 -->
-    <view class="exclusive" wx:if="{{promotions.length}}">
-      <view class="ex-title f32 l-h32 c-222222 pt32 pb32 mt32 fw6">会员专属体验</view>
+    <view class="exclusive" wx:if="{{userInfo.isWxfrozen==1}}">
+      <view class="ex-title f32 l-h32 c-222222 pt32 pb32 mt32 fw6">新用户专属体验</view>
       <view wx:for="{{promotions}}" wx:key="{{index}}" class="ex-content" data-title="{{item.promotionTitle}}" data-id="{{item.expSerial}}" data-url="{{item.url}}" bindtap="{{userInfo.vip? item.isBingExp?'tapToDetail':'tapToWebView':'tapToVipCenter'}}">
         <image class="ex-content-banner-default" src="/images/default/bg_img.png" mode="aspectFill"/>
         <image class="ex-content-banner" src="{{item.picUrl}}" lazy-load mode="aspectFill"/>
+      </view>
+      <view class="ex-content" data-type="vip" bindtap="tapToDetail">
+        <image class="ex-content-banner-default" src="/images/default/bg_img.png" mode="aspectFill"/>
+        <image class="ex-content-banner" src="{{vImg}}" lazy-load mode="aspectFill"/>
       </view>
     </view>
 
@@ -130,6 +134,19 @@
       </view>
     </view>
   </view>
+</view>
+
+<view class="model" wx:if="{{promotionModel}}">
+    <image class="model_close" src="/images/vip/nav_icon_close_w1.png" mode="aspectFill" bindtap="tapModelClose"/>
+    <view class="model_cotent ml32 mr32">
+        <form class="form" bindsubmit="formSubmit">
+            <view class="m40">
+                <input class="mobile" type="number" name="mobile" placeholder="请输入激活码" placeholder-class="mobile-placeholder"/>
+                <button class="weui-btn weui-btn_black" type="black" formType="submit">确认</button>
+            </view>
+            
+        </form>
+    </view>
 </view>
  <!-- 缺省页面，暂无数据 -->
 <!-- <gh-empty prop-type="no-data" prop-text="暂无数据"></gh-empty> -->

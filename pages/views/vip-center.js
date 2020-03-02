@@ -43,14 +43,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 扫码进入
-    if(options.scene){
-      let scene=decodeURIComponent(options.scene);
-      //&是我们定义的参数链接方式
-      options.speadCode = scene.split("&")[0];
-      options.speadType = scene.split('&')[1];
-      //其他逻辑处理。。。。。
-    }
     this.setData({
       discounts: util.packedArray(this.data.discounts),
       userInfo: wx.getStorageSync("userInfo"),
@@ -58,22 +50,42 @@ Page({
       source: options.source,
       options: options
     })
-
-    var title = '会员中心'
-    if(options.source === 'promotion'){
-      this.getExtensionVipPriceByUserName()
-      title = '推广中心'
-    }else{
+    // 扫码进入
+    if(options.scene){
+      let scene=decodeURIComponent(options.scene);
+      //&是我们定义的参数链接方式
+      options.speadCode = scene.split("&")[0];
+      options.speadType = scene.split('&')[1];
+      //其他逻辑处理。。。。。
+      var title = '会员中心'
+      wx.setNavigationBarTitle({
+        title: title
+      })
+      this.setData({
+        options: options
+      })
       this.getLimitTimeGift()
-      this.data.options.speadType == 3 ? this.getExtensionVipPriceByUserName() : this.vipPriceList()
-      if(this.data.vipLoadding){
-        this.getUserInfo()
+      this.getExtensionVipPriceByUserName()
+    }else{
+      var title = '会员中心'
+      if(options.source === 'promotion'){
+        this.getExtensionVipPriceByUserName()
+        title = '推广中心'
+      }else{
+        this.getLimitTimeGift()
+        this.data.options.speadType == 2 ? this.getExtensionVipPriceByUserName() : this.vipPriceList()
+        if(this.data.vipLoadding){
+          this.getUserInfo()
+        }
+        wx.setNavigationBarTitle({
+          title: title
+        })
       }
     }
+    
+    
 
-    wx.setNavigationBarTitle({
-      title: title
-    })
+    
     
   },
 
@@ -129,7 +141,7 @@ Page({
     const userInfo = this.data.userInfo
     let path = '/pages/views/vip-center'
     if(userInfo.isTalent == 2){
-      path = '/pages/views/vip-center?speadCode=' + userInfo.speadCode + '&speadType=' + userInfo.isTalent
+      path = '/pages/views/vip-center?speadCode=' + userInfo.spreadCode + '&speadType=' + userInfo.isTalent
     }
     return {
       path: path,

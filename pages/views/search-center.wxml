@@ -1,7 +1,7 @@
 <!--pages/views/search-center.wxml-->
 <view class="container">
   <!-- 搜索组件 -->
-  <gh-searchbar bind:search="search" input-val="{{inputVal}}" inputShowed searchPlaceholder="搜索体验"></gh-searchbar>
+  <gh-searchbar bind:search="search" bind:searchConfirm="searchConfirm" input-val="{{inputVal}}" inputShowed searchPlaceholder="搜索体验"></gh-searchbar>
 
   <view class="mt52 ml32 mr32">
     <!-- 搜索标签 -->

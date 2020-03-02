@@ -2,6 +2,10 @@ import api from "../../data/api";
 import NT from "../../utils/native.js"
 import PAGE from "../../utils/config.js"
 import util from "../../utils/util.js"
+import config from '../../data/api_config.js'
+const env = config.env[config.curEnv]
+const baseUrl = env.baseUrlImg
+const time = util.formatTimeTwo(new Date(),'Y-M-D') //今日时间
 
 // pages/views/ac-detail.js
 const app = getApp();
@@ -38,19 +42,32 @@ Page({
     current: 0,
     direction: 'vertical', // 视频播放默认垂直
     expAllMeal: [], //套餐列表
+    source: '', //来源是否是vip
+    items: [
+      { name: '1168', value: '水舞间亲子票1大1小 B区20:00场 1069元', checked: true },
+      { name: '1698', value: '水舞间亲子票2大1小 B区20:00场 1599元' },
+      { name: '638', value: '水舞间成人票1张 B区20:00场  539元' },
+      { name: '1168', value: '水舞间成人票2张 B区20:00场  1069元' },
+    ],
+    amount: '1168',
+    date: time,
+    time: time,
+    istrueBay: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    NT.showToast('加载中...')
+    // NT.showToast('加载中...')
     // console.log(options)
     wx.setNavigationBarTitle({
       title: options.title
     })
+    const source = options.source
     this.setData({
       recommend: options.recommend,
+      source: options.source,
       roleFrom: {
         expSerial: options.id,
         userName: this.data.userInfo.userName
@@ -61,7 +78,26 @@ Page({
         page: PAGE.start,
       }
     })
-    this.getExpDetails()
+    if(source !== 'vip'){
+      this.getExpDetails()
+    }else{
+      const bannarUrls = [
+        baseUrl + '/images/01.jpg',
+        baseUrl + '/images/02.jpg',
+        baseUrl + '/images/03.jpg',
+        baseUrl + '/images/04.jpg',
+        baseUrl + '/images/05.jpg',
+        baseUrl + '/images/06.jpg',
+      ]
+      this.setData({
+        acData: {
+          bannarUrls: bannarUrls,
+          sharePic: baseUrl + '/images/01.jpg',
+          activityTitle: options.title
+        }
+      })
+    }
+    
   },
 
   /**
@@ -124,11 +160,21 @@ Page({
    */
   onShareAppMessage: function () {
     const acData = this.data.acData;
+    var path = '/pages/login/login?id=' + acData.experienceSerial + '&title=' + acData.activityTitle + '&shareType=acDetail';
+    if(this.data.source === 'vip'){
+      path = '/pages/views/ac-detail?id=' + '&title=' + acData.activityTitle + '&source=vip';
+    }
+    console.log(path)
     return {
-      path: '/pages/login/login?id=' + acData.experienceSerial + '&title=' + acData.activityTitle + '&shareType=acDetail',
+      path: path,
       title: acData.activityTitle,
       imageUrl: acData.sharePic||acData.coverUrl
     }
+  },
+  tapToVipCenter() { // 点击进入会员介绍中心
+    wx.navigateTo({
+      url: '/pages/views/vip-center'
+    })
   },
   //滑动
   swiperHandle(e) {
@@ -172,6 +218,7 @@ Page({
       data.newOriginalPrice = data.originalPrice && data.discount ? util.discountPrice(data.originalPrice,data.discount) : ''
       data.daysBetween = util.daysBetween(data.stimeStr,data.etimeStr)
       // console.log(data.newOriginalPrice)
+      data.videoUrl = this.data.userInfo.isKol ? data.videoUrl : ''
       this.setData({
         acData: data
       })
@@ -256,6 +303,14 @@ Page({
       scale: 18
     })
   },
+  openLocation1() {
+    wx.openLocation({
+      latitude: 22.145470,
+      longitude: 113.571960,
+      name: '澳门路氹连贯公路新濠天地',
+      scale: 18
+    })
+  },
   tapToDetail(e) {
     const ID = e.currentTarget.dataset.id
     const TITLE = e.currentTarget.dataset.title
@@ -276,6 +331,15 @@ Page({
     wx.previewImage({
       current: item, // 当前显示图片的http链接
       urls: this.data.acData.bannarUrls // 需要预览的图片http链接列表
+    })
+  },
+  tapPreviewImage1(e) {
+    wx.previewImage({
+      current: baseUrl + '/images/time_01.jpg',// 当前显示图片的http链接
+      urls: [
+        baseUrl + '/images/time_01.jpg',
+        baseUrl + '/images/time_02.jpg',
+      ] // 需要预览的图片http链接列表
     })
   },
   tapToLogin(e) {
@@ -491,4 +555,211 @@ Page({
         urls: urls // 需要预览的图片http链接列表
     })
   }, 
+  radioChange(e) {
+    console.log(e)
+    this.setData({
+      amount: e.detail.value
+    })
+  },
+  submitBay(e) {
+    console.log(e)
+    const userInfo = this.data.userInfo
+    if(userInfo.vip){
+      NT.showModal('抱歉，此优惠仅限新用户购买！')
+      return
+    }
+    var amount = e.detail.value.amount
+    var realName = e.detail.value.realName
+    var phone = e.detail.value.phone
+    var email = e.detail.value.email
+    var presenceTime = e.detail.value.presenceTime
+    if(!amount){
+      NT.showToastNone('请选择套餐！')
+      return
+    }
+    if(!realName){
+      NT.showToastNone('请输入您的姓名！')
+      return
+    }
+    if(!phone){
+      NT.showToastNone('请输入您的手机号码！')
+      return
+    }
+    if(!email){
+      NT.showToastNone('请输入您的电子邮箱！')
+      return
+    }
+    if(!presenceTime){
+      NT.showToastNone('请选择您的出现日期！')
+      return
+    }
+    var noData = [
+      '2020-01-06',
+      '2020-01-07',
+      '2020-01-08',
+      '2020-01-14',
+      '2020-01-15',
+      '2020-01-21',
+      '2020-01-22',
+      '2020-01-23',
+      '2020-01-29',
+      '2020-02-04',
+      '2020-02-05',
+      '2020-02-11',
+      '2020-02-12',
+      '2020-02-18',
+      '2020-02-19',
+      '2020-02-25',
+      '2020-02-26',
+      '2020-03-03',
+      '2020-03-04',
+      '2020-03-10',
+      '2020-03-11',
+      '2020-03-17',
+      '2020-03-18',
+      '2020-03-19',
+      '2020-03-20',
+      '2020-03-21',
+      '2020-03-22',
+      '2020-03-23',
+      '2020-03-24',
+      '2020-03-25',
+      '2020-03-26',
+      '2020-03-27',
+      '2020-03-28',
+      '2020-03-29',
+      '2020-03-30',
+      '2020-03-31',
+      '2020-04-01',
+      '2020-04-02',
+      '2020-04-07',
+      '2020-04-08',
+      '2020-04-14',
+      '2020-04-15',
+      '2020-04-21',
+      '2020-04-22',
+      '2020-04-28',
+      '2020-04-29',
+      '2020-05-05',
+      '2020-05-06',
+      '2020-05-12',
+      '2020-05-13',
+      '2020-05-19',
+      '2020-05-20',
+      '2020-05-26',
+      '2020-05-27',
+      '2020-06-02',
+      '2020-05-03',
+      '2020-05-09',
+      '2020-05-10',
+      '2020-05-16',
+      '2020-05-17',
+      '2020-05-23',
+      '2020-05-24',
+      '2020-05-30',
+    ]
+    if(noData.indexOf(presenceTime)!== -1){
+      NT.showModal('抱歉，不能选择该日期，请选择其他日期！')
+      return
+    }
+    var items = this.data.items
+    var description = ''
+    items.map(item=>{
+      if(item.name == amount){
+        description = item.value
+      }
+    })
+    var payQuery = {
+      // "amount": '0.01',   //支付金额
+      "amount": config.curEnv === 'dev' ? '0.01' : amount,   //支付金额
+      "billType": "S", //账单类型（V为会员,S为商品 ）
+      "description": description, // 套餐描述 
+      "email": email, // 邮箱
+      "isTalent": userInfo.isTalent, // 用户类型(0:普通用户；1:达人；2:KOL; 3:地推) ,
+      "num": "", //地推人员一次购买的次数
+      "orderCode": "", //订单号
+      "payType": "WXPAY_JSAPI", //支付类型（微信支付：WXPAY_APP，公众号支付或小程序支付：WXPAY_JSAPI
+      "phone": phone, //电话号码
+      "presenceTime": presenceTime, //入场时间
+      "realName": realName, //身份证姓名
+      "secretKey": "", //Secret Key
+      "speadCode": "", //推广码
+      "speadType": "", //达人标识 1-达人 0-普通用户 2-KOL 3-地推 ,
+      "userName": this.data.userInfo.userName, //用户名
+      "vipType": "1" // vip类型(0:免费体验会员；1:正式金会员；)
+    }
+    // debugger
+    this.createShopPayOrder(payQuery)
+  },
+  // 购买水舞间门票接口
+  createShopPayOrder(query) {
+    var that = this;
+    api.createShopPayOrder(query)
+    .then(res=>{
+      console.log(res)
+      if(res.code == '00000'){
+        var res = res.data
+        wx.requestPayment({
+          timeStamp: res.timeStamp,
+          nonceStr: res.nonceStr,
+          package: res.package,
+          signType: res.signType,
+          paySign: res.paySign,
+          success (res) {
+            NT.showModal('恭喜您，购买成功！')
+            that.getUserInfo()
+          },
+          fail (res) {
+            console.log(res)
+            // NT.showModal('支付失败！')
+          }
+        })
+      }else{
+        NT.showModal(res.codeMsg||res.message||'请求失败！')
+      }
+    })
+    .catch(err=>{
+      NT.showModal(err.codeMsg||err.message||'请求失败！')
+    })
+  },
+  taptoBay() {
+    this.setData({
+      istrueBay: true
+    })
+  },
+  closeDialogBay() {
+    this.setData({
+      istrueBay: false
+    })
+  },
+  bindDateChange: function(e) {
+      this.setData({
+          date: e.detail.value
+      })
+      console.log(e)
+  },
+  //获取用户信息
+  getUserInfo() {
+    const userFrom = {
+      loginType: '1',
+      phone: this.data.userInfo.phone,
+      type: '1'
+    }
+    api.getUserInfo(userFrom)
+    .then(res=>{
+      console.log(res)
+      const userInfo = Object.assign(wx.getStorageSync("userInfo")||{},res)
+      this.setData({
+        userInfo: userInfo
+      })
+      wx.setStorage({
+        key:"userInfo",
+        data:userInfo
+      })
+    })
+    .catch(err=>{
+      NT.showModal(err.codeMsg||err.message||'请求失败！')
+    })
+  },
+
 })
