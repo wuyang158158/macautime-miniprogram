@@ -943,6 +943,42 @@ export default {
         reject
       )
     })
+  },
+  // 首页搜索——用户昵称模糊搜索
+  getFansList(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/getFansList/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 我的钱包界面
+  atsSelect(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/atsSelect/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
+  },
+  // 钱包流水
+  atsSelectByList(query) {
+    return new Promise((resolve, reject) => {
+      execute(
+        `/atsSelectByList/1.0/`,
+        'POST',
+        query,
+        resolve,
+        reject
+      )
+    })
   }
   /*** file-end ***/
 }

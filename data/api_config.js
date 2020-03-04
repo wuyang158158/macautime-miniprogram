@@ -4,7 +4,7 @@ export default {
       // "baseUrl": "https://192.168.31.185:8080",
       // "baseUrl": "https://134.175.154.194:8443",
       // "baseUrl": "https://test.guoh.com.cn:8443"
-      "baseUrl": "http://192.168.31.9:8055"
+      "baseUrl": "http://192.168.31.146:8055"
     },
     "prod": {
       "baseUrl": "https://time.guoh.com.cn:8443"

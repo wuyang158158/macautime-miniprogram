@@ -1,11 +1,11 @@
 <!--pages/views/search-center.wxml-->
 <view class="container">
   <!-- 搜索组件 -->
-  <gh-searchbar bind:search="search" bind:bindconfirm="bindconfirm" input-val="{{inputVal}}" inputShowed searchPlaceholder="搜索体验"></gh-searchbar>
+  <gh-searchbar bind:search="search" bind:bindconfirm="bindconfirm" source="seach" input-val="{{inputVal}}" inputShowed searchPlaceholder="搜索体验"></gh-searchbar>
 
   <view class="mt52">
     <!-- 搜索标签 -->
-    <view class="ml32 mr32 mt32" wx:if="{{!recommend.length&&!noData}}">
+    <view class="ml32 mr32 mt32" wx:if="{{!recommend.length&&!result.length&&!noData}}">
       <view wx:if="{{!associativeWords.length}}">
         <!-- 历史记录 -->
         <view class="history" wx:if="{{historyRecord.length}}">
@@ -45,40 +45,28 @@
         </view>
       </view>
 
-      <view class="{{menuDataIndex===0?'pl32':''}} {{menuDataIndex===0?'pr32':''}} pt16 m-h {{menuDataIndex!==2?'bg-EFEFF4':''}}">
-        <view class="" wx:if="{{menuDataIndex===0}}">
+      <view class="{{menuDataIndex===0?'pl32':''}} {{menuDataIndex===0?'pr32':''}} pt16 m-h bt1">
+        <!-- <view class="" wx:if="{{menuDataIndex===0}}">
           <gh-aclist recommend="{{result}}" wx:if="{{result.length}}"></gh-aclist>
           <gh-empty prop-type="no-data" prop-text="暂无推荐路线" prop-mt="250" wx:else></gh-empty>
-        </view>
-        <view class="" wx:if="{{menuDataIndex===1}}">
+        </view> -->
+        <view class="" wx:if="{{menuDataIndex===0}}">
           <gh-acmylist  result="{{recommend}}" wx:if="{{recommend.length}}"></gh-acmylist>
         </view>
-        <view class="" wx:if="{{menuDataIndex===2}}">
-          <view class="flex ml32 pt32 pb32 bd1">
+        <view class="" wx:if="{{menuDataIndex===1}}">
+          <view wx:for="{{result}}" class="flex ml32 pt32 pb32 {{index+1!=menu.length?'bd1':''}}">
             <view class="kol-avatar">
               <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
-              <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
+              <image class="pic-default-new z-index5" src="{{item.headIco}}" mode="aspectFill"/>
               <image class="kol-avatar-v" src="/images/index/vip_30@2x.png" mode="aspectFill"/>
             </view>
             <view class="flex-1">
-              <view class="f30 c-222222 fw6">小红帽美食家</view>
-              <view class="f24 c-666666">美食达人</view>
-              <view class="f24 c-666666">12.8w 粉丝</view>
+              <view class="f30 c-222222 fw6">{{item.nickName}}</view>
+              <view class="f24 c-666666">{{item.remark || ''}}</view>
+              <view class="f24 c-666666">{{item.fans || 0}} 粉丝</view>
             </view>
-            <button class="weui-btn w-120 c-00A653 ml16 mr32 fw5 f24" type="primary">关注</button>
-          </view>
-          <view class="flex pt32 pb32 ml32">
-            <view class="kol-avatar">
-              <image class="pic-default-new" src="/images/default/bg_img.png" mode="aspectFill"/>
-              <image class="pic-default-new z-index5" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" mode="aspectFill"/>
-              <image class="kol-avatar-v" src="/images/index/vip_30@2x.png" mode="aspectFill"/>
-            </view>
-            <view class="flex-1">
-              <view class="f30 c-222222 fw6">小红帽美食家</view>
-              <view class="f24 c-666666">美食达人</view>
-              <view class="f24 c-666666">12.8w 粉丝</view>
-            </view>
-            <button class="weui-btn w-120 c-00A653 ml16 mr32 fw5 f24" type="primary-ticket">已关注</button>
+            <button class="weui-btn w-120 c-00A653 ml16 mr32 fw5 f24" type="primary-ticket" disabled="{{true}}" wx:if="{{item.isFocus}}">已关注</button>
+            <button class="weui-btn w-120 c-00A653 ml16 mr32 fw5 f24" type="primary" wx:else>关注</button>
           </view>
         </view>
         <view class="weui-loadmore {{loadmoreLine?'weui-loadmore_line':''}}" wx:if="{{!noData}}">

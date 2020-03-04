@@ -496,6 +496,9 @@ button[type=none]::after{
 .c-222222{
     color: #222222;
 }
+.c-333333{
+    color: #333333;
+}
 .c-666666{
     color: #666666;
 }
@@ -601,6 +604,9 @@ button[type=none]::after{
 }
 .f64 {
     font-size: 64rpx;
+}
+.f60{
+    font-size: 60rpx;
 }
 .f44 {
     font-size: 44rpx;

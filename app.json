@@ -52,7 +52,9 @@
     "pages/route/pay-order",
     "pages/help/merchant-enter",
     "pages/my/my-focus-kol",
-    "pages/my/my-fans"
+    "pages/my/my-fans",
+    "pages/wallet/wallet-index",
+    "pages/wallet/billing-details"
   ],
   "subpackages": [],
   "preloadRule": {},

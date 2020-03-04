@@ -31,12 +31,6 @@ Page({
    */
   onLoad: function(options) {
     // console.log(wx.getStorageSync("userInfo"))
-    // wx.navigateTo({
-    //   url: '/pages/views/shop-video-all'
-    // })
-    // wx.navigateTo({
-    //   url: '/pages/views/ac-detail?id=610859100309291008' + '&title=3如如'
-    // })
     // NT.showToast('加载中...')
     this.setData({
       userInfo: wx.getStorageSync("userInfo"), //用户信息

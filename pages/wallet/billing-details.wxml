@@ -1,0 +1,19 @@
+<!--pages/wallet/billing-details.wxml-->
+<view class="container">
+    <view class="flex h-100 pl25 pr25">
+        <view class="flex-1 f26 c-666666">总收益：$20</view>
+        <picker bindchange="bindPickerChange" mode="selector" range="{{tradeTypeArray}}" range-key="TradeTypeText" class="f26 c-666666">账单类型 ▾</picker>
+        <view class="f26 c-666666 pl32">2019年10月 ▾</view>
+    </view>
+    <view class="items bg-white" wx:for="{{result}}" wx:key="{{index}}">
+        <view class="ml25 bd1 h-150 flex">
+            <view class="flex">
+                <view class="flex-1 c-333333 f30">{{item.TradeTypeText}}</view>
+                <view class="c-00A653 f32" wx:if="{{item.recordType === 1}}">+{{item.Amount}}</view>
+                <view class="c-00A653 f32" wx:elif="{{item.recordType === 2}}">-{{item.Amount}}</view>
+                <view class="c-333333 f32" wx:else>{{item.Amount}}</view>
+            </view>
+            <view class="c-999999 f26">{{item.ctime}}</view>
+        </view>
+    </view>
+</view>

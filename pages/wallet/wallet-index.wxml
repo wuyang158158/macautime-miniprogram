@@ -1,0 +1,32 @@
+<!--pages/wallet/wallet-index.wxml-->
+<view class="container">
+    <view class="header c-FFFFFF bg-00A653">
+        <view class="pt60 f60 fw6">{{result.balance || '0.00'}}</view>
+        <view class="f26">可提现金额 (元)</view>
+    </view>
+    <view class="content ml32 mr32 pl32 pr32 bg-white flex mt-d">
+        <view class="flex-1 c-333333 f30">我要提现</view>
+        <image class="icon-more" src="/images/default/icon_more.png" mode="aspectFill"/>
+    </view>
+    <view class="content c-h ml32 mr32 mt32 pl32 pr32 bg-white">
+        <view class="flex bd1 h-108">
+            <view class="flex-1 c-333333 f30">待结算</view>
+            <view class="c-333333 f30">{{result.freezeAmount || '0.00'}}</view>
+            <image class="icon-more" src="/images/default/icon_more.png" mode="aspectFill"/>
+        </view>
+        <view class="flex h-108">
+            <view class="flex-1 c-333333 f30">已提现</view>
+            <view class="c-333333 f30">{{result.earningsAmount || '0.00'}}</view>
+            <image class="icon-more" src="/images/default/icon_more.png" mode="aspectFill"/>
+        </view>
+    </view>
+    <view class="content ml32 mr32 pl32 pr32 bg-white flex mt32">
+        <view class="flex-1 c-333333 f30">银行卡</view>
+        <image class="icon-more" src="/images/default/icon_more.png" mode="aspectFill"/>
+    </view>
+    <view class="content ml32 mr32 pl32 pr32 bg-white flex mt32" bindtap="tapToDetail">
+        <view class="flex-1 c-333333 f30">我的收入明细</view>
+        <image class="icon-more" src="/images/default/icon_more.png" mode="aspectFill"/>
+    </view>
+    <view class="issue c-999999 f24 t-c">常见问题</view>
+</view>

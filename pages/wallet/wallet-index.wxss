@@ -1,0 +1,30 @@
+/* pages/wallet/wallet-index.wxss */
+.header{
+    height: 348rpx;
+    text-align: center;
+}
+.pt60{
+    padding-top: 60rpx;
+}
+.content{
+    height: 108rpx;
+    border-radius:16rpx;
+}
+.h-108{
+    height: 108rpx;
+}
+.c-h{
+    height: 213rpx;
+}
+.mt-d{
+    margin-top: -55rpx;
+}
+.icon-more{
+    width: 30rpx;
+    height: 30rpx;
+}
+.issue{
+    width: 100%;
+    position: absolute;
+    bottom: 16rpx;
+}

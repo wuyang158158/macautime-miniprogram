@@ -1,0 +1,22 @@
+/* pages/wallet/billing-details.wxss */
+.items{
+    padding-right: 25rpx;
+}
+.h-150{
+    height: 150rpx;
+    flex-direction: column;
+    justify-content: center;
+    align-items: initial;
+}
+.ml25{
+    margin-left: 25rpx;
+}
+.h-100{
+    height: 100rpx;
+}
+.pl25{
+    padding-left: 25rpx;
+}
+.pr25{
+    padding-right: 25rpx;
+}

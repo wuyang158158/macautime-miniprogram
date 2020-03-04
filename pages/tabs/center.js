@@ -261,6 +261,11 @@ Page({
         url: '/pages/route/release-route'
       })
     }
+    if(menu === '我的钱包'){
+      wx.navigateTo({
+        url: '/pages/wallet/wallet-index'
+      })
+    }
   },
   // 跳转到时光币商城页面
   tapToTimeCoinStore() {

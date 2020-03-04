@@ -4,7 +4,7 @@ import PAGE from "../../utils/config.js"
 import api from "../../data/api.js"
 import util from "../../utils/util.js"
 const menuData = [
-  '路线','商家','用户'
+  '商家','用户'
 ]
 Page({
 
@@ -19,6 +19,7 @@ Page({
       keyWord: ''
     },
     total: 0,
+    merchantTotal: 0,
     loadmore: false, //加载更多
     loadmoreLine: false, //暂无更多信息
     noData: false,  //没有数据时
@@ -26,12 +27,10 @@ Page({
 
     menuData: menuData,
     menuDataIndex: 0,
-    merchantParams: {
+    merchantParams: { //搜索用户请求信息
       limit: PAGE.limit,
       start: PAGE.start,
-      paramEntity: {
-        userName: wx.getStorageSync("userInfo").userName
-      }
+      nickName: ''
     },
     result: [],
   },
@@ -40,7 +39,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    NT.showToast('加载中...')
+    // NT.showToast('加载中...')
     this.setData({
       userInfo: wx.getStorageSync("userInfo"), //用户信息
     })
@@ -99,33 +98,65 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    if ((this.data.params.start) * this.data.params.limit < this.data.total) {
-      wx.showNavigationBarLoading();
-      this.setData({
-        loadmoreLine: false,
-        loadmore: true
-      })
-      this.setData({
-        params:{ //请求首页推荐列表
-          limit: PAGE.limit,
-          start: this.data.params.start + 1,
-          keyWord: this.data.params.keyWord
+    if(this.data.menuDataIndex === 0){
+      if ((this.data.params.start) * this.data.params.limit < this.data.total) {
+        wx.showNavigationBarLoading();
+        this.setData({
+          loadmoreLine: false,
+          loadmore: true
+        })
+        this.setData({
+          params:{ //请求首页推荐列表
+            limit: PAGE.limit,
+            start: this.data.params.start + 1,
+            keyWord: this.data.params.keyWord
+          }
+        })
+        this.msSelectedMsByKeyWord()
+      }else {
+        //暂无更多数据
+        NT.hideToast()
+        if(this.data.recommend.length){
+          this.setData({
+            loadmoreLine: true,
+            loadmore: false
+          })
+        }else{
+          this.setData({
+            loadmore: false
+          })
         }
-      })
-      this.msSelectedMsByKeyWord()
-    }else {
-      //暂无更多数据
-      NT.hideToast()
-      if(this.data.recommend.length){
+      } 
+    }
+    if(this.data.menuDataIndex === 1){
+      if ((this.data.merchantParams.start) * this.data.merchantParams.limit < this.data.merchantTotal) {
+        wx.showNavigationBarLoading();
         this.setData({
-          loadmoreLine: true,
-          loadmore: false
+          loadmoreLine: false,
+          loadmore: true
         })
-      }else{
         this.setData({
-          loadmore: false
+          merchantParams:{ //请求首页推荐列表
+            limit: PAGE.limit,
+            start: this.data.merchantParams.start + 1,
+            keyWord: this.data.merchantParams.keyWord
+          }
         })
-      }
+        this.getFansList()
+      }else {
+        //暂无更多数据
+        NT.hideToast()
+        if(this.data.recommend.length){
+          this.setData({
+            loadmoreLine: true,
+            loadmore: false
+          })
+        }else{
+          this.setData({
+            loadmore: false
+          })
+        }
+      } 
     }
   },
 
@@ -206,16 +237,16 @@ Page({
     this.setData({
       historyRecord: wx.getStorageSync('historyRecord') || []
     })
-    api.hostSearch()
-    .then(res=>{
-      // console.log(res)
-      this.setData({
-        hostSearch: res
-      })
-    })
-    .catch(err=>{
-      console.log(err)
-    })
+    // api.hostSearch()
+    // .then(res=>{
+    //   // console.log(res)
+    //   this.setData({
+    //     hostSearch: res
+    //   })
+    // })
+    // .catch(err=>{
+    //   console.log(err)
+    // })
   },
   // 清空搜索历史记录
   tapClearRecord() {
@@ -293,10 +324,6 @@ Page({
   // 点击菜单切换
   tapSMenuItem(e) {
     const index = e.currentTarget.dataset.index;
-    // if(index === 1){
-    //   NT.showToast('处理中...')
-    //   this.getUserRecord()
-    // }
 
     this.setData({
       menuDataIndex: index
@@ -316,19 +343,22 @@ Page({
     //   keyWord: this.data.params.keyWord
     // };
     // this.getOrderListPersonal()
-    if(index === 1){ //商家搜索
+    if(index === 0){ //商家搜索
       // this.msSelectedMsByKeyWord()
     }
+    if(index === 1) { //请求用户记录
+      this.getFansList()
+    }
   },
-
-  getUserRecord(source) { // 请求用户记录
-    api.getUserRecord(this.data.merchantParams)
+  getFansList(source) { // 请求用户记录
+    NT.showToast('加载中...')
+    api.getFansList(this.data.merchantParams)
     .then(res=>{
       // console.log(res)
-      const data = source === 'onPullDownRefresh' ? res.rows : this.data.result.concat(res.rows)
+      const data = source === 'onPullDownRefresh' ? res.data : this.data.result.concat(res.data)
       this.setData({
         result: data,
-        total: res.total,
+        merchantTotal: res.total,
         loadmoreLine: false,
         loadmore: false,
         noData: false,
